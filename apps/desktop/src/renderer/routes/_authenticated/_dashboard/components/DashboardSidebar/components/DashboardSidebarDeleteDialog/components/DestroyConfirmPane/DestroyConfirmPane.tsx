@@ -9,7 +9,8 @@ import {
 import { Button } from "@superset/ui/button";
 import { Checkbox } from "@superset/ui/checkbox";
 import { Label } from "@superset/ui/label";
-import { useId } from "react";
+import { useEffect, useId } from "react";
+import { shouldConfirmDeleteDialogKey } from "../../utils/shouldConfirmDeleteDialogKey";
 
 interface DestroyConfirmPaneProps {
 	open: boolean;
@@ -17,23 +18,43 @@ interface DestroyConfirmPaneProps {
 	workspaceName: string;
 	deleteBranch: boolean;
 	onDeleteBranchChange: (next: boolean) => void;
+	hasChanges: boolean;
+	hasUnpushedCommits: boolean;
+	canConfirm: boolean;
+	blockingReason: string | null;
 	onConfirm: () => void;
+	confirmLabel: string;
 }
 
-/**
- * Default pane: the first click on "Delete". Offers the branch opt-in.
- * Confirm hands off to the parent which closes the dialog and runs the
- * destroy under a toast — no in-dialog pending state.
- */
 export function DestroyConfirmPane({
 	open,
 	onOpenChange,
 	workspaceName,
 	deleteBranch,
 	onDeleteBranchChange,
+	hasChanges,
+	hasUnpushedCommits,
+	canConfirm,
+	blockingReason,
 	onConfirm,
+	confirmLabel,
 }: DestroyConfirmPaneProps) {
 	const checkboxId = useId();
+	const hasWarnings = hasChanges || hasUnpushedCommits;
+
+	useEffect(() => {
+		if (!open || !canConfirm) return;
+
+		const handleKeyDown = (event: KeyboardEvent) => {
+			if (!shouldConfirmDeleteDialogKey(event)) return;
+			event.preventDefault();
+			onConfirm();
+		};
+
+		window.addEventListener("keydown", handleKeyDown);
+		return () => window.removeEventListener("keydown", handleKeyDown);
+	}, [canConfirm, onConfirm, open]);
+
 	return (
 		<AlertDialog open={open} onOpenChange={onOpenChange}>
 			<AlertDialogContent className="max-w-[340px] gap-0 p-0">
@@ -46,6 +67,31 @@ export function DestroyConfirmPane({
 						also be removed.
 					</AlertDialogDescription>
 				</AlertDialogHeader>
+				<div className="px-4 pb-2">
+					<div
+						className={
+							hasWarnings
+								? "text-xs rounded-md border px-2.5 py-1.5 text-yellow-700 dark:text-yellow-400 bg-yellow-50 dark:bg-yellow-500/10 border-yellow-200 dark:border-yellow-500/20"
+								: "text-xs rounded-md border border-transparent px-2.5 py-1.5"
+						}
+						aria-hidden={hasWarnings ? undefined : true}
+					>
+						{hasWarnings
+							? hasChanges && hasUnpushedCommits
+								? "Has uncommitted changes and unpushed commits"
+								: hasChanges
+									? "Has uncommitted changes"
+									: "Has unpushed commits"
+							: " "}
+					</div>
+				</div>
+				{blockingReason && (
+					<div className="px-4 pb-2">
+						<div className="text-xs text-destructive bg-destructive/10 border border-destructive/20 rounded-md px-2.5 py-1.5">
+							{blockingReason}
+						</div>
+					</div>
+				)}
 				<div className="px-4 pb-2">
 					<div className="flex items-center gap-2">
 						<Checkbox
@@ -77,8 +123,9 @@ export function DestroyConfirmPane({
 						size="sm"
 						className="h-7 px-3 text-xs"
 						onClick={onConfirm}
+						disabled={!canConfirm}
 					>
-						Delete
+						{confirmLabel}
 					</Button>
 				</AlertDialogFooter>
 			</AlertDialogContent>

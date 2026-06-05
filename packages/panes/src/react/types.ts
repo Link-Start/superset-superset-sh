@@ -56,16 +56,27 @@ export interface RendererContext<TData> {
 	};
 }
 
+export interface PaneTitleSource {
+	subscribe: (callback: () => void) => () => void;
+	getSnapshot: () => string | undefined;
+}
+
 export interface PaneDefinition<TData> {
 	renderPane(context: RendererContext<TData>): ReactNode;
 	getTitle?(pane: Pane<TData>): string | undefined;
+	/**
+	 * Optional reactive title source. When defined, the tab title (and other
+	 * title-aware UI) subscribes to it and re-renders when the runtime title
+	 * changes — without mirroring runtime state into the pane store.
+	 */
+	titleSource?(pane: Pane<TData>): PaneTitleSource | undefined;
 	getIcon?(context: RendererContext<TData>): ReactNode;
 	renderTitle?(context: RendererContext<TData>): ReactNode;
 	renderHeaderExtras?(context: RendererContext<TData>): ReactNode;
 	renderToolbar?(context: RendererContext<TData>): ReactNode;
 	onHeaderClick?(context: RendererContext<TData>): void;
 	onBeforeClose?(pane: Pane<TData>): boolean | Promise<boolean>;
-	onRemoved?(pane: Pane<TData>): void;
+	onAfterClose?(pane: Pane<TData>): void;
 	paneActions?:
 		| PaneActionConfig<TData>[]
 		| ((
@@ -82,6 +93,10 @@ export interface PaneDefinition<TData> {
 
 export type PaneRegistry<TData> = Record<string, PaneDefinition<TData>>;
 
+export interface WorkspaceInteractionState {
+	resizeActive: boolean;
+}
+
 export interface WorkspaceProps<TData> {
 	store: StoreApi<WorkspaceStore<TData>>;
 	registry: PaneRegistry<TData>;
@@ -90,12 +105,16 @@ export interface WorkspaceProps<TData> {
 	renderTabIcon?: (tab: Tab<TData>) => ReactNode;
 	renderEmptyState?: () => ReactNode;
 	renderAddTabMenu?: () => ReactNode;
+	/** Rendered at the trailing (right) edge of the tab bar row. */
+	renderTabBarTrailing?: () => ReactNode;
 	renderBelowTabBar?: () => ReactNode;
 	onBeforeClosePane?: (
 		pane: Pane<TData>,
 		tab: Tab<TData>,
 	) => boolean | Promise<boolean>;
 	onBeforeCloseTab?: (tab: Tab<TData>) => boolean | Promise<boolean>;
+	onAfterCloseTab?: (tab: Tab<TData>) => void;
+	onInteractionStateChange?: (state: WorkspaceInteractionState) => void;
 	paneActions?:
 		| PaneActionConfig<TData>[]
 		| ((context: RendererContext<TData>) => PaneActionConfig<TData>[]);

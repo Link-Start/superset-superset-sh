@@ -83,9 +83,9 @@ const SHELL_READY_TIMEOUT_MS = 15_000;
 
 /**
  * Shell readiness lifecycle:
- * - `pending`     — shell is initializing; user writes are buffered, escape sequences dropped
- * - `ready`       — marker detected; buffered writes have been flushed
- * - `timed_out`   — marker never arrived within timeout; writes unblocked
+ * - `pending`     — shell is initializing; escape sequences dropped, other writes pass through
+ * - `ready`       — marker detected; writes pass through
+ * - `timed_out`   — marker never arrived within timeout; writes pass through
  * - `unsupported` — shell has no marker (sh, ksh); writes pass through from the start
  */
 type ShellReadyState = "pending" | "ready" | "timed_out" | "unsupported";
@@ -159,11 +159,12 @@ export class Session {
 	private ptyReadyPromise: Promise<void>;
 	private ptyReadyResolve: (() => void) | null = null;
 
-	// Shell readiness — gates write() until the shell's first prompt.
+	// Shell readiness — tracks the shell's init lifecycle. User input and
+	// preset commands pass through regardless; only stale xterm terminal-query
+	// responses (DA/DSR) are filtered while `pending`.
 	// See ShellReadyState for lifecycle docs.
 	private shellReadyState: ShellReadyState;
 	private shellReadyTimeoutId: ReturnType<typeof setTimeout> | null = null;
-	private preReadyStdinQueue: string[] = [];
 	// OSC 133;A scanner state — shared with v2 host-service via @superset/shared
 	private scanState: ShellReadyScanState = createScanState();
 
@@ -359,18 +360,32 @@ export class Session {
 
 			case PtySubprocessIpcType.Data: {
 				if (payload.length === 0) break;
-				let data = payload.toString("utf8");
 
 				// Scan for OSC 133;A (shell ready) and strip from output.
+				// scanForShellReady operates on bytes — the OSC marker is pure
+				// ASCII, so byte-level matching is identical to char-level
+				// matching, and we avoid `payload.toString("utf8")` per chunk
+				// (which mangles multi-byte codepoints split across chunks).
+				let bytes: Uint8Array = payload;
 				if (this.shellReadyState === "pending") {
-					const result = scanForShellReady(this.scanState, data);
-					data = result.output;
+					const result = scanForShellReady(this.scanState, payload);
+					bytes = result.output;
 					if (result.matched) {
 						this.resolveShellReady("ready");
 					}
 				}
 
-				if (data.length === 0) break;
+				if (bytes.length === 0) break;
+				// v1's emulator + IPC consumers want a string. UTF-8 decode the
+				// stripped bytes here. Boundary mangling is still possible at
+				// chunk edges (v1 has no per-session StringDecoder), but v1 is
+				// sunset — the v2 daemon-backed path is the supported one and
+				// it's clean end-to-end.
+				const data = Buffer.from(
+					bytes.buffer,
+					bytes.byteOffset,
+					bytes.byteLength,
+				).toString("utf8");
 
 				this.enqueueEmulatorWrite(data);
 
@@ -844,21 +859,23 @@ export class Session {
 	/**
 	 * Write data to the PTY's stdin.
 	 *
-	 * While the shell is initializing (`pending` state), writes are triaged:
-	 * - **Escape sequences** (`\x1b`-prefixed) are dropped. These are stale
-	 *   responses from the renderer's xterm to terminal queries the shell
-	 *   sent during startup (DA, DSR). If queued and flushed later they
-	 *   appear as typed text like `?62;4;9;22c`.
-	 * - **Everything else** (preset commands, user input) is buffered and
-	 *   flushed in FIFO order once readiness resolves.
+	 * Escape-sequence responses (`\x1b`-prefixed) are dropped while the shell
+	 * is still initializing — these are stale DA/DSR replies from the
+	 * renderer's xterm to terminal queries the shell sent during startup. If
+	 * forwarded, they appear as typed text like `?62;4;9;22c` at the shell
+	 * prompt. The headless emulator answers those queries directly (see
+	 * constructor), so dropping the renderer's duplicate is safe.
+	 *
+	 * All other data — user keystrokes and preset commands alike — passes
+	 * through immediately. Buffering here previously froze workspaces when
+	 * shell init commands (e.g. fnm's `use-on-cd` hook) opened an interactive
+	 * prompt before the OSC 133;A marker fired. See #3478.
 	 */
 	write(data: string): void {
 		if (!this.subprocess || !this.subprocessReady) {
 			throw new Error("PTY not spawned");
 		}
-		if (this.shellReadyState === "pending") {
-			if (data.startsWith("\x1b")) return;
-			this.preReadyStdinQueue.push(data);
+		if (this.shellReadyState === "pending" && data.startsWith("\x1b")) {
 			return;
 		}
 		this.sendWriteToSubprocess(data);
@@ -925,7 +942,7 @@ export class Session {
 	 * Marks the session as terminating immediately (idempotent).
 	 * The actual PTY termination is async - use isTerminating to check state.
 	 */
-	kill(signal: string = "SIGTERM"): void {
+	kill(signal: string = "SIGHUP"): void {
 		// Idempotent: if already terminating, don't send another signal
 		if (this.terminatingAt !== null) {
 			return;
@@ -992,7 +1009,6 @@ export class Session {
 			clearTimeout(this.shellReadyTimeoutId);
 			this.shellReadyTimeoutId = null;
 		}
-		this.preReadyStdinQueue = [];
 		this.scanState = createScanState();
 		this.subprocessStdinQueue = [];
 		this.subprocessStdinQueuedBytes = 0;
@@ -1026,8 +1042,7 @@ export class Session {
 
 	/**
 	 * Transition out of `pending`. Flushes any partially-matched marker
-	 * bytes as terminal output (they weren't a real marker), then sends
-	 * all buffered stdin writes to the PTY in order. Idempotent.
+	 * bytes as terminal output (they weren't a real marker). Idempotent.
 	 */
 	private resolveShellReady(state: "ready" | "timed_out"): void {
 		if (this.shellReadyState !== "pending") return;
@@ -1036,22 +1051,19 @@ export class Session {
 			clearTimeout(this.shellReadyTimeoutId);
 			this.shellReadyTimeoutId = null;
 		}
-		// Flush held marker bytes — they weren't part of a full marker
+		// Flush held marker bytes — they weren't part of a full marker.
+		// heldBytes is `number[]` after the byte-scanner refactor; decode to a
+		// utf-8 string for v1's emulator/event surface, which is string-based.
 		if (this.scanState.heldBytes.length > 0) {
-			this.enqueueEmulatorWrite(this.scanState.heldBytes);
+			const flushed = Buffer.from(this.scanState.heldBytes).toString("utf8");
+			this.enqueueEmulatorWrite(flushed);
 			this.broadcastEvent("data", {
 				type: "data",
-				data: this.scanState.heldBytes,
+				data: flushed,
 			} satisfies TerminalDataEvent);
-			this.scanState.heldBytes = "";
+			this.scanState.heldBytes.length = 0;
 		}
 		this.scanState.matchPos = 0;
-		// Flush queued writes in FIFO order
-		const queue = this.preReadyStdinQueue;
-		this.preReadyStdinQueue = [];
-		for (const data of queue) {
-			this.sendWriteToSubprocess(data);
-		}
 	}
 
 	/**

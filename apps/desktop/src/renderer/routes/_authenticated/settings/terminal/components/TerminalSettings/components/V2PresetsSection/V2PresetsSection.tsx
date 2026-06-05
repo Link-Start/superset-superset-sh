@@ -3,25 +3,31 @@ import {
 	normalizeExecutionMode,
 	type TerminalPreset,
 } from "@superset/local-db";
+import { HOST_AGENT_PRESETS } from "@superset/shared/host-agent-presets";
 import { Button } from "@superset/ui/button";
-import { Label } from "@superset/ui/label";
 import { useLiveQuery } from "@tanstack/react-db";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { HiOutlinePlus } from "react-icons/hi2";
 import { useIsDarkTheme } from "renderer/assets/app-icons/preset-icons";
-import { useMigrateV1PresetsToV2 } from "renderer/routes/_authenticated/hooks/useMigrateV1PresetsToV2";
+import { useV2AgentConfigs } from "renderer/hooks/useV2AgentConfigs";
+import { getAgentCommandText } from "renderer/lib/agent-launch-command";
 import { useCollections } from "renderer/routes/_authenticated/providers/CollectionsProvider";
 import type { V2TerminalPresetRow } from "renderer/routes/_authenticated/providers/CollectionsProvider/dashboardSidebarLocal";
+import { useLocalHostService } from "renderer/routes/_authenticated/providers/LocalHostServiceProvider";
 import type { PresetColumnKey } from "renderer/routes/_authenticated/settings/presets/types";
-import { PresetEditorSheet } from "../PresetsSection/components/PresetEditorSheet";
+import { PresetEditorDialog } from "../PresetsSection/components/PresetEditorDialog";
+
 import { PresetsTable } from "../PresetsSection/components/PresetsTable";
-import { QuickAddPresets } from "../PresetsSection/components/QuickAddPresets";
 import {
-	type AutoApplyField,
-	PRESET_TEMPLATES,
-	type PresetTemplate,
-} from "../PresetsSection/constants";
+	type QuickAddAgentPill,
+	QuickAddPresets,
+} from "../PresetsSection/components/QuickAddPresets";
+import type { AutoApplyField } from "../PresetsSection/constants";
 import type { PresetProjectOption } from "../PresetsSection/preset-project-options";
+
+const DESCRIPTION_BY_PRESET_ID = new Map<string, string>(
+	HOST_AGENT_PRESETS.map((preset) => [preset.presetId, preset.description]),
+);
 
 interface V2PresetsSectionProps {
 	showPresets: boolean;
@@ -34,7 +40,7 @@ interface V2PresetsSectionProps {
 
 /**
  * V2 clone of PresetsSection wired to the renderer-side v2TerminalPresets
- * collection. Reuses PresetsTable / PresetEditorSheet / QuickAddPresets from
+ * collection. Reuses PresetsTable / PresetEditorDialog / QuickAddPresets from
  * the v1 directory (they're prop-driven renderers). When v1 is deprecated,
  * delete PresetsSection and move the shared sub-components here.
  */
@@ -48,7 +54,12 @@ export function V2PresetsSection({
 }: V2PresetsSectionProps) {
 	const isDark = useIsDarkTheme();
 	const collections = useCollections();
-	useMigrateV1PresetsToV2();
+
+	// Read v2 agent configs from the host service — this is the same
+	// data source the v2 /settings/agents page reads and writes, so edits
+	// there propagate here. The query is invalidated by those mutations.
+	const { activeHostUrl } = useLocalHostService();
+	const { data: agents = [] } = useV2AgentConfigs(activeHostUrl);
 
 	const { data: v2Presets = [] } = useLiveQuery(
 		(query) =>
@@ -166,14 +177,38 @@ export function V2PresetsSection({
 		}
 	}, [editingPresetId, localPresets, setEditingPreset]);
 
-	const existingPresetNames = useMemo(
-		() => new Set(serverPresets.map((preset) => preset.name)),
+	const existingAgentIds = useMemo(
+		() =>
+			new Set(
+				serverPresets
+					.map((preset) => (preset as V2TerminalPresetRow).agentId)
+					.filter((id): id is string => !!id),
+			),
 		[serverPresets],
 	);
 
-	const isTemplateAdded = useCallback(
-		(template: PresetTemplate) => existingPresetNames.has(template.preset.name),
-		[existingPresetNames],
+	// One pill per host-agent config — agent.id is unique, so multiple
+	// Claude/Codex configs each get their own pill.
+	const quickAddPills = useMemo<QuickAddAgentPill[]>(() => {
+		const pills: QuickAddAgentPill[] = [];
+		for (const agent of agents) {
+			if (agent.command.trim().length === 0) {
+				continue;
+			}
+			pills.push({
+				agentId: agent.id,
+				iconId: agent.presetId,
+				label: agent.label,
+				description: DESCRIPTION_BY_PRESET_ID.get(agent.presetId) ?? "",
+				commands: [getAgentCommandText(agent)],
+			});
+		}
+		return pills;
+	}, [agents]);
+
+	const isPillAdded = useCallback(
+		(pill: QuickAddAgentPill) => existingAgentIds.has(pill.agentId),
+		[existingAgentIds],
 	);
 
 	const insertV2Preset = useCallback(
@@ -184,7 +219,9 @@ export function V2PresetsSection({
 			commands: string[];
 			projectIds?: string[] | null;
 			pinnedToBar?: boolean;
+			useAsWorkspaceRun?: boolean;
 			executionMode?: ExecutionMode;
+			agentId?: string;
 		}) => {
 			const maxTabOrder = v2Presets.reduce(
 				(max, preset) => Math.max(max, preset.tabOrder),
@@ -198,9 +235,11 @@ export function V2PresetsSection({
 				commands: input.commands,
 				projectIds: input.projectIds ?? null,
 				pinnedToBar: input.pinnedToBar,
+				useAsWorkspaceRun: input.useAsWorkspaceRun,
 				executionMode: input.executionMode ?? "new-tab",
 				tabOrder: maxTabOrder + 1,
 				createdAt: new Date(),
+				agentId: input.agentId,
 			});
 		},
 		[collections.v2TerminalPresets, v2Presets],
@@ -219,6 +258,27 @@ export function V2PresetsSection({
 		},
 		[collections.v2TerminalPresets],
 	);
+
+	// Migrate legacy rows whose agentId still holds a presetId. Skip when the
+	// presetId resolves to multiple configs — we can't pick one safely.
+	useEffect(() => {
+		if (agents.length === 0 || serverPresets.length === 0) return;
+
+		for (const preset of serverPresets) {
+			const row = preset as V2TerminalPresetRow;
+			if (!row.agentId) continue;
+			if (agents.some((agent) => agent.id === row.agentId)) continue;
+
+			const legacyMatches = agents.filter(
+				(agent) => agent.presetId === row.agentId,
+			);
+			if (legacyMatches.length !== 1) continue;
+			const legacyMatch = legacyMatches[0];
+			if (!legacyMatch) continue;
+
+			updateV2Preset(row.id, { agentId: legacyMatch.id });
+		}
+	}, [agents, serverPresets, updateV2Preset]);
 
 	const deleteV2Preset = useCallback(
 		(id: string) => {
@@ -350,12 +410,18 @@ export function V2PresetsSection({
 		[insertV2Preset],
 	);
 
-	const handleAddTemplate = useCallback(
-		(template: PresetTemplate) => {
-			if (existingPresetNames.has(template.preset.name)) return;
-			insertV2Preset(template.preset);
+	const handleAddPill = useCallback(
+		(pill: QuickAddAgentPill) => {
+			if (existingAgentIds.has(pill.agentId)) return;
+			insertV2Preset({
+				name: pill.label,
+				description: pill.description,
+				cwd: "",
+				commands: pill.commands,
+				agentId: pill.agentId,
+			});
 		},
-		[existingPresetNames, insertV2Preset],
+		[existingAgentIds, insertV2Preset],
 	);
 
 	useEffect(() => {
@@ -393,9 +459,16 @@ export function V2PresetsSection({
 		[updateV2Preset],
 	);
 
-	const handleTogglePin = useCallback(
-		(presetId: string, pinned: boolean) => {
-			updateV2Preset(presetId, { pinnedToBar: pinned });
+	const handleToggleWorkspaceRun = useCallback(
+		(presetId: string, enabled: boolean) => {
+			updateV2Preset(presetId, { useAsWorkspaceRun: enabled });
+		},
+		[updateV2Preset],
+	);
+
+	const handleToggleVisibility = useCallback(
+		(presetId: string, visible: boolean) => {
+			updateV2Preset(presetId, { pinnedToBar: visible });
 		},
 		[updateV2Preset],
 	);
@@ -430,12 +503,13 @@ export function V2PresetsSection({
 	}, [editingRowIndex, handleDeleteRow, setEditingPreset]);
 
 	const isWorkspaceCreation = !!editingPreset?.applyOnWorkspaceCreated;
+	const isWorkspaceRun = !!editingPreset?.useAsWorkspaceRun;
 	const isNewTab = !!editingPreset?.applyOnNewTab;
 	const hasMultipleCommands = (editingPreset?.commands.length ?? 0) > 1;
 	const normalizedMode = normalizeExecutionMode(editingPreset?.executionMode);
 	const modeValue: ExecutionMode = hasMultipleCommands
 		? normalizedMode
-		: normalizedMode === "split-pane"
+		: normalizedMode === "split-pane" || normalizedMode === "sequential"
 			? "split-pane"
 			: "new-tab";
 
@@ -514,60 +588,64 @@ export function V2PresetsSection({
 		[editingPreset, handleToggleAutoApply],
 	);
 
+	const handleEditorWorkspaceRunToggle = useCallback(
+		(enabled: boolean) => {
+			if (!editingPreset) return;
+			handleToggleWorkspaceRun(editingPreset.id, enabled);
+		},
+		[editingPreset, handleToggleWorkspaceRun],
+	);
+
 	return (
-		<div className="space-y-4">
-			<div className="flex items-center justify-between">
-				<div className="space-y-0.5">
-					<Label className="text-sm font-medium">Terminal Presets</Label>
-					<p className="text-xs text-muted-foreground">
-						Presets let you quickly launch terminals with pre-configured
-						commands.
-					</p>
+		<div>
+			<div className="rounded-lg border border-border overflow-hidden divide-y divide-border">
+				<div className="flex items-start justify-between gap-3 p-4">
+					<div className="min-w-0">
+						<h3 className="text-sm font-medium">Terminal presets</h3>
+						<p className="text-xs text-muted-foreground mt-0.5">
+							Pre-configured terminal launches. Click a preset to edit, drag to
+							reorder.
+						</p>
+					</div>
+					<div className="flex shrink-0 items-center gap-2">
+						{showQuickAdd && (
+							<QuickAddPresets
+								pills={quickAddPills}
+								isDark={isDark}
+								keepOpenOnAdd
+								isPillAdded={isPillAdded}
+								onAddPill={handleAddPill}
+							/>
+						)}
+						{showPresets && (
+							<Button size="sm" onClick={() => handleAddRow()}>
+								<HiOutlinePlus className="size-4" />
+								Add preset
+							</Button>
+						)}
+					</div>
 				</div>
+
 				{showPresets && (
-					<Button
-						variant="default"
-						size="sm"
-						className="gap-2"
-						onClick={() => handleAddRow()}
-					>
-						<HiOutlinePlus className="h-4 w-4" />
-						Add Preset
-					</Button>
-				)}
-			</div>
-
-			{showQuickAdd && (
-				<QuickAddPresets
-					templates={PRESET_TEMPLATES}
-					isDark={isDark}
-					isCreatePending={false}
-					isTemplateAdded={isTemplateAdded}
-					onAddTemplate={handleAddTemplate}
-				/>
-			)}
-
-			{showPresets && (
-				<>
 					<PresetsTable
 						presets={localPresets}
 						isLoading={false}
 						projectOptionsById={projectOptionsById}
+						agents={agents}
 						presetsContainerRef={presetsContainerRef}
 						onEdit={setEditingPreset}
 						onLocalReorder={handleLocalReorder}
 						onPersistReorder={handlePersistReorder}
-						onTogglePin={handleTogglePin}
+						onToggleVisibility={handleToggleVisibility}
+						bordered={false}
 					/>
-					<p className="text-xs text-muted-foreground">
-						Click a preset row to edit details.
-					</p>
-				</>
-			)}
+				)}
+			</div>
 
-			<PresetEditorSheet
+			<PresetEditorDialog
 				preset={editingPreset}
 				projects={projectOptions}
+				agents={agents}
 				open={!!editingPreset}
 				onOpenChange={(open) => !open && handleCloseEditor()}
 				onDeletePreset={handleDeleteEditingPreset}
@@ -579,8 +657,10 @@ export function V2PresetsSection({
 				onCommandsBlur={handleEditorCommandsBlur}
 				onModeChange={handleEditorModeChange}
 				onToggleAutoApply={handleEditorAutoApplyToggle}
+				onToggleWorkspaceRun={handleEditorWorkspaceRunToggle}
 				modeValue={modeValue}
 				hasMultipleCommands={hasMultipleCommands}
+				isWorkspaceRun={isWorkspaceRun}
 				isWorkspaceCreation={isWorkspaceCreation}
 				isNewTab={isNewTab}
 			/>

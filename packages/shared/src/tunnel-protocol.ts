@@ -20,6 +20,7 @@ export interface TunnelWsFrame {
 	type: "ws:frame";
 	id: string;
 	data: string;
+	encoding?: "base64";
 }
 
 export interface TunnelWsClose {
@@ -32,12 +33,23 @@ export interface TunnelPing {
 	type: "ping";
 }
 
+// In-band drain signal — relay sends this to every tunnel right before
+// SIGINT-triggered shutdown so the host knows to reconnect immediately
+// rather than waiting for the WS close frame (which doesn't reliably
+// reach the host within the kill_timeout window) or the host-side
+// inactivity watchdog.
+export interface TunnelDrain {
+	type: "drain";
+	reason?: string;
+}
+
 export type TunnelRequest =
 	| TunnelHttpRequest
 	| TunnelWsOpen
 	| TunnelWsFrame
 	| TunnelWsClose
-	| TunnelPing;
+	| TunnelPing
+	| TunnelDrain;
 
 // ── Host → Relay ────────────────────────────────────────────────────
 

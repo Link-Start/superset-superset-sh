@@ -1,12 +1,26 @@
 name: Bump Homebrew Formula
 
-# Triggers when a CLI release (tag matching cli-v*) is published, computes
-# SHA256 for each platform tarball, and pushes an updated formula to the
-# superset-sh/homebrew-tap repository.
+# Renders the superset.rb formula for a published CLI release and pushes it to
+# the superset-sh/homebrew-tap repository. Invoked as a reusable job from
+# release-cli.yml (needs: release) so the bump runs in the same workflow run as
+# the release. It is NOT driven by `release: published` because a release
+# auto-created by the workflow's GITHUB_TOKEN does not emit an event that can
+# trigger another workflow. workflow_dispatch is the manual escape hatch to
+# re-bump a specific tag.
 
 on:
-  release:
-    types: [published]
+  workflow_call:
+    inputs:
+      tag:
+        description: "CLI release tag (cli-v<semver>)"
+        required: true
+        type: string
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "CLI release tag (cli-v<semver>)"
+        required: true
+        type: string
 
 # Serialize runs so two concurrent releases can't race and drop a bump.
 concurrency:
@@ -15,13 +29,12 @@ concurrency:
 
 jobs:
   bump:
-    if: startsWith(github.event.release.tag_name, 'cli-v')
     runs-on: ubuntu-latest
     steps:
       - name: Extract version from tag
         id: version
         env:
-          TAG: ${{ github.event.release.tag_name }}
+          TAG: ${{ inputs.tag }}
         run: |
           set -euo pipefail
           # Validate tag format: cli-v<semver>. Rejects tags with shell metacharacters.
@@ -39,7 +52,7 @@ jobs:
           TAG: ${{ steps.version.outputs.tag }}
         run: |
           set -euo pipefail
-          for target in darwin-arm64 linux-x64; do
+          for target in darwin-arm64 linux-x64 linux-arm64; do
             url="https://github.com/superset-sh/superset/releases/download/${TAG}/superset-${target}.tar.gz"
             echo "Fetching SHA for $url"
             tmp=$(mktemp)
@@ -54,7 +67,7 @@ jobs:
           done
 
       - name: Checkout homebrew-tap
-        uses: actions/checkout@v5
+        uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5.0.1
         with:
           repository: superset-sh/homebrew-tap
           token: ${{ secrets.HOMEBREW_TAP_TOKEN }}
@@ -65,6 +78,7 @@ jobs:
           VERSION: ${{ steps.version.outputs.version }}
           DARWIN_ARM64_SHA: ${{ steps.shas.outputs.darwin_arm64_sha }}
           LINUX_X64_SHA: ${{ steps.shas.outputs.linux_x64_sha }}
+          LINUX_ARM64_SHA: ${{ steps.shas.outputs.linux_arm64_sha }}
         run: |
           set -euo pipefail
           python3 - <<'PYEOF' > homebrew-tap/Formula/superset.rb
@@ -87,6 +101,10 @@ jobs:
                 url "https://github.com/superset-sh/superset/releases/download/cli-v#{{version}}/superset-linux-x64.tar.gz"
                 sha256 "{linux_x64}"
               end
+              on_arm do
+                url "https://github.com/superset-sh/superset/releases/download/cli-v#{{version}}/superset-linux-arm64.tar.gz"
+                sha256 "{linux_arm64}"
+              end
             end
 
             def install
@@ -104,6 +122,7 @@ jobs:
               version=os.environ["VERSION"],
               darwin_arm64=os.environ["DARWIN_ARM64_SHA"],
               linux_x64=os.environ["LINUX_X64_SHA"],
+              linux_arm64=os.environ["LINUX_ARM64_SHA"],
           ), end="")
           PYEOF
 

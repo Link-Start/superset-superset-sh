@@ -2,6 +2,9 @@ import type { Unsubscribable } from "@trpc/server/observable";
 import type { FitAddon } from "@xterm/addon-fit";
 import type { SearchAddon } from "@xterm/addon-search";
 import type { Terminal as XTerm } from "@xterm/xterm";
+import { applyTerminalFontFamilyCssVariable } from "renderer/lib/terminal/appearance";
+import { scheduleFontSettleRefit } from "renderer/lib/terminal/font-settle";
+import { getTerminalParkingContainer } from "renderer/lib/terminal/terminal-parking";
 import { electronTrpcClient } from "renderer/lib/trpc-client";
 import { DEBUG_TERMINAL } from "./config";
 import { type CreateTerminalOptions, createTerminalInWrapper } from "./helpers";
@@ -52,9 +55,45 @@ export interface CachedTerminal {
 	subscriptionErrorHandler: ((error: unknown) => void) | null;
 	/** ResizeObserver for the attached container. Managed by attach/detach. */
 	resizeObserver: ResizeObserver | null;
+	/** Live container, when attached. */
+	container: HTMLDivElement | null;
 }
 
 const cache = new Map<string, CachedTerminal>();
+
+function hostIsVisible(container: HTMLDivElement | null): boolean {
+	if (!container) return false;
+	return container.clientWidth > 0 && container.clientHeight > 0;
+}
+
+function fitAndRefresh(entry: CachedTerminal): boolean {
+	if (!hostIsVisible(entry.container)) return false;
+
+	const { xterm } = entry;
+	const buffer = xterm.buffer.active;
+	const wasPinnedToBottom = buffer.viewportY >= buffer.baseY;
+	const savedViewportY = buffer.viewportY;
+	const prevCols = xterm.cols;
+	const prevRows = xterm.rows;
+
+	entry.fitAddon.fit();
+	entry.lastCols = xterm.cols;
+	entry.lastRows = xterm.rows;
+
+	if (wasPinnedToBottom) {
+		xterm.scrollToBottom();
+	} else {
+		const targetY = Math.min(savedViewportY, xterm.buffer.active.baseY);
+		if (xterm.buffer.active.viewportY !== targetY) {
+			xterm.scrollToLine(targetY);
+		}
+	}
+
+	const dimensionsChanged = xterm.cols !== prevCols || xterm.rows !== prevRows;
+	xterm.refresh(0, Math.max(0, xterm.rows - 1));
+
+	return dimensionsChanged;
+}
 
 export function has(paneId: string): boolean {
 	return cache.has(paneId);
@@ -91,6 +130,7 @@ export function getOrCreate(
 		eventHandler: null,
 		subscriptionErrorHandler: null,
 		resizeObserver: null,
+		container: null,
 		lastCols: xterm.cols,
 		lastRows: xterm.rows,
 	};
@@ -109,27 +149,27 @@ export function attachToContainer(
 	const entry = cache.get(paneId);
 	if (!entry) return;
 
+	entry.container = container;
 	container.appendChild(entry.wrapper);
 
-	if (container.clientWidth > 0 && container.clientHeight > 0) {
-		entry.fitAddon.fit();
-		entry.lastCols = entry.xterm.cols;
-		entry.lastRows = entry.xterm.rows;
-	}
-
-	// Renderer may have skipped frames while the wrapper was detached.
-	entry.xterm.refresh(0, Math.max(0, entry.xterm.rows - 1));
+	// Refit and repaint on reattach because the wrapper may have been parked
+	// while its live container changed size.
+	fitAndRefresh(entry);
+	// xterm's initial cell-width measurement may have run before the configured
+	// font finished loading, baking wrong glyph metrics into the renderer
+	// (#4617). Refit once fonts are ready so the layout matches the rendered
+	// font without requiring a manual resize.
+	scheduleFontSettleRefit(
+		entry.xterm,
+		() => cache.get(paneId) === entry && hostIsVisible(entry.container),
+		() => fitAndRefresh(entry),
+		onResize,
+	);
 
 	// Manage ResizeObserver lifecycle in the cache, not in React.
 	entry.resizeObserver?.disconnect();
 	const observer = new ResizeObserver(() => {
-		if (container.clientWidth === 0 || container.clientHeight === 0) return;
-		const prevCols = entry.lastCols;
-		const prevRows = entry.lastRows;
-		entry.fitAddon.fit();
-		entry.lastCols = entry.xterm.cols;
-		entry.lastRows = entry.xterm.rows;
-		if (entry.lastCols !== prevCols || entry.lastRows !== prevRows) {
+		if (fitAndRefresh(entry)) {
 			onResize?.();
 		}
 	});
@@ -146,7 +186,10 @@ export function detachFromContainer(paneId: string): void {
 	}
 	entry.resizeObserver?.disconnect();
 	entry.resizeObserver = null;
-	entry.wrapper.remove();
+	entry.container = null;
+	// Park instead of .remove() so xterm survives the React unmount —
+	// see getTerminalParkingContainer.
+	getTerminalParkingContainer().appendChild(entry.wrapper);
 }
 
 // --- Appearance ---
@@ -160,29 +203,38 @@ export function updateAppearance(
 	paneId: string,
 	fontFamily: string,
 	fontSize: number,
+	onDeferredResize?: (dims: { cols: number; rows: number }) => void,
 ): { cols: number; rows: number; changed: boolean } | null {
 	const entry = cache.get(paneId);
 	if (!entry) return null;
 
-	const { xterm, fitAddon } = entry;
+	const { xterm } = entry;
 	const fontChanged =
 		xterm.options.fontFamily !== fontFamily ||
 		xterm.options.fontSize !== fontSize;
 	if (!fontChanged) return null;
 
+	applyTerminalFontFamilyCssVariable(entry.wrapper, fontFamily);
 	xterm.options.fontFamily = fontFamily;
 	xterm.options.fontSize = fontSize;
 
-	const prevCols = entry.lastCols;
-	const prevRows = entry.lastRows;
-	fitAddon.fit();
-	entry.lastCols = xterm.cols;
-	entry.lastRows = xterm.rows;
+	const changed = fitAndRefresh(entry);
+
+	// The new font may still be loading — schedule a second refit once it
+	// resolves so dimensions match the actually-rendered glyphs.
+	scheduleFontSettleRefit(
+		xterm,
+		() => cache.get(paneId) === entry && hostIsVisible(entry.container),
+		() => fitAndRefresh(entry),
+		onDeferredResize
+			? () => onDeferredResize({ cols: xterm.cols, rows: xterm.rows })
+			: undefined,
+	);
 
 	return {
 		cols: xterm.cols,
 		rows: xterm.rows,
-		changed: xterm.cols !== prevCols || xterm.rows !== prevRows,
+		changed,
 	};
 }
 
@@ -312,6 +364,7 @@ export function dispose(paneId: string): void {
 	entry.resizeObserver?.disconnect();
 	entry.subscription?.unsubscribe();
 	entry.cleanupCreation();
+	entry.wrapper.remove();
 	entry.xterm.dispose();
 	cache.delete(paneId);
 }

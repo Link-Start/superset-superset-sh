@@ -2,15 +2,15 @@ import { eq } from "@tanstack/db";
 import { useLiveQuery } from "@tanstack/react-db";
 import { createFileRoute, Outlet, useMatchRoute } from "@tanstack/react-router";
 import { useEffect, useRef } from "react";
-import { env } from "renderer/env.renderer";
-import {
-	getHostServiceHeaders,
-	getHostServiceWsToken,
-} from "renderer/lib/host-service-auth";
 import { useDashboardSidebarState } from "renderer/routes/_authenticated/hooks/useDashboardSidebarState";
 import { useCollections } from "renderer/routes/_authenticated/providers/CollectionsProvider";
-import { useLocalHostService } from "renderer/routes/_authenticated/providers/LocalHostServiceProvider";
-import { WorkspaceTrpcProvider } from "./providers/WorkspaceTrpcProvider";
+import { useWorkspaceTransactionsStore } from "renderer/stores/workspace-creates";
+import { WorkspaceCreateErrorState } from "./components/WorkspaceCreateErrorState";
+import { WorkspaceCreatingState } from "./components/WorkspaceCreatingState";
+import { WorkspaceHostIncompatibleState } from "./components/WorkspaceHostIncompatibleState";
+import { WorkspaceNotFoundState } from "./components/WorkspaceNotFoundState";
+import { useRemoteHostStatus } from "./hooks/useRemoteHostStatus";
+import { WorkspaceProvider } from "./providers/WorkspaceProvider";
 
 export const Route = createFileRoute("/_authenticated/_dashboard/v2-workspace")(
 	{
@@ -26,37 +26,39 @@ function V2WorkspaceLayout() {
 	const workspaceId =
 		workspaceMatch !== false ? workspaceMatch.workspaceId : null;
 	const collections = useCollections();
-	const { machineId, activeHostUrl } = useLocalHostService();
 	const { ensureWorkspaceInSidebar } = useDashboardSidebarState();
+	const pendingTransaction = useWorkspaceTransactionsStore((state) =>
+		workspaceId ? (state.byWorkspaceId[workspaceId] ?? null) : null,
+	);
+	const clearWorkspaceTransaction = useWorkspaceTransactionsStore(
+		(state) => state.clear,
+	);
+	const isCreatePending = pendingTransaction?.type === "insert";
 
-	const { data: workspacesWithHost = [], isReady } = useLiveQuery(
+	const { data: workspaces, isReady } = useLiveQuery(
 		(q) =>
 			q
 				.from({ v2Workspaces: collections.v2Workspaces })
-				.leftJoin({ hosts: collections.v2Hosts }, ({ v2Workspaces, hosts }) =>
-					eq(v2Workspaces.hostId, hosts.id),
-				)
-				.where(({ v2Workspaces }) => eq(v2Workspaces.id, workspaceId ?? ""))
-				.select(({ v2Workspaces, hosts }) => ({
-					id: v2Workspaces.id,
-					hostId: v2Workspaces.hostId,
-					hostMachineId: hosts?.machineId ?? null,
-					projectId: v2Workspaces.projectId,
-					branch: v2Workspaces.branch,
-				})),
+				.where(({ v2Workspaces }) => eq(v2Workspaces.id, workspaceId ?? "")),
 		[collections, workspaceId],
 	);
-	const workspace = workspacesWithHost[0] ?? null;
+	const { data: failedEntries } = useLiveQuery(
+		(q) =>
+			q
+				.from({ failed: collections.failedWorkspaceCreates })
+				.where(({ failed }) => eq(failed.id, workspaceId ?? "")),
+		[collections, workspaceId],
+	);
+	const workspace = workspaces?.[0] ?? null;
+	const failedEntry = failedEntries?.[0] ?? null;
 
-	const isLocal = workspace?.hostMachineId === machineId;
-	const hostUrl = !workspace
-		? null
-		: isLocal
-			? activeHostUrl
-			: `${env.RELAY_URL}/hosts/${workspace.hostId}`;
+	useEffect(() => {
+		if (workspace?.$synced === true && pendingTransaction?.type === "insert") {
+			clearWorkspaceTransaction(workspace.id);
+		}
+	}, [clearWorkspaceTransaction, pendingTransaction, workspace]);
 
 	const lastEnsuredWorkspaceIdRef = useRef<string | null>(null);
-
 	useEffect(() => {
 		if (!workspace || lastEnsuredWorkspaceIdRef.current === workspace.id)
 			return;
@@ -64,27 +66,45 @@ function V2WorkspaceLayout() {
 		ensureWorkspaceInSidebar(workspace.id, workspace.projectId);
 	}, [ensureWorkspaceInSidebar, workspace]);
 
-	if (!workspaceId || !isReady) {
-		return null;
+	const hostStatus = useRemoteHostStatus(workspace);
+
+	if (!workspaceId || !workspaces || (!workspace && !isReady)) {
+		return <div className="flex h-full w-full" />;
 	}
 
-	if (!workspace || !hostUrl) {
+	if (!workspace) {
+		if (failedEntry) {
+			return <WorkspaceCreateErrorState entry={failedEntry} />;
+		}
+		return <WorkspaceNotFoundState workspaceId={workspaceId} />;
+	}
+
+	if (isCreatePending) {
 		return (
-			<div className="flex h-full w-full items-center justify-center text-muted-foreground">
-				Workspace not found
-			</div>
+			<WorkspaceCreatingState
+				name={workspace.name}
+				branch={workspace.branch}
+				startedAt={new Date(workspace.createdAt).getTime()}
+			/>
 		);
 	}
 
+	if (hostStatus.status === "incompatible") {
+		return (
+			<WorkspaceHostIncompatibleState
+				hostName={hostStatus.hostName}
+				hostVersion={hostStatus.hostVersion}
+				minVersion={hostStatus.minVersion}
+			/>
+		);
+	}
+	if (hostStatus.status === "loading") {
+		return <div className="flex h-full w-full" />;
+	}
+
 	return (
-		<WorkspaceTrpcProvider
-			cacheKey={workspace.id}
-			key={`${workspace.id}:${hostUrl}`}
-			hostUrl={hostUrl}
-			headers={() => getHostServiceHeaders(hostUrl)}
-			wsToken={() => getHostServiceWsToken(hostUrl)}
-		>
+		<WorkspaceProvider workspace={workspace}>
 			<Outlet />
-		</WorkspaceTrpcProvider>
+		</WorkspaceProvider>
 	);
 }

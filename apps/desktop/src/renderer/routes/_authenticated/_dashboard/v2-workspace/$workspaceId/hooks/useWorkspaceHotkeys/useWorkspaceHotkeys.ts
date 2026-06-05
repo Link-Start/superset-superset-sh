@@ -1,51 +1,62 @@
 import {
 	type FocusDirection,
+	getPaneParentDirection,
 	getSpatialNeighborPaneId,
+	type PaneRegistry,
 	type WorkspaceStore,
 } from "@superset/panes";
-import { useCallback } from "react";
+import { useCallback, useEffect, useMemo, useRef } from "react";
+import { useV2UserPreferences } from "renderer/hooks/useV2UserPreferences";
 import { useHotkey } from "renderer/hotkeys";
-import { useCollections } from "renderer/routes/_authenticated/providers/CollectionsProvider";
 import type { V2TerminalPresetRow } from "renderer/routes/_authenticated/providers/CollectionsProvider/dashboardSidebarLocal";
+import { useRightSidebarToggleIntent } from "renderer/stores/right-sidebar-toggle-intent";
 import type { StoreApi } from "zustand";
 import type {
 	BrowserPaneData,
 	ChatPaneData,
+	DiffPaneData,
 	PaneViewerData,
 	TerminalPaneData,
 } from "../../types";
+import type { TerminalLauncher } from "../useV2TerminalLauncher";
 
 export function useWorkspaceHotkeys({
 	store,
-	workspaceId,
 	matchedPresets,
 	executePreset,
+	addTerminalTab,
+	paneRegistry,
+	launcher,
 }: {
 	store: StoreApi<WorkspaceStore<PaneViewerData>>;
-	workspaceId: string;
 	matchedPresets: V2TerminalPresetRow[];
-	executePreset: (preset: V2TerminalPresetRow) => void;
+	executePreset: (preset: V2TerminalPresetRow) => void | Promise<void>;
+	addTerminalTab: () => Promise<void>;
+	paneRegistry: PaneRegistry<PaneViewerData>;
+	launcher: TerminalLauncher;
 }) {
-	const collections = useCollections();
+	const { setRightSidebarOpen, setRightSidebarTab } = useV2UserPreferences();
+	const visiblePresets = useMemo(
+		() => matchedPresets.filter((preset) => preset.pinnedToBar !== false),
+		[matchedPresets],
+	);
 
 	useHotkey("TOGGLE_SIDEBAR", () => {
-		if (!collections.v2WorkspaceLocalState.get(workspaceId)) return;
-		collections.v2WorkspaceLocalState.update(workspaceId, (draft) => {
-			draft.rightSidebarOpen = !draft.rightSidebarOpen;
-		});
+		setRightSidebarOpen((prev) => !prev);
 	});
+
+	useEffect(
+		() =>
+			useRightSidebarToggleIntent.subscribe((state, prev) => {
+				if (state.tick !== prev.tick) setRightSidebarOpen((open) => !open);
+			}),
+		[setRightSidebarOpen],
+	);
 
 	// --- Tab creation ---
 
-	useHotkey("NEW_GROUP", () => {
-		store.getState().addTab({
-			panes: [
-				{
-					kind: "terminal",
-					data: { terminalId: crypto.randomUUID() } as TerminalPaneData,
-				},
-			],
-		});
+	useHotkey("NEW_GROUP", async () => {
+		await addTerminalTab();
 	});
 
 	useHotkey("NEW_CHAT", () => {
@@ -67,13 +78,47 @@ export function useWorkspaceHotkeys({
 		});
 	});
 
+	useHotkey("OPEN_DIFF_VIEWER", () => {
+		setRightSidebarOpen(true);
+		setRightSidebarTab("changes");
+
+		const state = store.getState();
+		for (const tab of state.tabs) {
+			for (const pane of Object.values(tab.panes)) {
+				if (pane.kind !== "diff") continue;
+				state.setActiveTab(tab.id);
+				state.setActivePane({ tabId: tab.id, paneId: pane.id });
+				return;
+			}
+		}
+		state.addTab({
+			panes: [
+				{
+					kind: "diff",
+					data: { path: "", collapsedFiles: [] } as DiffPaneData,
+				},
+			],
+		});
+	});
+
 	// --- Tab management ---
 
-	useHotkey("CLOSE_TERMINAL", () => {
-		const state = store.getState();
-		const active = state.getActivePane();
-		if (active) {
+	const isClosingPaneRef = useRef(false);
+	useHotkey("CLOSE_PANE", async () => {
+		if (isClosingPaneRef.current) return;
+		isClosingPaneRef.current = true;
+		try {
+			const state = store.getState();
+			const active = state.getActivePane();
+			if (!active) return;
+			const definition = paneRegistry[active.pane.kind];
+			if (definition?.onBeforeClose) {
+				const allowed = await definition.onBeforeClose(active.pane);
+				if (!allowed) return;
+			}
 			state.closePane({ tabId: active.tabId, paneId: active.pane.id });
+		} finally {
+			isClosingPaneRef.current = false;
 		}
 	});
 
@@ -159,47 +204,55 @@ export function useWorkspaceHotkeys({
 	useHotkey("FOCUS_PANE_UP", () => moveFocusDirectional("up"));
 	useHotkey("FOCUS_PANE_DOWN", () => moveFocusDirectional("down"));
 
-	useHotkey("SPLIT_AUTO", () => {
+	useHotkey("SPLIT_AUTO", async () => {
 		const state = store.getState();
 		const active = state.getActivePane();
 		if (!active) return;
+		const tab = state.getActiveTab();
+		const parentDirection = tab
+			? getPaneParentDirection(tab.layout, active.pane.id)
+			: null;
+		const position = parentDirection === "horizontal" ? "bottom" : "right";
+		const terminalId = await launcher.create();
+		state.splitPane({
+			tabId: active.tabId,
+			paneId: active.pane.id,
+			position,
+			newPane: {
+				kind: "terminal",
+				data: { terminalId } as TerminalPaneData,
+			},
+		});
+	});
+
+	useHotkey("SPLIT_RIGHT", async () => {
+		const state = store.getState();
+		const active = state.getActivePane();
+		if (!active) return;
+		const terminalId = await launcher.create();
 		state.splitPane({
 			tabId: active.tabId,
 			paneId: active.pane.id,
 			position: "right",
 			newPane: {
 				kind: "terminal",
-				data: { terminalId: crypto.randomUUID() } as TerminalPaneData,
+				data: { terminalId } as TerminalPaneData,
 			},
 		});
 	});
 
-	useHotkey("SPLIT_RIGHT", () => {
+	useHotkey("SPLIT_DOWN", async () => {
 		const state = store.getState();
 		const active = state.getActivePane();
 		if (!active) return;
-		state.splitPane({
-			tabId: active.tabId,
-			paneId: active.pane.id,
-			position: "right",
-			newPane: {
-				kind: "terminal",
-				data: { terminalId: crypto.randomUUID() } as TerminalPaneData,
-			},
-		});
-	});
-
-	useHotkey("SPLIT_DOWN", () => {
-		const state = store.getState();
-		const active = state.getActivePane();
-		if (!active) return;
+		const terminalId = await launcher.create();
 		state.splitPane({
 			tabId: active.tabId,
 			paneId: active.pane.id,
 			position: "bottom",
 			newPane: {
 				kind: "terminal",
-				data: { terminalId: crypto.randomUUID() } as TerminalPaneData,
+				data: { terminalId } as TerminalPaneData,
 			},
 		});
 	});
@@ -247,10 +300,10 @@ export function useWorkspaceHotkeys({
 
 	const openPresetByIndex = useCallback(
 		(index: number) => {
-			const preset = matchedPresets[index];
+			const preset = visiblePresets[index];
 			if (preset) executePreset(preset);
 		},
-		[matchedPresets, executePreset],
+		[visiblePresets, executePreset],
 	);
 
 	useHotkey("OPEN_PRESET_1", () => openPresetByIndex(0));

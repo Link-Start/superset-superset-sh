@@ -1,20 +1,19 @@
-import { FEATURE_FLAGS } from "@superset/shared/constants";
-import { useFeatureFlagEnabled } from "posthog-js/react";
+import { isV2OnlyUser } from "@superset/shared/v2-only-user";
+import { authClient } from "renderer/lib/auth-client";
 import { useV2LocalOverrideStore } from "renderer/stores/v2-local-override";
 
 /**
- * Returns effective v2 state: remote PostHog flag AND local override.
- * Also returns the raw remote flag so the toggle can be shown conditionally.
+ * True for accounts created on/after V2_ONLY_USER_CUTOFF — these users
+ * never see the v1↔v2 switch.
  */
-export function useIsV2CloudEnabled() {
-	const remoteV2Enabled =
-		useFeatureFlagEnabled(FEATURE_FLAGS.V2_CLOUD) ?? false;
-	const forceV1 = useV2LocalOverrideStore((s) => s.forceV1);
+export function useIsV2OnlyUser(): boolean {
+	const { data: session } = authClient.useSession();
+	return isV2OnlyUser(session?.user?.createdAt);
+}
 
-	return {
-		/** The effective value — use this wherever you previously checked the flag directly. */
-		isV2CloudEnabled: remoteV2Enabled && !forceV1,
-		/** Whether the remote PostHog flag is on (for showing the toggle). */
-		isRemoteV2Enabled: remoteV2Enabled,
-	};
+/** Returns whether v2 is currently active for this user. */
+export function useIsV2CloudEnabled(): boolean {
+	const v2Only = useIsV2OnlyUser();
+	const optInV2 = useV2LocalOverrideStore((s) => s.optInV2);
+	return v2Only || optInV2 === true;
 }

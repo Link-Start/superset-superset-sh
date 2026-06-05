@@ -1,7 +1,6 @@
 import {
 	existsSync,
 	mkdirSync,
-	readdirSync,
 	readFileSync,
 	unlinkSync,
 	writeFileSync,
@@ -66,26 +65,6 @@ export function readManifest(
 	}
 }
 
-/** Scan the host directory for all valid manifests on disk. */
-export function listManifests(): HostServiceManifest[] {
-	const hostDir = join(SUPERSET_HOME_DIR, "host");
-	if (!existsSync(hostDir)) return [];
-
-	const manifests: HostServiceManifest[] = [];
-	try {
-		for (const entry of readdirSync(hostDir, { withFileTypes: true })) {
-			if (!entry.isDirectory()) continue;
-			const manifest = readManifest(entry.name);
-			if (manifest) {
-				manifests.push(manifest);
-			}
-		}
-	} catch {
-		// Best-effort scan
-	}
-	return manifests;
-}
-
 export function removeManifest(organizationId: string): void {
 	const filePath = manifestPath(organizationId);
 	try {
@@ -99,10 +78,27 @@ export function removeManifest(organizationId: string): void {
 
 /** Check whether a process with the given PID is alive. */
 export function isProcessAlive(pid: number): boolean {
+	if (!isSignalablePid(pid)) return false;
+
 	try {
 		process.kill(pid, 0);
 		return true;
 	} catch {
 		return false;
 	}
+}
+
+export function killProcess(
+	pid: number,
+	signal: NodeJS.Signals | number,
+): void {
+	if (!isSignalablePid(pid)) {
+		throw new Error(`Refusing to signal invalid pid: ${pid}`);
+	}
+
+	process.kill(pid, signal);
+}
+
+function isSignalablePid(pid: number): boolean {
+	return Number.isInteger(pid) && Number.isFinite(pid) && pid > 1;
 }

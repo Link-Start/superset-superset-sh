@@ -27,37 +27,73 @@ import {
 	readdirSync,
 	readFileSync,
 	realpathSync,
+	renameSync,
 	rmSync,
 	writeFileSync,
 } from "node:fs";
 import { homedir } from "node:os";
 import { dirname, join, resolve } from "node:path";
 
-type Target = "darwin-arm64" | "linux-x64";
+type Target = "darwin-arm64" | "darwin-x64" | "linux-x64" | "linux-arm64";
 
-const VALID_TARGETS: Target[] = ["darwin-arm64", "linux-x64"];
+const VALID_TARGETS: Target[] = [
+	"darwin-arm64",
+	"darwin-x64",
+	"linux-x64",
+	"linux-arm64",
+];
 const NODE_VERSION = "22.13.0";
 
 /**
- * Native addon packages that must be shipped alongside the bundled
- * host-service because they contain .node files that can't be inlined.
+ * Runtime packages that must be shipped alongside the bundled host-service
+ * because they contain native bindings or are loaded through filesystem-based
+ * dynamic resolution that Bun cannot inline.
  */
-const NATIVE_PACKAGES = [
+const RUNTIME_PACKAGES = [
 	"better-sqlite3",
 	"node-pty",
 	"@parcel/watcher",
 	"libsql",
+	"onnxruntime-node",
+	"@anush008/tokenizers",
+	"@mastra/duckdb",
+	"@duckdb/node-api",
+	"@duckdb/node-bindings",
+	"@xterm/headless",
 ] as const;
 
 /**
  * Platform-specific native bindings that live in optional dependencies
  * of their parent package and are only installed for the matching host.
  * `copyPackageWithDeps` only walks `dependencies`, so these need to be
- * listed explicitly per target.
+ * listed explicitly per target. Linux variants pin glibc (gnu) — we don't
+ * ship musl builds.
  */
 const TARGET_NATIVE_PACKAGES: Record<Target, string[]> = {
-	"darwin-arm64": ["@libsql/darwin-arm64", "@parcel/watcher-darwin-arm64"],
-	"linux-x64": ["@libsql/linux-x64-gnu", "@parcel/watcher-linux-x64-glibc"],
+	"darwin-arm64": [
+		"@libsql/darwin-arm64",
+		"@parcel/watcher-darwin-arm64",
+		"@anush008/tokenizers-darwin-universal",
+		"@duckdb/node-bindings-darwin-arm64",
+	],
+	"darwin-x64": [
+		"@libsql/darwin-x64",
+		"@parcel/watcher-darwin-x64",
+		"@anush008/tokenizers-darwin-universal",
+		"@duckdb/node-bindings-darwin-x64",
+	],
+	"linux-x64": [
+		"@libsql/linux-x64-gnu",
+		"@parcel/watcher-linux-x64-glibc",
+		"@anush008/tokenizers-linux-x64-gnu",
+		"@duckdb/node-bindings-linux-x64",
+	],
+	"linux-arm64": [
+		"@libsql/linux-arm64-gnu",
+		"@parcel/watcher-linux-arm64-glibc",
+		"@anush008/tokenizers-linux-arm64-gnu",
+		"@duckdb/node-bindings-linux-arm64",
+	],
 };
 
 /**
@@ -83,9 +119,13 @@ function parseArgs(): { target: Target } {
 	return { target };
 }
 
+function targetParts(target: Target): { platform: string; arch: string } {
+	const [platform, arch] = target.split("-") as [string, string];
+	return { platform, arch };
+}
+
 function nodeArchiveName(target: Target): string {
-	const arch = target === "darwin-arm64" ? "arm64" : "x64";
-	const platform = target === "darwin-arm64" ? "darwin" : "linux";
+	const { platform, arch } = targetParts(target);
 	return `node-v${NODE_VERSION}-${platform}-${arch}`;
 }
 
@@ -107,6 +147,35 @@ async function exec(cmd: string, args: string[], cwd?: string): Promise<void> {
 	});
 }
 
+/**
+ * curl wrapper that retries on network/HTTP flake (GitHub Releases 5xx,
+ * connection resets, etc). Writes atomically: download to a .partial
+ * sibling first, then rename — so a previous half-written file can't be
+ * mistaken for a cache hit on the next run. `--retry-all-errors` covers
+ * 5xx as well as transport errors; without it curl only retries a small
+ * subset by default.
+ */
+async function curlDownload(url: string, destPath: string): Promise<void> {
+	const partial = `${destPath}.partial`;
+	rmSync(partial, { force: true });
+	await exec("curl", [
+		"-fsSL",
+		"--retry",
+		"6",
+		"--retry-delay",
+		"2",
+		"--retry-all-errors",
+		"--connect-timeout",
+		"15",
+		"--max-time",
+		"180",
+		"-o",
+		partial,
+		url,
+	]);
+	renameSync(partial, destPath);
+}
+
 async function downloadAndExtractNode(
 	target: Target,
 	destDir: string,
@@ -120,7 +189,7 @@ async function downloadAndExtractNode(
 
 	if (!existsSync(archivePath)) {
 		console.log(`[build-dist] downloading ${nodeDownloadUrl(target)}`);
-		await exec("curl", ["-fsSL", "-o", archivePath, nodeDownloadUrl(target)]);
+		await curlDownload(nodeDownloadUrl(target), archivePath);
 	}
 
 	if (!existsSync(extractedPath)) {
@@ -184,40 +253,54 @@ function copyPackageWithDeps(
 	repoRoot: string,
 	destModules: string,
 	copied: Set<string>,
+	optional = false,
 ): void {
 	if (copied.has(packageName)) return;
-	copied.add(packageName);
 
 	const sourcePath = findPackagePath(packageName, startDir, repoRoot);
 	if (!sourcePath) {
+		if (optional) {
+			console.warn(
+				`[build-dist]   skipping peer dep not installed: ${packageName}`,
+			);
+			return;
+		}
 		throw new Error(
 			`Package not found: ${packageName}. Run 'bun install' first.`,
 		);
 	}
+	copied.add(packageName);
 
 	const destPath = join(destModules, packageName);
 	mkdirSync(dirname(destPath), { recursive: true });
 	cpSync(sourcePath, destPath, { recursive: true, dereference: true });
 
-	// Recursively copy runtime dependencies
 	const packageJsonPath = join(sourcePath, "package.json");
 	if (existsSync(packageJsonPath)) {
 		const pkg = JSON.parse(readFileSync(packageJsonPath, "utf-8"));
-		const deps = Object.keys(pkg.dependencies ?? {});
-		for (const dep of deps) {
+		for (const dep of Object.keys(pkg.dependencies ?? {})) {
 			copyPackageWithDeps(dep, sourcePath, repoRoot, destModules, copied);
+		}
+		// Packages we ship unbundled (e.g. @mastra/duckdb) load their peer
+		// deps from disk at module init — a bundled consumer's inlined copy
+		// is invisible to them. Walk non-optional peers best-effort: one the
+		// installer didn't materialize is skipped rather than failing the build.
+		const peerMeta = pkg.peerDependenciesMeta ?? {};
+		for (const dep of Object.keys(pkg.peerDependencies ?? {})) {
+			if (peerMeta[dep]?.optional) continue;
+			copyPackageWithDeps(dep, sourcePath, repoRoot, destModules, copied, true);
 		}
 	}
 }
 
-function copyNativePackages(libDir: string, target: Target): void {
+function copyRuntimePackages(libDir: string, target: Target): void {
 	const repoRoot = resolve(import.meta.dir, "../../..");
 	const destModules = join(libDir, "node_modules");
 	mkdirSync(destModules, { recursive: true });
 	const copied = new Set<string>();
 
 	const hostServiceDir = join(repoRoot, "packages", "host-service");
-	const packages = [...NATIVE_PACKAGES, ...TARGET_NATIVE_PACKAGES[target]];
+	const packages = [...RUNTIME_PACKAGES, ...TARGET_NATIVE_PACKAGES[target]];
 	for (const pkg of packages) {
 		console.log(`[build-dist]   copying ${pkg} (+ deps)`);
 		copyPackageWithDeps(pkg, hostServiceDir, repoRoot, destModules, copied);
@@ -225,15 +308,19 @@ function copyNativePackages(libDir: string, target: Target): void {
 }
 
 /**
- * Desktop's `install:deps` step runs electron-rebuild on every root
- * `bun install`, clobbering the hoisted `build/Release/*.node` binaries
- * of better-sqlite3 and node-pty with Electron-ABI builds. The shipped
- * Node.js runtime cannot load those. Fix up the staged copies:
+ * Native addons need to be built against the bundled Node runtime's ABI,
+ * not Electron's. Two cases:
  *
- * 1. `better-sqlite3`: download the Node-ABI prebuild from GitHub and
- *    overwrite `build/Release/better_sqlite3.node`.
- * 2. `node-pty`: delete `build/Release/` so the `bindings` loader falls
- *    through to the N-API prebuild in `prebuilds/<target>/pty.node`.
+ * - On macOS, desktop's `install:deps` runs electron-rebuild during root
+ *   `bun install` and clobbers the hoisted `build/Release/*.node` files
+ *   with Electron-ABI builds. So we always overwrite better-sqlite3's
+ *   binary with a fetched Node-ABI prebuild, and for node-pty we delete
+ *   `build/Release/` so the `bindings` loader falls through to its
+ *   bundled `prebuilds/<target>/pty.node`.
+ * - On Linux, node-pty ships no prebuilds, so we ALWAYS need a freshly
+ *   compiled `build/Release/pty.node` against the bundled Node runtime
+ *   (CI does this via `npm rebuild` after `bun install --ignore-scripts`).
+ *   Keep `build/Release/`.
  */
 async function fixNativeBinariesForNode(
 	libDir: string,
@@ -248,13 +335,22 @@ async function fixNativeBinariesForNode(
 	const bsqUrl =
 		`https://github.com/WiseLibs/better-sqlite3/releases/download/` +
 		`v${bsqVersion}/better-sqlite3-v${bsqVersion}-node-v${NODE_ABI}-${target}.tar.gz`;
-	console.log(`[build-dist] fetching Node-ABI better-sqlite3: ${bsqUrl}`);
-	const tmp = join(homedir(), ".superset-build-cache", `bsq-${target}`);
+	const cacheDir = join(homedir(), ".superset-build-cache");
+	if (!existsSync(cacheDir)) mkdirSync(cacheDir, { recursive: true });
+	const cachedTarball = join(
+		cacheDir,
+		`better-sqlite3-v${bsqVersion}-node-v${NODE_ABI}-${target}.tar.gz`,
+	);
+	if (!existsSync(cachedTarball)) {
+		console.log(`[build-dist] fetching Node-ABI better-sqlite3: ${bsqUrl}`);
+		await curlDownload(bsqUrl, cachedTarball);
+	} else {
+		console.log(`[build-dist] using cached better-sqlite3: ${cachedTarball}`);
+	}
+	const tmp = join(cacheDir, `bsq-${target}`);
 	rmSync(tmp, { recursive: true, force: true });
 	mkdirSync(tmp, { recursive: true });
-	const tarball = join(tmp, "bsq.tar.gz");
-	await exec("curl", ["-fsSL", "-o", tarball, bsqUrl]);
-	await exec("tar", ["-xzf", tarball, "-C", tmp]);
+	await exec("tar", ["-xzf", cachedTarball, "-C", tmp]);
 	rmSync(bsqDest, { recursive: true, force: true });
 	mkdirSync(bsqDest, { recursive: true });
 	cpSync(
@@ -262,12 +358,34 @@ async function fixNativeBinariesForNode(
 		join(bsqDest, "better_sqlite3.node"),
 	);
 
+	const { platform } = targetParts(target);
 	const nodePtyBuild = join(destModules, "node-pty", "build");
-	if (existsSync(nodePtyBuild)) {
+	if (platform === "darwin" && existsSync(nodePtyBuild)) {
 		console.log(
 			"[build-dist] removing node-pty build/ so bindings falls back to prebuilds/",
 		);
 		rmSync(nodePtyBuild, { recursive: true, force: true });
+	}
+
+	// node-pty's `prebuilds/darwin-{arch}/spawn-helper` ships from npm with
+	// mode 0644. node-pty posix_spawnp's it as the actual fork helper at
+	// terminal-open time — without +x the kernel returns EACCES and the
+	// failure surfaces only as the cryptic "posix_spawnp failed" with no
+	// errno. The normal install path runs `npm rebuild` which fixes the
+	// mode; we ship raw prebuilds so we have to fix it ourselves.
+	if (platform === "darwin") {
+		const { arch } = targetParts(target);
+		const spawnHelper = join(
+			destModules,
+			"node-pty",
+			"prebuilds",
+			`darwin-${arch}`,
+			"spawn-helper",
+		);
+		if (existsSync(spawnHelper)) {
+			console.log(`[build-dist] chmod +x ${spawnHelper}`);
+			chmodSync(spawnHelper, 0o755);
+		}
 	}
 }
 
@@ -289,6 +407,12 @@ async function buildHostService(): Promise<string> {
 	const hostServiceDir = resolve(import.meta.dir, "../../host-service");
 	await exec("bun", ["run", "build:host"], hostServiceDir);
 	return join(hostServiceDir, "dist", "host-service.js");
+}
+
+async function buildPtyDaemon(): Promise<string> {
+	const ptyDaemonDir = resolve(import.meta.dir, "../../pty-daemon");
+	await exec("bun", ["run", "build:daemon"], ptyDaemonDir);
+	return join(ptyDaemonDir, "dist", "pty-daemon.js");
 }
 
 function writeHostWrapper(binDir: string): void {
@@ -322,11 +446,19 @@ async function main(): Promise<void> {
 	const hostServiceBundle = await buildHostService();
 	cpSync(hostServiceBundle, join(stagingRoot, "lib", "host-service.js"));
 
+	// pty-daemon ships side-by-side with host-service.js. The host-service
+	// resolves the script path via `resolveSupervisorScriptPath()` which
+	// looks for `pty-daemon.js` next to itself first; without this copy the
+	// supervisor falls back to the workspace path and bricks at spawn time.
+	console.log("[build-dist] building pty-daemon bundle");
+	const ptyDaemonBundle = await buildPtyDaemon();
+	cpSync(ptyDaemonBundle, join(stagingRoot, "lib", "pty-daemon.js"));
+
 	console.log("[build-dist] fetching Node.js");
 	await downloadAndExtractNode(target, join(stagingRoot, "lib"));
 
-	console.log("[build-dist] copying native addon packages");
-	copyNativePackages(join(stagingRoot, "lib"), target);
+	console.log("[build-dist] copying runtime packages");
+	copyRuntimePackages(join(stagingRoot, "lib"), target);
 
 	console.log("[build-dist] fixing native binaries for Node runtime");
 	await fixNativeBinariesForNode(join(stagingRoot, "lib"), target);

@@ -10,7 +10,6 @@ import {
 	DialogTitle,
 } from "@superset/ui/dialog";
 import { useEffect, useRef } from "react";
-import { electronTrpc } from "renderer/lib/electron-trpc";
 import {
 	useCloseNewWorkspaceModal,
 	useNewWorkspaceModalOpen,
@@ -44,9 +43,6 @@ export function DashboardNewWorkspaceModal() {
 	const closeModal = useCloseNewWorkspaceModal();
 	const preSelectedProjectId = usePreSelectedProjectId();
 
-	// Prevents AgentSelect from flashing "No agent" while presets load after refresh.
-	electronTrpc.settings.getAgentPresets.useQuery();
-
 	return (
 		<DashboardNewWorkspaceDraftProvider onClose={closeModal}>
 			<PromptInputProvider>
@@ -63,7 +59,7 @@ export function DashboardNewWorkspaceModal() {
 					<DialogContent
 						showCloseButton={false}
 						onFocusOutside={(e) => e.preventDefault()}
-						className="bg-popover text-popover-foreground sm:max-w-[560px] max-h-[min(70vh,600px)] !top-[calc(50%-min(35vh,300px))] !-translate-y-0 flex flex-col overflow-hidden p-0"
+						className="bg-popover text-popover-foreground sm:max-w-[680px] flex flex-col overflow-hidden p-0"
 					>
 						<DashboardNewWorkspaceModalContent
 							isOpen={isOpen}

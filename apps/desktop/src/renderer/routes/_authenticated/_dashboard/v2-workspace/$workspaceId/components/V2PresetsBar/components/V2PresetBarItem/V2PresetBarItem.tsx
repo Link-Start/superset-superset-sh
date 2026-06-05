@@ -1,3 +1,4 @@
+import type { HostAgentConfig } from "@superset/host-service/settings";
 import { Button } from "@superset/ui/button";
 import {
 	ContextMenu,
@@ -10,36 +11,38 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "@superset/ui/tooltip";
 import { useEffect, useRef } from "react";
 import { useDrag, useDrop } from "react-dnd";
 import { HiMiniCommandLine } from "react-icons/hi2";
-import { getPresetIcon } from "renderer/assets/app-icons/preset-icons";
 import type { HotkeyId } from "renderer/hotkeys";
 import { HotkeyLabel } from "renderer/hotkeys";
+import { resolveV2PresetIcon } from "renderer/lib/preset-icon";
 import type { V2TerminalPresetRow } from "renderer/routes/_authenticated/providers/CollectionsProvider/dashboardSidebarLocal";
 
 const V2_PRESET_BAR_ITEM_TYPE = "V2_PRESET_BAR_ITEM";
 
 interface V2PresetBarItemProps {
 	preset: V2TerminalPresetRow;
-	pinnedIndex: number;
+	visibleIndex: number;
 	hotkeyId?: HotkeyId;
 	isDark: boolean;
+	agents: HostAgentConfig[] | undefined;
 	onExecutePreset: (preset: V2TerminalPresetRow) => void;
 	onEdit: (preset: V2TerminalPresetRow) => void;
 	onLocalReorder: (fromIndex: number, toIndex: number) => void;
-	onPersistReorder: (presetId: string, targetPinnedIndex: number) => void;
+	onPersistReorder: (presetId: string, targetVisibleIndex: number) => void;
 }
 
 export function V2PresetBarItem({
 	preset,
-	pinnedIndex,
+	visibleIndex,
 	hotkeyId,
 	isDark,
+	agents,
 	onExecutePreset,
 	onEdit,
 	onLocalReorder,
 	onPersistReorder,
 }: V2PresetBarItemProps) {
 	const containerRef = useRef<HTMLDivElement>(null);
-	const icon = getPresetIcon(preset.name, isDark);
+	const icon = resolveV2PresetIcon(preset, agents, isDark);
 	const label = preset.description || preset.name || "default";
 
 	const [{ isDragging }, drag] = useDrag(
@@ -47,22 +50,22 @@ export function V2PresetBarItem({
 			type: V2_PRESET_BAR_ITEM_TYPE,
 			item: {
 				id: preset.id,
-				index: pinnedIndex,
-				originalIndex: pinnedIndex,
+				index: visibleIndex,
+				originalIndex: visibleIndex,
 			},
 			collect: (monitor) => ({
 				isDragging: monitor.isDragging(),
 			}),
 		}),
-		[preset.id, pinnedIndex],
+		[preset.id, visibleIndex],
 	);
 
 	const [, drop] = useDrop({
 		accept: V2_PRESET_BAR_ITEM_TYPE,
 		hover: (item: { id: string; index: number; originalIndex: number }) => {
-			if (item.index !== pinnedIndex) {
-				onLocalReorder(item.index, pinnedIndex);
-				item.index = pinnedIndex;
+			if (item.index !== visibleIndex) {
+				onLocalReorder(item.index, visibleIndex);
+				item.index = visibleIndex;
 			}
 		},
 		drop: (item: { id: string; index: number; originalIndex: number }) => {
@@ -89,15 +92,19 @@ export function V2PresetBarItem({
 							<Button
 								variant="ghost"
 								size="sm"
-								className="h-6 px-2 gap-1.5 text-xs shrink-0"
+								className="h-6 max-w-32 min-w-0 shrink-0 gap-1.5 rounded-md px-1.5 text-xs font-normal text-muted-foreground transition-colors hover:bg-muted/60 hover:text-foreground"
 								onClick={() => onExecutePreset(preset)}
 							>
 								{icon ? (
-									<img src={icon} alt="" className="size-3.5 object-contain" />
+									<img
+										src={icon}
+										alt=""
+										className="size-3.5 shrink-0 object-contain opacity-90"
+									/>
 								) : (
-									<HiMiniCommandLine className="size-3.5" />
+									<HiMiniCommandLine className="size-3.5 shrink-0" />
 								)}
-								<span className="truncate max-w-[120px]">
+								<span className="min-w-0 truncate">
 									{preset.name || "default"}
 								</span>
 							</Button>

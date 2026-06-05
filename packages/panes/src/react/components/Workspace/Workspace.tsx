@@ -5,7 +5,7 @@ import type { Pane } from "../../../types";
 import type { WorkspaceProps } from "../../types";
 import { Tab } from "./components/Tab";
 import { TabBar } from "./components/TabBar";
-import { resolveTabTitle } from "./utils/resolveTabTitle";
+import { useWorkspaceInteractionState } from "./hooks/useWorkspaceInteractionState";
 
 export function Workspace<TData>({
 	store,
@@ -15,14 +15,20 @@ export function Workspace<TData>({
 	renderTabIcon,
 	renderEmptyState,
 	renderAddTabMenu,
+	renderTabBarTrailing,
 	renderBelowTabBar,
 	onBeforeCloseTab,
+	onAfterCloseTab,
+	onInteractionStateChange,
 	paneActions,
 	contextMenuActions,
 }: WorkspaceProps<TData>) {
 	const tabs = useStore(store, (s) => s.tabs);
 	const activeTabId = useStore(store, (s) => s.activeTabId);
 	const activeTab = tabs.find((t) => t.id === activeTabId) ?? null;
+	const { onSplitResizeDragging } = useWorkspaceInteractionState({
+		onInteractionStateChange,
+	});
 
 	const previousPanesRef = useRef<Map<string, Pane<TData>>>(new Map());
 	useEffect(() => {
@@ -34,20 +40,27 @@ export function Workspace<TData>({
 		}
 		for (const [prevId, prevPane] of previousPanesRef.current) {
 			if (!current.has(prevId)) {
-				registry[prevPane.kind]?.onRemoved?.(prevPane);
+				registry[prevPane.kind]?.onAfterClose?.(prevPane);
 			}
 		}
 		previousPanesRef.current = current;
 	}, [tabs, registry]);
 
 	const closeTab = async (tabId: string) => {
+		const tab = store.getState().getTab(tabId);
+		if (!tab) return;
 		if (onBeforeCloseTab) {
-			const tab = store.getState().getTab(tabId);
-			if (!tab) return;
 			const allowed = await onBeforeCloseTab(tab);
 			if (!allowed) return;
 		}
+		// Re-check after the await: the tab may have been removed concurrently.
+		if (!store.getState().getTab(tabId)) return;
 		store.getState().removeTab(tabId);
+		try {
+			onAfterCloseTab?.(tab);
+		} catch (err) {
+			console.error("onAfterCloseTab threw", err);
+		}
 	};
 
 	return (
@@ -59,6 +72,7 @@ export function Workspace<TData>({
 		>
 			<TabBar
 				tabs={tabs}
+				registry={registry}
 				activeTabId={activeTabId}
 				onSelectTab={(tabId) => store.getState().setActiveTab(tabId)}
 				onCloseTab={closeTab}
@@ -78,9 +92,12 @@ export function Workspace<TData>({
 				onReorderTab={(tabId, toIndex) =>
 					store.getState().reorderTab({ tabId, toIndex })
 				}
-				getTabTitle={(tab) => resolveTabTitle(tab, tabs, registry)}
+				onMovePaneToNewTab={(paneId, toIndex) =>
+					store.getState().movePaneToNewTab({ paneId, toIndex })
+				}
 				renderTabIcon={renderTabIcon}
 				renderAddTabMenu={renderAddTabMenu}
+				renderTabBarTrailing={renderTabBarTrailing}
 				renderTabAccessory={renderTabAccessory}
 			/>
 			{renderBelowTabBar?.()}
@@ -91,6 +108,7 @@ export function Workspace<TData>({
 					registry={registry}
 					paneActions={paneActions}
 					contextMenuActions={contextMenuActions}
+					onSplitResizeDragging={onSplitResizeDragging}
 				/>
 			) : (
 				<div className="flex min-h-0 min-w-0 flex-1 items-center justify-center text-sm text-muted-foreground">

@@ -15,10 +15,28 @@ import {
 	AGENT_PRESET_DESCRIPTIONS,
 	DEFAULT_TERMINAL_PRESET_AGENT_TYPES,
 } from "@superset/shared/agent-command";
+import {
+	applyLegacyPermissionsOverrides,
+	terminalPresetsMatchPre3546Seed,
+} from "@superset/shared/agent-permissions-migration";
+import {
+	type AgentDefinitionId,
+	applyCustomAgentDefinitionPatch,
+	createOverrideEnvelopeWithPatch,
+	deleteCustomAgentDefinition,
+	getAgentDefinitionById,
+	getCustomAgentDefinitionById,
+	readAgentPresetOverrides,
+	resetAgentPresetOverride,
+	resetAllAgentPresetOverrides,
+	resolveAgentConfigs,
+	upsertCustomAgentDefinition,
+} from "@superset/shared/agent-settings";
 import { TRPCError } from "@trpc/server";
 import { app } from "electron";
 import { env } from "main/env.main";
 import { exitImmediately } from "main/index";
+import { setupSingleAgent } from "main/lib/agent-setup";
 import { hasCustomRingtone } from "main/lib/custom-ringtones";
 import { getHostServiceCoordinator } from "main/lib/host-service-coordinator";
 import { localDb } from "main/lib/local-db";
@@ -39,19 +57,6 @@ import {
 	DEFAULT_RINGTONE_ID,
 	isBuiltInRingtoneId,
 } from "shared/ringtones";
-import {
-	type AgentDefinitionId,
-	applyCustomAgentDefinitionPatch,
-	createOverrideEnvelopeWithPatch,
-	deleteCustomAgentDefinition,
-	getAgentDefinitionById,
-	getCustomAgentDefinitionById,
-	readAgentPresetOverrides,
-	resetAgentPresetOverride,
-	resetAllAgentPresetOverrides,
-	resolveAgentConfigs,
-	upsertCustomAgentDefinition,
-} from "shared/utils/agent-settings";
 import { z } from "zod";
 import { publicProcedure, router } from "../..";
 import { loadToken } from "../auth/utils/auth-functions";
@@ -126,7 +131,42 @@ function saveTerminalPresets(
 		.run();
 }
 
+let agentPresetPermissionsMigrationChecked = false;
+
+function runAgentPresetPermissionsMigration() {
+	if (agentPresetPermissionsMigrationChecked) return;
+	const row = getSettings();
+	if (row.agentPresetPermissionsMigratedAt) {
+		agentPresetPermissionsMigrationChecked = true;
+		return;
+	}
+
+	const isExistingUser =
+		row.terminalPresetsInitialized === true &&
+		terminalPresetsMatchPre3546Seed(row.terminalPresets);
+
+	const nextOverrides = isExistingUser
+		? applyLegacyPermissionsOverrides(
+				readAgentPresetOverrides(row.agentPresetOverrides),
+			)
+		: undefined;
+
+	const now = Date.now();
+	const setFields = {
+		agentPresetPermissionsMigratedAt: now,
+		...(nextOverrides ? { agentPresetOverrides: nextOverrides } : {}),
+	};
+	localDb
+		.insert(settings)
+		.values({ id: 1, ...setFields })
+		.onConflictDoUpdate({ target: settings.id, set: setFields })
+		.run();
+
+	agentPresetPermissionsMigrationChecked = true;
+}
+
 function readRawAgentPresetOverrides(): AgentPresetOverrideEnvelope {
+	runAgentPresetPermissionsMigration();
 	const row = getSettings();
 	return readAgentPresetOverrides(row.agentPresetOverrides);
 }
@@ -368,6 +408,7 @@ export const createSettingsRouter = () => {
 					commands: z.array(z.string()),
 					projectIds: z.array(z.string()).nullable().optional(),
 					pinnedToBar: z.boolean().optional(),
+					useAsWorkspaceRun: z.boolean().optional(),
 					executionMode: z.enum(EXECUTION_MODES).optional(),
 				}),
 			)
@@ -398,6 +439,7 @@ export const createSettingsRouter = () => {
 						commands: z.array(z.string()).optional(),
 						projectIds: z.array(z.string()).nullable().optional(),
 						pinnedToBar: z.boolean().optional(),
+						useAsWorkspaceRun: z.boolean().optional(),
 						executionMode: z.enum(EXECUTION_MODES).optional(),
 					}),
 				}),
@@ -423,6 +465,8 @@ export const createSettingsRouter = () => {
 					preset.projectIds = normalizePresetProjectIds(input.patch.projectIds);
 				if (input.patch.pinnedToBar !== undefined)
 					preset.pinnedToBar = input.patch.pinnedToBar;
+				if (input.patch.useAsWorkspaceRun !== undefined)
+					preset.useAsWorkspaceRun = input.patch.useAsWorkspaceRun;
 				if (input.patch.executionMode !== undefined)
 					preset.executionMode = input.patch.executionMode;
 
@@ -963,6 +1007,17 @@ export const createSettingsRouter = () => {
 					.run();
 
 				return { success: true };
+			}),
+
+		/**
+		 * Re-runs wrapper/settings/hook setup for one agent. Safety net for
+		 * the settings-UI Add flow; returns `{ ran: false }` for unknown ids.
+		 */
+		setupAgent: publicProcedure
+			.input(z.object({ agentId: z.string().min(1) }))
+			.mutation(({ input }) => {
+				const ran = setupSingleAgent(input.agentId);
+				return { ran };
 			}),
 
 		// TODO: remove telemetry procedures once telemetry_enabled column is dropped
