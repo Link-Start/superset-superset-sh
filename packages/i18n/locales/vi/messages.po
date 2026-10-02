@@ -3761,6 +3761,9 @@ msgstr "Đóng tab này sẽ kết thúc tiến trình đang chạy."
 msgid "Closing this terminal will end the running process."
 msgstr "Đóng terminal này sẽ kết thúc tiến trình đang chạy."
 
+msgid "Closing…"
+msgstr "Đang đóng…"
+
 msgid "Cloud"
 msgstr "Cloud"
 
@@ -9432,6 +9435,9 @@ msgstr "Đang merge PR..."
 msgid "Merging pull request"
 msgstr "Đang merge pull request"
 
+msgid "Merging…"
+msgstr "Đang merge…"
+
 msgid "Mesh Gradient"
 msgstr "Mesh Gradient"
 
@@ -12917,6 +12923,9 @@ msgstr "Mở lại PR"
 
 msgid "Reopen thread"
 msgstr "Mở lại luồng"
+
+msgid "Reopening…"
+msgstr "Đang mở lại…"
 
 msgid "reorder agents"
 msgstr "sắp xếp lại agent"

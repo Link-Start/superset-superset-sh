@@ -3761,6 +3761,9 @@ msgstr "关闭此标签页将结束正在运行的进程。"
 msgid "Closing this terminal will end the running process."
 msgstr "关闭此终端将结束正在运行的进程。"
 
+msgid "Closing…"
+msgstr "正在关闭…"
+
 msgid "Cloud"
 msgstr "云端"
 
@@ -9432,6 +9435,9 @@ msgstr "正在合并PR..."
 msgid "Merging pull request"
 msgstr "正在合并拉取请求"
 
+msgid "Merging…"
+msgstr "正在合并…"
+
 msgid "Mesh Gradient"
 msgstr "网格渐变"
 
@@ -12917,6 +12923,9 @@ msgstr "重新打开PR"
 
 msgid "Reopen thread"
 msgstr "重新打开讨论串"
+
+msgid "Reopening…"
+msgstr "正在重新打开…"
 
 msgid "reorder agents"
 msgstr "重新排序智能体"

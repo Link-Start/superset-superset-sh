@@ -3761,6 +3761,9 @@ msgstr "Fermer cet onglet mettra fin au processus en cours."
 msgid "Closing this terminal will end the running process."
 msgstr "Fermer ce terminal mettra fin au processus en cours."
 
+msgid "Closing…"
+msgstr "Fermeture…"
+
 msgid "Cloud"
 msgstr "Cloud"
 
@@ -9432,6 +9435,9 @@ msgstr "Fusion de la pull request..."
 msgid "Merging pull request"
 msgstr "Fusion de la pull request"
 
+msgid "Merging…"
+msgstr "Fusion en cours…"
+
 msgid "Mesh Gradient"
 msgstr "Mesh Gradient"
 
@@ -12917,6 +12923,9 @@ msgstr "Rouvrir la PR"
 
 msgid "Reopen thread"
 msgstr "Rouvrir le fil"
+
+msgid "Reopening…"
+msgstr "Réouverture…"
 
 msgid "reorder agents"
 msgstr "réordonner les agents"

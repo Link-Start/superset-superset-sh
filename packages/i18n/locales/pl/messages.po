@@ -3761,6 +3761,9 @@ msgstr "Zamknięcie tej karty zakończy działający proces."
 msgid "Closing this terminal will end the running process."
 msgstr "Zamknięcie tego terminala zakończy działający proces."
 
+msgid "Closing…"
+msgstr "Zamykanie…"
+
 msgid "Cloud"
 msgstr "Chmura"
 
@@ -9432,6 +9435,9 @@ msgstr "Scalanie PR..."
 msgid "Merging pull request"
 msgstr "Scalanie pull requesta"
 
+msgid "Merging…"
+msgstr "Scalanie…"
+
 msgid "Mesh Gradient"
 msgstr "Mesh Gradient"
 
@@ -12917,6 +12923,9 @@ msgstr "Otwórz PR ponownie"
 
 msgid "Reopen thread"
 msgstr "Otwórz wątek ponownie"
+
+msgid "Reopening…"
+msgstr "Ponowne otwieranie…"
 
 msgid "reorder agents"
 msgstr "zmienić kolejności agentów"

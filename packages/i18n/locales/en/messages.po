@@ -3761,6 +3761,9 @@ msgstr "Closing this tab will end the running process."
 msgid "Closing this terminal will end the running process."
 msgstr "Closing this terminal will end the running process."
 
+msgid "Closing…"
+msgstr "Closing…"
+
 msgid "Cloud"
 msgstr "Cloud"
 
@@ -9432,6 +9435,9 @@ msgstr "Merging PR..."
 msgid "Merging pull request"
 msgstr "Merging pull request"
 
+msgid "Merging…"
+msgstr "Merging…"
+
 msgid "Mesh Gradient"
 msgstr "Mesh Gradient"
 
@@ -12917,6 +12923,9 @@ msgstr "Reopen PR"
 
 msgid "Reopen thread"
 msgstr "Reopen thread"
+
+msgid "Reopening…"
+msgstr "Reopening…"
 
 msgid "reorder agents"
 msgstr "reorder agents"
