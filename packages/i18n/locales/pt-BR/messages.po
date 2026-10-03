@@ -273,9 +273,17 @@ msgstr "{0, plural, one {Criando # área de trabalho...} other {Criando # áreas
 msgid "{0, plural, one {Delete # workspace?} other {Delete # workspaces?}}"
 msgstr "{0, plural, one {Excluir # área de trabalho?} other {Excluir # áreas de trabalho?}}"
 
+#. placeholder {0}: cleanup.hosts
+msgid "{0, plural, one {Deleted # host with no other owner, along with its workspaces.} other {Deleted # hosts with no other owner, along with their workspaces.}}"
+msgstr "{0, plural, one {# host sem outro proprietário excluído, junto com seus workspaces.} other {# hosts sem outro proprietário excluídos, junto com seus workspaces.}}"
+
 #. placeholder {0}: deletedIds.length
 msgid "{0, plural, one {Deleted # workspace} other {Deleted # workspaces}}"
 msgstr "{0, plural, one {# área de trabalho excluída} other {# áreas de trabalho excluídas}}"
+
+#. placeholder {0}: cleanup.hosts
+msgid "{0, plural, one {Deletes # host with no other owner, along with its workspaces} other {Deletes # hosts with no other owner, along with their workspaces}}"
+msgstr "{0, plural, one {Exclui # host sem outro proprietário, junto com seus workspaces} other {Exclui # hosts sem outro proprietário, junto com seus workspaces}}"
 
 #. placeholder {0}: item.hiddenCount
 msgid "{0, plural, one {Diff truncated — # more line on the host} other {Diff truncated — # more lines on the host}}"
@@ -296,6 +304,14 @@ msgstr "{0, plural, one {issue do Linear} other {issues do Linear}}"
 #. placeholder {0}: selectedWorkspaces.length
 msgid "{0, plural, one {Move # selected workspace to a group} other {Move # selected workspaces to a group}}"
 msgstr "{0, plural, one {Mover # área de trabalho selecionada para um grupo} other {Mover # áreas de trabalho selecionadas para um grupo}}"
+
+#. placeholder {0}: cleanup.automations
+msgid "{0, plural, one {Paused # automation.} other {Paused # automations.}}"
+msgstr "{0, plural, one {# automação pausada.} other {# automações pausadas.}}"
+
+#. placeholder {0}: cleanup.automations
+msgid "{0, plural, one {Pauses # automation} other {Pauses # automations}}"
+msgstr "{0, plural, one {Pausa # automação} other {Pausa # automações}}"
 
 #. placeholder {0}: issues.length
 #. placeholder {0}: tasks.length
@@ -4734,6 +4750,9 @@ msgstr "Não foi possível ramificar para um novo worktree"
 
 msgid "Couldn't branch the conversation"
 msgstr "Não foi possível ramificar a conversa"
+
+msgid "Couldn't check what removing this member affects"
+msgstr "Não foi possível verificar o que a remoção deste membro afeta"
 
 msgid "Couldn't confirm star status — check that the GitHub CLI (`gh`) is installed, signed in, and that you have a network connection"
 msgstr "Não foi possível confirmar o status da estrela — verifique se a CLI do GitHub (`gh`) está instalada, com login feito, e se você tem conexão"
@@ -10847,8 +10866,8 @@ msgstr "Só proprietários do host podem alterar quem tem acesso"
 msgid "Only host owners can change this location."
 msgstr "Só proprietários do host podem alterar este local."
 
-msgid "Only host owners can delete this host"
-msgstr "Só proprietários do host podem excluir este host"
+msgid "Only host owners or organization owners can delete this host"
+msgstr "Só proprietários do host ou proprietários da organização podem excluir este host"
 
 msgid "Only organization owners can modify these settings."
 msgstr "Só proprietários da organização podem alterar estas configurações."
@@ -10888,6 +10907,9 @@ msgstr "Só o proprietário pode executar esta automação"
 
 msgid "Only the owner can view prompt history"
 msgstr "Só o proprietário pode ver o histórico de prompts"
+
+msgid "Only the owner or an organization owner can delete this automation"
+msgstr "Só o proprietário ou um proprietário da organização pode excluir esta automação"
 
 msgid "Only the person who created this page can change it"
 msgstr "Só quem criou esta página pode alterá-la"
@@ -16215,6 +16237,9 @@ msgstr "Este agente não pode ser executado em uma área de trabalho na nuvem"
 
 msgid "This agent no longer exists on the selected device (its agents may have been reset). Runs will fail until you pick a new one."
 msgstr "Este agente não existe mais no dispositivo selecionado (os agentes podem ter sido redefinidos). As execuções vão falhar até você escolher outro."
+
+msgid "This also:"
+msgstr "Isso também:"
 
 msgid "This application will be able to:"
 msgstr "Este aplicativo vai poder:"

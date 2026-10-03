@@ -273,9 +273,17 @@ msgstr "{0, plural, one {#件のワークスペースを作成中...} other {#�
 msgid "{0, plural, one {Delete # workspace?} other {Delete # workspaces?}}"
 msgstr "{0, plural, one {#件のワークスペースを削除しますか?} other {#件のワークスペースを削除しますか?}}"
 
+#. placeholder {0}: cleanup.hosts
+msgid "{0, plural, one {Deleted # host with no other owner, along with its workspaces.} other {Deleted # hosts with no other owner, along with their workspaces.}}"
+msgstr "{0, plural, other {他に所有者のいないホスト # 台を、そのワークスペースとともに削除しました。}}"
+
 #. placeholder {0}: deletedIds.length
 msgid "{0, plural, one {Deleted # workspace} other {Deleted # workspaces}}"
 msgstr "{0, plural, one {#件のワークスペースを削除しました} other {#件のワークスペースを削除しました}}"
+
+#. placeholder {0}: cleanup.hosts
+msgid "{0, plural, one {Deletes # host with no other owner, along with its workspaces} other {Deletes # hosts with no other owner, along with their workspaces}}"
+msgstr "{0, plural, other {他に所有者のいないホスト # 台を、そのワークスペースとともに削除します}}"
 
 #. placeholder {0}: item.hiddenCount
 msgid "{0, plural, one {Diff truncated — # more line on the host} other {Diff truncated — # more lines on the host}}"
@@ -296,6 +304,14 @@ msgstr "{0, plural, one {Linear issue} other {Linear issue}}"
 #. placeholder {0}: selectedWorkspaces.length
 msgid "{0, plural, one {Move # selected workspace to a group} other {Move # selected workspaces to a group}}"
 msgstr "{0, plural, one {選択した#件のワークスペースをグループに移動} other {選択した#件のワークスペースをグループに移動}}"
+
+#. placeholder {0}: cleanup.automations
+msgid "{0, plural, one {Paused # automation.} other {Paused # automations.}}"
+msgstr "{0, plural, other {オートメーション # 件を一時停止しました。}}"
+
+#. placeholder {0}: cleanup.automations
+msgid "{0, plural, one {Pauses # automation} other {Pauses # automations}}"
+msgstr "{0, plural, other {オートメーション # 件を一時停止します}}"
 
 #. placeholder {0}: issues.length
 #. placeholder {0}: tasks.length
@@ -4734,6 +4750,9 @@ msgstr "新しい worktree へ分岐できませんでした"
 
 msgid "Couldn't branch the conversation"
 msgstr "会話を分岐できませんでした"
+
+msgid "Couldn't check what removing this member affects"
+msgstr "このメンバーの削除による影響を確認できませんでした"
 
 msgid "Couldn't confirm star status — check that the GitHub CLI (`gh`) is installed, signed in, and that you have a network connection"
 msgstr "スター状態を確認できませんでした — GitHub CLI (`gh`) がインストール・サインイン済みで、ネットワーク接続があることを確認してください"
@@ -10847,8 +10866,8 @@ msgstr "メンバーシップを変更できるのはホストのオーナーの
 msgid "Only host owners can change this location."
 msgstr "この場所を変更できるのはホストのオーナーのみです。"
 
-msgid "Only host owners can delete this host"
-msgstr "このホストを削除できるのはホストのオーナーのみです"
+msgid "Only host owners or organization owners can delete this host"
+msgstr "このホストを削除できるのはホストのオーナーまたは組織のオーナーのみです"
 
 msgid "Only organization owners can modify these settings."
 msgstr "これらの設定を変更できるのは組織のオーナーのみです。"
@@ -10888,6 +10907,9 @@ msgstr "このオートメーションを実行できるのは所有者のみで
 
 msgid "Only the owner can view prompt history"
 msgstr "プロンプト履歴を表示できるのは所有者のみです"
+
+msgid "Only the owner or an organization owner can delete this automation"
+msgstr "このオートメーションを削除できるのは所有者または組織のオーナーのみです"
 
 msgid "Only the person who created this page can change it"
 msgstr "このページを変更できるのは作成者のみです"
@@ -16215,6 +16237,9 @@ msgstr "このエージェントはクラウドワークスペースで実行で
 
 msgid "This agent no longer exists on the selected device (its agents may have been reset). Runs will fail until you pick a new one."
 msgstr "選択したデバイスにこのエージェントは存在しません(エージェントがリセットされた可能性があります)。新しいエージェントを選ぶまで実行は失敗します。"
+
+msgid "This also:"
+msgstr "さらに次の処理も行われます:"
 
 msgid "This application will be able to:"
 msgstr "このアプリケーションは次のことができます:"

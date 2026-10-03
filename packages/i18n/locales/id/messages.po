@@ -273,9 +273,17 @@ msgstr "{0, plural, one {Membuat # workspace...} other {Membuat # workspace...}}
 msgid "{0, plural, one {Delete # workspace?} other {Delete # workspaces?}}"
 msgstr "{0, plural, one {Hapus # workspace?} other {Hapus # workspace?}}"
 
+#. placeholder {0}: cleanup.hosts
+msgid "{0, plural, one {Deleted # host with no other owner, along with its workspaces.} other {Deleted # hosts with no other owner, along with their workspaces.}}"
+msgstr "{0, plural, other {# host tanpa pemilik lain dihapus beserta workspace-nya.}}"
+
 #. placeholder {0}: deletedIds.length
 msgid "{0, plural, one {Deleted # workspace} other {Deleted # workspaces}}"
 msgstr "{0, plural, one {Menghapus # workspace} other {Menghapus # workspace}}"
+
+#. placeholder {0}: cleanup.hosts
+msgid "{0, plural, one {Deletes # host with no other owner, along with its workspaces} other {Deletes # hosts with no other owner, along with their workspaces}}"
+msgstr "{0, plural, other {Menghapus # host tanpa pemilik lain, beserta workspace-nya}}"
 
 #. placeholder {0}: item.hiddenCount
 msgid "{0, plural, one {Diff truncated — # more line on the host} other {Diff truncated — # more lines on the host}}"
@@ -296,6 +304,14 @@ msgstr "{0, plural, one {issue Linear} other {issue Linear}}"
 #. placeholder {0}: selectedWorkspaces.length
 msgid "{0, plural, one {Move # selected workspace to a group} other {Move # selected workspaces to a group}}"
 msgstr "{0, plural, one {Pindahkan # workspace terpilih ke grup} other {Pindahkan # workspace terpilih ke grup}}"
+
+#. placeholder {0}: cleanup.automations
+msgid "{0, plural, one {Paused # automation.} other {Paused # automations.}}"
+msgstr "{0, plural, other {# otomatisasi dijeda.}}"
+
+#. placeholder {0}: cleanup.automations
+msgid "{0, plural, one {Pauses # automation} other {Pauses # automations}}"
+msgstr "{0, plural, other {Menjeda # otomatisasi}}"
 
 #. placeholder {0}: issues.length
 #. placeholder {0}: tasks.length
@@ -4734,6 +4750,9 @@ msgstr "Tidak dapat mencabangkan ke worktree baru"
 
 msgid "Couldn't branch the conversation"
 msgstr "Tidak dapat mencabangkan percakapan"
+
+msgid "Couldn't check what removing this member affects"
+msgstr "Tidak dapat memeriksa apa yang terdampak jika anggota ini dihapus"
 
 msgid "Couldn't confirm star status — check that the GitHub CLI (`gh`) is installed, signed in, and that you have a network connection"
 msgstr "Tidak bisa memastikan status star — pastikan GitHub CLI (`gh`) terpasang, sudah masuk, dan Anda punya koneksi jaringan"
@@ -10847,8 +10866,8 @@ msgstr "Hanya pemilik host yang bisa mengubah keanggotaan"
 msgid "Only host owners can change this location."
 msgstr "Hanya pemilik host yang bisa mengubah lokasi ini."
 
-msgid "Only host owners can delete this host"
-msgstr "Hanya pemilik host yang bisa menghapus host ini"
+msgid "Only host owners or organization owners can delete this host"
+msgstr "Hanya pemilik host atau pemilik organisasi yang bisa menghapus host ini"
 
 msgid "Only organization owners can modify these settings."
 msgstr "Hanya pemilik organisasi yang bisa mengubah pengaturan ini."
@@ -10888,6 +10907,9 @@ msgstr "Hanya pemilik yang bisa menjalankan otomatisasi ini"
 
 msgid "Only the owner can view prompt history"
 msgstr "Hanya pemilik yang bisa melihat riwayat prompt"
+
+msgid "Only the owner or an organization owner can delete this automation"
+msgstr "Hanya pemilik atau pemilik organisasi yang bisa menghapus otomatisasi ini"
 
 msgid "Only the person who created this page can change it"
 msgstr "Hanya orang yang membuat halaman ini yang bisa mengubahnya"
@@ -16215,6 +16237,9 @@ msgstr "Agen ini tidak bisa berjalan di workspace cloud"
 
 msgid "This agent no longer exists on the selected device (its agents may have been reset). Runs will fail until you pick a new one."
 msgstr "Agen ini sudah tidak ada di perangkat yang dipilih (agennya mungkin telah direset). Run akan gagal sampai Anda memilih yang baru."
+
+msgid "This also:"
+msgstr "Ini juga akan:"
 
 msgid "This application will be able to:"
 msgstr "Aplikasi ini akan bisa:"

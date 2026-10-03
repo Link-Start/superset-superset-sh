@@ -273,9 +273,17 @@ msgstr "{0, plural, one {Creating # workspace...} other {Creating # workspaces..
 msgid "{0, plural, one {Delete # workspace?} other {Delete # workspaces?}}"
 msgstr "{0, plural, one {Delete # workspace?} other {Delete # workspaces?}}"
 
+#. placeholder {0}: cleanup.hosts
+msgid "{0, plural, one {Deleted # host with no other owner, along with its workspaces.} other {Deleted # hosts with no other owner, along with their workspaces.}}"
+msgstr "{0, plural, one {Deleted # host with no other owner, along with its workspaces.} other {Deleted # hosts with no other owner, along with their workspaces.}}"
+
 #. placeholder {0}: deletedIds.length
 msgid "{0, plural, one {Deleted # workspace} other {Deleted # workspaces}}"
 msgstr "{0, plural, one {Deleted # workspace} other {Deleted # workspaces}}"
+
+#. placeholder {0}: cleanup.hosts
+msgid "{0, plural, one {Deletes # host with no other owner, along with its workspaces} other {Deletes # hosts with no other owner, along with their workspaces}}"
+msgstr "{0, plural, one {Deletes # host with no other owner, along with its workspaces} other {Deletes # hosts with no other owner, along with their workspaces}}"
 
 #. placeholder {0}: item.hiddenCount
 msgid "{0, plural, one {Diff truncated — # more line on the host} other {Diff truncated — # more lines on the host}}"
@@ -296,6 +304,14 @@ msgstr "{0, plural, one {Linear issue} other {Linear issues}}"
 #. placeholder {0}: selectedWorkspaces.length
 msgid "{0, plural, one {Move # selected workspace to a group} other {Move # selected workspaces to a group}}"
 msgstr "{0, plural, one {Move # selected workspace to a group} other {Move # selected workspaces to a group}}"
+
+#. placeholder {0}: cleanup.automations
+msgid "{0, plural, one {Paused # automation.} other {Paused # automations.}}"
+msgstr "{0, plural, one {Paused # automation.} other {Paused # automations.}}"
+
+#. placeholder {0}: cleanup.automations
+msgid "{0, plural, one {Pauses # automation} other {Pauses # automations}}"
+msgstr "{0, plural, one {Pauses # automation} other {Pauses # automations}}"
 
 #. placeholder {0}: issues.length
 #. placeholder {0}: tasks.length
@@ -4734,6 +4750,9 @@ msgstr "Couldn't branch into a new worktree"
 
 msgid "Couldn't branch the conversation"
 msgstr "Couldn't branch the conversation"
+
+msgid "Couldn't check what removing this member affects"
+msgstr "Couldn't check what removing this member affects"
 
 msgid "Couldn't confirm star status — check that the GitHub CLI (`gh`) is installed, signed in, and that you have a network connection"
 msgstr "Couldn't confirm star status — check that the GitHub CLI (`gh`) is installed, signed in, and that you have a network connection"
@@ -10847,8 +10866,8 @@ msgstr "Only host owners can change membership"
 msgid "Only host owners can change this location."
 msgstr "Only host owners can change this location."
 
-msgid "Only host owners can delete this host"
-msgstr "Only host owners can delete this host"
+msgid "Only host owners or organization owners can delete this host"
+msgstr "Only host owners or organization owners can delete this host"
 
 msgid "Only organization owners can modify these settings."
 msgstr "Only organization owners can modify these settings."
@@ -10888,6 +10907,9 @@ msgstr "Only the owner can run this automation"
 
 msgid "Only the owner can view prompt history"
 msgstr "Only the owner can view prompt history"
+
+msgid "Only the owner or an organization owner can delete this automation"
+msgstr "Only the owner or an organization owner can delete this automation"
 
 msgid "Only the person who created this page can change it"
 msgstr "Only the person who created this page can change it"
@@ -16215,6 +16237,9 @@ msgstr "This agent can't run in a cloud workspace"
 
 msgid "This agent no longer exists on the selected device (its agents may have been reset). Runs will fail until you pick a new one."
 msgstr "This agent no longer exists on the selected device (its agents may have been reset). Runs will fail until you pick a new one."
+
+msgid "This also:"
+msgstr "This also:"
 
 msgid "This application will be able to:"
 msgstr "This application will be able to:"

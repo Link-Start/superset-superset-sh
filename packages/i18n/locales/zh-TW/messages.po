@@ -273,9 +273,17 @@ msgstr "{0, plural, one {正在建立#個工作區...} other {正在建立#個�
 msgid "{0, plural, one {Delete # workspace?} other {Delete # workspaces?}}"
 msgstr "{0, plural, one {刪除#個工作區？} other {刪除#個工作區？}}"
 
+#. placeholder {0}: cleanup.hosts
+msgid "{0, plural, one {Deleted # host with no other owner, along with its workspaces.} other {Deleted # hosts with no other owner, along with their workspaces.}}"
+msgstr "{0, plural, other {已刪除 # 台沒有其他擁有者的主機及其工作區。}}"
+
 #. placeholder {0}: deletedIds.length
 msgid "{0, plural, one {Deleted # workspace} other {Deleted # workspaces}}"
 msgstr "{0, plural, one {已刪除#個工作區} other {已刪除#個工作區}}"
+
+#. placeholder {0}: cleanup.hosts
+msgid "{0, plural, one {Deletes # host with no other owner, along with its workspaces} other {Deletes # hosts with no other owner, along with their workspaces}}"
+msgstr "{0, plural, other {刪除 # 台沒有其他擁有者的主機及其工作區}}"
 
 #. placeholder {0}: item.hiddenCount
 msgid "{0, plural, one {Diff truncated — # more line on the host} other {Diff truncated — # more lines on the host}}"
@@ -296,6 +304,14 @@ msgstr "{0, plural, one {Linear議題} other {Linear議題}}"
 #. placeholder {0}: selectedWorkspaces.length
 msgid "{0, plural, one {Move # selected workspace to a group} other {Move # selected workspaces to a group}}"
 msgstr "{0, plural, one {把選中的#個工作區移動到群組} other {把選中的#個工作區移動到群組}}"
+
+#. placeholder {0}: cleanup.automations
+msgid "{0, plural, one {Paused # automation.} other {Paused # automations.}}"
+msgstr "{0, plural, other {已暫停 # 個自動化。}}"
+
+#. placeholder {0}: cleanup.automations
+msgid "{0, plural, one {Pauses # automation} other {Pauses # automations}}"
+msgstr "{0, plural, other {暫停 # 個自動化}}"
 
 #. placeholder {0}: issues.length
 #. placeholder {0}: tasks.length
@@ -4734,6 +4750,9 @@ msgstr "無法分叉到新的 worktree"
 
 msgid "Couldn't branch the conversation"
 msgstr "無法分叉對話"
+
+msgid "Couldn't check what removing this member affects"
+msgstr "無法檢查移除此成員會影響哪些內容"
 
 msgid "Couldn't confirm star status — check that the GitHub CLI (`gh`) is installed, signed in, and that you have a network connection"
 msgstr "無法確認加星狀態，請檢查是否已安裝並登入GitHub CLI（`gh`），以及網路是否連通"
@@ -10847,8 +10866,8 @@ msgstr "只有主機擁有者才能更改成員關係"
 msgid "Only host owners can change this location."
 msgstr "只有主機擁有者可以更改此位置。"
 
-msgid "Only host owners can delete this host"
-msgstr "只有主機擁有者才能刪除此主機"
+msgid "Only host owners or organization owners can delete this host"
+msgstr "只有主機擁有者或組織擁有者才能刪除此主機"
 
 msgid "Only organization owners can modify these settings."
 msgstr "只有組織擁有者可以修改這些設定。"
@@ -10888,6 +10907,9 @@ msgstr "只有擁有者能執行這個自動化"
 
 msgid "Only the owner can view prompt history"
 msgstr "只有擁有者能檢視提示詞歷史"
+
+msgid "Only the owner or an organization owner can delete this automation"
+msgstr "只有擁有者或組織擁有者能刪除這個自動化"
 
 msgid "Only the person who created this page can change it"
 msgstr "只有建立此頁面的人才能修改它"
@@ -16215,6 +16237,9 @@ msgstr "此代理程式無法在雲端工作區中執行"
 
 msgid "This agent no longer exists on the selected device (its agents may have been reset). Runs will fail until you pick a new one."
 msgstr "所選裝置上已不存在這個代理程式（它的代理程式可能被重置過）。在你選擇新的代理程式之前，執行都會失敗。"
+
+msgid "This also:"
+msgstr "同時還會："
 
 msgid "This application will be able to:"
 msgstr "該應用程式將能夠："

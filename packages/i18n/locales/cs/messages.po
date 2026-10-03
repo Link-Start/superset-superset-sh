@@ -273,9 +273,17 @@ msgstr "{0, plural, one {Vytvářím # pracovní prostor...} few {Vytvářím # 
 msgid "{0, plural, one {Delete # workspace?} other {Delete # workspaces?}}"
 msgstr "{0, plural, one {Smazat # pracovní prostor?} few {Smazat # pracovní prostory?} many {Smazat # pracovního prostoru?} other {Smazat # pracovních prostorů?}}"
 
+#. placeholder {0}: cleanup.hosts
+msgid "{0, plural, one {Deleted # host with no other owner, along with its workspaces.} other {Deleted # hosts with no other owner, along with their workspaces.}}"
+msgstr "{0, plural, one {Smazán # host bez dalšího vlastníka i s jeho pracovními prostory.} few {Smazány # hosty bez dalšího vlastníka i s jejich pracovními prostory.} many {Smazáno # hosta bez dalšího vlastníka i s jejich pracovními prostory.} other {Smazáno # hostů bez dalšího vlastníka i s jejich pracovními prostory.}}"
+
 #. placeholder {0}: deletedIds.length
 msgid "{0, plural, one {Deleted # workspace} other {Deleted # workspaces}}"
 msgstr "{0, plural, one {Smazán # pracovní prostor} few {Smazány # pracovní prostory} many {Smazáno # pracovního prostoru} other {Smazáno # pracovních prostorů}}"
+
+#. placeholder {0}: cleanup.hosts
+msgid "{0, plural, one {Deletes # host with no other owner, along with its workspaces} other {Deletes # hosts with no other owner, along with their workspaces}}"
+msgstr "{0, plural, one {Smaže # host bez dalšího vlastníka včetně jeho pracovních prostorů} few {Smaže # hosty bez dalšího vlastníka včetně jejich pracovních prostorů} many {Smaže # hosta bez dalšího vlastníka včetně jejich pracovních prostorů} other {Smaže # hostů bez dalšího vlastníka včetně jejich pracovních prostorů}}"
 
 #. placeholder {0}: item.hiddenCount
 msgid "{0, plural, one {Diff truncated — # more line on the host} other {Diff truncated — # more lines on the host}}"
@@ -296,6 +304,14 @@ msgstr "{0, plural, one {Linear issue} few {Linear issues} many {Linear issues} 
 #. placeholder {0}: selectedWorkspaces.length
 msgid "{0, plural, one {Move # selected workspace to a group} other {Move # selected workspaces to a group}}"
 msgstr "{0, plural, one {Přesunout # vybraný pracovní prostor do skupiny} few {Přesunout # vybrané pracovní prostory do skupiny} many {Přesunout # vybraného pracovního prostoru do skupiny} other {Přesunout # vybraných pracovních prostorů do skupiny}}"
+
+#. placeholder {0}: cleanup.automations
+msgid "{0, plural, one {Paused # automation.} other {Paused # automations.}}"
+msgstr "{0, plural, one {Pozastavena # automatizace.} few {Pozastaveny # automatizace.} many {Pozastaveno # automatizace.} other {Pozastaveno # automatizací.}}"
+
+#. placeholder {0}: cleanup.automations
+msgid "{0, plural, one {Pauses # automation} other {Pauses # automations}}"
+msgstr "{0, plural, one {Pozastaví # automatizaci} few {Pozastaví # automatizace} many {Pozastaví # automatizace} other {Pozastaví # automatizací}}"
 
 #. placeholder {0}: issues.length
 #. placeholder {0}: tasks.length
@@ -4734,6 +4750,9 @@ msgstr "Nepodařilo se rozvětvit do nového worktree"
 
 msgid "Couldn't branch the conversation"
 msgstr "Konverzaci se nepodařilo rozvětvit"
+
+msgid "Couldn't check what removing this member affects"
+msgstr "Nepodařilo se zjistit, čeho se odebrání tohoto člena dotkne"
 
 msgid "Couldn't confirm star status — check that the GitHub CLI (`gh`) is installed, signed in, and that you have a network connection"
 msgstr "Nepodařilo se ověřit stav hvězdy — zkontrolujte, že je nainstalované GitHub CLI (`gh`), že jste přihlášeni a že máte připojení k síti"
@@ -10847,8 +10866,8 @@ msgstr "Členství mohou měnit jen vlastníci hosta"
 msgid "Only host owners can change this location."
 msgstr "Toto umístění mohou měnit jen vlastníci hosta."
 
-msgid "Only host owners can delete this host"
-msgstr "Tohoto hosta mohou smazat jen jeho vlastníci"
+msgid "Only host owners or organization owners can delete this host"
+msgstr "Tohoto hosta mohou smazat jen jeho vlastníci nebo vlastníci organizace"
 
 msgid "Only organization owners can modify these settings."
 msgstr "Toto nastavení mohou měnit jen vlastníci organizace."
@@ -10888,6 +10907,9 @@ msgstr "Tuto automatizaci může spustit jen vlastník"
 
 msgid "Only the owner can view prompt history"
 msgstr "Historii promptů může zobrazit jen vlastník"
+
+msgid "Only the owner or an organization owner can delete this automation"
+msgstr "Tuto automatizaci může smazat jen vlastník nebo vlastník organizace"
 
 msgid "Only the person who created this page can change it"
 msgstr "Tuto stránku může měnit jen ten, kdo ji vytvořil"
@@ -16215,6 +16237,9 @@ msgstr "Tento agent nemůže běžet v cloudovém pracovním prostoru"
 
 msgid "This agent no longer exists on the selected device (its agents may have been reset). Runs will fail until you pick a new one."
 msgstr "Tento agent už na vybraném zařízení neexistuje (jeho agenti mohli být resetováni). Běhy budou selhávat, dokud nevyberete jiného."
+
+msgid "This also:"
+msgstr "Zároveň:"
 
 msgid "This application will be able to:"
 msgstr "Tato aplikace bude moci:"

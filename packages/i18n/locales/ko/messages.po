@@ -273,9 +273,17 @@ msgstr "{0, plural, one {워크스페이스 #개 만드는 중...} other {워크
 msgid "{0, plural, one {Delete # workspace?} other {Delete # workspaces?}}"
 msgstr "{0, plural, one {워크스페이스 #개를 삭제할까요?} other {워크스페이스 #개를 삭제할까요?}}"
 
+#. placeholder {0}: cleanup.hosts
+msgid "{0, plural, one {Deleted # host with no other owner, along with its workspaces.} other {Deleted # hosts with no other owner, along with their workspaces.}}"
+msgstr "{0, plural, other {다른 소유자가 없는 호스트 #대를 워크스페이스와 함께 삭제했습니다.}}"
+
 #. placeholder {0}: deletedIds.length
 msgid "{0, plural, one {Deleted # workspace} other {Deleted # workspaces}}"
 msgstr "{0, plural, one {워크스페이스 #개를 삭제했습니다} other {워크스페이스 #개를 삭제했습니다}}"
+
+#. placeholder {0}: cleanup.hosts
+msgid "{0, plural, one {Deletes # host with no other owner, along with its workspaces} other {Deletes # hosts with no other owner, along with their workspaces}}"
+msgstr "{0, plural, other {다른 소유자가 없는 호스트 #대를 워크스페이스와 함께 삭제합니다}}"
 
 #. placeholder {0}: item.hiddenCount
 msgid "{0, plural, one {Diff truncated — # more line on the host} other {Diff truncated — # more lines on the host}}"
@@ -296,6 +304,14 @@ msgstr "{0, plural, one {Linear 이슈} other {Linear 이슈}}"
 #. placeholder {0}: selectedWorkspaces.length
 msgid "{0, plural, one {Move # selected workspace to a group} other {Move # selected workspaces to a group}}"
 msgstr "{0, plural, one {선택한 워크스페이스 #개를 그룹으로 이동} other {선택한 워크스페이스 #개를 그룹으로 이동}}"
+
+#. placeholder {0}: cleanup.automations
+msgid "{0, plural, one {Paused # automation.} other {Paused # automations.}}"
+msgstr "{0, plural, other {자동화 #개를 일시중지했습니다.}}"
+
+#. placeholder {0}: cleanup.automations
+msgid "{0, plural, one {Pauses # automation} other {Pauses # automations}}"
+msgstr "{0, plural, other {자동화 #개를 일시중지합니다}}"
 
 #. placeholder {0}: issues.length
 #. placeholder {0}: tasks.length
@@ -4734,6 +4750,9 @@ msgstr "새 worktree로 분기할 수 없습니다"
 
 msgid "Couldn't branch the conversation"
 msgstr "대화를 분기할 수 없습니다"
+
+msgid "Couldn't check what removing this member affects"
+msgstr "이 멤버 제거의 영향을 확인할 수 없습니다"
 
 msgid "Couldn't confirm star status — check that the GitHub CLI (`gh`) is installed, signed in, and that you have a network connection"
 msgstr "스타 상태를 확인하지 못했습니다 — GitHub CLI(`gh`)가 설치되어 로그인되어 있는지, 네트워크에 연결되어 있는지 확인하세요"
@@ -10847,8 +10866,8 @@ msgstr "호스트 소유자만 멤버십을 변경할 수 있습니다"
 msgid "Only host owners can change this location."
 msgstr "호스트 소유자만 이 위치를 변경할 수 있습니다."
 
-msgid "Only host owners can delete this host"
-msgstr "호스트 소유자만 이 호스트를 삭제할 수 있습니다"
+msgid "Only host owners or organization owners can delete this host"
+msgstr "호스트 소유자 또는 조직 소유자만 이 호스트를 삭제할 수 있습니다"
 
 msgid "Only organization owners can modify these settings."
 msgstr "조직 소유자만 이 설정을 변경할 수 있습니다."
@@ -10888,6 +10907,9 @@ msgstr "소유자만 이 자동화를 실행할 수 있습니다"
 
 msgid "Only the owner can view prompt history"
 msgstr "소유자만 프롬프트 기록을 볼 수 있습니다"
+
+msgid "Only the owner or an organization owner can delete this automation"
+msgstr "소유자 또는 조직 소유자만 이 자동화를 삭제할 수 있습니다"
 
 msgid "Only the person who created this page can change it"
 msgstr "이 페이지를 만든 사람만 변경할 수 있습니다"
@@ -16215,6 +16237,9 @@ msgstr "이 에이전트는 클라우드 워크스페이스에서 실행할 수 
 
 msgid "This agent no longer exists on the selected device (its agents may have been reset). Runs will fail until you pick a new one."
 msgstr "이 에이전트는 선택한 기기에 더 이상 존재하지 않습니다 (에이전트가 초기화되었을 수 있습니다). 새 에이전트를 선택할 때까지 실행이 실패합니다."
+
+msgid "This also:"
+msgstr "다음 작업도 함께 수행됩니다:"
 
 msgid "This application will be able to:"
 msgstr "이 애플리케이션은 다음을 할 수 있습니다:"
