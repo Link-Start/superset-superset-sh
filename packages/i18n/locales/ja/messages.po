@@ -4147,6 +4147,9 @@ msgstr "このコンピューターに接続"
 msgid "Connect your GitHub repositories and sync pull requests. Track CI status and reviews across your team."
 msgstr "GitHubリポジトリを接続してプルリクエストを同期します。チーム全体のCIステータスとレビューを追跡できます。"
 
+msgid "Connect your Linear account before tracking tasks in Linear."
+msgstr "タスクを Linear で管理する前に、Linear アカウントを接続してください。"
+
 msgid "Connect your Linear account in Settings → Integrations to link Linear issues."
 msgstr "Linear issueをリンクするには、設定 → 連携でLinearアカウントを接続してください。"
 
@@ -15905,6 +15908,9 @@ msgstr "そのエンドポイントは許可されていません。"
 
 msgid "That handle is taken."
 msgstr "そのハンドルは使用済みです。"
+
+msgid "That Linear issue doesn't exist or you can't see it."
+msgstr "その Linear の課題は存在しないか、表示する権限がありません。"
 
 msgid "That link doesn't lead anywhere in the app."
 msgstr "そのリンクはアプリ内のどこにもつながっていません。"

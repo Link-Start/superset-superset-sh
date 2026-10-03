@@ -4147,6 +4147,9 @@ msgstr "Conectar este ordenador"
 msgid "Connect your GitHub repositories and sync pull requests. Track CI status and reviews across your team."
 msgstr "Conecta tus repositorios de GitHub y sincroniza las pull requests. Sigue el estado de CI y las revisiones de todo tu equipo."
 
+msgid "Connect your Linear account before tracking tasks in Linear."
+msgstr "Conecta tu cuenta de Linear antes de gestionar las tareas en Linear."
+
 msgid "Connect your Linear account in Settings → Integrations to link Linear issues."
 msgstr "Conecta tu cuenta de Linear en Configuración → Integraciones para vincular issues de Linear."
 
@@ -15905,6 +15908,9 @@ msgstr "Ese endpoint no está permitido."
 
 msgid "That handle is taken."
 msgstr "Ese nombre de usuario ya está en uso."
+
+msgid "That Linear issue doesn't exist or you can't see it."
+msgstr "Esa incidencia de Linear no existe o no puedes verla."
 
 msgid "That link doesn't lead anywhere in the app."
 msgstr "Ese enlace no lleva a ninguna parte de la app."

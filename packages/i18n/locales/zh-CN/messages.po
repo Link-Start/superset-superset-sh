@@ -4147,6 +4147,9 @@ msgstr "连接这台电脑"
 msgid "Connect your GitHub repositories and sync pull requests. Track CI status and reviews across your team."
 msgstr "连接你的GitHub仓库并同步拉取请求。跟踪整个团队的CI状态和代码审查。"
 
+msgid "Connect your Linear account before tracking tasks in Linear."
+msgstr "请先连接你的 Linear 账户，再在 Linear 中管理任务。"
+
 msgid "Connect your Linear account in Settings → Integrations to link Linear issues."
 msgstr "请在 设置 → 集成 中连接你的Linear账号，以关联Linear议题。"
 
@@ -15905,6 +15908,9 @@ msgstr "该端点不被允许。"
 
 msgid "That handle is taken."
 msgstr "该用户名已被占用。"
+
+msgid "That Linear issue doesn't exist or you can't see it."
+msgstr "该 Linear 问题不存在，或你无权查看。"
 
 msgid "That link doesn't lead anywhere in the app."
 msgstr "该链接在应用中没有对应的位置。"

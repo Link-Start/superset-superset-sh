@@ -4147,6 +4147,9 @@ msgstr "Verbind deze computer"
 msgid "Connect your GitHub repositories and sync pull requests. Track CI status and reviews across your team."
 msgstr "Koppel je GitHub-repository's en synchroniseer pull requests. Volg CI-status en reviews in je hele team."
 
+msgid "Connect your Linear account before tracking tasks in Linear."
+msgstr "Koppel je Linear-account voordat je taken in Linear bijhoudt."
+
 msgid "Connect your Linear account in Settings → Integrations to link Linear issues."
 msgstr "Koppel je Linear-account in Instellingen → Integraties om Linear-issues te koppelen."
 
@@ -15905,6 +15908,9 @@ msgstr "Dat endpoint is niet toegestaan."
 
 msgid "That handle is taken."
 msgstr "Die handle is al bezet."
+
+msgid "That Linear issue doesn't exist or you can't see it."
+msgstr "Die Linear-issue bestaat niet of je kunt hem niet zien."
 
 msgid "That link doesn't lead anywhere in the app."
 msgstr "Die link leidt nergens heen in de app."
