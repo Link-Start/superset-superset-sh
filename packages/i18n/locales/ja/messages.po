@@ -99,6 +99,10 @@ msgstr "（出力なし）"
 msgid "(so far)"
 msgstr "（現時点）"
 
+#. placeholder {0}: connections.length
+msgid "{0, plural, one {# account connected} other {# accounts connected}}"
+msgstr "{0, plural, other {# 個のアカウントが接続されています}}"
+
 #. placeholder {0}: ports.length
 msgid "{0, plural, one {# active port — hide details} other {# active ports — hide details}}"
 msgstr "{0, plural, one {#個のアクティブなポート — 詳細を隠す} other {#個のアクティブなポート — 詳細を隠す}}"
@@ -735,6 +739,9 @@ msgstr "{total} 件中 {completed} 件完了"
 msgid "{configTitle} font size"
 msgstr "{configTitle}のフォントサイズ"
 
+msgid "{connectorName} account"
+msgstr "{connectorName} アカウント"
+
 msgid "{cookieCount} cookies — forget this site"
 msgstr "{cookieCount}件のCookie — このサイトを削除"
 
@@ -948,6 +955,9 @@ msgstr "{months}か月前"
 
 msgid "{myFailedCount} of your automations failed their last run"
 msgstr "自分のオートメーションのうち{myFailedCount}件が前回の実行に失敗しました"
+
+msgid "{name} accounts"
+msgstr "{name} のアカウント"
 
 #. js-lingui-explicit-id
 msgid "serverError.plugins.marketplaceBuiltinRemove"
@@ -1628,6 +1638,9 @@ msgstr "エージェントを追加する"
 msgid "Add an environment in Settings before creating a cloud workspace"
 msgstr "クラウドワークスペースを作成する前に、設定で環境を追加してください"
 
+msgid "Add another account, or disconnect one you no longer use."
+msgstr "別のアカウントを接続するか、使わなくなったものを解除します。"
+
 msgid "Add any machine as a host. Workspaces keep running when your laptop sleeps, and you can check in from wherever you are."
 msgstr "どんなマシンでもホストとして追加できます。ノートPCがスリープしてもワークスペースは動き続け、どこからでも様子を確認できます。"
 
@@ -2187,6 +2200,9 @@ msgstr "AnthropicがこのAPIキーを拒否しました。"
 msgid "Anthropic rejected this token."
 msgstr "Anthropicがこのトークンを拒否しました。"
 
+msgid "any account"
+msgstr "すべてのアカウント"
+
 msgid "Any channel"
 msgstr "すべてのチャンネル"
 
@@ -2198,6 +2214,9 @@ msgstr "すべてのデータソース"
 
 msgid "Any issue event"
 msgstr "すべてのIssueイベント"
+
+msgid "any label"
+msgstr "すべてのラベル"
 
 msgid "Any label"
 msgstr "すべてのラベル"
@@ -2214,13 +2233,13 @@ msgstr "すべてのページ"
 msgid "Any project"
 msgstr "すべてのプロジェクト"
 
-msgid "Any recipient"
+msgid "any recipient"
 msgstr "すべての宛先"
 
 msgid "Any review"
 msgstr "すべてのレビュー"
 
-msgid "Any sender"
+msgid "any sender"
 msgstr "すべての送信者"
 
 msgid "Any status"
@@ -2334,6 +2353,9 @@ msgstr "承認"
 
 msgid "Approved review"
 msgstr "承認済みレビュー"
+
+msgid "Apps"
+msgstr "アプリ"
 
 msgid "apps/desktop/src/renderer"
 msgstr "apps/desktop/src/renderer"
@@ -4063,9 +4085,6 @@ msgstr "終了前に確認"
 msgid "Connect"
 msgstr "接続"
 
-msgid "Connect {displayName}"
-msgstr "{displayName} を接続"
-
 msgid "Connect {name}"
 msgstr "{name} を接続"
 
@@ -4077,6 +4096,12 @@ msgstr "Google アカウントを接続します。メールボックスは読�
 
 msgid "Connect a microphone to use dictation"
 msgstr "音声入力を使うにはマイクを接続してください"
+
+msgid "Connect an account"
+msgstr "アカウントを接続"
+
+msgid "Connect another account"
+msgstr "別のアカウントを接続"
 
 msgid "Connect any AI agent to Superset."
 msgstr "どのAIエージェントでもSupersetに接続。"
@@ -4152,6 +4177,9 @@ msgstr "接続済み"
 
 msgid "Connected {label}"
 msgstr "{label} に接続しました"
+
+msgid "Connected accounts"
+msgstr "接続済みアカウント"
 
 msgid "Connected as"
 msgstr "接続アカウント"
@@ -5788,6 +5816,9 @@ msgstr "切断"
 
 msgid "Disconnect {credential}?"
 msgstr "{credential}の接続を解除しますか？"
+
+msgid "Disconnect {title}"
+msgstr "{title} を切断"
 
 msgid "Disconnect GitHub?"
 msgstr "GitHubの接続を解除しますか?"
@@ -9233,6 +9264,15 @@ msgstr "マルウェアまたはフィッシング"
 msgid "Manage"
 msgstr "管理"
 
+msgid "Manage {title}"
+msgstr "{title} を管理"
+
+msgid "Manage accounts"
+msgstr "アカウントを管理"
+
+msgid "Manage accounts…"
+msgstr "アカウントを管理…"
+
 msgid "Manage billing"
 msgstr "請求を管理"
 
@@ -9630,6 +9670,10 @@ msgstr "2026年8月からの月数"
 msgid "More"
 msgstr "その他"
 
+#. placeholder {0}: plugin.interface.displayName
+msgid "More {0} actions"
+msgstr "{0} のその他の操作"
+
 msgid "More {kindLower} themes"
 msgstr "他の{kindLower}テーマ"
 
@@ -9996,6 +10040,9 @@ msgstr "良いアプローチ"
 
 msgid "Nice, open a PR when ready."
 msgstr "いいですね。準備ができたらPRを作成してください。"
+
+msgid "Nickname"
+msgstr "ニックネーム"
 
 #. placeholder {0}: AGENT_LABELS[agent]
 msgid "No {0} logins on this host — sign in and usage appears here."
@@ -12630,6 +12677,9 @@ msgstr "推奨サイズは256×256です。"
 msgid "Reconnect"
 msgstr "再接続"
 
+msgid "Reconnect {name}"
+msgstr "{name} を再接続"
+
 msgid "Reconnect Google"
 msgstr "Googleを再接続"
 
@@ -12876,6 +12926,9 @@ msgstr "名前を変更"
 
 msgid "Rename {title}"
 msgstr "{title} の名前を変更"
+
+msgid "Rename account"
+msgstr "アカウント名を変更"
 
 msgid "Rename branch"
 msgstr "ブランチ名を変更"
@@ -15848,6 +15901,9 @@ msgstr "ありがとうございます。受け付けました"
 msgid "That {plugin} sign-in link expired. Try connecting again."
 msgstr "{plugin} のサインインリンクの有効期限が切れました。もう一度接続してください。"
 
+msgid "That account is no longer connected — choose another."
+msgstr "このアカウントは接続されていません。別のアカウントを選択してください。"
+
 msgid "That agent session has no conversation to open yet — it was started but never prompted."
 msgstr "このエージェントセッションにはまだ開ける会話がありません。開始されましたが、一度も指示を受けていません。"
 
@@ -16825,6 +16881,9 @@ msgstr "早期アクセス機能とプレビューを試します。"
 msgid "Try it"
 msgstr "試してみる"
 
+msgid "Try now"
+msgstr "試す"
+
 msgid "Try Superset v2"
 msgstr "Superset v2を試す"
 
@@ -17001,6 +17060,9 @@ msgstr "不明"
 msgctxt "person"
 msgid "Unknown"
 msgstr "不明"
+
+msgid "Unknown account"
+msgstr "不明なアカウント"
 
 msgid "Unknown author"
 msgstr "不明な作成者"
@@ -17287,6 +17349,10 @@ msgstr "モバイルでSupersetを使う"
 
 msgid "Use Superset on your phone with Pro."
 msgstr "Pro でスマートフォンから Superset を使えます。"
+
+#. placeholder {0}: plugin.interface.displayName
+msgid "Use the {0} plugin to "
+msgstr "{0} プラグインを使って "
 
 msgid "Use the desktop app to start running parallel coding agents."
 msgstr "デスクトップアプリで並列コーディングエージェントの実行を始めましょう。"

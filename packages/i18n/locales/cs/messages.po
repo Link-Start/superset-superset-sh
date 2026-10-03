@@ -99,6 +99,10 @@ msgstr "(žádný výstup)"
 msgid "(so far)"
 msgstr "(zatím)"
 
+#. placeholder {0}: connections.length
+msgid "{0, plural, one {# account connected} other {# accounts connected}}"
+msgstr "{0, plural, one {# připojený účet} few {# připojené účty} many {# připojených účtů} other {# připojených účtů}}"
+
 #. placeholder {0}: ports.length
 msgid "{0, plural, one {# active port — hide details} other {# active ports — hide details}}"
 msgstr "{0, plural, one {# aktivní port — skrýt podrobnosti} few {# aktivní porty — skrýt podrobnosti} many {# aktivního portu — skrýt podrobnosti} other {# aktivních portů — skrýt podrobnosti}}"
@@ -735,6 +739,9 @@ msgstr "Dokončeno {completed} z {total}"
 msgid "{configTitle} font size"
 msgstr "Velikost písma: {configTitle}"
 
+msgid "{connectorName} account"
+msgstr "Účet {connectorName}"
+
 msgid "{cookieCount} cookies — forget this site"
 msgstr "{cookieCount} cookies — zapomenout tento web"
 
@@ -948,6 +955,9 @@ msgstr "před {months} měs."
 
 msgid "{myFailedCount} of your automations failed their last run"
 msgstr "Vaše automatizace s neúspěšným posledním během: {myFailedCount}"
+
+msgid "{name} accounts"
+msgstr "Účty {name}"
 
 #. js-lingui-explicit-id
 msgid "serverError.plugins.marketplaceBuiltinRemove"
@@ -1628,6 +1638,9 @@ msgstr "přidat agenta"
 msgid "Add an environment in Settings before creating a cloud workspace"
 msgstr "Před vytvořením cloudového pracovního prostoru přidejte prostředí v Nastavení"
 
+msgid "Add another account, or disconnect one you no longer use."
+msgstr "Připoj další účet nebo odpoj ten, který už nepoužíváš."
+
 msgid "Add any machine as a host. Workspaces keep running when your laptop sleeps, and you can check in from wherever you are."
 msgstr "Přidejte jako hosta libovolný počítač. Pracovní prostory běží dál, i když váš laptop usne, a vy se můžete kdykoli podívat, jak si vedou."
 
@@ -2187,6 +2200,9 @@ msgstr "Anthropic tento API klíč odmítl."
 msgid "Anthropic rejected this token."
 msgstr "Anthropic tento token odmítl."
 
+msgid "any account"
+msgstr "libovolný účet"
+
 msgid "Any channel"
 msgstr "Jakýkoli kanál"
 
@@ -2198,6 +2214,9 @@ msgstr "Jakýkoli zdroj dat"
 
 msgid "Any issue event"
 msgstr "Jakákoli událost issue"
+
+msgid "any label"
+msgstr "jakýkoli štítek"
 
 msgid "Any label"
 msgstr "Jakýkoli štítek"
@@ -2214,14 +2233,14 @@ msgstr "Jakákoli stránka"
 msgid "Any project"
 msgstr "Jakýkoli projekt"
 
-msgid "Any recipient"
-msgstr "Jakýkoli příjemce"
+msgid "any recipient"
+msgstr "jakýkoli příjemce"
 
 msgid "Any review"
 msgstr "Jakákoli revize"
 
-msgid "Any sender"
-msgstr "Jakýkoli odesílatel"
+msgid "any sender"
+msgstr "jakýkoli odesílatel"
 
 msgid "Any status"
 msgstr "Jakýkoli stav"
@@ -2334,6 +2353,9 @@ msgstr "Schváleno"
 
 msgid "Approved review"
 msgstr "Schválená revize"
+
+msgid "Apps"
+msgstr "Aplikace"
 
 msgid "apps/desktop/src/renderer"
 msgstr "apps/desktop/src/renderer"
@@ -4063,9 +4085,6 @@ msgstr "Potvrdit před ukončením"
 msgid "Connect"
 msgstr "Připojit"
 
-msgid "Connect {displayName}"
-msgstr "Připojit {displayName}"
-
 msgid "Connect {name}"
 msgstr "Připojit {name}"
 
@@ -4077,6 +4096,12 @@ msgstr "Připojte účet Google. Jeho schránka je pouze pro čtení a spouště
 
 msgid "Connect a microphone to use dictation"
 msgstr "Pro diktování připojte mikrofon"
+
+msgid "Connect an account"
+msgstr "Připojit účet"
+
+msgid "Connect another account"
+msgstr "Připojit další účet"
 
 msgid "Connect any AI agent to Superset."
 msgstr "Připojte k Superset libovolného AI agenta."
@@ -4152,6 +4177,9 @@ msgstr "Připojeno"
 
 msgid "Connected {label}"
 msgstr "Připojeno {label}"
+
+msgid "Connected accounts"
+msgstr "Připojené účty"
 
 msgid "Connected as"
 msgstr "Připojeno jako"
@@ -5788,6 +5816,9 @@ msgstr "Odpojit"
 
 msgid "Disconnect {credential}?"
 msgstr "Odpojit {credential}?"
+
+msgid "Disconnect {title}"
+msgstr "Odpojit {title}"
 
 msgid "Disconnect GitHub?"
 msgstr "Odpojit GitHub?"
@@ -9233,6 +9264,15 @@ msgstr "Malware nebo phishing"
 msgid "Manage"
 msgstr "Spravovat"
 
+msgid "Manage {title}"
+msgstr "Spravovat {title}"
+
+msgid "Manage accounts"
+msgstr "Správa účtů"
+
+msgid "Manage accounts…"
+msgstr "Správa účtů…"
+
 msgid "Manage billing"
 msgstr "Spravovat fakturaci"
 
@@ -9630,6 +9670,10 @@ msgstr "Měsíce od srpna 2026"
 msgid "More"
 msgstr "Více"
 
+#. placeholder {0}: plugin.interface.displayName
+msgid "More {0} actions"
+msgstr "Další akce {0}"
+
 msgid "More {kindLower} themes"
 msgstr "Další {kindLower} motivy"
 
@@ -9996,6 +10040,9 @@ msgstr "Dobrý přístup"
 
 msgid "Nice, open a PR when ready."
 msgstr "Super, až budeš mít hotovo, otevři PR."
+
+msgid "Nickname"
+msgstr "Přezdívka"
 
 #. placeholder {0}: AGENT_LABELS[agent]
 msgid "No {0} logins on this host — sign in and usage appears here."
@@ -12630,6 +12677,9 @@ msgstr "Doporučená velikost 256×256."
 msgid "Reconnect"
 msgstr "Připojit znovu"
 
+msgid "Reconnect {name}"
+msgstr "Znovu připojit {name}"
+
 msgid "Reconnect Google"
 msgstr "Připojit Google znovu"
 
@@ -12876,6 +12926,9 @@ msgstr "Přejmenovat"
 
 msgid "Rename {title}"
 msgstr "Přejmenovat {title}"
+
+msgid "Rename account"
+msgstr "Přejmenovat účet"
 
 msgid "Rename branch"
 msgstr "Přejmenovat větev"
@@ -15848,6 +15901,9 @@ msgstr "Děkujeme, máme to"
 msgid "That {plugin} sign-in link expired. Try connecting again."
 msgstr "Odkaz pro přihlášení k {plugin} vypršel. Zkuste se připojit znovu."
 
+msgid "That account is no longer connected — choose another."
+msgstr "Tento účet už není připojený — vyberte jiný."
+
 msgid "That agent session has no conversation to open yet — it was started but never prompted."
 msgstr "Tato agentní relace zatím nemá konverzaci k otevření — byla spuštěna, ale nikdy nedostala zadání."
 
@@ -16825,6 +16881,9 @@ msgstr "Vyzkoušejte funkce a náhledy v předstihu."
 msgid "Try it"
 msgstr "Vyzkoušejte to"
 
+msgid "Try now"
+msgstr "Vyzkoušet"
+
 msgid "Try Superset v2"
 msgstr "Vyzkoušet Superset v2"
 
@@ -17001,6 +17060,9 @@ msgstr "Neznámá"
 msgctxt "person"
 msgid "Unknown"
 msgstr "Neznámá"
+
+msgid "Unknown account"
+msgstr "Neznámý účet"
 
 msgid "Unknown author"
 msgstr "Neznámý autor"
@@ -17287,6 +17349,10 @@ msgstr "Používejte Superset na mobilu"
 
 msgid "Use Superset on your phone with Pro."
 msgstr "Používejte Superset na telefonu s Pro."
+
+#. placeholder {0}: plugin.interface.displayName
+msgid "Use the {0} plugin to "
+msgstr "Použij plugin {0} k "
 
 msgid "Use the desktop app to start running parallel coding agents."
 msgstr "Pro spouštění paralelních kódovacích agentů použijte desktopovou aplikaci."

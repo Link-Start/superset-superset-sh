@@ -503,6 +503,11 @@ export const connections = pgTable(
 		externalUserId: text("external_user_id"),
 		externalUserLabel: text("external_user_label"),
 
+		// What the person calls this account. Two accounts on one connector are
+		// told apart by the provider's own labels otherwise, and those are often
+		// the same word twice — "harshith@tegon.ai · harshith@tegon.ai".
+		nickname: text(),
+
 		config: jsonb().$type<Record<string, string | null>>(),
 		state: jsonb().$type<IntegrationConfig>(),
 
@@ -1610,6 +1615,8 @@ export const automationTriggers = pgTable(
 
 		kind: automationTriggerKind().notNull(),
 		config: jsonb().$type<TriggerConfig>().notNull(),
+
+		connectionId: uuid("connection_id"),
 
 		// Schedule kind only. A column rather than config because the dispatcher
 		// indexes and sorts on it.
