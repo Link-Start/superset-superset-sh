@@ -8975,9 +8975,6 @@ msgstr "Đã sao chép liên kết"
 msgid "Link GitHub issue"
 msgstr "Liên kết issue GitHub"
 
-msgid "Link issue"
-msgstr "Liên kết issue"
-
 msgid "Link Linear issue"
 msgstr "Liên kết issue Linear"
 

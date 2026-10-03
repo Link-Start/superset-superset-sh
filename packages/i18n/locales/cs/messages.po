@@ -8975,9 +8975,6 @@ msgstr "Odkaz zkopírován"
 msgid "Link GitHub issue"
 msgstr "Propojit GitHub issue"
 
-msgid "Link issue"
-msgstr "Propojit issue"
-
 msgid "Link Linear issue"
 msgstr "Propojit Linear issue"
 

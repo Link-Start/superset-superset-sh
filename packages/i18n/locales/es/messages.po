@@ -8975,9 +8975,6 @@ msgstr "Enlace copiado"
 msgid "Link GitHub issue"
 msgstr "Enlazar issue de GitHub"
 
-msgid "Link issue"
-msgstr "Enlazar issue"
-
 msgid "Link Linear issue"
 msgstr "Vincular issue de Linear"
 

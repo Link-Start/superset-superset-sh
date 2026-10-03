@@ -8975,9 +8975,6 @@ msgstr "リンクをコピーしました"
 msgid "Link GitHub issue"
 msgstr "GitHub issueをリンク"
 
-msgid "Link issue"
-msgstr "Issueをリンク"
-
 msgid "Link Linear issue"
 msgstr "Linear issueをリンク"
 

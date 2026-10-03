@@ -8975,9 +8975,6 @@ msgstr "Link gekopieerd"
 msgid "Link GitHub issue"
 msgstr "GitHub-issue koppelen"
 
-msgid "Link issue"
-msgstr "Issue koppelen"
-
 msgid "Link Linear issue"
 msgstr "Linear-issue koppelen"
 
