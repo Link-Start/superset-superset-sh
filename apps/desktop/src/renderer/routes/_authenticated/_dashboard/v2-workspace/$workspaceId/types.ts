@@ -112,6 +112,10 @@ export interface DesktopPaneData {
 	kind: "desktop";
 }
 
+export interface MobilePaneData {
+	kind: "mobile";
+}
+
 /**
  * Pointer to one subagent's transcript. The transcript itself is fetched
  * from the host on every read; only this pointer is persisted.
@@ -155,4 +159,5 @@ export type PaneViewerData =
 	| PullRequestPaneData
 	| PagePaneData
 	| DesktopPaneData
+	| MobilePaneData
 	| SubagentPaneData;

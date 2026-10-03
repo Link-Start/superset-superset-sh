@@ -4670,6 +4670,9 @@ msgstr "Bağlantı açılamadı"
 msgid "Could not open Photos"
 msgstr "Fotoğraflar açılamadı"
 
+msgid "Could not reach a mobile simulator."
+msgstr "Bir mobil simülatöre ulaşılamadı."
+
 msgid "Could not reach the desktop."
 msgstr "Masaüstüne ulaşılamadı."
 
@@ -9215,6 +9218,9 @@ msgstr "Uzun vadeli güvenilirlik bir eşiği aşar. Akşam 18.00'de verilen iş
 msgid "Long-hover shortcut-only tooltip; its chip style is now the TooltipContent default"
 msgstr "Uzun bekletmede yalnızca kısayol gösteren tooltip; çip stili artık TooltipContent varsayılanı"
 
+msgid "Looking for a mobile simulator…"
+msgstr "Mobil simülatör aranıyor…"
+
 msgid "Looking for installed browsers…"
 msgstr "Kurulu tarayıcılar aranıyor…"
 
@@ -10333,6 +10339,9 @@ msgstr "Birleştirilmiş pull request yok."
 
 msgid "No messages yet"
 msgstr "Henüz mesaj yok"
+
+msgid "No mobile simulator available here. This needs either a Limrun-enabled cloud sandbox or a local iOS/Android toolchain."
+msgstr "Burada kullanılabilir bir mobil simülatör yok. Limrun destekli bir bulut korumalı alanı veya yerel bir iOS/Android araç zinciri gerekir."
 
 msgid "No name on file"
 msgstr "Kayıtlı ad yok"
@@ -14956,6 +14965,9 @@ msgstr "Sağa böl"
 msgid "Split the current pane along its longer side"
 msgstr "Geçerli bölmeyi uzun kenarı boyunca böl"
 
+msgid "Split the current pane and open a mobile simulator"
+msgstr "Geçerli bölmeyi böl ve bir mobil simülatör aç"
+
 msgid "Split the current pane and open a new browser pane"
 msgstr "Geçerli bölmeyi böl ve yeni bir tarayıcı bölmesi aç"
 
@@ -14976,6 +14988,9 @@ msgstr "Bölünmüş görünüm"
 
 msgid "Split with Desktop"
 msgstr "Masaüstüyle böl"
+
+msgid "Split with Mobile Simulator"
+msgstr "Mobil Simülatörle böl"
 
 msgid "Split with New Browser"
 msgstr "Yeni tarayıcıyla böl"
@@ -15149,6 +15164,9 @@ msgstr "Bulut çalışma alanı başlatılıyor"
 
 msgid "Starting the agent…"
 msgstr "Aracı başlatılıyor…"
+
+msgid "Starting the simulator…"
+msgstr "Simülatör başlatılıyor…"
 
 msgid "Starting up. This should only take a moment."
 msgstr "Başlatılıyor. Yalnızca kısa bir süre alacaktır."
@@ -16185,6 +16203,9 @@ msgstr "Sunucu bulunamadı"
 
 msgid "The sign-in link was incomplete. Please try again."
 msgstr "Oturum açma bağlantısı eksikti. Lütfen yeniden deneyin."
+
+msgid "The simulator instance was terminated."
+msgstr "Simülatör örneği sonlandırıldı."
 
 msgid "The site's certificate authority is not trusted"
 msgstr "Sitenin sertifika yetkilisine güvenilmiyor"
