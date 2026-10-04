@@ -1,8 +1,10 @@
-import { getLocaleMessages, SUPPORTED_LOCALES } from "@superset/i18n";
+import { DEFAULT_LOCALE, getLocaleMessages } from "@superset/i18n";
 import { COMPANY } from "@superset/shared/constants";
 import type { Metadata } from "next";
+import { cacheLife } from "next/cache";
 import { IBM_Plex_Mono, Inter } from "next/font/google";
 import Script from "next/script";
+import { Suspense } from "react";
 import { CookieConsent } from "@/components/CookieConsent";
 import {
 	OrganizationJsonLd,
@@ -105,11 +107,14 @@ export const metadata: Metadata = {
 	manifest: "/manifest.json",
 };
 
-// Declares the locale space for the [lang] segment. Pages themselves stay
-// dynamic (the nav resolves the viewer's session), but Next validates and
-// types the param set from this.
+async function currentYear(): Promise<number> {
+	"use cache";
+	cacheLife("days");
+	return new Date().getFullYear();
+}
+
 export function generateStaticParams() {
-	return SUPPORTED_LOCALES.map((lang) => ({ lang }));
+	return [{ lang: DEFAULT_LOCALE }];
 }
 
 export default async function RootLayout({
@@ -157,11 +162,17 @@ export default async function RootLayout({
 				<Providers locale={locale} messages={messages}>
 					<MobileLaunchProvider isLaunched={isLaunched}>
 						<Header
-							ctaButtons={<CTAButtons />}
+							ctaButtons={
+								<Suspense fallback={null}>
+									<CTAButtons />
+								</Suspense>
+							}
 							starCounter={<GitHubStarCounter />}
 						/>
 						{children}
-						<Footer locale={locale} />
+						<Suspense fallback={null}>
+							<Footer locale={locale} year={await currentYear()} />
+						</Suspense>
 					</MobileLaunchProvider>
 					<CookieConsent />
 				</Providers>
