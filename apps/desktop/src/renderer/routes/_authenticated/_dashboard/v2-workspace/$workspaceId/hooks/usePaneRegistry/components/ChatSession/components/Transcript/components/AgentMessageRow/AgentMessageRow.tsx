@@ -1,6 +1,4 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import type { SessionSnapshot } from "@superset/chat/core";
-import { displayText } from "@superset/chat/core";
 import type { AgentMessage } from "@superset/chat/protocol";
 import {
 	DropdownMenu,
@@ -10,9 +8,12 @@ import {
 } from "@superset/ui/dropdown-menu";
 import { cn } from "@superset/ui/utils";
 import { Check, Copy, GitBranch } from "lucide-react";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback } from "react";
+import { useCopyToClipboard } from "renderer/hooks/useCopyToClipboard";
 import type { ChatForkTarget } from "../../../../types";
 import { MarkdownView } from "../../../MarkdownView";
+
+const COPIED_MS = 1500;
 
 function clockLabel(item: AgentMessage): string {
 	const at = item.completedAtMs ?? item.startedAtMs;
@@ -26,33 +27,23 @@ export function AgentMessageRow({
 	canForkToWorktree = true,
 	item,
 	onFork,
-	snapshot,
+	text,
 }: {
 	item: AgentMessage;
-	snapshot: SessionSnapshot;
+	text: string;
 	/** Absent when this agent cannot branch its own session. */
 	onFork?: ((target: ChatForkTarget) => void) | undefined;
 	/** False when there is no project to cut a worktree from. */
 	canForkToWorktree?: boolean;
 }) {
 	const { t } = useLingui();
-	const text = displayText(snapshot, item.id);
-	const [copied, setCopied] = useState(false);
-
-	useEffect(() => {
-		if (!copied) return;
-		const timer = setTimeout(() => setCopied(false), 1500);
-		return () => clearTimeout(timer);
-	}, [copied]);
+	const { copied, copyToClipboard } = useCopyToClipboard(COPIED_MS);
 
 	const copy = useCallback(() => {
-		void navigator.clipboard
-			.writeText(text)
-			.then(() => setCopied(true))
-			.catch((error: unknown) => {
-				console.error("[chat] copy failed", error);
-			});
-	}, [text]);
+		copyToClipboard(text).catch((error: unknown) => {
+			console.error("[chat] copy failed", error);
+		});
+	}, [copyToClipboard, text]);
 
 	return (
 		// Actions stay out of the way until the message is pointed at, and stay

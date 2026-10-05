@@ -1,5 +1,6 @@
-import { Plural, Trans } from "@lingui/react/macro";
+import { Plural, Trans, useLingui } from "@lingui/react/macro";
 import type { ToolCall, ToolKind } from "@superset/chat/protocol";
+import { ShimmerLabel } from "@superset/ui/ai-elements/shimmer-label";
 import {
 	Collapsible,
 	CollapsibleContent,
@@ -17,12 +18,14 @@ import {
 	SquareTerminal,
 	Wrench,
 } from "lucide-react";
-import type { ComponentType } from "react";
-import { useState } from "react";
+import type { ComponentType, ReactNode } from "react";
+import { useMemo, useState } from "react";
+import { fileChangeOf } from "../../utils/fileChange";
 import { ToolContentList } from "../ToolContentList";
-
-/** How many trailing output lines a call shows without being expanded. */
-const PREVIEW_LINES = 3;
+import { FileChangeTitle } from "./components/FileChangeTitle";
+import { StatusWord } from "./components/StatusWord";
+import { durationLabel } from "./utils/durationLabel";
+import { outputTail } from "./utils/outputTail";
 
 const ICON_BY_KIND: Record<ToolKind, ComponentType<{ className?: string }>> = {
 	read: FileText,
@@ -36,78 +39,61 @@ const ICON_BY_KIND: Record<ToolKind, ComponentType<{ className?: string }>> = {
 	other: Wrench,
 };
 
-function durationLabel(item: ToolCall): string | null {
-	if (item.completedAtMs === undefined) return null;
-	return `${((item.completedAtMs - item.startedAtMs) / 1000).toFixed(1)}s`;
-}
-
-/**
- * The tail, not the head: the end of a command's output is the part worth
- * seeing without opening anything.
- */
-function outputTail(
-	item: ToolCall,
-): { lines: string[]; hidden: number } | null {
-	const text = item.content
-		.map((content) =>
-			content.type === "text"
-				? content.text
-				: content.type === "terminal"
-					? content.output
-					: null,
-		)
-		.filter((value): value is string => value !== null)
-		.join("\n")
-		.trimEnd();
-	if (text === "") return null;
-	// A fence delimiter is markup, not a line of output, and in a three-line
-	// preview it costs a third of what there is to see. Dropped rather than
-	// peeled off the ends: the text may hold several blocks.
-	const all = text
-		.split("\n")
-		.filter((line) => !line.trimStart().startsWith("```"));
-	return {
-		lines: all.slice(-PREVIEW_LINES),
-		hidden: Math.max(0, all.length - PREVIEW_LINES),
-	};
-}
-
 /**
  * One line per call, the way an editor lists what an agent did: the tool's own
  * icon and title, the tail of its output beneath, and the rest behind a
- * disclosure that says how much it is hiding. Status rides the icon rather than
- * a chip, and the raw tool name stays out of it.
+ * disclosure that says how much it is hiding. A running call shimmers its
+ * title; a settled one recedes, so the live frontier is what the eye lands on,
+ * and the raw tool name stays out of it.
  */
 export function ToolCallRow({ item }: { item: ToolCall }) {
+	const { t } = useLingui();
 	const [open, setOpen] = useState(false);
 	const duration = durationLabel(item);
 	const hasBody = item.content.length > 0;
 	const Icon = ICON_BY_KIND[item.toolKind] ?? Wrench;
-	const failed = item.status === "failed" || item.status === "declined";
+	const running = item.status === "running";
 	const tail = outputTail(item);
-
+	const change = useMemo(() => fileChangeOf(item), [item]);
+	let title: ReactNode;
+	if (change) {
+		title = <FileChangeTitle change={change} item={item} running={running} />;
+	} else if (running) {
+		// The translator names a command "Terminal" until the command itself
+		// arrives a beat later; "Running" says more in the meantime.
+		const label =
+			item.toolKind === "execute" && item.title === "Terminal"
+				? t({ message: "Running" })
+				: item.title;
+		title = (
+			<span className="min-w-0 truncate">
+				<ShimmerLabel className="font-normal">{label}</ShimmerLabel>
+			</span>
+		);
+	} else {
+		title = <span className="min-w-0 truncate">{item.title}</span>;
+	}
 	return (
-		<Collapsible onOpenChange={setOpen} open={open}>
-			<div
-				className={cn(
-					"flex items-center gap-2 py-0.5 text-sm",
-					failed ? "text-destructive" : "text-muted-foreground",
-				)}
-			>
-				<Icon
-					className={cn(
-						"size-3.5 shrink-0",
-						item.status === "running" && "animate-pulse",
-					)}
-				/>
-				<span className="min-w-0 flex-1 truncate">{item.title}</span>
+		<Collapsible
+			className={cn(
+				"transition-opacity duration-300",
+				!running && !open && "opacity-60 hover:opacity-100",
+			)}
+			onOpenChange={setOpen}
+			open={open}
+		>
+			<div className="flex items-center gap-2 py-0.5 text-muted-foreground text-sm">
+				<Icon className="size-3.5 shrink-0" />
+				<span className="flex min-w-0 flex-1 items-center gap-1.5">
+					{title}
+				</span>
+				<StatusWord status={item.status} />
 				{duration && (
 					<span className="shrink-0 text-xs tabular-nums opacity-50">
 						{duration}
 					</span>
 				)}
 			</div>
-
 			{tail && !open && (
 				<div className="ml-[22px] flex flex-col overflow-hidden">
 					{tail.lines.map((line, index) => (
@@ -121,7 +107,6 @@ export function ToolCallRow({ item }: { item: ToolCall }) {
 					))}
 				</div>
 			)}
-
 			{hasBody && (
 				<>
 					<CollapsibleTrigger className="ml-[22px] py-0.5 text-muted-foreground/60 text-xs hover:text-foreground">
@@ -139,7 +124,11 @@ export function ToolCallRow({ item }: { item: ToolCall }) {
 					</CollapsibleTrigger>
 					<CollapsibleContent>
 						<div className="mt-1 ml-[7px] flex flex-col gap-2 border-border/60 border-l pl-3">
-							<ToolContentList itemId={item.id} items={item.content} />
+							<ToolContentList
+								itemId={item.id}
+								items={item.content}
+								streaming={running}
+							/>
 						</div>
 					</CollapsibleContent>
 				</>
