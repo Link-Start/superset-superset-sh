@@ -12587,9 +12587,6 @@ msgstr "Losowa ikona"
 msgid "Rank"
 msgstr "Miejsce"
 
-msgid "rank #{rank} of {total}"
-msgstr "miejsce {rank} z {total}"
-
 msgid "Rank by"
 msgstr "Ranking wg"
 
@@ -14420,6 +14417,9 @@ msgstr "Udostępnij"
 
 msgid "Share designs and reports. Let your agent handle the feedback."
 msgstr "Udostępniaj projekty i raporty. Pozwól agentowi zająć się opiniami."
+
+msgid "Share of listed models"
+msgstr "Udział wymienionych modeli"
 
 msgid "Share page"
 msgstr "Udostępnij stronę"
@@ -18368,8 +18368,8 @@ msgstr "Twój szczebel to ważona ocena z celów, których zmierzono {0}, więc 
 msgid "Your Slack account has been linked to Superset. You can close this tab and return to Slack."
 msgstr "Twoje konto Slack zostało powiązane z Superset. Możesz zamknąć tę kartę i wrócić do Slacka."
 
-msgid "Your stats, settled in combat"
-msgstr "Twoje statystyki, rozstrzygnięte w walce"
+msgid "Your stats, settled in mortal combat"
+msgstr "Twoje statystyki rozstrzygną walkę na śmierć i życie"
 
 msgid "Your subscription has been activated. You can now access all Pro features."
 msgstr "Twoja subskrypcja została aktywowana. Masz teraz dostęp do wszystkich funkcji Pro."
