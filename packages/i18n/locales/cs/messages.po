@@ -361,11 +361,6 @@ msgstr "čeká {0} → {1}"
 msgid "{0} actions"
 msgstr "Akce {0}"
 
-#. placeholder {0}: left.name
-#. placeholder {1}: right.name
-msgid "{0} and {1} settle it as terminal dinosaurs. Stats decide the winner."
-msgstr "{0} a {1} si to vyříkají jako termináloví dinosauři. O vítězi rozhodnou statistiky."
-
 #. placeholder {0}: formatTokens(belowGap > 0n ? belowGap : 0n)
 msgid "{0} behind you"
 msgstr "{0} za vámi"
@@ -1043,9 +1038,6 @@ msgstr "{reason}"
 
 msgid "{received} of {total}"
 msgstr "{received} z {total}"
-
-msgid "{runLabel} · everybody to {operatorTier}"
-msgstr "{runLabel} · všichni na {operatorTier}"
 
 msgid "{seconds}s ago"
 msgstr "před {seconds} s"
@@ -3451,6 +3443,9 @@ msgstr "Kontroly prošly"
 
 msgid "Checks Skipped"
 msgstr "Kontroly přeskočeny"
+
+msgid "Choose a fighter"
+msgstr "Vyberte bojovníka"
 
 msgid "Choose a folder"
 msgstr "Vyberte složku"
@@ -6023,9 +6018,6 @@ msgstr "Stáhnout základ"
 
 msgid "Download Superset"
 msgstr "Stáhnout Superset"
-
-msgid "Download Superset and publish yours"
-msgstr "Stáhněte si Superset a zveřejněte svá čísla"
 
 #. placeholder {0}: COMPANY.DOMAIN
 msgid "Download Superset at <0>{0}/download</0>."
@@ -11958,9 +11950,6 @@ msgstr "Vyberte složku pro worktree projektu na {hostName}."
 msgid "Pick the worktree folder on {hostName}."
 msgstr "Vyberte složku pro worktree na {hostName}."
 
-msgid "Pick two developers, watch their agent usage stats fight it out as terminal dinosaurs. Same two handles always produce the same fight."
-msgstr "Vyber dva vývojáře a sleduj, jak jejich statistiky využití agentů bojují jako termináloví dinosauři. Stejná dvojice jmen vždy vytvoří stejný souboj."
-
 msgid "Pick your agent for a one-line install, or copy the config by hand. Every client, including OAuth and API key setup, is covered in the <0>full MCP server docs</0>."
 msgstr "Vyberte svého agenta pro instalaci na jeden řádek, nebo konfiguraci zkopírujte ručně. Všechny klienty, včetně nastavení OAuth a API klíčů, pokrývá <0>kompletní dokumentace MCP serveru</0>."
 
@@ -12295,9 +12284,6 @@ msgstr "Obrázky produktu"
 
 msgid "Production run"
 msgstr "Výrobní cyklus"
-
-msgid "Production run status"
-msgstr "Stav Production Run"
 
 msgid "Productivity"
 msgstr "Produktivita"
@@ -13573,9 +13559,6 @@ msgstr "Spustit"
 msgid "Run {0} now"
 msgstr "Spustit {0} teď"
 
-msgid "Run {runNumber}"
-msgstr "Run {runNumber}"
-
 msgid "Run <0>{tokenCommand}</0><1><2/></1> in a terminal and paste the token here."
 msgstr "V terminálu spusťte <0>{tokenCommand}</0><1><2/></1> a vložte sem token."
 
@@ -14055,6 +14038,9 @@ msgstr "Podívejte se, jak si Superset stojí vedle dalších AI nástrojů pro 
 
 msgid "See how Superset compares to other tools"
 msgstr "Podívejte se, jak si Superset stojí vedle jiných nástrojů"
+
+msgid "See how your agent usage compares. Explore the models behind each profile."
+msgstr "Podívejte se, jak si stojí vaše využití agentů. Prozkoumejte modely u jednotlivých profilů."
 
 msgid "See Less"
 msgstr "Zobrazit méně"
@@ -17933,9 +17919,6 @@ msgstr "Kde je tento terminálový skript dostupný."
 
 msgid "Where to look next"
 msgstr "Kam se podívat dál"
-
-msgid "Where you actually are"
-msgstr "Kde doopravdy jste"
 
 msgid "Whether the people acquired stay and what they pay."
 msgstr "Zda získaní lidé zůstávají a kolik platí."

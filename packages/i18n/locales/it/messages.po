@@ -361,11 +361,6 @@ msgstr "{0} → {1} in attesa"
 msgid "{0} actions"
 msgstr "Azioni di {0}"
 
-#. placeholder {0}: left.name
-#. placeholder {1}: right.name
-msgid "{0} and {1} settle it as terminal dinosaurs. Stats decide the winner."
-msgstr "{0} e {1} se la giocano come dinosauri da terminale. Le statistiche decidono il vincitore."
-
 #. placeholder {0}: formatTokens(belowGap > 0n ? belowGap : 0n)
 msgid "{0} behind you"
 msgstr "{0} dietro di te"
@@ -1043,9 +1038,6 @@ msgstr "{reason}"
 
 msgid "{received} of {total}"
 msgstr "{received} di {total}"
-
-msgid "{runLabel} · everybody to {operatorTier}"
-msgstr "{runLabel} · tutti a {operatorTier}"
 
 msgid "{seconds}s ago"
 msgstr "{seconds}s fa"
@@ -3451,6 +3443,9 @@ msgstr "Controlli superati"
 
 msgid "Checks Skipped"
 msgstr "Controlli saltati"
+
+msgid "Choose a fighter"
+msgstr "Scegli un combattente"
 
 msgid "Choose a folder"
 msgstr "Scegli una cartella"
@@ -6023,9 +6018,6 @@ msgstr "Scarica un modello iniziale"
 
 msgid "Download Superset"
 msgstr "Scarica Superset"
-
-msgid "Download Superset and publish yours"
-msgstr "Scarica Superset e pubblica il tuo profilo"
 
 #. placeholder {0}: COMPANY.DOMAIN
 msgid "Download Superset at <0>{0}/download</0>."
@@ -11958,9 +11950,6 @@ msgstr "Scegli la cartella dei worktree del progetto su {hostName}."
 msgid "Pick the worktree folder on {hostName}."
 msgstr "Scegli la cartella dei worktree su {hostName}."
 
-msgid "Pick two developers, watch their agent usage stats fight it out as terminal dinosaurs. Same two handles always produce the same fight."
-msgstr "Scegli due sviluppatori e guarda le loro statistiche di utilizzo degli agenti sfidarsi come dinosauri da terminale. Gli stessi due handle producono sempre lo stesso scontro."
-
 msgid "Pick your agent for a one-line install, or copy the config by hand. Every client, including OAuth and API key setup, is covered in the <0>full MCP server docs</0>."
 msgstr "Scegli il tuo agente per un'installazione in una riga, oppure copia la configurazione a mano. Ogni client, inclusa la configurazione di OAuth e delle chiavi API, è trattato nella <0>documentazione completa del server MCP</0>."
 
@@ -12295,9 +12284,6 @@ msgstr "Immagini del prodotto"
 
 msgid "Production run"
 msgstr "Ciclo di produzione"
-
-msgid "Production run status"
-msgstr "Stato della Production Run"
 
 msgid "Productivity"
 msgstr "Produttività"
@@ -13573,9 +13559,6 @@ msgstr "Esegui"
 msgid "Run {0} now"
 msgstr "Esegui {0} ora"
 
-msgid "Run {runNumber}"
-msgstr "Run {runNumber}"
-
 msgid "Run <0>{tokenCommand}</0><1><2/></1> in a terminal and paste the token here."
 msgstr "Esegui <0>{tokenCommand}</0><1><2/></1> in un terminale e incolla qui il token."
 
@@ -14055,6 +14038,9 @@ msgstr "Scopri come Superset si confronta con gli altri strumenti di programmazi
 
 msgid "See how Superset compares to other tools"
 msgstr "Guarda come Superset si confronta con gli altri strumenti"
+
+msgid "See how your agent usage compares. Explore the models behind each profile."
+msgstr "Confronta il tuo utilizzo degli agenti con quello degli altri. Esplora i modelli di ogni profilo."
 
 msgid "See Less"
 msgstr "Mostra meno"
@@ -17933,9 +17919,6 @@ msgstr "Dove è disponibile questo script del terminale."
 
 msgid "Where to look next"
 msgstr "Dove cercare"
-
-msgid "Where you actually are"
-msgstr "Dove sei davvero"
 
 msgid "Whether the people acquired stay and what they pay."
 msgstr "Se le persone acquisite restano e quanto pagano."

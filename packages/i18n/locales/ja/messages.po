@@ -361,11 +361,6 @@ msgstr "{0} → {1} 保留中"
 msgid "{0} actions"
 msgstr "{0}の操作"
 
-#. placeholder {0}: left.name
-#. placeholder {1}: right.name
-msgid "{0} and {1} settle it as terminal dinosaurs. Stats decide the winner."
-msgstr "{0}と{1}がターミナル恐竜となって決着をつけます。勝敗を決めるのは統計です。"
-
 #. placeholder {0}: formatTokens(belowGap > 0n ? belowGap : 0n)
 msgid "{0} behind you"
 msgstr "{0}差で後続"
@@ -1043,9 +1038,6 @@ msgstr "{reason}"
 
 msgid "{received} of {total}"
 msgstr "{received}/{total}"
-
-msgid "{runLabel} · everybody to {operatorTier}"
-msgstr "{runLabel} · 全員が{operatorTier}へ"
 
 msgid "{seconds}s ago"
 msgstr "{seconds}秒前"
@@ -3451,6 +3443,9 @@ msgstr "チェックが成功しました"
 
 msgid "Checks Skipped"
 msgstr "チェックをスキップ"
+
+msgid "Choose a fighter"
+msgstr "ファイターを選ぶ"
 
 msgid "Choose a folder"
 msgstr "フォルダを選択"
@@ -6023,9 +6018,6 @@ msgstr "スターターをダウンロード"
 
 msgid "Download Superset"
 msgstr "Supersetをダウンロード"
-
-msgid "Download Superset and publish yours"
-msgstr "Superset をダウンロードして自分の記録を公開"
 
 #. placeholder {0}: COMPANY.DOMAIN
 msgid "Download Superset at <0>{0}/download</0>."
@@ -11958,9 +11950,6 @@ msgstr "{hostName}のプロジェクトのワークツリーフォルダを選�
 msgid "Pick the worktree folder on {hostName}."
 msgstr "{hostName}のワークツリーフォルダを選択してください。"
 
-msgid "Pick two developers, watch their agent usage stats fight it out as terminal dinosaurs. Same two handles always produce the same fight."
-msgstr "開発者を2人選ぶと、エージェントの使用統計をもとにターミナル恐竜として戦います。同じハンドルの組み合わせなら常に同じ試合になります。"
-
 msgid "Pick your agent for a one-line install, or copy the config by hand. Every client, including OAuth and API key setup, is covered in the <0>full MCP server docs</0>."
 msgstr "エージェントを選べば1行でインストールできます。設定を手でコピーしても構いません。OAuthやAPIキーの設定を含む各クライアントの手順は<0>MCPサーバーの完全なドキュメント</0>にあります。"
 
@@ -12295,9 +12284,6 @@ msgstr "製品画像"
 
 msgid "Production run"
 msgstr "生産稼働"
-
-msgid "Production run status"
-msgstr "プロダクションランの状況"
 
 msgid "Productivity"
 msgstr "生産性"
@@ -13573,9 +13559,6 @@ msgstr "実行"
 msgid "Run {0} now"
 msgstr "{0}を今すぐ実行"
 
-msgid "Run {runNumber}"
-msgstr "ラン {runNumber}"
-
 msgid "Run <0>{tokenCommand}</0><1><2/></1> in a terminal and paste the token here."
 msgstr "ターミナルで<0>{tokenCommand}</0><1><2/></1>を実行してトークンをここに貼り付けてください。"
 
@@ -14055,6 +14038,9 @@ msgstr "AIエディタからコーディングエージェント、クラウド�
 
 msgid "See how Superset compares to other tools"
 msgstr "Supersetと他ツールの比較を見る"
+
+msgid "See how your agent usage compares. Explore the models behind each profile."
+msgstr "エージェントの使用量を他の開発者と比較できます。各プロフィールで使われているモデルを確認しましょう。"
 
 msgid "See Less"
 msgstr "表示を減らす"
@@ -17933,9 +17919,6 @@ msgstr "このターミナルスクリプトを利用できる範囲。"
 
 msgid "Where to look next"
 msgstr "次に見る場所"
-
-msgid "Where you actually are"
-msgstr "あなたの実際の位置"
 
 msgid "Whether the people acquired stay and what they pay."
 msgstr "獲得した人が定着し、いくら支払っているか。"

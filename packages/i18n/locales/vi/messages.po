@@ -361,11 +361,6 @@ msgstr "{0} → {1} đang chờ"
 msgid "{0} actions"
 msgstr "Hành động {0}"
 
-#. placeholder {0}: left.name
-#. placeholder {1}: right.name
-msgid "{0} and {1} settle it as terminal dinosaurs. Stats decide the winner."
-msgstr "{0} và {1} phân định thắng thua trong hình hài khủng long terminal. Thống kê quyết định người thắng."
-
 #. placeholder {0}: formatTokens(belowGap > 0n ? belowGap : 0n)
 msgid "{0} behind you"
 msgstr "{0} phía sau bạn"
@@ -1043,9 +1038,6 @@ msgstr "{reason}"
 
 msgid "{received} of {total}"
 msgstr "{received} trên {total}"
-
-msgid "{runLabel} · everybody to {operatorTier}"
-msgstr "{runLabel} · tất cả lên {operatorTier}"
 
 msgid "{seconds}s ago"
 msgstr "{seconds} giây trước"
@@ -3451,6 +3443,9 @@ msgstr "Check đã qua"
 
 msgid "Checks Skipped"
 msgstr "Check đã bỏ qua"
+
+msgid "Choose a fighter"
+msgstr "Chọn một đấu sĩ"
 
 msgid "Choose a folder"
 msgstr "Chọn thư mục"
@@ -6023,9 +6018,6 @@ msgstr "Tải bản mẫu"
 
 msgid "Download Superset"
 msgstr "Tải Superset"
-
-msgid "Download Superset and publish yours"
-msgstr "Tải Superset và công bố số liệu của bạn"
 
 #. placeholder {0}: COMPANY.DOMAIN
 msgid "Download Superset at <0>{0}/download</0>."
@@ -11958,9 +11950,6 @@ msgstr "Chọn thư mục worktree của dự án trên {hostName}."
 msgid "Pick the worktree folder on {hostName}."
 msgstr "Chọn thư mục worktree trên {hostName}."
 
-msgid "Pick two developers, watch their agent usage stats fight it out as terminal dinosaurs. Same two handles always produce the same fight."
-msgstr "Chọn hai nhà phát triển và xem thống kê sử dụng tác nhân của họ so tài trong hình hài khủng long terminal. Cùng một cặp tên luôn tạo ra cùng một trận đấu."
-
 msgid "Pick your agent for a one-line install, or copy the config by hand. Every client, including OAuth and API key setup, is covered in the <0>full MCP server docs</0>."
 msgstr "Chọn agent của bạn để cài bằng một dòng lệnh, hoặc tự sao chép cấu hình. Mọi client, kể cả thiết lập OAuth và khóa API, đều có trong <0>tài liệu đầy đủ về server MCP</0>."
 
@@ -12295,9 +12284,6 @@ msgstr "Hình ảnh sản phẩm"
 
 msgid "Production run"
 msgstr "Đợt sản xuất"
-
-msgid "Production run status"
-msgstr "Trạng thái Production Run"
 
 msgid "Productivity"
 msgstr "Năng suất"
@@ -13573,9 +13559,6 @@ msgstr "Chạy"
 msgid "Run {0} now"
 msgstr "Chạy {0} ngay"
 
-msgid "Run {runNumber}"
-msgstr "Run {runNumber}"
-
 msgid "Run <0>{tokenCommand}</0><1><2/></1> in a terminal and paste the token here."
 msgstr "Chạy <0>{tokenCommand}</0><1><2/></1> trong terminal rồi dán token vào đây."
 
@@ -14055,6 +14038,9 @@ msgstr "Xem Superset so với các công cụ lập trình AI khác, từ editor
 
 msgid "See how Superset compares to other tools"
 msgstr "Xem Superset so với các công cụ khác"
+
+msgid "See how your agent usage compares. Explore the models behind each profile."
+msgstr "So sánh mức sử dụng tác tử của bạn với người khác. Khám phá các mô hình trong từng hồ sơ."
 
 msgid "See Less"
 msgstr "Xem ít hơn"
@@ -17933,9 +17919,6 @@ msgstr "Nơi script terminal này khả dụng."
 
 msgid "Where to look next"
 msgstr "Xem tiếp ở đâu"
-
-msgid "Where you actually are"
-msgstr "Vị trí thật sự của bạn"
 
 msgid "Whether the people acquired stay and what they pay."
 msgstr "Liệu những người thu hút được có ở lại và họ trả bao nhiêu."

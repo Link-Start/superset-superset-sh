@@ -361,11 +361,6 @@ msgstr "{0} → {1}待更新"
 msgid "{0} actions"
 msgstr "{0}的操作"
 
-#. placeholder {0}: left.name
-#. placeholder {1}: right.name
-msgid "{0} and {1} settle it as terminal dinosaurs. Stats decide the winner."
-msgstr "{0}与{1}化身终端恐龙一决高下。数据决定胜负。"
-
 #. placeholder {0}: formatTokens(belowGap > 0n ? belowGap : 0n)
 msgid "{0} behind you"
 msgstr "落后你{0}"
@@ -1043,9 +1038,6 @@ msgstr "{reason}"
 
 msgid "{received} of {total}"
 msgstr "{received}/{total}"
-
-msgid "{runLabel} · everybody to {operatorTier}"
-msgstr "{runLabel} · 全员晋级{operatorTier}"
 
 msgid "{seconds}s ago"
 msgstr "{seconds}秒前"
@@ -3451,6 +3443,9 @@ msgstr "检查通过"
 
 msgid "Checks Skipped"
 msgstr "检查已跳过"
+
+msgid "Choose a fighter"
+msgstr "选择一名斗士"
 
 msgid "Choose a folder"
 msgstr "选择文件夹"
@@ -6023,9 +6018,6 @@ msgstr "下载模板"
 
 msgid "Download Superset"
 msgstr "下载Superset"
-
-msgid "Download Superset and publish yours"
-msgstr "下载 Superset，公开你自己的数据"
 
 #. placeholder {0}: COMPANY.DOMAIN
 msgid "Download Superset at <0>{0}/download</0>."
@@ -11958,9 +11950,6 @@ msgstr "在{hostName}上选择项目的worktree文件夹。"
 msgid "Pick the worktree folder on {hostName}."
 msgstr "在{hostName}上选择worktree文件夹。"
 
-msgid "Pick two developers, watch their agent usage stats fight it out as terminal dinosaurs. Same two handles always produce the same fight."
-msgstr "挑选两位开发者，看他们的智能体使用数据化作终端恐龙一决高下。相同的两个用户名始终产生相同的对战。"
-
 msgid "Pick your agent for a one-line install, or copy the config by hand. Every client, including OAuth and API key setup, is covered in the <0>full MCP server docs</0>."
 msgstr "选择你的智能体获取一行安装命令，或者手动复制配置。所有客户端（含OAuth和API密钥设置）都在<0>完整的MCP服务器文档</0>里。"
 
@@ -12295,9 +12284,6 @@ msgstr "产品图片"
 
 msgid "Production run"
 msgstr "生产运行"
-
-msgid "Production run status"
-msgstr "生产运行状态"
 
 msgid "Productivity"
 msgstr "效率"
@@ -13573,9 +13559,6 @@ msgstr "运行"
 msgid "Run {0} now"
 msgstr "立即运行{0}"
 
-msgid "Run {runNumber}"
-msgstr "第 {runNumber} 期"
-
 msgid "Run <0>{tokenCommand}</0><1><2/></1> in a terminal and paste the token here."
 msgstr "在终端中运行<0>{tokenCommand}</0><1><2/></1>，然后把令牌粘贴到这里。"
 
@@ -14055,6 +14038,9 @@ msgstr "看看Superset与其他AI编码工具的对比，涵盖AI编辑器、编
 
 msgid "See how Superset compares to other tools"
 msgstr "看看Superset与其他工具的对比"
+
+msgid "See how your agent usage compares. Explore the models behind each profile."
+msgstr "比较你与其他开发者的智能体用量，了解每个个人主页使用的模型。"
 
 msgid "See Less"
 msgstr "收起"
@@ -17933,9 +17919,6 @@ msgstr "此终端脚本在哪些地方可用。"
 
 msgid "Where to look next"
 msgstr "接下来可以看这些"
-
-msgid "Where you actually are"
-msgstr "你的真实位置"
 
 msgid "Whether the people acquired stay and what they pay."
 msgstr "获得的用户是否留下，以及付了多少。"

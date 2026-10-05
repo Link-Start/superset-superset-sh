@@ -361,11 +361,6 @@ msgstr "{0} → {1}待更新"
 msgid "{0} actions"
 msgstr "{0}的操作"
 
-#. placeholder {0}: left.name
-#. placeholder {1}: right.name
-msgid "{0} and {1} settle it as terminal dinosaurs. Stats decide the winner."
-msgstr "{0}與{1}化身終端恐龍一決勝負。數據決定輸贏。"
-
 #. placeholder {0}: formatTokens(belowGap > 0n ? belowGap : 0n)
 msgid "{0} behind you"
 msgstr "落後你 {0}"
@@ -1043,9 +1038,6 @@ msgstr "{reason}"
 
 msgid "{received} of {total}"
 msgstr "{received}/{total}"
-
-msgid "{runLabel} · everybody to {operatorTier}"
-msgstr "{runLabel} · 全員晉級{operatorTier}"
 
 msgid "{seconds}s ago"
 msgstr "{seconds}秒前"
@@ -3451,6 +3443,9 @@ msgstr "檢查通過"
 
 msgid "Checks Skipped"
 msgstr "檢查已跳過"
+
+msgid "Choose a fighter"
+msgstr "選擇一名鬥士"
 
 msgid "Choose a folder"
 msgstr "選擇資料夾"
@@ -6023,9 +6018,6 @@ msgstr "下載模板"
 
 msgid "Download Superset"
 msgstr "下載Superset"
-
-msgid "Download Superset and publish yours"
-msgstr "下載 Superset，公開你自己的數據"
 
 #. placeholder {0}: COMPANY.DOMAIN
 msgid "Download Superset at <0>{0}/download</0>."
@@ -11958,9 +11950,6 @@ msgstr "在{hostName}上選擇專案的worktree資料夾。"
 msgid "Pick the worktree folder on {hostName}."
 msgstr "在{hostName}上選擇worktree資料夾。"
 
-msgid "Pick two developers, watch their agent usage stats fight it out as terminal dinosaurs. Same two handles always produce the same fight."
-msgstr "挑選兩位開發者，看他們的智慧代理使用數據化為終端恐龍一決勝負。相同的兩個帳號名稱永遠產生相同的對戰。"
-
 msgid "Pick your agent for a one-line install, or copy the config by hand. Every client, including OAuth and API key setup, is covered in the <0>full MCP server docs</0>."
 msgstr "選擇你的代理程式獲取一行安裝命令，或者手動複製配置。所有客戶端（含OAuth和API金鑰設定）都在<0>完整的MCP伺服器文件</0>裡。"
 
@@ -12295,9 +12284,6 @@ msgstr "產品圖片"
 
 msgid "Production run"
 msgstr "生產運行"
-
-msgid "Production run status"
-msgstr "生產運行狀態"
 
 msgid "Productivity"
 msgstr "效率"
@@ -13573,9 +13559,6 @@ msgstr "執行"
 msgid "Run {0} now"
 msgstr "立即執行{0}"
 
-msgid "Run {runNumber}"
-msgstr "第 {runNumber} 期"
-
 msgid "Run <0>{tokenCommand}</0><1><2/></1> in a terminal and paste the token here."
 msgstr "在終端中執行<0>{tokenCommand}</0><1><2/></1>，然後把權杖貼到這裡。"
 
@@ -14055,6 +14038,9 @@ msgstr "看看Superset與其他AI編碼工具的對比，涵蓋AI編輯器、編
 
 msgid "See how Superset compares to other tools"
 msgstr "看看Superset與其他工具的對比"
+
+msgid "See how your agent usage compares. Explore the models behind each profile."
+msgstr "比較你與其他開發者的代理程式用量，探索每個個人檔案使用的模型。"
 
 msgid "See Less"
 msgstr "收起"
@@ -17933,9 +17919,6 @@ msgstr "此終端指令碼在哪些地方可用。"
 
 msgid "Where to look next"
 msgstr "接下來可以看這些"
-
-msgid "Where you actually are"
-msgstr "你的真實位置"
 
 msgid "Whether the people acquired stay and what they pay."
 msgstr "獲得的使用者是否留下，以及付了多少。"

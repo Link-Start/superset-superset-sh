@@ -361,11 +361,6 @@ msgstr "{0} → {1} pending"
 msgid "{0} actions"
 msgstr "{0} actions"
 
-#. placeholder {0}: left.name
-#. placeholder {1}: right.name
-msgid "{0} and {1} settle it as terminal dinosaurs. Stats decide the winner."
-msgstr "{0} and {1} settle it as terminal dinosaurs. Stats decide the winner."
-
 #. placeholder {0}: formatTokens(belowGap > 0n ? belowGap : 0n)
 msgid "{0} behind you"
 msgstr "{0} behind you"
@@ -1043,9 +1038,6 @@ msgstr "{reason}"
 
 msgid "{received} of {total}"
 msgstr "{received} of {total}"
-
-msgid "{runLabel} · everybody to {operatorTier}"
-msgstr "{runLabel} · everybody to {operatorTier}"
 
 msgid "{seconds}s ago"
 msgstr "{seconds}s ago"
@@ -3451,6 +3443,9 @@ msgstr "Checks passed"
 
 msgid "Checks Skipped"
 msgstr "Checks Skipped"
+
+msgid "Choose a fighter"
+msgstr "Choose a fighter"
 
 msgid "Choose a folder"
 msgstr "Choose a folder"
@@ -6023,9 +6018,6 @@ msgstr "Download starter"
 
 msgid "Download Superset"
 msgstr "Download Superset"
-
-msgid "Download Superset and publish yours"
-msgstr "Download Superset and publish yours"
 
 #. placeholder {0}: COMPANY.DOMAIN
 msgid "Download Superset at <0>{0}/download</0>."
@@ -11958,9 +11950,6 @@ msgstr "Pick the project worktree folder on {hostName}."
 msgid "Pick the worktree folder on {hostName}."
 msgstr "Pick the worktree folder on {hostName}."
 
-msgid "Pick two developers, watch their agent usage stats fight it out as terminal dinosaurs. Same two handles always produce the same fight."
-msgstr "Pick two developers, watch their agent usage stats fight it out as terminal dinosaurs. Same two handles always produce the same fight."
-
 msgid "Pick your agent for a one-line install, or copy the config by hand. Every client, including OAuth and API key setup, is covered in the <0>full MCP server docs</0>."
 msgstr "Pick your agent for a one-line install, or copy the config by hand. Every client, including OAuth and API key setup, is covered in the <0>full MCP server docs</0>."
 
@@ -12295,9 +12284,6 @@ msgstr "Product images"
 
 msgid "Production run"
 msgstr "Production run"
-
-msgid "Production run status"
-msgstr "Production run status"
 
 msgid "Productivity"
 msgstr "Productivity"
@@ -13573,9 +13559,6 @@ msgstr "Run"
 msgid "Run {0} now"
 msgstr "Run {0} now"
 
-msgid "Run {runNumber}"
-msgstr "Run {runNumber}"
-
 msgid "Run <0>{tokenCommand}</0><1><2/></1> in a terminal and paste the token here."
 msgstr "Run <0>{tokenCommand}</0><1><2/></1> in a terminal and paste the token here."
 
@@ -14055,6 +14038,9 @@ msgstr "See how Superset compares to other AI coding tools, from AI editors to c
 
 msgid "See how Superset compares to other tools"
 msgstr "See how Superset compares to other tools"
+
+msgid "See how your agent usage compares. Explore the models behind each profile."
+msgstr "See how your agent usage compares. Explore the models behind each profile."
 
 msgid "See Less"
 msgstr "See Less"
@@ -17933,9 +17919,6 @@ msgstr "Where this terminal script is available."
 
 msgid "Where to look next"
 msgstr "Where to look next"
-
-msgid "Where you actually are"
-msgstr "Where you actually are"
 
 msgid "Whether the people acquired stay and what they pay."
 msgstr "Whether the people acquired stay and what they pay."
