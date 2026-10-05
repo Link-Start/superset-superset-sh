@@ -4926,6 +4926,9 @@ msgstr "无法重启工作区：{0}"
 msgid "Couldn't restore \"{projectName}\""
 msgstr "无法恢复“{projectName}”"
 
+msgid "Couldn't restore \"{workspaceName}\""
+msgstr "无法恢复“{workspaceName}”"
+
 msgid "Couldn't save"
 msgstr "保存失败"
 
@@ -13357,6 +13360,12 @@ msgstr "已恢复“{name}”"
 
 msgid "Restored \"{projectName}\""
 msgstr "已恢复“{projectName}”"
+
+msgid "Restored \"{workspaceName}\""
+msgstr "已恢复“{workspaceName}”"
+
+msgid "Restoring \"{workspaceName}\"…"
+msgstr "正在恢复“{workspaceName}”…"
 
 msgid "Restoring your session"
 msgstr "正在恢复你的会话"

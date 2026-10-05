@@ -4926,6 +4926,9 @@ msgstr "Не удалось перезапустить рабочую облас
 msgid "Couldn't restore \"{projectName}\""
 msgstr "Не удалось восстановить «{projectName}»"
 
+msgid "Couldn't restore \"{workspaceName}\""
+msgstr "Не удалось восстановить «{workspaceName}»"
+
 msgid "Couldn't save"
 msgstr "Не удалось сохранить"
 
@@ -13357,6 +13360,12 @@ msgstr "«{name}» восстановлен"
 
 msgid "Restored \"{projectName}\""
 msgstr "«{projectName}» восстановлен"
+
+msgid "Restored \"{workspaceName}\""
+msgstr "Восстановлено: «{workspaceName}»"
+
+msgid "Restoring \"{workspaceName}\"…"
+msgstr "Восстановление «{workspaceName}»…"
 
 msgid "Restoring your session"
 msgstr "Восстановление сессии"
