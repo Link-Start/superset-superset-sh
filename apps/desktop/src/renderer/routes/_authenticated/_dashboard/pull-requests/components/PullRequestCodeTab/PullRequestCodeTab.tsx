@@ -5,11 +5,11 @@ import type {
 	DiffLineAnnotation,
 	SelectedLineRange,
 } from "@pierre/diffs";
-import { parsePatchFiles } from "@pierre/diffs";
 import { CodeView, type CodeViewHandle } from "@pierre/diffs/react";
 import { FileTree as PierreFileTree, useFileTree } from "@pierre/trees/react";
 import { errorMessage } from "@superset/i18n/errors";
 import { sanitizePromptForPty } from "@superset/shared/agent-prompt-launch";
+import type { PullRequestDiff } from "@superset/shared/pull-request-diff";
 import { toast } from "@superset/ui/sonner";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
@@ -17,6 +17,8 @@ import {
 	type AgentPromptFileSide,
 	formatAgentPromptWithFileContext,
 } from "renderer/hooks/host-service/useSendToTerminalAgent";
+import { useActiveOrganizationId } from "renderer/hooks/useActiveOrganizationId";
+import { pullRequestRefFromUrl } from "renderer/lib/github/pullRequestRef";
 import { getHostServiceClientByUrl } from "renderer/lib/host-service-client";
 import {
 	createPierreTreeStyle,
@@ -32,11 +34,14 @@ import { DiffFileHeaderName } from "renderer/screens/main/components/DiffFileHea
 import { DiffViewToolbar } from "renderer/screens/main/components/DiffViewToolbar";
 import { ResizablePanel } from "renderer/screens/main/components/ResizablePanel";
 import { useWorkspaceCreates } from "renderer/stores/workspace-creates/useWorkspaceCreates";
-import { PullRequestCommentComposer } from "../PullRequestCommentComposer";
-import { PullRequestCommentThread } from "../PullRequestCommentThread";
+import { pullRequestReadErrorMessage } from "../../utils/combinePullRequestReadErrors";
+import { PullRequestCommentComposer } from "./components/PullRequestCommentComposer";
+import { PullRequestCommentThread } from "./components/PullRequestCommentThread";
+import { fetchPullRequestDiff } from "./utils/fetchPullRequestDiff";
+import { parsePullRequestPatch } from "./utils/parsePullRequestPatch";
 
 interface PullRequestCodeTabProps {
-	projectId: string;
+	projectId: string | null;
 	prNumber: number;
 	prUrl: string;
 	hostUrl: string;
@@ -141,25 +146,22 @@ interface ParsedFileDiff {
 // Left to throw on a malformed patch instead of swallowing the error —
 // callers need to tell "the PR genuinely has no changes" apart from "the
 // patch failed to parse", which look identical if this just returns [].
-function parseFileDiffs(patch: string): ParsedFileDiff[] {
-	if (!patch.trim()) return [];
-	return parsePatchFiles(patch, undefined, false).flatMap((parsedPatch) =>
-		parsedPatch.files.map((fileDiff, index) => {
-			let additions = 0;
-			let deletions = 0;
-			for (const hunk of fileDiff.hunks) {
-				additions += hunk.additionLines;
-				deletions += hunk.deletionLines;
-			}
-			return {
-				item: { id: `${fileDiff.name}-${index}`, type: "diff", fileDiff },
-				path: fileDiff.name,
-				status: CHANGE_TYPE_TO_PIERRE_STATUS[fileDiff.type] ?? "modified",
-				additions,
-				deletions,
-			};
-		}),
-	);
+function parseFileDiffs(diff: PullRequestDiff): ParsedFileDiff[] {
+	return parsePullRequestPatch(diff).map((fileDiff, index) => {
+		let additions = 0;
+		let deletions = 0;
+		for (const hunk of fileDiff.hunks) {
+			additions += hunk.additionLines;
+			deletions += hunk.deletionLines;
+		}
+		return {
+			item: { id: `${fileDiff.name}-${index}`, type: "diff", fileDiff },
+			path: fileDiff.name,
+			status: CHANGE_TYPE_TO_PIERRE_STATUS[fileDiff.type] ?? "modified",
+			additions,
+			deletions,
+		};
+	});
 }
 
 // Matches DiffPane's useDiffCommentComposer: a range spanning both an
@@ -282,13 +284,27 @@ export function PullRequestCodeTab({
 		[],
 	);
 	const queryClient = useQueryClient();
+	const organizationId = useActiveOrganizationId();
+	const repoFullName = pullRequestRefFromUrl(prUrl)?.repoFullName ?? null;
+	const canUseProject = !!projectId && !!hostUrl;
 
 	const { data, isLoading, error, refetch } = useQuery({
-		queryKey: ["pull-request-diff", projectId, hostUrl, prNumber],
-		queryFn: async () => {
-			const client = getHostServiceClientByUrl(hostUrl);
-			return client.pullRequests.getDiff.query({ projectId, prNumber });
-		},
+		queryKey: [
+			"pull-request-diff",
+			organizationId,
+			repoFullName,
+			projectId,
+			hostUrl,
+			prNumber,
+		],
+		queryFn: () =>
+			fetchPullRequestDiff({
+				projectId,
+				hostUrl,
+				prNumber,
+				repoFullName,
+				organizationId,
+			}),
 		staleTime: 30_000,
 		gcTime: 10 * 60_000,
 	});
@@ -301,7 +317,9 @@ export function PullRequestCodeTab({
 	];
 	const { data: threadsData, dataUpdatedAt: threadsUpdatedAt } = useQuery({
 		queryKey: threadsQueryKey,
+		enabled: canUseProject,
 		queryFn: async () => {
+			if (!projectId) return { reviewThreads: [], fetchFailed: false };
 			const client = getHostServiceClientByUrl(hostUrl);
 			return client.pullRequests.getThreads.query({ projectId, prNumber });
 		},
@@ -384,6 +402,8 @@ export function PullRequestCodeTab({
 	>(new Set());
 	const replyToThread = useMutation({
 		mutationFn: async (input: { commentId: number; body: string }) => {
+			if (!projectId)
+				throw new Error("No project available to reply to a thread");
 			const client = getHostServiceClientByUrl(hostUrl);
 			return client.pullRequests.replyToThread.mutate({
 				projectId,
@@ -423,7 +443,9 @@ export function PullRequestCodeTab({
 	];
 	const { data: linkedWorkspaceData } = useQuery({
 		queryKey: linkedWorkspaceQueryKey,
+		enabled: canUseProject,
 		queryFn: async () => {
+			if (!projectId) return { workspaceId: null };
 			const client = getHostServiceClientByUrl(hostUrl);
 			return client.pullRequests.getLinkedWorkspace.query({
 				projectId,
@@ -486,7 +508,7 @@ export function PullRequestCodeTab({
 				return;
 			}
 
-			if (!hostId) {
+			if (!hostId || !projectId) {
 				throw new Error("No host available to create a workspace");
 			}
 			const { completed } = submitWorkspaceCreate({
@@ -561,14 +583,14 @@ export function PullRequestCodeTab({
 
 	const parsedPatch = useMemo(() => {
 		try {
-			return { files: parseFileDiffs(data?.patch ?? ""), error: null };
+			return { files: parseFileDiffs(data ?? { patch: "" }), error: null };
 		} catch (err) {
 			return {
 				files: [] as ParsedFileDiff[],
 				error: errorMessage(err, "Failed to parse diff"),
 			};
 		}
-	}, [data?.patch]);
+	}, [data]);
 	const files = parsedPatch.files;
 	const patchParseError = parsedPatch.error;
 	const areAllFilesCollapsed =
@@ -717,8 +739,8 @@ export function PullRequestCodeTab({
 		() =>
 			({
 				...options,
-				enableLineSelection: true,
-				enableGutterUtility: true,
+				enableLineSelection: canUseProject,
+				enableGutterUtility: canUseProject,
 				// Pierre gates the gutter "+" button's pointer flow behind a
 				// non-null onGutterUtilityClick (InteractionManager's
 				// startGutterSelectionFromPointerDown early-returns otherwise)
@@ -730,7 +752,7 @@ export function PullRequestCodeTab({
 					range: SelectedLineRange | null,
 					context: { type: "diff" | "file"; item: { id: string } },
 				) => {
-					if (context.type !== "diff" || !range) {
+					if (!canUseProject || context.type !== "diff" || !range) {
 						updateComposer(null);
 						return;
 					}
@@ -739,7 +761,7 @@ export function PullRequestCodeTab({
 					updateComposer({ itemId: context.item.id, path, range });
 				},
 			}) as CodeViewOptions<PrAnnotationMetadata>,
-		[options, pathByItemId, updateComposer],
+		[options, pathByItemId, updateComposer, canUseProject],
 	);
 
 	const treePaths = useMemo(() => files.map((f) => f.path), [files]);
@@ -829,7 +851,7 @@ export function PullRequestCodeTab({
 			<div ref={rootRef} className="flex min-h-0 flex-1 flex-col">
 				<div className="flex flex-1 items-center justify-center">
 					<WorkItemDetailState
-						message={error.message}
+						message={pullRequestReadErrorMessage(error)}
 						isError
 						onRetry={() => void refetch()}
 					/>

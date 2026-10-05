@@ -3465,9 +3465,6 @@ msgstr "Bir üst dizin seçin"
 msgid "Choose a project from GitHub issues before opening an issue."
 msgstr "Bir issue açmadan önce GitHub issue'ları bölümünden bir proje seçin."
 
-msgid "Choose a project from Pull requests before opening a pull request."
-msgstr "Pull request açmadan önce Pull request'ler bölümünden bir proje seçin."
-
 msgid "Choose a section."
 msgstr "Bir bölüm seçin."
 
@@ -3863,9 +3860,6 @@ msgstr "Kod bloğu"
 
 msgid "Code Block"
 msgstr "Kod bloğu"
-
-msgid "Code isn't available — this workspace's project doesn't have this pull request's repository."
-msgstr "Kod kullanılamıyor — bu çalışma alanının projesi bu pull request'in deposuna sahip değil."
 
 msgid "Cohort"
 msgstr "Kohort"
@@ -12493,9 +12487,6 @@ msgstr "Pull request #{0}, {1}"
 
 msgid "Pull request actions"
 msgstr "Pull request eylemleri"
-
-msgid "Pull request not found."
-msgstr "Pull request bulunamadı."
 
 msgid "Pull request title"
 msgstr "Pull request başlığı"

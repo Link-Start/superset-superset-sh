@@ -3465,9 +3465,6 @@ msgstr "Escolha um diretório pai"
 msgid "Choose a project from GitHub issues before opening an issue."
 msgstr "Escolha um projeto em Issues do GitHub antes de abrir uma issue."
 
-msgid "Choose a project from Pull requests before opening a pull request."
-msgstr "Escolha um projeto em Pull requests antes de abrir um pull request."
-
 msgid "Choose a section."
 msgstr "Escolha uma seção."
 
@@ -3863,9 +3860,6 @@ msgstr "Bloco de código"
 
 msgid "Code Block"
 msgstr "Bloco de código"
-
-msgid "Code isn't available — this workspace's project doesn't have this pull request's repository."
-msgstr "O código não está disponível — o projeto desta área de trabalho não tem o repositório deste pull request."
 
 msgid "Cohort"
 msgstr "Coorte"
@@ -12493,9 +12487,6 @@ msgstr "Pull request #{0}, {1}"
 
 msgid "Pull request actions"
 msgstr "Ações do pull request"
-
-msgid "Pull request not found."
-msgstr "Pull request não encontrado."
 
 msgid "Pull request title"
 msgstr "Título do pull request"

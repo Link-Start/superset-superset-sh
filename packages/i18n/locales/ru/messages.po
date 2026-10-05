@@ -3465,9 +3465,6 @@ msgstr "Выберите родительскую папку"
 msgid "Choose a project from GitHub issues before opening an issue."
 msgstr "Выберите проект в разделе задач GitHub, прежде чем открывать задачу."
 
-msgid "Choose a project from Pull requests before opening a pull request."
-msgstr "Выберите проект в разделе «Пул-реквесты», прежде чем открывать пул-реквест."
-
 msgid "Choose a section."
 msgstr "Выберите раздел."
 
@@ -3863,9 +3860,6 @@ msgstr "Блок кода"
 
 msgid "Code Block"
 msgstr "Блок кода"
-
-msgid "Code isn't available — this workspace's project doesn't have this pull request's repository."
-msgstr "Код недоступен — проект этой рабочей области не содержит репозиторий этого пул-реквеста."
 
 msgid "Cohort"
 msgstr "Когорта"
@@ -12493,9 +12487,6 @@ msgstr "Пул-реквест #{0}, {1}"
 
 msgid "Pull request actions"
 msgstr "Действия с пул-реквестом"
-
-msgid "Pull request not found."
-msgstr "Пул-реквест не найден."
 
 msgid "Pull request title"
 msgstr "Заголовок пул-реквеста"

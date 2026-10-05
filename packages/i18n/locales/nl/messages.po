@@ -3465,9 +3465,6 @@ msgstr "Kies een bovenliggende map"
 msgid "Choose a project from GitHub issues before opening an issue."
 msgstr "Kies een project bij GitHub-issues voordat je een issue opent."
 
-msgid "Choose a project from Pull requests before opening a pull request."
-msgstr "Kies een project bij Pull requests voordat je een pull request opent."
-
 msgid "Choose a section."
 msgstr "Kies een onderdeel."
 
@@ -3863,9 +3860,6 @@ msgstr "Codeblok"
 
 msgid "Code Block"
 msgstr "Codeblok"
-
-msgid "Code isn't available — this workspace's project doesn't have this pull request's repository."
-msgstr "Code is niet beschikbaar — het project van deze werkruimte heeft de repository van deze pull request niet."
 
 msgid "Cohort"
 msgstr "Cohort"
@@ -12493,9 +12487,6 @@ msgstr "Pull request #{0}, {1}"
 
 msgid "Pull request actions"
 msgstr "Acties voor pull request"
-
-msgid "Pull request not found."
-msgstr "Pull request niet gevonden."
 
 msgid "Pull request title"
 msgstr "Titel van pull request"
