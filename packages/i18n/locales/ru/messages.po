@@ -2022,6 +2022,9 @@ msgstr "Все ваши данные будут безвозвратно уда�
 msgid "All open terminal sessions will be killed and any running host-services will be stopped. Use “Close Superset” instead if you want services to keep running for the next launch."
 msgstr "Все открытые сессии терминала будут завершены, а работающие службы хоста остановлены. Если нужно, чтобы службы продолжили работу до следующего запуска, используйте «Закрыть Superset»."
 
+msgid "All pages"
+msgstr "Все страницы"
+
 msgid "All plans"
 msgstr "Все тарифы"
 
@@ -4884,6 +4887,9 @@ msgstr "Не удалось загрузить более ранние сооб�
 
 msgid "Couldn't load issues: {msg}"
 msgstr "Не удалось загрузить задачи: {msg}"
+
+msgid "Couldn't load pages"
+msgstr "Не удалось загрузить страницы"
 
 msgid "Couldn't load pull requests: {msg}"
 msgstr "Не удалось загрузить пул-реквесты: {msg}"
@@ -10461,6 +10467,9 @@ msgstr "Нет подходящих моделей"
 
 msgid "No matching org members."
 msgstr "Нет подходящих участников организации."
+
+msgid "No matching pages"
+msgstr "Нет подходящих страниц"
 
 msgid "No members yet"
 msgstr "Участников пока нет"
@@ -16804,6 +16813,9 @@ msgstr "Все индексированные изменения будут уд
 
 msgid "This will unstage and revert all staged changes. Staged new files will be deleted. This cannot be undone."
 msgstr "Это снимет индексацию и откатит все проиндексированные изменения. Проиндексированные новые файлы будут удалены. Отменить нельзя."
+
+msgid "This workspace"
+msgstr "Эта рабочая область"
 
 msgid "This workspace has no project to branch from"
 msgstr "В этом рабочем пространстве нет проекта для ответвления"

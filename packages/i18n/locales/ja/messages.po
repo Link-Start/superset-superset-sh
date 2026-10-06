@@ -2022,6 +2022,9 @@ msgstr "すべてのデータは{ACCOUNT_DELETION_GRACE_DAYS}日後に完全に�
 msgid "All open terminal sessions will be killed and any running host-services will be stopped. Use “Close Superset” instead if you want services to keep running for the next launch."
 msgstr "開いているターミナルセッションはすべて終了し、実行中のhost-serviceも停止します。次回の起動までサービスを実行し続けたい場合は、「Supersetを閉じる」を使用してください。"
 
+msgid "All pages"
+msgstr "すべてのページ"
+
 msgid "All plans"
 msgstr "すべてのプラン"
 
@@ -4884,6 +4887,9 @@ msgstr "以前のメッセージを読み込めませんでした。再試行"
 
 msgid "Couldn't load issues: {msg}"
 msgstr "Issueを読み込めませんでした: {msg}"
+
+msgid "Couldn't load pages"
+msgstr "ページを読み込めませんでした"
 
 msgid "Couldn't load pull requests: {msg}"
 msgstr "プルリクエストを読み込めませんでした: {msg}"
@@ -10461,6 +10467,9 @@ msgstr "一致するモデルがありません"
 
 msgid "No matching org members."
 msgstr "一致する組織メンバーがいません。"
+
+msgid "No matching pages"
+msgstr "一致するページはありません"
 
 msgid "No members yet"
 msgstr "メンバーはまだいません"
@@ -16804,6 +16813,9 @@ msgstr "ステージされたすべての変更をステージから外して元
 
 msgid "This will unstage and revert all staged changes. Staged new files will be deleted. This cannot be undone."
 msgstr "ステージ済みの変更をすべてステージ解除して元に戻します。ステージ済みの新規ファイルは削除されます。元に戻せません。"
+
+msgid "This workspace"
+msgstr "このワークスペース"
 
 msgid "This workspace has no project to branch from"
 msgstr "このワークスペースには分岐元のプロジェクトがありません"
