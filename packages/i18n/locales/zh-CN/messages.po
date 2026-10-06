@@ -2464,6 +2464,9 @@ msgstr "请求进行修改"
 msgid "Ask to make changes, @mention files, run /commands"
 msgstr "说明要做的修改，用@提及文件，用/运行命令"
 
+msgid "Ask what your agents are up to, or tell one what to do next."
+msgstr "问问智能体在做什么，或者告诉它下一步该做什么。"
+
 msgid "Asks before edits and commands"
 msgstr "编辑和运行命令前询问"
 
@@ -3432,6 +3435,12 @@ msgstr "正在检查主机…"
 
 msgid "Checking out a PR requires a project"
 msgstr "检出PR需要一个项目"
+
+msgid "Checking pull requests in {what}"
+msgstr "正在检查 {what} 的拉取请求"
+
+msgid "Checking workspaces"
+msgstr "正在检查工作区"
 
 msgid "Checking..."
 msgstr "正在检查..."
@@ -4990,6 +4999,9 @@ msgstr "无法启动云端工作区"
 msgid "Couldn't start design mode on this page"
 msgstr "无法在此页面启动设计模式"
 
+msgid "Couldn't start voice mode"
+msgstr "无法启动语音模式"
+
 msgid "Couldn't start workspace"
 msgstr "无法启动工作区"
 
@@ -5228,6 +5240,12 @@ msgstr "创建中"
 msgctxt "file change"
 msgid "Creating"
 msgstr "创建中"
+
+msgid "Creating a task"
+msgstr "正在创建任务"
+
+msgid "Creating a workspace"
+msgstr "正在创建工作区"
 
 msgid "Creating PR..."
 msgstr "正在创建PR…"
@@ -6349,6 +6367,15 @@ msgstr "启用远程访问，并保持这台电脑唤醒且 Superset 持续运�
 msgid "Enable skill"
 msgstr "启用技能"
 
+msgid "End voice session"
+msgstr "结束语音会话"
+
+msgid "Ended"
+msgstr "已结束"
+
+msgid "Ending the call"
+msgstr "正在结束通话"
+
 msgid "Engineering deep-dives and launches."
 msgstr "工程深度文章与新功能发布。"
 
@@ -6543,6 +6570,9 @@ msgstr "展开项目"
 msgid "Expand thread"
 msgstr "展开讨论"
 
+msgid "Expand voice"
+msgstr "展开语音"
+
 msgid "Expand workspace"
 msgstr "展开工作区"
 
@@ -6594,6 +6624,9 @@ msgstr "外部编辑器"
 
 msgid "extra ${used} of ${limit}"
 msgstr "额外用量${used}/${limit}"
+
+msgid "Extra high"
+msgstr "极高"
 
 msgid "Extra small"
 msgstr "超小"
@@ -8451,6 +8484,9 @@ msgstr "内部"
 msgid "Internet Disconnected"
 msgstr "网络已断开"
 
+msgid "Interrupt"
+msgstr "打断"
+
 msgid "Interrupted"
 msgstr "已中断"
 
@@ -9082,6 +9118,9 @@ msgstr "列出、创建、更新和删除主机上的工作区。"
 msgid "List, get, create, update, and delete tasks; track status."
 msgstr "列出、获取、创建、更新和删除任务；跟踪状态。"
 
+msgid "Listening"
+msgstr "正在聆听"
+
 msgid "Listening agents"
 msgstr "监听智能体"
 
@@ -9090,6 +9129,9 @@ msgstr "正在监听频道消息和新建的频道。"
 
 msgid "Listening status unavailable"
 msgstr "监听状态不可用"
+
+msgid "Listing sessions in {what}"
+msgstr "正在列出 {what} 的会话"
 
 msgid "live"
 msgstr "实时"
@@ -9280,11 +9322,23 @@ msgstr "长周期可靠性越过了一个门槛。傍晚6点派出去的活儿�
 msgid "Long-hover shortcut-only tooltip; its chip style is now the TooltipContent default"
 msgstr "长时间悬停才出现、只显示快捷键的tooltip；它的chip样式现在是TooltipContent的默认样式"
 
+msgid "Looking at {what}"
+msgstr "正在查看 {what}"
+
+msgid "Looking at tasks"
+msgstr "正在查看任务"
+
 msgid "Looking for a mobile simulator…"
 msgstr "正在查找移动模拟器…"
 
 msgid "Looking for installed browsers…"
 msgstr "正在查找已安装的浏览器…"
+
+msgid "Looking for pages"
+msgstr "正在查找页面"
+
+msgid "Looking up a workspace"
+msgstr "正在查找工作区"
 
 msgid "Looks good"
 msgstr "看起来不错"
@@ -9602,6 +9656,9 @@ msgctxt "workspaces I created"
 msgid "Mine"
 msgstr "我的"
 
+msgid "Minimal"
+msgstr "最低"
+
 msgid "Minimal reasoning effort"
 msgstr "最少的推理投入"
 
@@ -9812,8 +9869,14 @@ msgstr "有多个项目使用此仓库（{0}）。请在设置中选择要在此
 msgid "Multiple projects use this repository ({0}). Open the project you want from settings to set it up on this device."
 msgstr "有多个项目使用此仓库（{0}）。请在设置中打开你想要的项目，以在此设备上配置它。"
 
+msgid "Mute"
+msgstr "静音"
+
 msgid "Mute notifications"
 msgstr "静音通知"
+
+msgid "Muted"
+msgstr "已静音"
 
 msgid "My Agent"
 msgstr "我的智能体"
@@ -11476,6 +11539,9 @@ msgstr "已创建"
 msgid "opened PR #841 for review"
 msgstr "开了PR #841待审查"
 
+msgid "Opening {what}"
+msgstr "正在打开 {what}"
+
 msgid "Opening files"
 msgstr "打开文件"
 
@@ -12678,6 +12744,12 @@ msgstr "阅读并行编码智能体指南"
 msgid "Read the setup guide"
 msgstr "阅读设置指南"
 
+msgid "Reading {what}"
+msgstr "正在读取 {what}"
+
+msgid "Reading the page"
+msgstr "正在读取页面"
+
 msgid "Reading usage…"
 msgstr "正在读取用量…"
 
@@ -12774,6 +12846,9 @@ msgstr "正在重新连接"
 
 msgid "Reconnecting…"
 msgstr "正在重新连接…"
+
+msgid "Reconnecting… your conversation is kept."
+msgstr "正在重新连接… 对话会保留。"
 
 msgid "Red"
 msgstr "红色"
@@ -13336,6 +13411,9 @@ msgstr "已重启1个主机服务"
 
 msgid "Restarting"
 msgstr "重启中"
+
+msgid "Restarting {what}"
+msgstr "正在重启 {what}"
 
 msgid "Restarting agents on {accountLabel}."
 msgstr "正在{accountLabel}上重新启动智能体。"
@@ -14298,6 +14376,9 @@ msgstr "发送到聊天（{draftCount}）"
 msgid "Sending"
 msgstr "正在发送"
 
+msgid "Sending a message to {what}"
+msgstr "正在向 {what} 发送消息"
+
 msgid "Sending..."
 msgstr "正在发送..."
 
@@ -14997,8 +15078,14 @@ msgstr "垃圾信息或诈骗"
 msgid "Sparse checkout"
 msgstr "稀疏检出"
 
+msgid "Speaking"
+msgstr "正在说话"
+
 msgid "Specific"
 msgstr "指定"
+
+msgid "Speed"
+msgstr "速度"
 
 msgid "Spend"
 msgstr "支出"
@@ -15209,6 +15296,9 @@ msgstr "用标签栏中的+新建一个。"
 msgid "Start or stop the workspace run command"
 msgstr "启动或停止工作区运行命令"
 
+msgid "Start voice mode"
+msgstr "开始语音模式"
+
 msgid "Start with the work."
 msgstr "从工作本身开始。"
 
@@ -15232,6 +15322,9 @@ msgstr "启动中"
 
 msgid "Starting {agentLabel}"
 msgstr "正在启动{agentLabel}"
+
+msgid "Starting an agent in {what}"
+msgstr "正在 {what} 中启动代理"
 
 msgid "Starting cloud workspace"
 msgstr "正在启动云端工作区"
@@ -15335,6 +15428,9 @@ msgstr "停止工作区运行命令"
 
 msgid "stopped"
 msgstr "已停止"
+
+msgid "Stopping the agent in {what}"
+msgstr "正在停止 {what} 中的代理"
 
 msgid "Strikethrough"
 msgstr "删除线"
@@ -17234,6 +17330,9 @@ msgstr "用户数不限"
 msgid "Unlink task"
 msgstr "取消关联任务"
 
+msgid "Unmute"
+msgstr "取消静音"
+
 msgid "Unmute notifications"
 msgstr "取消静音通知"
 
@@ -17674,6 +17773,15 @@ msgstr "从访客到下载到账号"
 
 msgid "Visitors whose session began on a link an assistant gave them. This is the number an AEO effort should move."
 msgstr "从助手给出的链接开始会话的访客。这是 AEO 工作应当推动的数字。"
+
+msgid "Voice"
+msgstr "语音"
+
+msgid "Voice ran into a problem. Try again."
+msgstr "语音模式出现问题，请重试。"
+
+msgid "Voice settings"
+msgstr "语音设置"
 
 msgid "Volume"
 msgstr "音量"

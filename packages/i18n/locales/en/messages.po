@@ -2464,6 +2464,9 @@ msgstr "Ask to make changes"
 msgid "Ask to make changes, @mention files, run /commands"
 msgstr "Ask to make changes, @mention files, run /commands"
 
+msgid "Ask what your agents are up to, or tell one what to do next."
+msgstr "Ask what your agents are up to, or tell one what to do next."
+
 msgid "Asks before edits and commands"
 msgstr "Asks before edits and commands"
 
@@ -3432,6 +3435,12 @@ msgstr "Checking host…"
 
 msgid "Checking out a PR requires a project"
 msgstr "Checking out a PR requires a project"
+
+msgid "Checking pull requests in {what}"
+msgstr "Checking pull requests in {what}"
+
+msgid "Checking workspaces"
+msgstr "Checking workspaces"
 
 msgid "Checking..."
 msgstr "Checking..."
@@ -4990,6 +4999,9 @@ msgstr "Couldn't start cloud workspace"
 msgid "Couldn't start design mode on this page"
 msgstr "Couldn't start design mode on this page"
 
+msgid "Couldn't start voice mode"
+msgstr "Couldn't start voice mode"
+
 msgid "Couldn't start workspace"
 msgstr "Couldn't start workspace"
 
@@ -5228,6 +5240,12 @@ msgstr "Creating"
 msgctxt "file change"
 msgid "Creating"
 msgstr "Creating"
+
+msgid "Creating a task"
+msgstr "Creating a task"
+
+msgid "Creating a workspace"
+msgstr "Creating a workspace"
 
 msgid "Creating PR..."
 msgstr "Creating PR..."
@@ -6349,6 +6367,15 @@ msgstr "Enable Remote Access and keep this computer awake with Superset running.
 msgid "Enable skill"
 msgstr "Enable skill"
 
+msgid "End voice session"
+msgstr "End voice session"
+
+msgid "Ended"
+msgstr "Ended"
+
+msgid "Ending the call"
+msgstr "Ending the call"
+
 msgid "Engineering deep-dives and launches."
 msgstr "Engineering deep-dives and launches."
 
@@ -6543,6 +6570,9 @@ msgstr "Expand project"
 msgid "Expand thread"
 msgstr "Expand thread"
 
+msgid "Expand voice"
+msgstr "Expand voice"
+
 msgid "Expand workspace"
 msgstr "Expand workspace"
 
@@ -6594,6 +6624,9 @@ msgstr "External editor"
 
 msgid "extra ${used} of ${limit}"
 msgstr "extra ${used} of ${limit}"
+
+msgid "Extra high"
+msgstr "Extra high"
 
 msgid "Extra small"
 msgstr "Extra small"
@@ -8451,6 +8484,9 @@ msgstr "Internal"
 msgid "Internet Disconnected"
 msgstr "Internet Disconnected"
 
+msgid "Interrupt"
+msgstr "Interrupt"
+
 msgid "Interrupted"
 msgstr "Interrupted"
 
@@ -9082,6 +9118,9 @@ msgstr "List, create, update, and delete workspaces on a host."
 msgid "List, get, create, update, and delete tasks; track status."
 msgstr "List, get, create, update, and delete tasks; track status."
 
+msgid "Listening"
+msgstr "Listening"
+
 msgid "Listening agents"
 msgstr "Listening agents"
 
@@ -9090,6 +9129,9 @@ msgstr "Listening for channel messages and new channels."
 
 msgid "Listening status unavailable"
 msgstr "Listening status unavailable"
+
+msgid "Listing sessions in {what}"
+msgstr "Listing sessions in {what}"
 
 msgid "live"
 msgstr "live"
@@ -9280,11 +9322,23 @@ msgstr "Long-horizon reliability crosses a threshold. Work assigned at 6pm is me
 msgid "Long-hover shortcut-only tooltip; its chip style is now the TooltipContent default"
 msgstr "Long-hover shortcut-only tooltip; its chip style is now the TooltipContent default"
 
+msgid "Looking at {what}"
+msgstr "Looking at {what}"
+
+msgid "Looking at tasks"
+msgstr "Looking at tasks"
+
 msgid "Looking for a mobile simulator…"
 msgstr "Looking for a mobile simulator…"
 
 msgid "Looking for installed browsers…"
 msgstr "Looking for installed browsers…"
+
+msgid "Looking for pages"
+msgstr "Looking for pages"
+
+msgid "Looking up a workspace"
+msgstr "Looking up a workspace"
 
 msgid "Looks good"
 msgstr "Looks good"
@@ -9602,6 +9656,9 @@ msgctxt "workspaces I created"
 msgid "Mine"
 msgstr "Mine"
 
+msgid "Minimal"
+msgstr "Minimal"
+
 msgid "Minimal reasoning effort"
 msgstr "Minimal reasoning effort"
 
@@ -9812,8 +9869,14 @@ msgstr "Multiple projects use this repository ({0}). Choose the project in setti
 msgid "Multiple projects use this repository ({0}). Open the project you want from settings to set it up on this device."
 msgstr "Multiple projects use this repository ({0}). Open the project you want from settings to set it up on this device."
 
+msgid "Mute"
+msgstr "Mute"
+
 msgid "Mute notifications"
 msgstr "Mute notifications"
+
+msgid "Muted"
+msgstr "Muted"
 
 msgid "My Agent"
 msgstr "My Agent"
@@ -11476,6 +11539,9 @@ msgstr "Opened"
 msgid "opened PR #841 for review"
 msgstr "opened PR #841 for review"
 
+msgid "Opening {what}"
+msgstr "Opening {what}"
+
 msgid "Opening files"
 msgstr "Opening files"
 
@@ -12678,6 +12744,12 @@ msgstr "Read the guide to parallel coding agents"
 msgid "Read the setup guide"
 msgstr "Read the setup guide"
 
+msgid "Reading {what}"
+msgstr "Reading {what}"
+
+msgid "Reading the page"
+msgstr "Reading the page"
+
 msgid "Reading usage…"
 msgstr "Reading usage…"
 
@@ -12774,6 +12846,9 @@ msgstr "Reconnecting"
 
 msgid "Reconnecting…"
 msgstr "Reconnecting…"
+
+msgid "Reconnecting… your conversation is kept."
+msgstr "Reconnecting… your conversation is kept."
 
 msgid "Red"
 msgstr "Red"
@@ -13336,6 +13411,9 @@ msgstr "Restarted 1 host service"
 
 msgid "Restarting"
 msgstr "Restarting"
+
+msgid "Restarting {what}"
+msgstr "Restarting {what}"
 
 msgid "Restarting agents on {accountLabel}."
 msgstr "Restarting agents on {accountLabel}."
@@ -14298,6 +14376,9 @@ msgstr "Send to chat ({draftCount})"
 msgid "Sending"
 msgstr "Sending"
 
+msgid "Sending a message to {what}"
+msgstr "Sending a message to {what}"
+
 msgid "Sending..."
 msgstr "Sending..."
 
@@ -14997,8 +15078,14 @@ msgstr "Spam or a scam"
 msgid "Sparse checkout"
 msgstr "Sparse checkout"
 
+msgid "Speaking"
+msgstr "Speaking"
+
 msgid "Specific"
 msgstr "Specific"
+
+msgid "Speed"
+msgstr "Speed"
 
 msgid "Spend"
 msgstr "Spend"
@@ -15209,6 +15296,9 @@ msgstr "Start one with + in the tab strip."
 msgid "Start or stop the workspace run command"
 msgstr "Start or stop the workspace run command"
 
+msgid "Start voice mode"
+msgstr "Start voice mode"
+
 msgid "Start with the work."
 msgstr "Start with the work."
 
@@ -15232,6 +15322,9 @@ msgstr "Starting"
 
 msgid "Starting {agentLabel}"
 msgstr "Starting {agentLabel}"
+
+msgid "Starting an agent in {what}"
+msgstr "Starting an agent in {what}"
 
 msgid "Starting cloud workspace"
 msgstr "Starting cloud workspace"
@@ -15335,6 +15428,9 @@ msgstr "Stop workspace run command"
 
 msgid "stopped"
 msgstr "stopped"
+
+msgid "Stopping the agent in {what}"
+msgstr "Stopping the agent in {what}"
 
 msgid "Strikethrough"
 msgstr "Strikethrough"
@@ -17234,6 +17330,9 @@ msgstr "Unlimited users"
 msgid "Unlink task"
 msgstr "Unlink task"
 
+msgid "Unmute"
+msgstr "Unmute"
+
 msgid "Unmute notifications"
 msgstr "Unmute notifications"
 
@@ -17674,6 +17773,15 @@ msgstr "Visitors to downloads to accounts"
 
 msgid "Visitors whose session began on a link an assistant gave them. This is the number an AEO effort should move."
 msgstr "Visitors whose session began on a link an assistant gave them. This is the number an AEO effort should move."
+
+msgid "Voice"
+msgstr "Voice"
+
+msgid "Voice ran into a problem. Try again."
+msgstr "Voice ran into a problem. Try again."
+
+msgid "Voice settings"
+msgstr "Voice settings"
 
 msgid "Volume"
 msgstr "Volume"

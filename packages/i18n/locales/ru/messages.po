@@ -2464,6 +2464,9 @@ msgstr "Попросите внести изменения"
 msgid "Ask to make changes, @mention files, run /commands"
 msgstr "Попросите внести изменения, упоминайте файлы через @, запускайте /команды"
 
+msgid "Ask what your agents are up to, or tell one what to do next."
+msgstr "Спросите, чем заняты ваши агенты, или скажите одному из них, что делать дальше."
+
 msgid "Asks before edits and commands"
 msgstr "Спрашивает перед правками и командами"
 
@@ -3432,6 +3435,12 @@ msgstr "Проверка хоста…"
 
 msgid "Checking out a PR requires a project"
 msgstr "Для переключения на PR нужен проект"
+
+msgid "Checking pull requests in {what}"
+msgstr "Проверяю пул-реквесты в {what}"
+
+msgid "Checking workspaces"
+msgstr "Проверяю рабочие области"
 
 msgid "Checking..."
 msgstr "Проверка..."
@@ -4990,6 +4999,9 @@ msgstr "Не удалось запустить облачную рабочую �
 msgid "Couldn't start design mode on this page"
 msgstr "Не удалось запустить режим дизайна на этой странице"
 
+msgid "Couldn't start voice mode"
+msgstr "Не удалось запустить голосовой режим"
+
 msgid "Couldn't start workspace"
 msgstr "Не удалось запустить рабочую область"
 
@@ -5228,6 +5240,12 @@ msgstr "Создание"
 msgctxt "file change"
 msgid "Creating"
 msgstr "Создание"
+
+msgid "Creating a task"
+msgstr "Создание задачи"
+
+msgid "Creating a workspace"
+msgstr "Создание рабочего пространства"
 
 msgid "Creating PR..."
 msgstr "Создание PR…"
@@ -6349,6 +6367,15 @@ msgstr "Включите удалённый доступ и не перевод�
 msgid "Enable skill"
 msgstr "Включить навык"
 
+msgid "End voice session"
+msgstr "Завершить голосовую сессию"
+
+msgid "Ended"
+msgstr "Завершено"
+
+msgid "Ending the call"
+msgstr "Завершение звонка"
+
 msgid "Engineering deep-dives and launches."
 msgstr "Инженерные разборы и запуски."
 
@@ -6543,6 +6570,9 @@ msgstr "Развернуть проект"
 msgid "Expand thread"
 msgstr "Развернуть ветку"
 
+msgid "Expand voice"
+msgstr "Развернуть голос"
+
 msgid "Expand workspace"
 msgstr "Развернуть рабочую область"
 
@@ -6594,6 +6624,9 @@ msgstr "Внешний редактор"
 
 msgid "extra ${used} of ${limit}"
 msgstr "сверх лимита ${used} из ${limit}"
+
+msgid "Extra high"
+msgstr "Очень высокий"
 
 msgid "Extra small"
 msgstr "Очень маленький"
@@ -8451,6 +8484,9 @@ msgstr "Внутренние"
 msgid "Internet Disconnected"
 msgstr "Нет подключения к интернету"
 
+msgid "Interrupt"
+msgstr "Прервать"
+
 msgid "Interrupted"
 msgstr "Прервано"
 
@@ -9082,6 +9118,9 @@ msgstr "Показывать, создавать, обновлять и удал
 msgid "List, get, create, update, and delete tasks; track status."
 msgstr "Показывать, получать, создавать, обновлять и удалять задачи; отслеживать статус."
 
+msgid "Listening"
+msgstr "Слушаю"
+
 msgid "Listening agents"
 msgstr "Агенты, получающие комментарии"
 
@@ -9090,6 +9129,9 @@ msgstr "Слушаем сообщения в каналах и новые кан
 
 msgid "Listening status unavailable"
 msgstr "Статус получения комментариев недоступен"
+
+msgid "Listing sessions in {what}"
+msgstr "Получаю список сессий в {what}"
 
 msgid "live"
 msgstr "онлайн"
@@ -9280,11 +9322,23 @@ msgstr "Надёжность на длинной дистанции перехо
 msgid "Long-hover shortcut-only tooltip; its chip style is now the TooltipContent default"
 msgstr "Подсказка только с сочетанием клавиш при долгом наведении; её стиль чипа теперь по умолчанию для TooltipContent"
 
+msgid "Looking at {what}"
+msgstr "Смотрю {what}"
+
+msgid "Looking at tasks"
+msgstr "Просмотр задач"
+
 msgid "Looking for a mobile simulator…"
 msgstr "Поиск мобильного симулятора…"
 
 msgid "Looking for installed browsers…"
 msgstr "Поиск установленных браузеров…"
+
+msgid "Looking for pages"
+msgstr "Ищу страницы"
+
+msgid "Looking up a workspace"
+msgstr "Ищу рабочую область"
 
 msgid "Looks good"
 msgstr "Выглядит хорошо"
@@ -9602,6 +9656,9 @@ msgctxt "workspaces I created"
 msgid "Mine"
 msgstr "Мои"
 
+msgid "Minimal"
+msgstr "Минимальный"
+
 msgid "Minimal reasoning effort"
 msgstr "Минимальные рассуждения"
 
@@ -9812,8 +9869,14 @@ msgstr "Этот репозиторий используют несколько 
 msgid "Multiple projects use this repository ({0}). Open the project you want from settings to set it up on this device."
 msgstr "Этот репозиторий используют несколько проектов ({0}). Откройте нужный проект из настроек, чтобы настроить его на этом устройстве."
 
+msgid "Mute"
+msgstr "Выключить микрофон"
+
 msgid "Mute notifications"
 msgstr "Отключить уведомления"
+
+msgid "Muted"
+msgstr "Микрофон выключен"
 
 msgid "My Agent"
 msgstr "Мой агент"
@@ -11476,6 +11539,9 @@ msgstr "Открыт"
 msgid "opened PR #841 for review"
 msgstr "открыл PR #841 на ревью"
 
+msgid "Opening {what}"
+msgstr "Открываю {what}"
+
 msgid "Opening files"
 msgstr "Открытие файлов"
 
@@ -12678,6 +12744,12 @@ msgstr "Читать руководство по параллельным код
 msgid "Read the setup guide"
 msgstr "Читать руководство по настройке"
 
+msgid "Reading {what}"
+msgstr "Читаю {what}"
+
+msgid "Reading the page"
+msgstr "Чтение страницы"
+
 msgid "Reading usage…"
 msgstr "Чтение данных об использовании…"
 
@@ -12774,6 +12846,9 @@ msgstr "Переподключение"
 
 msgid "Reconnecting…"
 msgstr "Переподключение…"
+
+msgid "Reconnecting… your conversation is kept."
+msgstr "Переподключение… разговор сохранён."
 
 msgid "Red"
 msgstr "Красный"
@@ -13336,6 +13411,9 @@ msgstr "Перезапущена 1 служба хоста"
 
 msgid "Restarting"
 msgstr "Перезапуск"
+
+msgid "Restarting {what}"
+msgstr "Перезапуск {what}"
 
 msgid "Restarting agents on {accountLabel}."
 msgstr "Перезапускаем агентов на {accountLabel}."
@@ -14298,6 +14376,9 @@ msgstr "Отправить в чат ({draftCount})"
 msgid "Sending"
 msgstr "Отправка"
 
+msgid "Sending a message to {what}"
+msgstr "Отправка сообщения в {what}"
+
 msgid "Sending..."
 msgstr "Отправка..."
 
@@ -14997,8 +15078,14 @@ msgstr "Спам или мошенничество"
 msgid "Sparse checkout"
 msgstr "Частичная выгрузка"
 
+msgid "Speaking"
+msgstr "Говорю"
+
 msgid "Specific"
 msgstr "Определённые"
+
+msgid "Speed"
+msgstr "Скорость"
 
 msgid "Spend"
 msgstr "Расходы"
@@ -15209,6 +15296,9 @@ msgstr "Запустите сессию кнопкой + в полосе вкл�
 msgid "Start or stop the workspace run command"
 msgstr "Запустить или остановить команду запуска рабочей области"
 
+msgid "Start voice mode"
+msgstr "Запустить голосовой режим"
+
 msgid "Start with the work."
 msgstr "Начните с работы."
 
@@ -15232,6 +15322,9 @@ msgstr "Запуск"
 
 msgid "Starting {agentLabel}"
 msgstr "Запуск {agentLabel}"
+
+msgid "Starting an agent in {what}"
+msgstr "Запуск агента в {what}"
 
 msgid "Starting cloud workspace"
 msgstr "Запуск облачной рабочей области"
@@ -15335,6 +15428,9 @@ msgstr "Остановить команду запуска рабочей обл
 
 msgid "stopped"
 msgstr "остановлена"
+
+msgid "Stopping the agent in {what}"
+msgstr "Остановка агента в {what}"
 
 msgid "Strikethrough"
 msgstr "Зачёркнутый"
@@ -17234,6 +17330,9 @@ msgstr "Неограниченное число пользователей"
 msgid "Unlink task"
 msgstr "Отвязать задачу"
 
+msgid "Unmute"
+msgstr "Включить микрофон"
+
 msgid "Unmute notifications"
 msgstr "Включить уведомления"
 
@@ -17674,6 +17773,15 @@ msgstr "От посетителей к загрузкам и аккаунтам"
 
 msgid "Visitors whose session began on a link an assistant gave them. This is the number an AEO effort should move."
 msgstr "Посетители, чья сессия началась по ссылке от ассистента. Это число, которое должна сдвинуть работа над AEO."
+
+msgid "Voice"
+msgstr "Голос"
+
+msgid "Voice ran into a problem. Try again."
+msgstr "В голосовом режиме возникла проблема. Попробуйте ещё раз."
+
+msgid "Voice settings"
+msgstr "Настройки голоса"
 
 msgid "Volume"
 msgstr "Громкость"

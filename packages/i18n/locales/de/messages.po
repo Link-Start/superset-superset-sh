@@ -2464,6 +2464,9 @@ msgstr "Bitte um Änderungen"
 msgid "Ask to make changes, @mention files, run /commands"
 msgstr "Bitte um Änderungen, erwähne Dateien mit @, führe /commands aus"
 
+msgid "Ask what your agents are up to, or tell one what to do next."
+msgstr "Frag, was deine Agenten gerade tun, oder sag einem, was er als Nächstes machen soll."
+
 msgid "Asks before edits and commands"
 msgstr "Fragt vor Änderungen und Befehlen"
 
@@ -3432,6 +3435,12 @@ msgstr "Host wird geprüft…"
 
 msgid "Checking out a PR requires a project"
 msgstr "Zum Auschecken eines PR wird ein Projekt benötigt"
+
+msgid "Checking pull requests in {what}"
+msgstr "Pull Requests in {what} werden geprüft"
+
+msgid "Checking workspaces"
+msgstr "Arbeitsbereiche werden geprüft"
 
 msgid "Checking..."
 msgstr "Wird geprüft..."
@@ -4990,6 +4999,9 @@ msgstr "Cloud-Arbeitsbereich konnte nicht gestartet werden"
 msgid "Couldn't start design mode on this page"
 msgstr "Der Design-Modus konnte auf dieser Seite nicht gestartet werden"
 
+msgid "Couldn't start voice mode"
+msgstr "Sprachmodus konnte nicht gestartet werden"
+
 msgid "Couldn't start workspace"
 msgstr "Arbeitsbereich konnte nicht gestartet werden"
 
@@ -5228,6 +5240,12 @@ msgstr "Wird erstellt"
 msgctxt "file change"
 msgid "Creating"
 msgstr "Erstelle"
+
+msgid "Creating a task"
+msgstr "Aufgabe wird erstellt"
+
+msgid "Creating a workspace"
+msgstr "Arbeitsbereich wird erstellt"
 
 msgid "Creating PR..."
 msgstr "PR wird erstellt…"
@@ -6349,6 +6367,15 @@ msgstr "Aktiviere den Fernzugriff und halte diesen Computer mit laufendem Supers
 msgid "Enable skill"
 msgstr "Skill aktivieren"
 
+msgid "End voice session"
+msgstr "Sprachsitzung beenden"
+
+msgid "Ended"
+msgstr "Beendet"
+
+msgid "Ending the call"
+msgstr "Anruf wird beendet"
+
 msgid "Engineering deep-dives and launches."
 msgstr "Technische Deep-Dives und Launches."
 
@@ -6543,6 +6570,9 @@ msgstr "Projekt ausklappen"
 msgid "Expand thread"
 msgstr "Thread ausklappen"
 
+msgid "Expand voice"
+msgstr "Sprachansicht öffnen"
+
 msgid "Expand workspace"
 msgstr "Arbeitsbereich ausklappen"
 
@@ -6594,6 +6624,9 @@ msgstr "Externer Editor"
 
 msgid "extra ${used} of ${limit}"
 msgstr "zusätzlich {used} $ von {limit} $"
+
+msgid "Extra high"
+msgstr "Sehr hoch"
 
 msgid "Extra small"
 msgstr "Sehr klein"
@@ -8451,6 +8484,9 @@ msgstr "Intern"
 msgid "Internet Disconnected"
 msgstr "Keine Internetverbindung"
 
+msgid "Interrupt"
+msgstr "Unterbrechen"
+
 msgid "Interrupted"
 msgstr "Unterbrochen"
 
@@ -9082,6 +9118,9 @@ msgstr "Arbeitsbereiche auf einem Host auflisten, erstellen, aktualisieren und l
 msgid "List, get, create, update, and delete tasks; track status."
 msgstr "Aufgaben auflisten, abrufen, erstellen, aktualisieren und löschen; Status verfolgen."
 
+msgid "Listening"
+msgstr "Hört zu"
+
 msgid "Listening agents"
 msgstr "Zuhörende Agenten"
 
@@ -9090,6 +9129,9 @@ msgstr "Lauscht auf Kanalnachrichten und neue Kanäle."
 
 msgid "Listening status unavailable"
 msgstr "Zuhörstatus nicht verfügbar"
+
+msgid "Listing sessions in {what}"
+msgstr "Sitzungen in {what} werden aufgelistet"
 
 msgid "live"
 msgstr "live"
@@ -9280,11 +9322,23 @@ msgstr "Die Zuverlässigkeit über lange Zeiträume überschreitet eine Schwelle
 msgid "Long-hover shortcut-only tooltip; its chip style is now the TooltipContent default"
 msgstr "Tooltip nur mit Kürzel bei langem Hover; sein Chip-Stil ist jetzt der TooltipContent-Standard"
 
+msgid "Looking at {what}"
+msgstr "{what} wird angesehen"
+
+msgid "Looking at tasks"
+msgstr "Aufgaben werden geprüft"
+
 msgid "Looking for a mobile simulator…"
 msgstr "Mobiler Simulator wird gesucht…"
 
 msgid "Looking for installed browsers…"
 msgstr "Installierte Browser werden gesucht…"
+
+msgid "Looking for pages"
+msgstr "Seiten werden gesucht"
+
+msgid "Looking up a workspace"
+msgstr "Arbeitsbereich wird gesucht"
 
 msgid "Looks good"
 msgstr "Sieht gut aus"
@@ -9602,6 +9656,9 @@ msgctxt "workspaces I created"
 msgid "Mine"
 msgstr "Meine"
 
+msgid "Minimal"
+msgstr "Minimal"
+
 msgid "Minimal reasoning effort"
 msgstr "Minimales Reasoning"
 
@@ -9812,8 +9869,14 @@ msgstr "Mehrere Projekte nutzen dieses Repository ({0}). Wähle das Projekt in d
 msgid "Multiple projects use this repository ({0}). Open the project you want from settings to set it up on this device."
 msgstr "Mehrere Projekte nutzen dieses Repository ({0}). Öffne das gewünschte Projekt in den Einstellungen, um es auf diesem Gerät einzurichten."
 
+msgid "Mute"
+msgstr "Stummschalten"
+
 msgid "Mute notifications"
 msgstr "Benachrichtigungen stummschalten"
+
+msgid "Muted"
+msgstr "Stummgeschaltet"
 
 msgid "My Agent"
 msgstr "Mein Agent"
@@ -11476,6 +11539,9 @@ msgstr "Geöffnet"
 msgid "opened PR #841 for review"
 msgstr "PR #841 zum Review geöffnet"
 
+msgid "Opening {what}"
+msgstr "{what} wird geöffnet"
+
 msgid "Opening files"
 msgstr "Dateien öffnen"
 
@@ -12678,6 +12744,12 @@ msgstr "Zum Leitfaden für parallele Coding-Agenten"
 msgid "Read the setup guide"
 msgstr "Zur Einrichtungsanleitung"
 
+msgid "Reading {what}"
+msgstr "{what} wird gelesen"
+
+msgid "Reading the page"
+msgstr "Seite wird gelesen"
+
 msgid "Reading usage…"
 msgstr "Nutzung wird gelesen …"
 
@@ -12774,6 +12846,9 @@ msgstr "Verbindet neu"
 
 msgid "Reconnecting…"
 msgstr "Verbindung wird wiederhergestellt…"
+
+msgid "Reconnecting… your conversation is kept."
+msgstr "Verbindung wird wiederhergestellt… dein Gespräch bleibt erhalten."
 
 msgid "Red"
 msgstr "Rot"
@@ -13336,6 +13411,9 @@ msgstr "1 Host-Dienst neu gestartet"
 
 msgid "Restarting"
 msgstr "Wird neu gestartet"
+
+msgid "Restarting {what}"
+msgstr "{what} wird neu gestartet"
 
 msgid "Restarting agents on {accountLabel}."
 msgstr "Agenten werden auf {accountLabel} neu gestartet."
@@ -14298,6 +14376,9 @@ msgstr "An Chat senden ({draftCount})"
 msgid "Sending"
 msgstr "Wird gesendet"
 
+msgid "Sending a message to {what}"
+msgstr "Nachricht wird an {what} gesendet"
+
 msgid "Sending..."
 msgstr "Wird gesendet..."
 
@@ -14997,8 +15078,14 @@ msgstr "Spam oder Betrug"
 msgid "Sparse checkout"
 msgstr "Sparse Checkout"
 
+msgid "Speaking"
+msgstr "Spricht"
+
 msgid "Specific"
 msgstr "Bestimmte"
+
+msgid "Speed"
+msgstr "Geschwindigkeit"
 
 msgid "Spend"
 msgstr "Ausgaben"
@@ -15209,6 +15296,9 @@ msgstr "Starte eine mit + in der Tab-Leiste."
 msgid "Start or stop the workspace run command"
 msgstr "Den Run-Befehl des Arbeitsbereichs starten oder stoppen"
 
+msgid "Start voice mode"
+msgstr "Sprachmodus starten"
+
 msgid "Start with the work."
 msgstr "Fang mit der Arbeit an."
 
@@ -15232,6 +15322,9 @@ msgstr "Startet"
 
 msgid "Starting {agentLabel}"
 msgstr "{agentLabel} wird gestartet"
+
+msgid "Starting an agent in {what}"
+msgstr "Agent wird in {what} gestartet"
 
 msgid "Starting cloud workspace"
 msgstr "Cloud-Arbeitsbereich wird gestartet"
@@ -15335,6 +15428,9 @@ msgstr "Run-Befehl des Arbeitsbereichs stoppen"
 
 msgid "stopped"
 msgstr "gestoppt"
+
+msgid "Stopping the agent in {what}"
+msgstr "Agent in {what} wird gestoppt"
 
 msgid "Strikethrough"
 msgstr "Durchgestrichen"
@@ -17234,6 +17330,9 @@ msgstr "Unbegrenzte Nutzer"
 msgid "Unlink task"
 msgstr "Aufgabe trennen"
 
+msgid "Unmute"
+msgstr "Stummschaltung aufheben"
+
 msgid "Unmute notifications"
 msgstr "Stummschaltung aufheben"
 
@@ -17674,6 +17773,15 @@ msgstr "Von Besuchern zu Downloads zu Konten"
 
 msgid "Visitors whose session began on a link an assistant gave them. This is the number an AEO effort should move."
 msgstr "Besucher, deren Sitzung auf einem Link begann, den ein Assistent gegeben hat. Das ist die Zahl, die eine AEO-Initiative bewegen soll."
+
+msgid "Voice"
+msgstr "Sprache"
+
+msgid "Voice ran into a problem. Try again."
+msgstr "Beim Sprachmodus ist ein Problem aufgetreten. Versuche es erneut."
+
+msgid "Voice settings"
+msgstr "Spracheinstellungen"
 
 msgid "Volume"
 msgstr "Lautstärke"
