@@ -62,6 +62,7 @@ import type {
 	PromptInputAttachment,
 	PromptInputProps,
 } from "../../types";
+import { registerHistoryNavigation } from "../../utils/historyNavigation";
 import { matchToken } from "../../utils/matchToken";
 import { rankCommands } from "../../utils/rankCommands";
 import {
@@ -113,6 +114,7 @@ export type ComposerBodyProps = Required<
 		| "clearOnSubmit"
 		| "hideSubmit"
 		| "autoFocus"
+		| "history"
 	>;
 
 function $insertChipAtSelection(chip: ComposerChip) {
@@ -168,6 +170,7 @@ export function ComposerBody({
 	clearOnSubmit,
 	hideSubmit,
 	autoFocus,
+	history,
 }: ComposerBodyProps) {
 	const { t } = useLingui();
 	const [editor] = useLexicalComposerContext();
@@ -222,6 +225,7 @@ export function ComposerBody({
 		submitWhileStreaming,
 		allowEmptySubmit,
 		clearOnSubmit,
+		history,
 	});
 	stateRef.current = {
 		attachments,
@@ -232,7 +236,9 @@ export function ComposerBody({
 		submitWhileStreaming,
 		allowEmptySubmit,
 		clearOnSubmit,
+		history,
 	};
+	const historyNavigationRef = useRef<{ reset: () => void } | null>(null);
 
 	// A draft the host had stored. Read once: after mount the editor is the
 	// only writer, and re-applying would fight what is being typed.
@@ -389,7 +395,7 @@ export function ComposerBody({
 		if (attachment.previewUrl) URL.revokeObjectURL(attachment.previewUrl);
 	};
 
-	const submit = () => {
+	const submit = ({ steer = false }: { steer?: boolean } = {}) => {
 		if (
 			stateRef.current.status === "streaming" &&
 			!stateRef.current.submitWhileStreaming
@@ -405,7 +411,8 @@ export function ComposerBody({
 		if (!text && files.length === 0 && !stateRef.current.allowEmptySubmit) {
 			return;
 		}
-		stateRef.current.onSubmit?.({ text, files, mentions });
+		stateRef.current.onSubmit?.({ text, files, mentions, steer });
+		historyNavigationRef.current?.reset();
 		if (!stateRef.current.clearOnSubmit) return;
 		editor.update(() => $getRoot().clear());
 		setAttachments((previous) => {
@@ -443,13 +450,21 @@ export function ComposerBody({
 		const unregisterEnter = editor.registerCommand<KeyboardEvent | null>(
 			KEY_ENTER_COMMAND,
 			(event) => {
-				if (event?.shiftKey) return false;
+				if (event?.shiftKey || event?.isComposing || event?.keyCode === 229)
+					return false;
 				event?.preventDefault();
-				submitRef.current();
+				submitRef.current({
+					steer: Boolean(event?.metaKey || event?.ctrlKey),
+				});
 				return true;
 			},
 			COMMAND_PRIORITY_LOW,
 		);
+		const historyNavigation = registerHistoryNavigation(
+			editor,
+			() => stateRef.current.history ?? [],
+		);
+		historyNavigationRef.current = historyNavigation;
 		const unregisterEscape = editor.registerCommand<KeyboardEvent | null>(
 			KEY_ESCAPE_COMMAND,
 			(event) => {
@@ -534,6 +549,7 @@ export function ComposerBody({
 		return () => {
 			unregisterText();
 			unregisterEnter();
+			historyNavigation.unregister();
 			unregisterEscape();
 			unregisterDrop();
 			unregisterPaste();
@@ -954,7 +970,7 @@ export function ComposerBody({
 									message: "Send message",
 								})}
 								disabled={!canSend}
-								onClick={submit}
+								onClick={() => submit()}
 								className={cn(
 									"flex size-8 items-center justify-center rounded-lg transition-colors",
 									canSend
