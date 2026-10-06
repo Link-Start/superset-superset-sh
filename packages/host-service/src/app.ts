@@ -334,6 +334,11 @@ export function createApp(options: CreateAppOptions): CreateAppResult {
 		db,
 		dbPath: config.dbPath,
 		agents: createChatAgentBridge(chatAgentContext),
+		onSessionChanged: ({ scopeId, occurredAt }) =>
+			eventBus.broadcastChatSessionsChanged({
+				workspaceId: scopeId,
+				occurredAt,
+			}),
 	});
 
 	// Startup sweeps run in the background so they don't block server
