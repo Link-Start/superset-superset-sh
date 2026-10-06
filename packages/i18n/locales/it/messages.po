@@ -29,6 +29,9 @@ msgstr ". {0} non ancora modellati come abbonamenti Stripe"
 msgid ". Each card shows the canonical import path — click it to copy. Reach for these before writing anything custom."
 msgstr ". Ogni scheda mostra il percorso di import canonico — cliccalo per copiarlo. Usa questi prima di scrivere qualcosa di personalizzato."
 
+msgid "...and many more!"
+msgstr "...e molti altri!"
+
 msgid "./"
 msgstr "./"
 
@@ -2770,6 +2773,9 @@ msgstr "Torna alle pagine"
 
 msgid "Back to the leaderboard"
 msgstr "Torna alla classifica"
+
+msgid "Backed by"
+msgstr "Sostenuti da"
 
 msgid "Background"
 msgstr "Sfondo"
@@ -7556,6 +7562,9 @@ msgstr "Da"
 msgid "from {price}/user/mo"
 msgstr "da {price}/utente/mese"
 
+msgid "From a hackathon project to the workspace for parallel coding agents."
+msgstr "Da progetto di hackathon allo spazio di lavoro per agenti di codice in parallelo."
+
 msgid "From a visit to a download to an account to a paying organization."
 msgstr "Da una visita a un download, a un account, a un'organizzazione paganti."
 
@@ -8110,6 +8119,9 @@ msgstr "Come funzionano i livelli →"
 
 msgid "How to install {name} in Superset"
 msgstr "Come installare {name} in Superset"
+
+msgid "How we build it, in long form."
+msgstr "Come lo costruiamo, in dettaglio."
 
 msgid "How your agents sign in inside cloud workspaces. Other people connect their own subscriptions or API keys; on this machine each agent keeps using the login already on it."
 msgstr "Come i tuoi agenti accedono nei workspace cloud. Le altre persone collegano i propri abbonamenti o le proprie chiavi API; su questa macchina ogni agente continua a usare l'accesso già presente."
@@ -11684,6 +11696,9 @@ msgstr "Altri membri del team"
 msgid "Other ways to reach us"
 msgstr "Altri modi per contattarci"
 
+msgid "Our $11M seed round is led by Union Square Ventures, with Y Combinator, Paul Graham, and founders we admire."
+msgstr "Il nostro round seed da 11 M$ è guidato da Union Square Ventures, insieme a Y Combinator, Paul Graham e founder che ammiriamo."
+
 msgid "Our read as of August 2026, based on our own team and the teams we watch closely. F3 is mostly open. F4 is mostly closed. That gap is the work."
 msgstr "La nostra lettura ad agosto 2026, basata sul nostro team e sui team che seguiamo da vicino. F3 è quasi tutto aperto. F4 è quasi tutto chiuso. Quel divario è il lavoro da fare."
 
@@ -12737,6 +12752,9 @@ msgstr "Leggi la guida agli agenti di programmazione in parallelo"
 
 msgid "Read the setup guide"
 msgstr "Leggi la guida alla configurazione"
+
+msgid "Read the source and every pull request."
+msgstr "Leggi il codice sorgente e ogni pull request."
 
 msgid "Reading {what}"
 msgstr "Lettura di {what}"
@@ -14156,6 +14174,9 @@ msgstr "Scopri come Superset si confronta con gli altri strumenti di programmazi
 
 msgid "See how Superset compares to other tools"
 msgstr "Guarda come Superset si confronta con gli altri strumenti"
+
+msgid "See how we work"
+msgstr "Guarda come lavoriamo"
 
 msgid "See how your agent usage compares. Explore the models behind each profile."
 msgstr "Confronta il tuo utilizzo degli agenti con quello degli altri. Esplora i modelli di ogni profilo."
@@ -16230,12 +16251,6 @@ msgstr "Le seguenti cartelle non sono repository git. Vuoi inizializzarle?"
 msgid "The forecast"
 msgstr "La previsione"
 
-msgid "The founders"
-msgstr "I fondatori"
-
-msgid "The founders at the hackathon where Superset started <0>|</0> YC HQ, November 2025"
-msgstr "I fondatori all'hackathon dove è nato Superset <0>|</0> Sede YC, novembre 2025"
-
 msgid "The full core loop (import a repo, run an agent, review the diff) now works signed out and offline."
 msgstr "L'intero ciclo principale (importa un repo, esegui un agente, rivedi il diff) ora funziona anche disconnesso e offline."
 
@@ -16404,9 +16419,6 @@ msgstr "Il punto di partenza da cui si avvia un workspace cloud — un'immagine 
 msgid "The Superset desktop app is available for macOS and Linux."
 msgstr "L'app desktop Superset è disponibile per macOS e Linux."
 
-msgid "The Superset founders at a hackathon, YC HQ San Francisco"
-msgstr "I fondatori di Superset a un hackathon, sede YC di San Francisco"
-
 msgid "The Superset host service for {organization} stopped unexpectedly ({cause}) and could not be restarted automatically."
 msgstr "Il servizio host di Superset per {organization} si è arrestato in modo imprevisto ({cause}) e non è stato possibile riavviarlo automaticamente."
 
@@ -16418,6 +16430,9 @@ msgstr "Le superfici fuori dal sito che portano il prodotto: il repository, le r
 
 msgid "the target host"
 msgstr "l'host di destinazione"
+
+msgid "The team"
+msgstr "Il team"
 
 msgid "The team invitation has either expired or doesn't exist. Request a new link from the team owner or check the URL to make sure it is entered correctly."
 msgstr "L'invito al team è scaduto oppure non esiste. Chiedi un nuovo link al proprietario del team o controlla che l'URL sia corretto."
@@ -17826,6 +17841,9 @@ msgstr "Osservatori"
 msgid "Wayfinding and disclosure"
 msgstr "Orientamento e disclosure"
 
+msgid "We build in public, so you can see how we work before you talk to us."
+msgstr "Costruiamo in pubblico, così puoi vedere come lavoriamo prima di parlarci."
+
 msgid "We couldn't charge {amountDue}. Update your payment method to keep this plan."
 msgstr "Non siamo riusciti ad addebitare {amountDue}. Aggiorna il metodo di pagamento per mantenere questo piano."
 
@@ -18016,8 +18034,8 @@ msgstr "Cosa deve mostrare la pagina?"
 msgid "What should we build next?"
 msgstr "Cosa costruiamo adesso?"
 
-msgid "What Superset is, who builds it, and who it's for. A San Francisco team of three ex-YC CTOs building the workspace for parallel coding agents."
-msgstr "Cos'è Superset, chi lo costruisce e a chi è destinato. Un team di San Francisco composto da tre ex CTO YC che costruisce il workspace per gli agenti di coding paralleli."
+msgid "What Superset is, who builds it, and who it's for. A San Francisco team, led by three ex-YC CTOs, building the workspace for parallel coding agents."
+msgstr "Cos'è Superset, chi lo costruisce e a chi è destinato. Un team di San Francisco guidato da tre ex CTO YC che costruisce il workspace per gli agenti di coding paralleli."
 
 msgid "What the content is doing: which pages sessions start on, and how much is being published."
 msgstr "Cosa stanno facendo i contenuti: su quali pagine iniziano le sessioni e quanto viene pubblicato."
@@ -18025,11 +18043,20 @@ msgstr "Cosa stanno facendo i contenuti: su quali pagine iniziano le sessioni e 
 msgid "What these were written against is no longer on the page, so they have no pin."
 msgstr "Ciò a cui si riferivano non è più nella pagina, quindi non hanno un segnaposto."
 
+msgid "What we believe"
+msgstr "In cosa crediamo"
+
+msgid "What we ship, every week."
+msgstr "Cosa rilasciamo, ogni settimana."
+
 msgid "What We're Building"
 msgstr "Cosa stiamo costruendo"
 
 msgid "What we're building now and next."
 msgstr "Cosa stiamo costruendo ora e dopo."
+
+msgid "What we've shipped"
+msgstr "Cosa abbiamo rilasciato"
 
 msgid "What would you like to build with Superset in the cloud?"
 msgstr "Cosa vorresti creare con Superset nel cloud?"

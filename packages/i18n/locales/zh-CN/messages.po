@@ -29,6 +29,9 @@ msgstr "。{0}尚未建模为Stripe订阅"
 msgid ". Each card shows the canonical import path — click it to copy. Reach for these before writing anything custom."
 msgstr "导出的每一个组件。每张卡片都会显示规范的导入路径——点击即可复制。在自己动手写组件之前，先看看这里。"
 
+msgid "...and many more!"
+msgstr "……以及更多！"
+
 msgid "./"
 msgstr "./"
 
@@ -2770,6 +2773,9 @@ msgstr "返回页面"
 
 msgid "Back to the leaderboard"
 msgstr "返回排行榜"
+
+msgid "Backed by"
+msgstr "投资方"
 
 msgid "Background"
 msgstr "背景"
@@ -7556,6 +7562,9 @@ msgstr "从"
 msgid "from {price}/user/mo"
 msgstr "{price}/用户/月起"
 
+msgid "From a hackathon project to the workspace for parallel coding agents."
+msgstr "从一个黑客松项目，到并行编程智能体的工作空间。"
+
 msgid "From a visit to a download to an account to a paying organization."
 msgstr "从访问到下载、到账号、到付费组织。"
 
@@ -8110,6 +8119,9 @@ msgstr "等级如何计算 →"
 
 msgid "How to install {name} in Superset"
 msgstr "如何在Superset中安装{name}"
+
+msgid "How we build it, in long form."
+msgstr "我们如何构建它，深入介绍。"
 
 msgid "How your agents sign in inside cloud workspaces. Other people connect their own subscriptions or API keys; on this machine each agent keeps using the login already on it."
 msgstr "你的智能体在云端工作区中如何登录。其他人连接各自的订阅或API密钥；在这台机器上，每个智能体继续使用它上面已有的登录。"
@@ -11684,6 +11696,9 @@ msgstr "其他团队成员"
 msgid "Other ways to reach us"
 msgstr "其他联系方式"
 
+msgid "Our $11M seed round is led by Union Square Ventures, with Y Combinator, Paul Graham, and founders we admire."
+msgstr "我们 1100 万美元的种子轮由 Union Square Ventures 领投，Y Combinator、Paul Graham 以及我们敬佩的创始人参投。"
+
 msgid "Our read as of August 2026, based on our own team and the teams we watch closely. F3 is mostly open. F4 is mostly closed. That gap is the work."
 msgstr "这是我们截至2026年8月的判断，依据是我们自己的团队和我们密切关注的团队。F3大多已开启，F4大多还没开启。这道差距就是要做的事。"
 
@@ -12737,6 +12752,9 @@ msgstr "阅读并行编码智能体指南"
 
 msgid "Read the setup guide"
 msgstr "阅读设置指南"
+
+msgid "Read the source and every pull request."
+msgstr "阅读源代码和每一个拉取请求。"
 
 msgid "Reading {what}"
 msgstr "正在读取 {what}"
@@ -14156,6 +14174,9 @@ msgstr "看看Superset与其他AI编码工具的对比，涵盖AI编辑器、编
 
 msgid "See how Superset compares to other tools"
 msgstr "看看Superset与其他工具的对比"
+
+msgid "See how we work"
+msgstr "看看我们如何工作"
 
 msgid "See how your agent usage compares. Explore the models behind each profile."
 msgstr "比较你与其他开发者的智能体用量，了解每个个人主页使用的模型。"
@@ -16230,12 +16251,6 @@ msgstr "以下文件夹不是git仓库。要初始化它们吗？"
 msgid "The forecast"
 msgstr "预测"
 
-msgid "The founders"
-msgstr "创始人"
-
-msgid "The founders at the hackathon where Superset started <0>|</0> YC HQ, November 2025"
-msgstr "创始人在Superset诞生的那场黑客松上 <0>|</0> YC总部，2025年11月"
-
 msgid "The full core loop (import a repo, run an agent, review the diff) now works signed out and offline."
 msgstr "完整的核心流程（导入仓库、运行智能体、审查差异）现在在未登录和离线时也能用。"
 
@@ -16404,9 +16419,6 @@ msgstr "云端工作区启动的起点 — 一个基础镜像，或你已配置�
 msgid "The Superset desktop app is available for macOS and Linux."
 msgstr "Superset 桌面应用支持 macOS 和 Linux。"
 
-msgid "The Superset founders at a hackathon, YC HQ San Francisco"
-msgstr "Superset创始人在黑客松现场，YC总部，旧金山"
-
 msgid "The Superset host service for {organization} stopped unexpectedly ({cause}) and could not be restarted automatically."
 msgstr "{organization}的Superset主机服务意外停止（{cause}），且无法自动重启。"
 
@@ -16418,6 +16430,9 @@ msgstr "站外承载产品的渠道：仓库、发布版本和 Discord。"
 
 msgid "the target host"
 msgstr "目标主机"
+
+msgid "The team"
+msgstr "团队"
 
 msgid "The team invitation has either expired or doesn't exist. Request a new link from the team owner or check the URL to make sure it is entered correctly."
 msgstr "该团队邀请已过期或不存在。请向团队所有者索取新链接，或检查URL是否输入正确。"
@@ -17826,6 +17841,9 @@ msgstr "关注者"
 msgid "Wayfinding and disclosure"
 msgstr "导航定位与内容展开"
 
+msgid "We build in public, so you can see how we work before you talk to us."
+msgstr "我们公开构建，你在和我们交谈之前就能看到我们如何工作。"
+
 msgid "We couldn't charge {amountDue}. Update your payment method to keep this plan."
 msgstr "我们无法扣取{amountDue}。请更新支付方式以保留此方案。"
 
@@ -18016,8 +18034,8 @@ msgstr "页面应展示什么?"
 msgid "What should we build next?"
 msgstr "接下来做点什么？"
 
-msgid "What Superset is, who builds it, and who it's for. A San Francisco team of three ex-YC CTOs building the workspace for parallel coding agents."
-msgstr "Superset 是什么、由谁打造、为谁而建。一支由三位前 YC CTO 组成的旧金山团队，正在打造并行编码智能体的工作区。"
+msgid "What Superset is, who builds it, and who it's for. A San Francisco team, led by three ex-YC CTOs, building the workspace for parallel coding agents."
+msgstr "Superset 是什么、由谁打造、为谁而建。一支由三位前 YC CTO 带领的旧金山团队，正在打造并行编码智能体的工作区。"
 
 msgid "What the content is doing: which pages sessions start on, and how much is being published."
 msgstr "内容的表现：会话从哪些页面开始，以及发布了多少。"
@@ -18025,11 +18043,20 @@ msgstr "内容的表现：会话从哪些页面开始，以及发布了多少。
 msgid "What these were written against is no longer on the page, so they have no pin."
 msgstr "这些评论所针对的内容已不在页面上，因此没有标记。"
 
+msgid "What we believe"
+msgstr "我们的信念"
+
+msgid "What we ship, every week."
+msgstr "我们每周发布的内容。"
+
 msgid "What We're Building"
 msgstr "我们正在构建什么"
 
 msgid "What we're building now and next."
 msgstr "我们正在做什么，接下来做什么。"
+
+msgid "What we've shipped"
+msgstr "我们发布了什么"
 
 msgid "What would you like to build with Superset in the cloud?"
 msgstr "您想用云端 Superset 构建什么？"

@@ -29,6 +29,9 @@ msgstr ". {0} henüz Stripe aboneliği olarak modellenmedi"
 msgid ". Each card shows the canonical import path — click it to copy. Reach for these before writing anything custom."
 msgstr ". Her kart standart içe aktarma yolunu gösterir — kopyalamak için tıklayın. Özel bir şey yazmadan önce bunlara başvurun."
 
+msgid "...and many more!"
+msgstr "...ve daha niceleri!"
+
 msgid "./"
 msgstr "./"
 
@@ -2770,6 +2773,9 @@ msgstr "Sayfalara dön"
 
 msgid "Back to the leaderboard"
 msgstr "Lider tablosuna dön"
+
+msgid "Backed by"
+msgstr "Destekçilerimiz"
 
 msgid "Background"
 msgstr "Arka plan"
@@ -7556,6 +7562,9 @@ msgstr "Kaynak"
 msgid "from {price}/user/mo"
 msgstr "başlangıç: {price}/kullanıcı/ay"
 
+msgid "From a hackathon project to the workspace for parallel coding agents."
+msgstr "Bir hackathon projesinden paralel kodlama ajanları için çalışma alanına."
+
 msgid "From a visit to a download to an account to a paying organization."
 msgstr "Ziyaretten indirmeye, hesaba, ödeme yapan organizasyona."
 
@@ -8110,6 +8119,9 @@ msgstr "Katmanlar nasıl işler →"
 
 msgid "How to install {name} in Superset"
 msgstr "{name} teması Superset'e nasıl kurulur"
+
+msgid "How we build it, in long form."
+msgstr "Nasıl geliştirdiğimiz, ayrıntılı olarak."
 
 msgid "How your agents sign in inside cloud workspaces. Other people connect their own subscriptions or API keys; on this machine each agent keeps using the login already on it."
 msgstr "Ajanlarınızın bulut çalışma alanlarında nasıl oturum açtığı. Başkaları kendi aboneliklerini veya API anahtarlarını bağlar; bu makinede her ajan üzerinde zaten bulunan oturumu kullanmayı sürdürür."
@@ -11684,6 +11696,9 @@ msgstr "Diğer takım üyeleri"
 msgid "Other ways to reach us"
 msgstr "Bize ulaşmanın diğer yolları"
 
+msgid "Our $11M seed round is led by Union Square Ventures, with Y Combinator, Paul Graham, and founders we admire."
+msgstr "11 milyon dolarlık tohum turumuza Union Square Ventures liderlik ediyor; Y Combinator, Paul Graham ve hayran olduğumuz kurucular da yer alıyor."
+
 msgid "Our read as of August 2026, based on our own team and the teams we watch closely. F3 is mostly open. F4 is mostly closed. That gap is the work."
 msgstr "Ağustos 2026 itibarıyla kendi ekibimize ve yakından izlediğimiz takımlara dayanan okumamız. F3 büyük ölçüde açık. F4 büyük ölçüde kapalı. İşin kendisi bu boşlukta."
 
@@ -12737,6 +12752,9 @@ msgstr "Paralel kodlama ajanları rehberini okuyun"
 
 msgid "Read the setup guide"
 msgstr "Kurulum rehberini okuyun"
+
+msgid "Read the source and every pull request."
+msgstr "Kaynak kodu ve her pull request'i okuyun."
 
 msgid "Reading {what}"
 msgstr "{what} okunuyor"
@@ -14156,6 +14174,9 @@ msgstr "Superset'in AI düzenleyicilerinden kodlama ajanlarına ve bulut tabanl�
 
 msgid "See how Superset compares to other tools"
 msgstr "Superset'in diğer araçlarla karşılaştırmasına bakın"
+
+msgid "See how we work"
+msgstr "Nasıl çalıştığımızı görün"
 
 msgid "See how your agent usage compares. Explore the models behind each profile."
 msgstr "Ajan kullanımınızı diğerleriyle karşılaştırın. Her profilde kullanılan modelleri keşfedin."
@@ -16230,12 +16251,6 @@ msgstr "Aşağıdaki klasörler git deposu değil. Bunları başlatmak ister mis
 msgid "The forecast"
 msgstr "Öngörü"
 
-msgid "The founders"
-msgstr "Kurucular"
-
-msgid "The founders at the hackathon where Superset started <0>|</0> YC HQ, November 2025"
-msgstr "Superset'in başladığı hackathon'da kurucular <0>|</0> YC merkezi, Kasım 2025"
-
 msgid "The full core loop (import a repo, run an agent, review the diff) now works signed out and offline."
 msgstr "Tam çekirdek döngü (depo içe aktarma, ajan çalıştırma, farkı inceleme) artık oturum açmadan ve çevrimdışı çalışıyor."
 
@@ -16404,9 +16419,6 @@ msgstr "Bir bulut çalışma alanının açıldığı başlangıç noktası — 
 msgid "The Superset desktop app is available for macOS and Linux."
 msgstr "Superset masaüstü uygulaması macOS ve Linux için kullanılabilir."
 
-msgid "The Superset founders at a hackathon, YC HQ San Francisco"
-msgstr "Superset kurucuları bir hackathon'da, YC merkezi San Francisco"
-
 msgid "The Superset host service for {organization} stopped unexpectedly ({cause}) and could not be restarted automatically."
 msgstr "{organization} için Superset host hizmeti beklenmedik şekilde durdu ({cause}) ve otomatik olarak yeniden başlatılamadı."
 
@@ -16418,6 +16430,9 @@ msgstr "Ürünü site dışında taşıyan yüzeyler: depo, sürümler ve Discor
 
 msgid "the target host"
 msgstr "hedef host"
+
+msgid "The team"
+msgstr "Ekip"
 
 msgid "The team invitation has either expired or doesn't exist. Request a new link from the team owner or check the URL to make sure it is entered correctly."
 msgstr "Takım daveti ya süresi dolmuş ya da mevcut değil. Takım sahibinden yeni bir bağlantı isteyin veya URL'nin doğru girildiğini kontrol edin."
@@ -17826,6 +17841,9 @@ msgstr "İzleyenler"
 msgid "Wayfinding and disclosure"
 msgstr "Yönlendirme ve açma-kapama"
 
+msgid "We build in public, so you can see how we work before you talk to us."
+msgstr "Açıkta geliştiriyoruz; bizimle konuşmadan önce nasıl çalıştığımızı görebilirsiniz."
+
 msgid "We couldn't charge {amountDue}. Update your payment method to keep this plan."
 msgstr "{amountDue} tutarını tahsil edemedik. Bu planı sürdürmek için ödeme yönteminizi güncelleyin."
 
@@ -18016,8 +18034,8 @@ msgstr "Sayfa ne göstermeli?"
 msgid "What should we build next?"
 msgstr "Sırada ne geliştirelim?"
 
-msgid "What Superset is, who builds it, and who it's for. A San Francisco team of three ex-YC CTOs building the workspace for parallel coding agents."
-msgstr "Superset nedir, kimler geliştiriyor ve kimler için. Paralel kodlama ajanları için çalışma alanını geliştiren, üç eski YC CTO'sundan oluşan bir San Francisco ekibi."
+msgid "What Superset is, who builds it, and who it's for. A San Francisco team, led by three ex-YC CTOs, building the workspace for parallel coding agents."
+msgstr "Superset nedir, kimler geliştiriyor ve kimler için. Paralel kodlama ajanları için çalışma alanını geliştiren, üç eski YC CTO'sunun liderliğindeki bir San Francisco ekibi."
 
 msgid "What the content is doing: which pages sessions start on, and how much is being published."
 msgstr "İçerik ne yapıyor: oturumlar hangi sayfalarda başlıyor ve ne kadar yayınlanıyor."
@@ -18025,11 +18043,20 @@ msgstr "İçerik ne yapıyor: oturumlar hangi sayfalarda başlıyor ve ne kadar 
 msgid "What these were written against is no longer on the page, so they have no pin."
 msgstr "Yazıldıkları öğe artık sayfada olmadığı için işaretleri yok."
 
+msgid "What we believe"
+msgstr "Neye inanıyoruz"
+
+msgid "What we ship, every week."
+msgstr "Her hafta yayınladıklarımız."
+
 msgid "What We're Building"
 msgstr "Ne geliştiriyoruz"
 
 msgid "What we're building now and next."
 msgstr "Şimdi ve sırada ne geliştiriyoruz."
+
+msgid "What we've shipped"
+msgstr "Neler yayınladık"
 
 msgid "What would you like to build with Superset in the cloud?"
 msgstr "Bulutta Superset ile ne geliştirmek istersiniz?"

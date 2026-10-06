@@ -29,6 +29,9 @@ msgstr ". {0}은(는) 아직 Stripe 구독으로 모델링되지 않았습니다
 msgid ". Each card shows the canonical import path — click it to copy. Reach for these before writing anything custom."
 msgstr ". 각 카드에 표준 import 경로가 표시되며, 클릭하면 복사됩니다. 직접 만들기 전에 먼저 여기를 확인하세요."
 
+msgid "...and many more!"
+msgstr "…그 외 다수!"
+
 msgid "./"
 msgstr "./"
 
@@ -2770,6 +2773,9 @@ msgstr "페이지로 돌아가기"
 
 msgid "Back to the leaderboard"
 msgstr "리더보드로 돌아가기"
+
+msgid "Backed by"
+msgstr "투자자"
 
 msgid "Background"
 msgstr "배경"
@@ -7556,6 +7562,9 @@ msgstr "기존 위치"
 msgid "from {price}/user/mo"
 msgstr "사용자당 월 {price}부터"
 
+msgid "From a hackathon project to the workspace for parallel coding agents."
+msgstr "해커톤 프로젝트에서 병렬 코딩 에이전트를 위한 워크스페이스로."
+
 msgid "From a visit to a download to an account to a paying organization."
 msgstr "방문에서 다운로드, 계정, 유료 조직까지."
 
@@ -8110,6 +8119,9 @@ msgstr "등급 산정 방식 →"
 
 msgid "How to install {name} in Superset"
 msgstr "Superset에 {name} 설치하는 방법"
+
+msgid "How we build it, in long form."
+msgstr "어떻게 만드는지 자세히."
 
 msgid "How your agents sign in inside cloud workspaces. Other people connect their own subscriptions or API keys; on this machine each agent keeps using the login already on it."
 msgstr "클라우드 워크스페이스 안에서 에이전트가 로그인하는 방식입니다. 다른 사람은 각자의 구독이나 API 키를 연결하며, 이 컴퓨터에서는 각 에이전트가 이미 있는 로그인을 계속 사용합니다."
@@ -11684,6 +11696,9 @@ msgstr "다른 팀 멤버"
 msgid "Other ways to reach us"
 msgstr "다른 문의 방법"
 
+msgid "Our $11M seed round is led by Union Square Ventures, with Y Combinator, Paul Graham, and founders we admire."
+msgstr "1,100만 달러 규모의 시드 라운드는 Union Square Ventures가 주도했으며, Y Combinator, Paul Graham, 그리고 우리가 존경하는 창업자들이 함께했습니다."
+
 msgid "Our read as of August 2026, based on our own team and the teams we watch closely. F3 is mostly open. F4 is mostly closed. That gap is the work."
 msgstr "2026년 8월 기준, 우리 팀과 가까이 지켜보는 팀들을 바탕으로 한 판단입니다. F3은 대부분 열렸고, F4는 대부분 닫혀 있습니다. 그 간극이 곧 해야 할 일입니다."
 
@@ -12737,6 +12752,9 @@ msgstr "병렬 코딩 에이전트 가이드 읽기"
 
 msgid "Read the setup guide"
 msgstr "설정 가이드 읽기"
+
+msgid "Read the source and every pull request."
+msgstr "소스 코드와 모든 풀 리퀘스트를 읽어 보세요."
 
 msgid "Reading {what}"
 msgstr "{what} 읽는 중"
@@ -14156,6 +14174,9 @@ msgstr "AI 에디터부터 코딩 에이전트, 클라우드 기반 AI 엔지니
 
 msgid "See how Superset compares to other tools"
 msgstr "다른 도구와 Superset 비교 보기"
+
+msgid "See how we work"
+msgstr "우리가 일하는 방식 보기"
 
 msgid "See how your agent usage compares. Explore the models behind each profile."
 msgstr "다른 개발자와 에이전트 사용량을 비교하세요. 각 프로필에서 사용하는 모델을 살펴보세요."
@@ -16230,12 +16251,6 @@ msgstr "다음 폴더는 git 저장소가 아닙니다. 초기화할까요?"
 msgid "The forecast"
 msgstr "전망"
 
-msgid "The founders"
-msgstr "창업자"
-
-msgid "The founders at the hackathon where Superset started <0>|</0> YC HQ, November 2025"
-msgstr "Superset이 시작된 해커톤의 창업자들 <0>|</0> YC 본사, 2025년 11월"
-
 msgid "The full core loop (import a repo, run an agent, review the diff) now works signed out and offline."
 msgstr "핵심 흐름 전체(리포지토리 가져오기, 에이전트 실행, 차이 리뷰)가 이제 로그아웃 상태와 오프라인에서도 동작합니다."
 
@@ -16404,9 +16419,6 @@ msgstr "클라우드 워크스페이스가 부팅되는 시작점입니다 — �
 msgid "The Superset desktop app is available for macOS and Linux."
 msgstr "Superset 데스크톱 앱은 macOS와 Linux에서 사용할 수 있습니다."
 
-msgid "The Superset founders at a hackathon, YC HQ San Francisco"
-msgstr "샌프란시스코 YC 본사 해커톤에 참여한 Superset 창업자들"
-
 msgid "The Superset host service for {organization} stopped unexpectedly ({cause}) and could not be restarted automatically."
 msgstr "{organization}의 Superset 호스트 서비스가 예기치 않게 중지되었으며({cause}) 자동으로 다시 시작하지 못했습니다."
 
@@ -16418,6 +16430,9 @@ msgstr "사이트 밖에서 제품을 실어 나르는 곳: 저장소, 릴리스
 
 msgid "the target host"
 msgstr "대상 호스트"
+
+msgid "The team"
+msgstr "팀"
 
 msgid "The team invitation has either expired or doesn't exist. Request a new link from the team owner or check the URL to make sure it is entered correctly."
 msgstr "팀 초대가 만료되었거나 존재하지 않습니다. 팀 소유자에게 새 링크를 요청하거나 URL이 올바르게 입력되었는지 확인하세요."
@@ -17826,6 +17841,9 @@ msgstr "관찰자"
 msgid "Wayfinding and disclosure"
 msgstr "길 찾기와 정보 펼침"
 
+msgid "We build in public, so you can see how we work before you talk to us."
+msgstr "우리는 공개적으로 만듭니다. 대화하기 전에 우리가 일하는 방식을 확인하세요."
+
 msgid "We couldn't charge {amountDue}. Update your payment method to keep this plan."
 msgstr "{amountDue}을(를) 청구하지 못했습니다. 이 플랜을 유지하려면 결제 수단을 업데이트하세요."
 
@@ -18016,8 +18034,8 @@ msgstr "페이지에 무엇을 표시할까요?"
 msgid "What should we build next?"
 msgstr "다음으로 무엇을 만들까요?"
 
-msgid "What Superset is, who builds it, and who it's for. A San Francisco team of three ex-YC CTOs building the workspace for parallel coding agents."
-msgstr "Superset이 무엇이고, 누가 만들며, 누구를 위한 것인지. 병렬 코딩 에이전트를 위한 워크스페이스를 만드는 전 YC CTO 3인의 샌프란시스코 팀입니다."
+msgid "What Superset is, who builds it, and who it's for. A San Francisco team, led by three ex-YC CTOs, building the workspace for parallel coding agents."
+msgstr "Superset이 무엇이고, 누가 만들며, 누구를 위한 것인지. 병렬 코딩 에이전트를 위한 워크스페이스를 만드는, 전 YC CTO 3인이 이끄는 샌프란시스코 팀입니다."
 
 msgid "What the content is doing: which pages sessions start on, and how much is being published."
 msgstr "콘텐츠 현황: 세션이 어느 페이지에서 시작되는지, 얼마나 발행되고 있는지."
@@ -18025,11 +18043,20 @@ msgstr "콘텐츠 현황: 세션이 어느 페이지에서 시작되는지, 얼�
 msgid "What these were written against is no longer on the page, so they have no pin."
 msgstr "작성 기준이 된 대상이 페이지에 더 이상 없어 핀이 없습니다."
 
+msgid "What we believe"
+msgstr "우리가 믿는 것"
+
+msgid "What we ship, every week."
+msgstr "매주 출시하는 것."
+
 msgid "What We're Building"
 msgstr "우리가 만들고 있는 것"
 
 msgid "What we're building now and next."
 msgstr "지금 만들고 있는 것과 다음에 만들 것."
+
+msgid "What we've shipped"
+msgstr "지금까지 출시한 것"
 
 msgid "What would you like to build with Superset in the cloud?"
 msgstr "클라우드의 Superset으로 무엇을 만들고 싶으신가요?"

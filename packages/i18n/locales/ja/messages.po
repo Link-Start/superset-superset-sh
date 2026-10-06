@@ -29,6 +29,9 @@ msgstr "。{0}はまだStripeサブスクリプションとしてモデル化さ
 msgid ". Each card shows the canonical import path — click it to copy. Reach for these before writing anything custom."
 msgstr "です。各カードには正規のインポートパスが表示されます — クリックするとコピーできます。独自に何かを書く前に、まずこれらを使ってください。"
 
+msgid "...and many more!"
+msgstr "…ほか多数！"
+
 msgid "./"
 msgstr "./"
 
@@ -2770,6 +2773,9 @@ msgstr "ページ"
 
 msgid "Back to the leaderboard"
 msgstr "リーダーボードに戻る"
+
+msgid "Backed by"
+msgstr "支援者"
 
 msgid "Background"
 msgstr "背景"
@@ -7556,6 +7562,9 @@ msgstr "移動元"
 msgid "from {price}/user/mo"
 msgstr "{price}/ユーザー/月〜"
 
+msgid "From a hackathon project to the workspace for parallel coding agents."
+msgstr "ハッカソンのプロジェクトから、並列コーディングエージェントのためのワークスペースへ。"
+
 msgid "From a visit to a download to an account to a paying organization."
 msgstr "訪問からダウンロード、アカウント、有料組織へ。"
 
@@ -8110,6 +8119,9 @@ msgstr "ティアの仕組み →"
 
 msgid "How to install {name} in Superset"
 msgstr "Supersetに{name}をインストールする方法"
+
+msgid "How we build it, in long form."
+msgstr "どう作っているかを詳しく。"
 
 msgid "How your agents sign in inside cloud workspaces. Other people connect their own subscriptions or API keys; on this machine each agent keeps using the login already on it."
 msgstr "クラウドワークスペース内でエージェントがどうサインインするかの設定です。ほかの人は自分のサブスクリプションやAPIキーを接続します。このマシンでは、各エージェントはすでにあるログインをそのまま使い続けます。"
@@ -11684,6 +11696,9 @@ msgstr "他のチームメンバー"
 msgid "Other ways to reach us"
 msgstr "その他の連絡方法"
 
+msgid "Our $11M seed round is led by Union Square Ventures, with Y Combinator, Paul Graham, and founders we admire."
+msgstr "1,100万ドルのシードラウンドは Union Square Ventures が主導し、Y Combinator、Paul Graham、そして私たちが尊敬する創業者たちが参加しています。"
+
 msgid "Our read as of August 2026, based on our own team and the teams we watch closely. F3 is mostly open. F4 is mostly closed. That gap is the work."
 msgstr "2026年8月時点の当社の見立てです。自チームと、近くで見ているチームの実態にもとづいています。F3はほぼ通過済み、F4はほぼ未通過。この差が、これからの仕事です。"
 
@@ -12737,6 +12752,9 @@ msgstr "並列コーディングエージェントのガイドを読む"
 
 msgid "Read the setup guide"
 msgstr "セットアップガイドを読む"
+
+msgid "Read the source and every pull request."
+msgstr "ソースコードとすべてのプルリクエストを読む。"
 
 msgid "Reading {what}"
 msgstr "{what} を読み取り中"
@@ -14156,6 +14174,9 @@ msgstr "AIエディタからコーディングエージェント、クラウド�
 
 msgid "See how Superset compares to other tools"
 msgstr "Supersetと他ツールの比較を見る"
+
+msgid "See how we work"
+msgstr "私たちの働き方を見る"
 
 msgid "See how your agent usage compares. Explore the models behind each profile."
 msgstr "エージェントの使用量を他の開発者と比較できます。各プロフィールで使われているモデルを確認しましょう。"
@@ -16230,12 +16251,6 @@ msgstr "次のフォルダはgitリポジトリではありません。初期化
 msgid "The forecast"
 msgstr "予測"
 
-msgid "The founders"
-msgstr "創業者"
-
-msgid "The founders at the hackathon where Superset started <0>|</0> YC HQ, November 2025"
-msgstr "Supersetが生まれたハッカソンでの創業者たち<0>|</0>YC本社、2025年11月"
-
 msgid "The full core loop (import a repo, run an agent, review the diff) now works signed out and offline."
 msgstr "中核のループ(リポジトリのインポート、エージェントの実行、差分のレビュー)がサインアウト状態やオフラインでも動くようになりました。"
 
@@ -16404,9 +16419,6 @@ msgstr "クラウドワークスペースの起動元となる出発点 — ベ�
 msgid "The Superset desktop app is available for macOS and Linux."
 msgstr "Supersetデスクトップアプリは macOS と Linux で利用できます。"
 
-msgid "The Superset founders at a hackathon, YC HQ San Francisco"
-msgstr "ハッカソンでのSupersetの創業者たち、サンフランシスコのYC本社"
-
 msgid "The Superset host service for {organization} stopped unexpectedly ({cause}) and could not be restarted automatically."
 msgstr "{organization}のSupersetホストサービスが予期せず停止し ({cause})、自動的に再起動できませんでした。"
 
@@ -16418,6 +16430,9 @@ msgstr "サイトの外でプロダクトを運ぶ場所: リポジトリ、リ�
 
 msgid "the target host"
 msgstr "対象ホスト"
+
+msgid "The team"
+msgstr "チーム"
 
 msgid "The team invitation has either expired or doesn't exist. Request a new link from the team owner or check the URL to make sure it is entered correctly."
 msgstr "チームの招待は期限切れか、存在しません。チームのオーナーに新しいリンクを依頼するか、URLが正しく入力されているか確認してください。"
@@ -17826,6 +17841,9 @@ msgstr "ウォッチャー"
 msgid "Wayfinding and disclosure"
 msgstr "案内と情報の開示"
 
+msgid "We build in public, so you can see how we work before you talk to us."
+msgstr "私たちはオープンに開発しています。話す前に、私たちの働き方を見てください。"
+
 msgid "We couldn't charge {amountDue}. Update your payment method to keep this plan."
 msgstr "{amountDue}を請求できませんでした。このプランを維持するには支払い方法を更新してください。"
 
@@ -18016,8 +18034,8 @@ msgstr "ページに何を表示しますか?"
 msgid "What should we build next?"
 msgstr "次は何を作りますか?"
 
-msgid "What Superset is, who builds it, and who it's for. A San Francisco team of three ex-YC CTOs building the workspace for parallel coding agents."
-msgstr "Supersetとは何か、誰が作っていて、誰のためのものか。並列コーディングエージェントのためのワークスペースを作る、元YCのCTO3人によるサンフランシスコのチーム。"
+msgid "What Superset is, who builds it, and who it's for. A San Francisco team, led by three ex-YC CTOs, building the workspace for parallel coding agents."
+msgstr "Supersetとは何か、誰が作っていて、誰のためのものか。並列コーディングエージェントのためのワークスペースを作る、元YCのCTO3人が率いるサンフランシスコのチーム。"
 
 msgid "What the content is doing: which pages sessions start on, and how much is being published."
 msgstr "コンテンツの状況: セッションがどのページから始まるか、どれだけ公開されているか。"
@@ -18025,11 +18043,20 @@ msgstr "コンテンツの状況: セッションがどのページから始ま�
 msgid "What these were written against is no longer on the page, so they have no pin."
 msgstr "これらが書かれた対象はページ上に存在しないため、ピンがありません。"
 
+msgid "What we believe"
+msgstr "私たちが大切にしていること"
+
+msgid "What we ship, every week."
+msgstr "毎週リリースしているもの。"
+
 msgid "What We're Building"
 msgstr "いま作っているもの"
 
 msgid "What we're building now and next."
 msgstr "いま作っているものと、次に作るもの。"
+
+msgid "What we've shipped"
+msgstr "これまでのリリース"
 
 msgid "What would you like to build with Superset in the cloud?"
 msgstr "クラウド上のSupersetで何を作りたいですか？"
