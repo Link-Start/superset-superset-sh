@@ -21,6 +21,8 @@ export function syncPluginMcpServers(
 	servers: number;
 	error: string | null;
 } {
+	if (process.env.NODE_ENV === "development")
+		return { servers: 0, error: null };
 	const enabled = readEnabledPlugins();
 	// An unreadable ledger is not an empty one; syncing an empty desired set
 	// would reap every managed server.
