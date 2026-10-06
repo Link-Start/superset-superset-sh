@@ -1691,6 +1691,12 @@ msgstr "Aggiungi foto o file"
 msgid "Add project"
 msgstr "Aggiungi progetto"
 
+msgid "Add Project from Folder"
+msgstr "Aggiungi progetto da cartella"
+
+msgid "Add Project from Folder..."
+msgstr "Aggiungi progetto da cartella..."
+
 msgid "Add prompt e.g. look for crashes in $sentry"
 msgstr "Aggiungi un prompt, es. cerca i crash in $sentry"
 
@@ -10087,8 +10093,8 @@ msgstr "Diapositiva successiva"
 msgid "Next Tab"
 msgstr "Scheda successiva"
 
-msgid "Next Tab (Alt)"
-msgstr "Scheda successiva (Alt)"
+msgid "Next Tab (Second Shortcut)"
+msgstr "Scheda successiva (seconda scorciatoia)"
 
 msgid "Next Workspace"
 msgstr "Workspace successivo"
@@ -11088,9 +11094,6 @@ msgstr "Apri una pull request per vedere lo stato della revisione, i controlli e
 msgid "Open actions menu"
 msgstr "Apri il menu delle azioni"
 
-msgid "Open an existing project folder"
-msgstr "Apri una cartella di progetto esistente"
-
 msgid "Open anyway"
 msgstr "Apri comunque"
 
@@ -11190,9 +11193,6 @@ msgstr "Apri in qualsiasi IDE"
 
 msgid "Open in app"
 msgstr "Apri nell’app"
-
-msgid "Open in App"
-msgstr "Apri nell'app"
 
 msgid "Open in browser"
 msgstr "Apri nel browser"
@@ -11370,9 +11370,6 @@ msgstr "Pull request aperte"
 msgid "Open recent"
 msgstr "Apri recenti"
 
-msgid "Open Repo..."
-msgstr "Apri repo..."
-
 msgid "Open roles"
 msgstr "Posizioni aperte"
 
@@ -11454,14 +11451,14 @@ msgstr "Apri il workspace dell'esecuzione"
 msgid "open the task in a workspace"
 msgstr "aprire il task in un workspace"
 
+msgid "Open the workspace in the app picked in the Open In menu (VS Code, Cursor, etc.)"
+msgstr "Apri il workspace nell'app scelta nel menu \"Apri in\" (VS Code, Cursor, ecc.)"
+
 msgid "Open this run's workspace"
 msgstr "Apri il workspace di questa esecuzione"
 
 msgid "Open workspace"
 msgstr "Apri il workspace"
-
-msgid "Open workspace in external app (Cursor, VS Code, etc.)"
-msgstr "Apri il workspace in un'app esterna (Cursor, VS Code, ecc.)"
 
 msgid "OpenAI rejected this API key."
 msgstr "OpenAI ha rifiutato questa chiave API."
@@ -11932,6 +11929,9 @@ msgstr "Scegli un altro elemento"
 msgid "Pick a different element (esc)"
 msgstr "Scegli un altro elemento (esc)"
 
+msgid "Pick a folder on disk and add it as a project"
+msgstr "Scegli una cartella sul disco e aggiungila come progetto"
+
 msgid "Pick a folder…"
 msgstr "Scegli una cartella…"
 
@@ -12240,8 +12240,8 @@ msgstr "Diapositiva precedente"
 msgid "Previous Tab"
 msgstr "Scheda precedente"
 
-msgid "Previous Tab (Alt)"
-msgstr "Scheda precedente (Alt)"
+msgid "Previous Tab (Second Shortcut)"
+msgstr "Scheda precedente (seconda scorciatoia)"
 
 msgid "Previous Workspace"
 msgstr "Workspace precedente"
@@ -14996,6 +14996,9 @@ msgstr "Spesa"
 msgid "Split"
 msgstr "Diviso"
 
+msgid "Split Along Longer Side"
+msgstr "Dividi lungo il lato più lungo"
+
 msgid "Split button mirrors desktop's OpenInButton; picker trigger mirrors PickerTrigger"
 msgstr "Il pulsante diviso rispecchia OpenInButton del desktop; il trigger del picker rispecchia PickerTrigger"
 
@@ -15016,9 +15019,6 @@ msgstr "Pannello diviso"
 
 msgid "Split Pane"
 msgstr "Pannello diviso"
-
-msgid "Split Pane Auto"
-msgstr "Dividi pannello (auto)"
 
 msgid "Split Right"
 msgstr "Dividi a destra"
@@ -15055,6 +15055,9 @@ msgstr "Dividi con simulatore mobile"
 
 msgid "Split with New Browser"
 msgstr "Dividi con un nuovo browser"
+
+msgid "Split with Sandbox Desktop"
+msgstr "Dividi con desktop della sandbox"
 
 msgid "Squash & Merge"
 msgstr "Squash e merge"
@@ -16775,6 +16778,9 @@ msgid "Toggle plan"
 msgstr "Mostra/nascondi il piano"
 
 msgid "Toggle right sidebar"
+msgstr "Mostra/nascondi barra laterale destra"
+
+msgid "Toggle Right Sidebar"
 msgstr "Mostra/nascondi barra laterale destra"
 
 msgid "Toggle Scripts Bar"
