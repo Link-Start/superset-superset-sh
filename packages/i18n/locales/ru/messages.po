@@ -51,13 +51,13 @@ msgstr "«{0}» будет отмечен как закрытый на GitHub. �
 
 #. placeholder {0}: data.title
 #. placeholder {1}: data.base.ref
-#. placeholder {2}: mergeMethodLabels[pendingAction.method].toLowerCase()
+#. placeholder {2}: mergeMethodLabels[pendingAction.method]
 msgid "\"{0}\" will be merged into {1} via {2}. Checks haven't passed yet — this overrides them. This can't be undone from here."
 msgstr "«{0}» будет объединён в {1} через {2}. Проверки ещё не пройдены — это их переопределит. Отменить отсюда нельзя."
 
 #. placeholder {0}: data.title
 #. placeholder {1}: data.base.ref
-#. placeholder {2}: mergeMethodLabels[pendingAction.method].toLowerCase()
+#. placeholder {2}: mergeMethodLabels[pendingAction.method]
 msgid "\"{0}\" will be merged into {1} via {2}. This can't be undone from here."
 msgstr "«{0}» будет объединён в {1} через {2}. Отменить отсюда нельзя."
 
@@ -147,6 +147,10 @@ msgstr "{0, plural, one {Найден # существующий worktree} few {
 msgid "{0, plural, one {# failed} other {# failed}}"
 msgstr "{0, plural, one {# не пройдено} few {# не пройдено} many {# не пройдено} other {# не пройдено}}"
 
+#. placeholder {0}: summary.failing
+msgid "{0, plural, one {# failing} other {# failing}}"
+msgstr "{0, plural, one {# с ошибкой} few {# с ошибкой} many {# с ошибкой} other {# с ошибкой}}"
+
 #. placeholder {0}: detail.pullRequest.changedFiles
 msgid "{0, plural, one {# file changed} other {# files changed}}"
 msgstr "{0, plural, one {# файл изменён} few {# файла изменено} many {# файлов изменено} other {# файла изменено}}"
@@ -179,6 +183,10 @@ msgstr "{0, plural, one {# логин} few {# логина} many {# логино
 #. placeholder {0}: summary.passed
 msgid "{0, plural, one {# passed} other {# passed}}"
 msgstr "{0, plural, one {# пройдено} few {# пройдено} many {# пройдено} other {# пройдено}}"
+
+#. placeholder {0}: summary.pending
+msgid "{0, plural, one {# pending} other {# pending}}"
+msgstr "{0, plural, one {# в ожидании} few {# в ожидании} many {# в ожидании} other {# в ожидании}}"
 
 #. placeholder {0}: chosenLeads.length
 #. placeholder {0}: chosenPeople.length
@@ -232,6 +240,10 @@ msgstr "{0, plural, one {# пропущено} few {# пропущено} many {
 #. placeholder {0}: subagents.length
 msgid "{0, plural, one {# subagent} other {# subagents}}"
 msgstr "{0, plural, one {# субагент} few {# субагента} many {# субагентов} other {# субагента}}"
+
+#. placeholder {0}: summary.passing
+msgid "{0, plural, one {# successful} other {# successful}}"
+msgstr "{0, plural, one {# успешная} few {# успешные} many {# успешных} other {# успешных}}"
 
 #. placeholder {0}: TASKS.length
 msgid "{0, plural, one {# task} other {# tasks}}"
@@ -397,10 +409,6 @@ msgstr "{0} включён"
 msgid "{0} ending in {1}"
 msgstr "{0}, оканчивается на {1}"
 
-#. placeholder {0}: summary.failing
-msgid "{0} failing"
-msgstr "{0} с ошибкой"
-
 #. placeholder {0}: collisions.length
 msgid "{0} files already exist in {where}. Do you want to replace them?"
 msgstr "В {where} уже есть {0} таких файлов. Заменить их?"
@@ -408,6 +416,11 @@ msgstr "В {where} уже есть {0} таких файлов. Заменить
 #. placeholder {0}: displayName(variables.name)
 msgid "{0} installed"
 msgstr "{0} установлен"
+
+#. placeholder {0}: data.head.ref
+#. placeholder {1}: data.base.ref
+msgid "{0} into {1}"
+msgstr "{0} в {1}"
 
 #. placeholder {0}: conflictDisplay.text
 #. placeholder {1}: i18n._( HOTKEYS[pendingConflict.conflictId].label, )
@@ -493,10 +506,6 @@ msgstr "Тариф {0}"
 #. placeholder {0}: normalizedProjectIds.length
 msgid "{0} projects"
 msgstr "{0} проектов"
-
-#. placeholder {0}: summary.pending
-msgid "{0} running"
-msgstr "{0} выполняется"
 
 #. placeholder {0}: tally.running
 msgid "{0} Running"
@@ -809,9 +818,6 @@ msgstr "{count} хостов работают на более старой ве�
 
 msgid "{count}/day"
 msgstr "{count}/день"
-
-msgid "{createdAtRelative} ago"
-msgstr "{createdAtRelative} назад"
 
 msgid "{currentPage} of {totalBranches}"
 msgstr "{currentPage} из {totalBranches}"
@@ -1951,10 +1957,6 @@ msgstr "Все {0} проверок пройдены"
 msgid "All {0} objectives are carrying their weight for {nextLabel}."
 msgstr "Все цели ({0}) работают на {nextLabel}."
 
-#. placeholder {0}: summary.relevantChecks.length
-msgid "All {0} passed"
-msgstr "Все {0} пройдены"
-
 msgid "All {versionCount} versions and their content are removed. Anyone with the link loses access."
 msgstr "Все {versionCount} версий и их содержимое будут удалены. Все, у кого есть ссылка, потеряют доступ."
 
@@ -2365,6 +2367,9 @@ msgstr "Одобрять правки"
 msgid "Approve for me"
 msgstr "Одобрять за меня"
 
+msgid "approved"
+msgstr "одобрил(а)"
+
 msgid "Approved"
 msgstr "Одобрено"
 
@@ -2622,9 +2627,6 @@ msgstr "Автосохранение"
 
 msgid "auto-generated"
 msgstr "генерируется автоматически"
-
-msgid "Auto-merge is coming soon"
-msgstr "Автослияние скоро появится"
 
 msgid "Auto-run command"
 msgstr "Команда автозапуска"
@@ -2946,9 +2948,6 @@ msgstr "Ветка"
 msgid "Branch behavior for new workspaces on this device. Projects can override the prefix individually."
 msgstr "Поведение веток для новых рабочих областей на этом устройстве. Проекты могут переопределять префикс по отдельности."
 
-msgid "Branch copied"
-msgstr "Ветка скопирована"
-
 msgid "Branch in a new worktree"
 msgstr "Ответвить в новом worktree"
 
@@ -3188,6 +3187,9 @@ msgstr "Можно ли сменить тариф или отменить в л�
 msgid "Can I use my own API keys?"
 msgstr "Можно использовать свои ключи API?"
 
+msgid "Can merge without conflicts"
+msgstr "Можно объединить без конфликтов"
+
 msgid "Can you standardize the tooltips across the app?"
 msgstr "Можешь стандартизировать подсказки во всём приложении?"
 
@@ -3272,6 +3274,9 @@ msgstr "Деньги — общий остаток (Mercury)"
 msgid "Category"
 msgstr "Категория"
 
+msgid "Caution"
+msgstr "Осторожно"
+
 msgid "Certificate Authority Invalid"
 msgstr "Недействительный удостоверяющий центр"
 
@@ -3319,6 +3324,9 @@ msgstr "Изменить расположение проекта"
 
 msgid "Change role"
 msgstr "Сменить роль"
+
+msgid "Change state"
+msgstr "Изменить состояние"
 
 #. placeholder {0}: issue.state.name
 msgid "Change status from {0}"
@@ -3646,9 +3654,6 @@ msgstr "Нажмите здесь, если переход не произошё
 msgid "Click the “↑ update” pill to see the pre-update confirm"
 msgstr "Нажмите «↑ update», чтобы увидеть подтверждение перед обновлением"
 
-msgid "Click to copy"
-msgstr "Нажмите, чтобы скопировать"
-
 msgid "Click to copy the session ID (resume with `claude --resume <id>`)."
 msgstr "Нажмите, чтобы скопировать ID сессии (возобновление: `claude --resume <id>`)."
 
@@ -3843,9 +3848,6 @@ msgstr "Закрытие этой вкладки завершит работаю
 msgid "Closing this terminal will end the running process."
 msgstr "Закрытие этого терминала завершит работающий процесс."
 
-msgid "Closing…"
-msgstr "Закрытие…"
-
 msgid "Cloud"
 msgstr "Облако"
 
@@ -4001,6 +4003,9 @@ msgstr "Комментировать эту страницу"
 msgid "Commented"
 msgstr "Прокомментировано"
 
+msgid "Commenting as your GitHub account"
+msgstr "Комментарий от вашего аккаунта GitHub"
+
 msgid "Comments"
 msgstr "Комментарии"
 
@@ -4016,6 +4021,9 @@ msgstr "Не удалось закоммитить: {0}"
 
 msgid "Commit message"
 msgstr "Сообщение коммита"
+
+msgid "Commit message (optional)"
+msgstr "Сообщение коммита (необязательно)"
 
 msgid "Commits"
 msgstr "Коммиты"
@@ -4122,6 +4130,10 @@ msgstr "Настроить команду запуска рабочей обла
 
 msgid "Confirm before quitting"
 msgstr "Подтверждать выход"
+
+#. placeholder {0}: status.baseBranch
+msgid "Conflicts with {0}"
+msgstr "Конфликты с {0}"
 
 msgid "Connect"
 msgstr "Подключить"
@@ -4420,8 +4432,14 @@ msgstr "Конверсия от предыдущего"
 msgid "Conversion so far"
 msgstr "Конверсия на текущий момент"
 
+msgid "Convert to draft"
+msgstr "Перевести в черновик"
+
 msgid "Converted"
 msgstr "Сконвертировались"
+
+msgid "Converting to draft…"
+msgstr "Перевод в черновик…"
 
 msgid "cookies and site data"
 msgstr "cookies и данные сайтов"
@@ -4844,11 +4862,14 @@ msgstr "Не удалось проверить статус звезды — у�
 msgid "Couldn't connect (error {status}). Please try again."
 msgstr "Не удалось подключиться (ошибка {status}). Попробуйте ещё раз."
 
-msgid "Couldn't copy branch name"
-msgstr "Не удалось скопировать имя ветки"
+msgid "Couldn't convert to draft"
+msgstr "Не удалось перевести в черновик"
 
 msgid "Couldn't copy comment"
 msgstr "Не удалось скопировать комментарий"
+
+msgid "Couldn't copy link"
+msgstr "Не удалось скопировать ссылку"
 
 msgid "Couldn't copy path"
 msgstr "Не удалось скопировать путь"
@@ -4870,6 +4891,9 @@ msgstr "Не удалось отменить непроиндексирован�
 
 msgid "Couldn’t finish deleting workspaces"
 msgstr "Не удалось завершить удаление рабочих областей"
+
+msgid "Couldn't hand this to an agent"
+msgstr "Не удалось передать агенту"
 
 #. placeholder {0}: configsQuery.error instanceof Error ? configsQuery.error.message : hostServiceUnavailableMessage
 msgid "Couldn't load agent settings: {0}"
@@ -4909,6 +4933,9 @@ msgstr "Не удалось загрузить полезную нагрузку
 msgid "Couldn't load your profile, so editing is disabled."
 msgstr "Не удалось загрузить профиль, поэтому редактирование отключено."
 
+msgid "Couldn't mark ready for review"
+msgstr "Не удалось пометить как готовый к ревью"
+
 msgid "Couldn't merge pull request"
 msgstr "Не удалось объединить пул-реквест"
 
@@ -4920,6 +4947,9 @@ msgstr "Не удалось разобрать этот diff: {patchParseError}"
 
 msgid "Couldn't permanently delete \"{projectName}\""
 msgstr "Не удалось окончательно удалить «{projectName}»"
+
+msgid "Couldn't post comment"
+msgstr "Не удалось опубликовать комментарий"
 
 msgid "Couldn't post reply"
 msgstr "Не удалось отправить ответ"
@@ -6240,9 +6270,6 @@ msgstr "Изменить"
 msgid "Edit comment"
 msgstr "Изменить комментарий"
 
-msgid "Edit description"
-msgstr "Изменить описание"
-
 msgid "Edit environment"
 msgstr "Изменить окружение"
 
@@ -6357,9 +6384,6 @@ msgstr "Включить {0}"
 
 msgid "Enable an agent in Settings > Agents first"
 msgstr "Сначала включите агента в Настройки > Агенты"
-
-msgid "Enable auto-merge"
-msgstr "Включить автослияние"
 
 msgid "Enable relay access…"
 msgstr "Включить доступ через реле…"
@@ -7355,6 +7379,9 @@ msgstr "Починить проверки агентом"
 msgid "Fix CI failures"
 msgstr "Чинить падения CI"
 
+msgid "Fix findings"
+msgstr "Исправить замечания"
+
 msgid "fix-auth-redirect"
 msgstr "fix-auth-redirect"
 
@@ -7847,6 +7874,9 @@ msgstr "Руководства, справочники и интеграции."
 msgid "Half of merged changes are zero-edit agent code"
 msgstr "Половина объединённых изменений — агентский код без правок"
 
+msgid "Handing to agent…"
+msgstr "Передача агенту…"
+
 msgid "Handle"
 msgstr "Ник"
 
@@ -7858,6 +7888,9 @@ msgstr "идёт сейчас"
 
 msgid "Hard reload"
 msgstr "Жёсткая перезагрузка"
+
+msgid "Has conflicts"
+msgstr "Есть конфликты"
 
 msgid "Has uncommitted changes"
 msgstr "Есть незакоммиченные изменения"
@@ -7970,6 +8003,9 @@ msgstr "Скрыть неизменённые участки"
 
 msgid "High"
 msgstr "Высокий"
+
+msgid "High severity"
+msgstr "Высокая серьёзность"
 
 msgid "High usage"
 msgstr "Высокое потребление"
@@ -8286,6 +8322,9 @@ msgstr "Импортируйте историю просмотров и логи
 
 msgid "Import…"
 msgstr "Импортировать…"
+
+msgid "Important"
+msgstr "Важно"
 
 #. placeholder {0}: untracked.length
 #. placeholder {1}: errors[0]
@@ -8932,8 +8971,8 @@ msgstr "Как использовать скрипты"
 msgid "Learn the workflow that fits this repo — parallel workspaces and agent setup."
 msgstr "Изучить рабочий процесс, который подходит этому репозиторию: параллельные рабочие области и настройка агентов."
 
-msgid "Leave a comment (optional)"
-msgstr "Оставьте комментарий (необязательно)"
+msgid "Leave a comment"
+msgstr "Оставить комментарий"
 
 msgid "Leave a comment…"
 msgstr "Оставьте комментарий…"
@@ -9359,6 +9398,9 @@ msgstr "Выглядит хорошо"
 msgid "Low"
 msgstr "Низкий"
 
+msgid "Low severity"
+msgstr "Низкая серьёзность"
+
 msgid "Lower memory with many terminals open, smoother git in big repos, and less background CPU."
 msgstr "Меньше памяти при множестве открытых терминалов, плавнее git в больших репозиториях, меньше фоновой нагрузки на CPU."
 
@@ -9495,6 +9537,9 @@ msgstr "Маркетплейс"
 msgid "Marking ready for review..."
 msgstr "Помечается как готово к ревью…"
 
+msgid "Marking ready…"
+msgstr "Помечаем как готовый…"
+
 msgid "Match existing patterns"
 msgstr "Следуй существующим шаблонам"
 
@@ -9546,6 +9591,9 @@ msgstr "Медианное время от предыдущего"
 
 msgid "Medium"
 msgstr "Средний"
+
+msgid "Medium severity"
+msgstr "Средняя серьёзность"
 
 msgid "Meet the team behind Superset, building parallel coding agents for developers."
 msgstr "Познакомьтесь с командой Superset, которая создаёт параллельных кодинг-агентов для разработчиков."
@@ -9606,8 +9654,11 @@ msgstr "Объединить пул-реквест"
 msgid "Merge pull requests without leaving Superset, plus a round of chat fixes and polish."
 msgstr "Объединяйте пул-реквесты не выходя из Superset, плюс порция исправлений и полировки чата."
 
-msgid "Merge when checks pass"
-msgstr "Объединить, когда проверки пройдут"
+msgid "Merge status"
+msgstr "Статус слияния"
+
+msgid "Merge status unknown"
+msgstr "Статус слияния неизвестен"
 
 msgid "Merged"
 msgstr "Объединён"
@@ -10221,6 +10272,9 @@ msgstr "Нет активных сессий терминала"
 msgid "No agent"
 msgstr "Без агента"
 
+msgid "No agent is configured on this host"
+msgstr "На этом хосте не настроен ни один агент"
+
 #. placeholder {0}: host.name
 msgid "No agents configured on {0}"
 msgstr "На {0} не настроено ни одного агента"
@@ -10276,9 +10330,6 @@ msgstr "Без проверок"
 msgid "No checks reported"
 msgstr "Проверок нет"
 
-msgid "No checks reported for the latest commit."
-msgstr "Для последнего коммита проверок нет."
-
 msgid "No checks reported."
 msgstr "Проверок нет."
 
@@ -10305,6 +10356,9 @@ msgstr "Команды не найдены."
 
 msgid "No comment body"
 msgstr "Нет текста комментария"
+
+msgid "No comments"
+msgstr "Нет комментариев"
 
 msgid "No comments on this page yet"
 msgstr "На этой странице пока нет комментариев"
@@ -10619,6 +10673,9 @@ msgstr "Ничего не найдено по запросу «{query}»"
 msgid "No results found."
 msgstr "Ничего не найдено."
 
+msgid "No review body."
+msgstr "Нет текста ревью."
+
 msgid "No Reviewers Assigned"
 msgstr "Ревьюеры не назначены"
 
@@ -10871,6 +10928,9 @@ msgstr "без сортировки"
 msgctxt "agent status"
 msgid "Not updating"
 msgstr "Нет обновлений"
+
+msgid "Note"
+msgstr "Примечание"
 
 msgid "Notes"
 msgstr "Заметки"
@@ -11427,9 +11487,6 @@ msgstr "Открыть пул-реквест #{0}"
 
 msgid "Open pull request #{number}"
 msgstr "Открыть пул-реквест #{number}"
-
-msgid "Open pull request in GitHub"
-msgstr "Открыть пул-реквест на GitHub"
 
 msgid "Open pull request options"
 msgstr "Открыть параметры пул-реквеста"
@@ -12570,6 +12627,12 @@ msgstr "Пул-реквест #{0}, {1}"
 msgid "Pull request actions"
 msgstr "Действия с пул-реквестом"
 
+msgid "Pull request detail tabs"
+msgstr "Вкладки пул-реквеста"
+
+msgid "Pull request not found"
+msgstr "Пул-реквест не найден"
+
 msgid "Pull request title"
 msgstr "Заголовок пул-реквеста"
 
@@ -13235,11 +13298,17 @@ msgstr "Охват репозитория и загрузки десктопны
 msgid "Repository URL or path"
 msgstr "URL или путь репозитория"
 
+msgid "Request"
+msgstr "Запросить"
+
 msgid "Request a trial"
 msgstr "Запросить пробный период"
 
 msgid "Request Body"
 msgstr "Тело запроса"
+
+msgid "requested changes"
+msgstr "запросил(а) изменения"
 
 msgid "Requested Changes"
 msgstr "Запросил изменения"
@@ -13331,6 +13400,9 @@ msgstr "Решить"
 msgid "Resolve all"
 msgstr "Закрыть все"
 
+msgid "Resolve conflicts"
+msgstr "Разрешить конфликты"
+
 msgid "Resolve Conflicts to Merge"
 msgstr "Разрешите конфликты для слияния"
 
@@ -13339,6 +13411,10 @@ msgstr "Закрыть обсуждение"
 
 msgid "Resolve Conversations to Merge"
 msgstr "Закройте обсуждения для слияния"
+
+#. placeholder {0}: data.base.ref
+msgid "Resolve the conflicts with {0} first"
+msgstr "Сначала разрешите конфликты с {0}"
 
 msgid "resolve the workspace path"
 msgstr "определить путь к рабочей области"
@@ -13600,6 +13676,9 @@ msgstr "Просмотреть эти запуски в разделе «Все 
 
 msgid "Review thread…"
 msgstr "Ветка обсуждения ревью…"
+
+msgid "reviewed"
+msgstr "провёл(а) ревью"
 
 msgid "Reviewed by you"
 msgstr "Проверено вами"
@@ -14397,6 +14476,9 @@ msgstr "Отправлено"
 msgid "Sent to agent"
 msgstr "Отправлено агенту"
 
+msgid "Sent to the pull request's workspace"
+msgstr "Отправлено в рабочую область пул-реквеста"
+
 msgid "Sentry rejected the token"
 msgstr "Sentry отклонил токен"
 
@@ -14652,6 +14734,9 @@ msgstr "Показать email"
 
 msgid "Show everyone who opened this workspace"
 msgstr "Показать всех, кто открывал это рабочее пространство"
+
+msgid "Show fewer"
+msgstr "Показать меньше"
 
 msgid "Show file tree"
 msgstr "Показать дерево файлов"
@@ -15302,9 +15387,6 @@ msgstr "Начните с работы."
 msgid "Start work from anywhere"
 msgstr "Начинайте работу откуда угодно"
 
-msgid "Start Workspace"
-msgstr "Запустить рабочую область"
-
 msgid "Started"
 msgstr "Начато"
 
@@ -15319,6 +15401,9 @@ msgstr "Запуск"
 
 msgid "Starting {agentLabel}"
 msgstr "Запуск {agentLabel}"
+
+msgid "Starting a workspace on this pull request"
+msgstr "Запуск рабочей области для этого пул-реквеста"
 
 msgid "Starting an agent in {what}"
 msgstr "Запуск агента в {what}"
@@ -16687,8 +16772,14 @@ msgstr "Этот профиль сейчас перегружен"
 msgid "This project is no longer available on your devices."
 msgstr "Этот проект больше недоступен на ваших устройствах."
 
+msgid "This project isn't linked to a GitHub repository."
+msgstr "Этот проект не связан с репозиторием GitHub."
+
 msgid "This project's host is offline"
 msgstr "Хост этого проекта офлайн"
+
+msgid "This pull request has no host to act through"
+msgstr "У этого пул-реквеста нет хоста, через который можно действовать"
 
 msgid "This pull request is no longer available."
 msgstr "Этот пул-реквест больше недоступен."
@@ -16843,6 +16934,9 @@ msgstr "Время"
 
 msgid "Time range"
 msgstr "Период"
+
+msgid "Tip"
+msgstr "Совет"
 
 msgid "Title"
 msgstr "Название"
@@ -17724,6 +17818,9 @@ msgstr "Посмотреть на GitHub"
 
 msgid "View log"
 msgstr "Смотреть лог"
+
+msgid "View more"
+msgstr "Показать больше"
 
 msgid "View on GitHub"
 msgstr "Посмотреть на GitHub"

@@ -51,13 +51,13 @@ msgstr "「{0}」はGitHub上でクローズ済みになります。ここから
 
 #. placeholder {0}: data.title
 #. placeholder {1}: data.base.ref
-#. placeholder {2}: mergeMethodLabels[pendingAction.method].toLowerCase()
+#. placeholder {2}: mergeMethodLabels[pendingAction.method]
 msgid "\"{0}\" will be merged into {1} via {2}. Checks haven't passed yet — this overrides them. This can't be undone from here."
 msgstr "「{0}」は{2}で{1}にマージされます。チェックはまだ通っていません — この操作はそれを無視します。ここからは元に戻せません。"
 
 #. placeholder {0}: data.title
 #. placeholder {1}: data.base.ref
-#. placeholder {2}: mergeMethodLabels[pendingAction.method].toLowerCase()
+#. placeholder {2}: mergeMethodLabels[pendingAction.method]
 msgid "\"{0}\" will be merged into {1} via {2}. This can't be undone from here."
 msgstr "「{0}」は{2}で{1}にマージされます。ここからは元に戻せません。"
 
@@ -147,6 +147,10 @@ msgstr "{0, plural, one {既存のワークツリーが#件見つかりました
 msgid "{0, plural, one {# failed} other {# failed}}"
 msgstr "{0, plural, one {#件失敗} other {#件失敗}}"
 
+#. placeholder {0}: summary.failing
+msgid "{0, plural, one {# failing} other {# failing}}"
+msgstr "{0, plural, one {#件失敗} other {#件失敗}}"
+
 #. placeholder {0}: detail.pullRequest.changedFiles
 msgid "{0, plural, one {# file changed} other {# files changed}}"
 msgstr "{0, plural, one {#件のファイルを変更} other {#件のファイルを変更}}"
@@ -179,6 +183,10 @@ msgstr "{0, plural, one {#件のログイン情報} other {#件のログイン�
 #. placeholder {0}: summary.passed
 msgid "{0, plural, one {# passed} other {# passed}}"
 msgstr "{0, plural, one {#件成功} other {#件成功}}"
+
+#. placeholder {0}: summary.pending
+msgid "{0, plural, one {# pending} other {# pending}}"
+msgstr "{0, plural, one {#件保留中} other {#件保留中}}"
 
 #. placeholder {0}: chosenLeads.length
 #. placeholder {0}: chosenPeople.length
@@ -232,6 +240,10 @@ msgstr "{0, plural, one {#件スキップ} other {#件スキップ}}"
 #. placeholder {0}: subagents.length
 msgid "{0, plural, one {# subagent} other {# subagents}}"
 msgstr "{0, plural, other {サブエージェント # 件}}"
+
+#. placeholder {0}: summary.passing
+msgid "{0, plural, one {# successful} other {# successful}}"
+msgstr "{0, plural, one {#件成功} other {#件成功}}"
 
 #. placeholder {0}: TASKS.length
 msgid "{0, plural, one {# task} other {# tasks}}"
@@ -397,10 +409,6 @@ msgstr "{0}を有効化"
 msgid "{0} ending in {1}"
 msgstr "{0}(末尾{1})"
 
-#. placeholder {0}: summary.failing
-msgid "{0} failing"
-msgstr "{0}件失敗"
-
 #. placeholder {0}: collisions.length
 msgid "{0} files already exist in {where}. Do you want to replace them?"
 msgstr "{where}には{0}件のファイルがすでに存在します。置き換えますか?"
@@ -408,6 +416,11 @@ msgstr "{where}には{0}件のファイルがすでに存在します。置き�
 #. placeholder {0}: displayName(variables.name)
 msgid "{0} installed"
 msgstr "{0}をインストールしました"
+
+#. placeholder {0}: data.head.ref
+#. placeholder {1}: data.base.ref
+msgid "{0} into {1}"
+msgstr "{0} → {1}"
 
 #. placeholder {0}: conflictDisplay.text
 #. placeholder {1}: i18n._( HOTKEYS[pendingConflict.conflictId].label, )
@@ -493,10 +506,6 @@ msgstr "{0}プラン"
 #. placeholder {0}: normalizedProjectIds.length
 msgid "{0} projects"
 msgstr "{0}件のプロジェクト"
-
-#. placeholder {0}: summary.pending
-msgid "{0} running"
-msgstr "{0}件実行中"
 
 #. placeholder {0}: tally.running
 msgid "{0} Running"
@@ -809,9 +818,6 @@ msgstr "{count}台のホストがこのアプリより古いホストサービ�
 
 msgid "{count}/day"
 msgstr "{count}/日"
-
-msgid "{createdAtRelative} ago"
-msgstr "{createdAtRelative}前"
 
 msgid "{currentPage} of {totalBranches}"
 msgstr "{currentPage}/{totalBranches}"
@@ -1951,10 +1957,6 @@ msgstr "{0}件すべてのチェックが成功しました"
 msgid "All {0} objectives are carrying their weight for {nextLabel}."
 msgstr "{0} 個すべての目標が {nextLabel} に向けて働いています。"
 
-#. placeholder {0}: summary.relevantChecks.length
-msgid "All {0} passed"
-msgstr "{0}件すべて成功"
-
 msgid "All {versionCount} versions and their content are removed. Anyone with the link loses access."
 msgstr "{versionCount}件すべてのバージョンとその内容が削除されます。リンクを知っている人もアクセスできなくなります。"
 
@@ -2365,6 +2367,9 @@ msgstr "編集を承認"
 msgid "Approve for me"
 msgstr "自動で承認"
 
+msgid "approved"
+msgstr "が承認しました"
+
 msgid "Approved"
 msgstr "承認"
 
@@ -2622,9 +2627,6 @@ msgstr "自動保存"
 
 msgid "auto-generated"
 msgstr "自動生成"
-
-msgid "Auto-merge is coming soon"
-msgstr "自動マージは近日公開です"
 
 msgid "Auto-run command"
 msgstr "コマンドを自動実行"
@@ -2946,9 +2948,6 @@ msgstr "ブランチ"
 msgid "Branch behavior for new workspaces on this device. Projects can override the prefix individually."
 msgstr "このデバイスの新規ワークスペースのブランチ動作。プレフィックスはプロジェクトごとに上書きできます。"
 
-msgid "Branch copied"
-msgstr "ブランチをコピーしました"
-
 msgid "Branch in a new worktree"
 msgstr "新しい worktree で分岐"
 
@@ -3188,6 +3187,9 @@ msgstr "プランの変更や解約はいつでもできますか?"
 msgid "Can I use my own API keys?"
 msgstr "自分のAPIキーを使えますか?"
 
+msgid "Can merge without conflicts"
+msgstr "コンフリクトなしでマージできます"
+
 msgid "Can you standardize the tooltips across the app?"
 msgstr "アプリ全体のtooltipを統一できますか?"
 
@@ -3272,6 +3274,9 @@ msgstr "現金 — 総残高(Mercury)"
 msgid "Category"
 msgstr "カテゴリ"
 
+msgid "Caution"
+msgstr "警告"
+
 msgid "Certificate Authority Invalid"
 msgstr "認証局が無効です"
 
@@ -3319,6 +3324,9 @@ msgstr "プロジェクトの場所を変更"
 
 msgid "Change role"
 msgstr "ロールを変更"
+
+msgid "Change state"
+msgstr "状態を変更"
 
 #. placeholder {0}: issue.state.name
 msgid "Change status from {0}"
@@ -3646,9 +3654,6 @@ msgstr "リダイレクトされない場合はこちらをクリック"
 msgid "Click the “↑ update” pill to see the pre-update confirm"
 msgstr "「↑ update」ボタンをクリックすると更新前の確認が表示されます"
 
-msgid "Click to copy"
-msgstr "クリックでコピー"
-
 msgid "Click to copy the session ID (resume with `claude --resume <id>`)."
 msgstr "クリックでセッションIDをコピーします(`claude --resume <id>`で再開)。"
 
@@ -3843,9 +3848,6 @@ msgstr "このタブを閉じると実行中のプロセスが終了します。
 msgid "Closing this terminal will end the running process."
 msgstr "このターミナルを閉じると実行中のプロセスが終了します。"
 
-msgid "Closing…"
-msgstr "クローズ中…"
-
 msgid "Cloud"
 msgstr "クラウド"
 
@@ -4001,6 +4003,9 @@ msgstr "このページにコメント"
 msgid "Commented"
 msgstr "コメント"
 
+msgid "Commenting as your GitHub account"
+msgstr "GitHubアカウントでコメントします"
+
 msgid "Comments"
 msgstr "コメント"
 
@@ -4016,6 +4021,9 @@ msgstr "コミットに失敗しました: {0}"
 
 msgid "Commit message"
 msgstr "コミットメッセージ"
+
+msgid "Commit message (optional)"
+msgstr "コミットメッセージ（任意）"
 
 msgid "Commits"
 msgstr "コミット"
@@ -4122,6 +4130,10 @@ msgstr "ワークスペースの実行コマンドを設定"
 
 msgid "Confirm before quitting"
 msgstr "終了前に確認"
+
+#. placeholder {0}: status.baseBranch
+msgid "Conflicts with {0}"
+msgstr "{0} とコンフリクトしています"
 
 msgid "Connect"
 msgstr "接続"
@@ -4420,8 +4432,14 @@ msgstr "前ステップからの転換率"
 msgid "Conversion so far"
 msgstr "ここまでの転換率"
 
+msgid "Convert to draft"
+msgstr "ドラフトに変換"
+
 msgid "Converted"
 msgstr "転換"
+
+msgid "Converting to draft…"
+msgstr "ドラフトに変換しています…"
 
 msgid "cookies and site data"
 msgstr "Cookieとサイトデータ"
@@ -4844,11 +4862,14 @@ msgstr "スター状態を確認できませんでした — GitHub CLI (`gh`) �
 msgid "Couldn't connect (error {status}). Please try again."
 msgstr "接続できませんでした（エラー {status}）。もう一度お試しください。"
 
-msgid "Couldn't copy branch name"
-msgstr "ブランチ名をコピーできませんでした"
+msgid "Couldn't convert to draft"
+msgstr "ドラフトに変換できませんでした"
 
 msgid "Couldn't copy comment"
 msgstr "コメントをコピーできませんでした"
+
+msgid "Couldn't copy link"
+msgstr "リンクをコピーできませんでした"
 
 msgid "Couldn't copy path"
 msgstr "パスをコピーできませんでした"
@@ -4870,6 +4891,9 @@ msgstr "未ステージの変更を破棄できませんでした"
 
 msgid "Couldn’t finish deleting workspaces"
 msgstr "ワークスペースの削除を完了できませんでした"
+
+msgid "Couldn't hand this to an agent"
+msgstr "エージェントに引き渡せませんでした"
 
 #. placeholder {0}: configsQuery.error instanceof Error ? configsQuery.error.message : hostServiceUnavailableMessage
 msgid "Couldn't load agent settings: {0}"
@@ -4909,6 +4933,9 @@ msgstr "この実行のペイロードを読み込めませんでした。"
 msgid "Couldn't load your profile, so editing is disabled."
 msgstr "プロフィールを読み込めなかったため、編集は無効です。"
 
+msgid "Couldn't mark ready for review"
+msgstr "レビュー準備完了にできませんでした"
+
 msgid "Couldn't merge pull request"
 msgstr "プルリクエストをマージできませんでした"
 
@@ -4920,6 +4947,9 @@ msgstr "この差分を解析できませんでした: {patchParseError}"
 
 msgid "Couldn't permanently delete \"{projectName}\""
 msgstr "「{projectName}」を完全に削除できませんでした"
+
+msgid "Couldn't post comment"
+msgstr "コメントを投稿できませんでした"
 
 msgid "Couldn't post reply"
 msgstr "返信を投稿できませんでした"
@@ -6240,9 +6270,6 @@ msgstr "編集"
 msgid "Edit comment"
 msgstr "コメントを編集"
 
-msgid "Edit description"
-msgstr "説明を編集"
-
 msgid "Edit environment"
 msgstr "環境を編集"
 
@@ -6357,9 +6384,6 @@ msgstr "{0}を有効にする"
 
 msgid "Enable an agent in Settings > Agents first"
 msgstr "先に「設定 > エージェント」でエージェントを有効にしてください"
-
-msgid "Enable auto-merge"
-msgstr "自動マージを有効にする"
 
 msgid "Enable relay access…"
 msgstr "リレーアクセスを有効にする…"
@@ -7355,6 +7379,9 @@ msgstr "エージェントでチェックを修正"
 msgid "Fix CI failures"
 msgstr "CIの失敗を修正"
 
+msgid "Fix findings"
+msgstr "指摘を修正"
+
 msgid "fix-auth-redirect"
 msgstr "fix-auth-redirect"
 
@@ -7847,6 +7874,9 @@ msgstr "ガイド、リファレンス、インテグレーション。"
 msgid "Half of merged changes are zero-edit agent code"
 msgstr "マージされた変更の半分が編集ゼロのエージェントのコード"
 
+msgid "Handing to agent…"
+msgstr "エージェントに引き渡しています…"
+
 msgid "Handle"
 msgstr "ハンドル"
 
@@ -7858,6 +7888,9 @@ msgstr "開催中"
 
 msgid "Hard reload"
 msgstr "ハードリロード"
+
+msgid "Has conflicts"
+msgstr "コンフリクトあり"
 
 msgid "Has uncommitted changes"
 msgstr "未コミットの変更があります"
@@ -7970,6 +8003,9 @@ msgstr "変更のない領域を隠す"
 
 msgid "High"
 msgstr "高"
+
+msgid "High severity"
+msgstr "重要度: 高"
 
 msgid "High usage"
 msgstr "使用量高"
@@ -8286,6 +8322,9 @@ msgstr "{browserName}から閲覧履歴とログイン情報をインポート"
 
 msgid "Import…"
 msgstr "インポート…"
+
+msgid "Important"
+msgstr "重要"
 
 #. placeholder {0}: untracked.length
 #. placeholder {1}: errors[0]
@@ -8932,8 +8971,8 @@ msgstr "スクリプトの使い方を見る"
 msgid "Learn the workflow that fits this repo — parallel workspaces and agent setup."
 msgstr "このリポジトリに合うワークフロー — 並列ワークスペースとエージェント設定を学びます。"
 
-msgid "Leave a comment (optional)"
-msgstr "コメントを入力(任意)"
+msgid "Leave a comment"
+msgstr "コメントを残す"
 
 msgid "Leave a comment…"
 msgstr "コメントを入力…"
@@ -9359,6 +9398,9 @@ msgstr "良さそう"
 msgid "Low"
 msgstr "低"
 
+msgid "Low severity"
+msgstr "重要度: 低"
+
 msgid "Lower memory with many terminals open, smoother git in big repos, and less background CPU."
 msgstr "ターミナルを多数開いてもメモリ消費を抑え、大きなリポジトリでのgitを滑らかにし、バックグラウンドのCPU使用を減らします。"
 
@@ -9495,6 +9537,9 @@ msgstr "マーケットプレイス"
 msgid "Marking ready for review..."
 msgstr "レビュー準備完了にしています…"
 
+msgid "Marking ready…"
+msgstr "準備完了にしています…"
+
 msgid "Match existing patterns"
 msgstr "既存のパターンに合わせて"
 
@@ -9546,6 +9591,9 @@ msgstr "前ステップからの時間の中央値"
 
 msgid "Medium"
 msgstr "中"
+
+msgid "Medium severity"
+msgstr "重要度: 中"
 
 msgid "Meet the team behind Superset, building parallel coding agents for developers."
 msgstr "開発者向けの並列コーディングエージェントを作る、Supersetのチームを紹介します。"
@@ -9606,8 +9654,11 @@ msgstr "プルリクエストをマージ"
 msgid "Merge pull requests without leaving Superset, plus a round of chat fixes and polish."
 msgstr "Supersetから離れずにプルリクエストをマージできます。あわせてチャットの修正と磨き込みも。"
 
-msgid "Merge when checks pass"
-msgstr "チェック通過後にマージ"
+msgid "Merge status"
+msgstr "マージ状態"
+
+msgid "Merge status unknown"
+msgstr "マージ状態は不明です"
 
 msgid "Merged"
 msgstr "マージ済み"
@@ -10221,6 +10272,9 @@ msgstr "アクティブなターミナルセッションはありません"
 msgid "No agent"
 msgstr "エージェントなし"
 
+msgid "No agent is configured on this host"
+msgstr "このホストにはエージェントが設定されていません"
+
 #. placeholder {0}: host.name
 msgid "No agents configured on {0}"
 msgstr "{0}にはエージェントが設定されていません"
@@ -10276,9 +10330,6 @@ msgstr "チェックなし"
 msgid "No checks reported"
 msgstr "チェックの報告はありません"
 
-msgid "No checks reported for the latest commit."
-msgstr "最新コミットのチェックはありません。"
-
 msgid "No checks reported."
 msgstr "チェックはありません。"
 
@@ -10305,6 +10356,9 @@ msgstr "コマンドが見つかりません。"
 
 msgid "No comment body"
 msgstr "コメント本文はありません"
+
+msgid "No comments"
+msgstr "コメントはありません"
 
 msgid "No comments on this page yet"
 msgstr "このページにはまだコメントがありません"
@@ -10619,6 +10673,9 @@ msgstr "「{query}」に一致する結果はありません"
 msgid "No results found."
 msgstr "結果が見つかりません。"
 
+msgid "No review body."
+msgstr "レビュー本文はありません。"
+
 msgid "No Reviewers Assigned"
 msgstr "レビュアーの割り当てなし"
 
@@ -10871,6 +10928,9 @@ msgstr "並べ替えなし"
 msgctxt "agent status"
 msgid "Not updating"
 msgstr "更新なし"
+
+msgid "Note"
+msgstr "メモ"
 
 msgid "Notes"
 msgstr "ノート"
@@ -11427,9 +11487,6 @@ msgstr "プルリクエスト#{0}を開く"
 
 msgid "Open pull request #{number}"
 msgstr "プルリクエスト#{number}を開く"
-
-msgid "Open pull request in GitHub"
-msgstr "GitHubでプルリクエストを開く"
 
 msgid "Open pull request options"
 msgstr "プルリクエストのオプションを開く"
@@ -12570,6 +12627,12 @@ msgstr "プルリクエスト#{0}、{1}"
 msgid "Pull request actions"
 msgstr "プルリクエストの操作"
 
+msgid "Pull request detail tabs"
+msgstr "プルリクエスト詳細のタブ"
+
+msgid "Pull request not found"
+msgstr "プルリクエストが見つかりません"
+
 msgid "Pull request title"
 msgstr "プルリクエストのタイトル"
 
@@ -13235,11 +13298,17 @@ msgstr "リポジトリの広がりとデスクトップリリースのダウン
 msgid "Repository URL or path"
 msgstr "リポジトリのURLまたはパス"
 
+msgid "Request"
+msgstr "依頼"
+
 msgid "Request a trial"
 msgstr "トライアルを申し込む"
 
 msgid "Request Body"
 msgstr "リクエストボディ"
+
+msgid "requested changes"
+msgstr "が変更をリクエストしました"
 
 msgid "Requested Changes"
 msgstr "変更をリクエスト"
@@ -13331,6 +13400,9 @@ msgstr "解決する"
 msgid "Resolve all"
 msgstr "すべて解決"
 
+msgid "Resolve conflicts"
+msgstr "コンフリクトを解決"
+
 msgid "Resolve Conflicts to Merge"
 msgstr "マージにはコンフリクトの解消が必要"
 
@@ -13339,6 +13411,10 @@ msgstr "会話を解決"
 
 msgid "Resolve Conversations to Merge"
 msgstr "マージには会話の解決が必要"
+
+#. placeholder {0}: data.base.ref
+msgid "Resolve the conflicts with {0} first"
+msgstr "先に {0} とのコンフリクトを解決してください"
 
 msgid "resolve the workspace path"
 msgstr "ワークスペースのパスを解決する"
@@ -13600,6 +13676,9 @@ msgstr "「すべての実行」でこれらの実行を確認"
 
 msgid "Review thread…"
 msgstr "レビュースレッド…"
+
+msgid "reviewed"
+msgstr "がレビューしました"
 
 msgid "Reviewed by you"
 msgstr "自分がレビュー済み"
@@ -14397,6 +14476,9 @@ msgstr "送信日"
 msgid "Sent to agent"
 msgstr "エージェントに送信しました"
 
+msgid "Sent to the pull request's workspace"
+msgstr "プルリクエストのワークスペースに送信しました"
+
 msgid "Sentry rejected the token"
 msgstr "Sentryがトークンを拒否しました"
 
@@ -14652,6 +14734,9 @@ msgstr "メールを表示"
 
 msgid "Show everyone who opened this workspace"
 msgstr "このワークスペースを開いた全員を表示"
+
+msgid "Show fewer"
+msgstr "表示を減らす"
 
 msgid "Show file tree"
 msgstr "ファイルツリーを表示"
@@ -15302,9 +15387,6 @@ msgstr "仕事から始める。"
 msgid "Start work from anywhere"
 msgstr "どこからでも作業を開始"
 
-msgid "Start Workspace"
-msgstr "ワークスペースを開始"
-
 msgid "Started"
 msgstr "開始"
 
@@ -15319,6 +15401,9 @@ msgstr "起動中"
 
 msgid "Starting {agentLabel}"
 msgstr "{agentLabel}を起動中"
+
+msgid "Starting a workspace on this pull request"
+msgstr "このプルリクエストでワークスペースを開始しています"
 
 msgid "Starting an agent in {what}"
 msgstr "{what} でエージェントを起動中"
@@ -16687,8 +16772,14 @@ msgstr "このプロフィールは現在混み合っています"
 msgid "This project is no longer available on your devices."
 msgstr "このプロジェクトはお使いのデバイスでは利用できなくなりました。"
 
+msgid "This project isn't linked to a GitHub repository."
+msgstr "このプロジェクトは GitHub リポジトリにリンクされていません。"
+
 msgid "This project's host is offline"
 msgstr "このプロジェクトのホストはオフラインです"
+
+msgid "This pull request has no host to act through"
+msgstr "このプルリクエストには操作に使うホストがありません"
 
 msgid "This pull request is no longer available."
 msgstr "このプルリクエストは利用できなくなりました。"
@@ -16843,6 +16934,9 @@ msgstr "時間"
 
 msgid "Time range"
 msgstr "期間"
+
+msgid "Tip"
+msgstr "ヒント"
 
 msgid "Title"
 msgstr "タイトル"
@@ -17724,6 +17818,9 @@ msgstr "GitHubで見る"
 
 msgid "View log"
 msgstr "ログを表示"
+
+msgid "View more"
+msgstr "もっと見る"
 
 msgid "View on GitHub"
 msgstr "GitHubで表示"

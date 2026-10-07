@@ -51,13 +51,13 @@ msgstr "「{0}」會在GitHub上被標記為關閉。你隨時可以在這裡重
 
 #. placeholder {0}: data.title
 #. placeholder {1}: data.base.ref
-#. placeholder {2}: mergeMethodLabels[pendingAction.method].toLowerCase()
+#. placeholder {2}: mergeMethodLabels[pendingAction.method]
 msgid "\"{0}\" will be merged into {1} via {2}. Checks haven't passed yet — this overrides them. This can't be undone from here."
 msgstr "「{0}」將通過{2}合併到{1}。檢查還沒通過，此操作會繞過它們。在這裡無法復原。"
 
 #. placeholder {0}: data.title
 #. placeholder {1}: data.base.ref
-#. placeholder {2}: mergeMethodLabels[pendingAction.method].toLowerCase()
+#. placeholder {2}: mergeMethodLabels[pendingAction.method]
 msgid "\"{0}\" will be merged into {1} via {2}. This can't be undone from here."
 msgstr "「{0}」將通過{2}合併到{1}。在這裡無法復原。"
 
@@ -147,6 +147,10 @@ msgstr "{0, plural, one {發現#個已有worktree} other {發現#個已有worktr
 msgid "{0, plural, one {# failed} other {# failed}}"
 msgstr "{0, plural, one {#項失敗} other {#項失敗}}"
 
+#. placeholder {0}: summary.failing
+msgid "{0, plural, one {# failing} other {# failing}}"
+msgstr "{0, plural, one {#項失敗} other {#項失敗}}"
+
 #. placeholder {0}: detail.pullRequest.changedFiles
 msgid "{0, plural, one {# file changed} other {# files changed}}"
 msgstr "{0, plural, one {#個檔案已更改} other {#個檔案已更改}}"
@@ -179,6 +183,10 @@ msgstr "{0, plural, one {#項登入資訊} other {#項登入資訊}}"
 #. placeholder {0}: summary.passed
 msgid "{0, plural, one {# passed} other {# passed}}"
 msgstr "{0, plural, one {#項通過} other {#項通過}}"
+
+#. placeholder {0}: summary.pending
+msgid "{0, plural, one {# pending} other {# pending}}"
+msgstr "{0, plural, one {#項待處理} other {#項待處理}}"
 
 #. placeholder {0}: chosenLeads.length
 #. placeholder {0}: chosenPeople.length
@@ -232,6 +240,10 @@ msgstr "{0, plural, one {#項已跳過} other {#項已跳過}}"
 #. placeholder {0}: subagents.length
 msgid "{0, plural, one {# subagent} other {# subagents}}"
 msgstr "{0, plural, other {# 個子代理程式}}"
+
+#. placeholder {0}: summary.passing
+msgid "{0, plural, one {# successful} other {# successful}}"
+msgstr "{0, plural, one {#項成功} other {#項成功}}"
 
 #. placeholder {0}: TASKS.length
 msgid "{0, plural, one {# task} other {# tasks}}"
@@ -397,10 +409,6 @@ msgstr "{0}已啟用"
 msgid "{0} ending in {1}"
 msgstr "{0}，尾號{1}"
 
-#. placeholder {0}: summary.failing
-msgid "{0} failing"
-msgstr "{0}個失敗"
-
 #. placeholder {0}: collisions.length
 msgid "{0} files already exist in {where}. Do you want to replace them?"
 msgstr "{where}中已存在{0}個檔案。是否要替換它們？"
@@ -408,6 +416,11 @@ msgstr "{where}中已存在{0}個檔案。是否要替換它們？"
 #. placeholder {0}: displayName(variables.name)
 msgid "{0} installed"
 msgstr "{0}已安裝"
+
+#. placeholder {0}: data.head.ref
+#. placeholder {1}: data.base.ref
+msgid "{0} into {1}"
+msgstr "{0} → {1}"
 
 #. placeholder {0}: conflictDisplay.text
 #. placeholder {1}: i18n._( HOTKEYS[pendingConflict.conflictId].label, )
@@ -493,10 +506,6 @@ msgstr "{0}方案"
 #. placeholder {0}: normalizedProjectIds.length
 msgid "{0} projects"
 msgstr "{0}個專案"
-
-#. placeholder {0}: summary.pending
-msgid "{0} running"
-msgstr "{0}個執行中"
 
 #. placeholder {0}: tally.running
 msgid "{0} Running"
@@ -809,9 +818,6 @@ msgstr "{count} 台主機執行的主機服務比此應用程式舊"
 
 msgid "{count}/day"
 msgstr "{count}/天"
-
-msgid "{createdAtRelative} ago"
-msgstr "{createdAtRelative}前"
 
 msgid "{currentPage} of {totalBranches}"
 msgstr "{currentPage}/{totalBranches}"
@@ -1951,10 +1957,6 @@ msgstr "{0}項檢查全部通過"
 msgid "All {0} objectives are carrying their weight for {nextLabel}."
 msgstr "全部 {0} 項目標都在為 {nextLabel} 出力。"
 
-#. placeholder {0}: summary.relevantChecks.length
-msgid "All {0} passed"
-msgstr "{0}全部通過"
-
 msgid "All {versionCount} versions and their content are removed. Anyone with the link loses access."
 msgstr "全部{versionCount}個版本及其內容都會被移除。持有連結的人將失去存取權限。"
 
@@ -2365,6 +2367,9 @@ msgstr "批准編輯"
 msgid "Approve for me"
 msgstr "替我批准"
 
+msgid "approved"
+msgstr "已核准"
+
 msgid "Approved"
 msgstr "已批准"
 
@@ -2622,9 +2627,6 @@ msgstr "自動儲存"
 
 msgid "auto-generated"
 msgstr "自動生成"
-
-msgid "Auto-merge is coming soon"
-msgstr "自動合併即將推出"
 
 msgid "Auto-run command"
 msgstr "自動執行命令"
@@ -2946,9 +2948,6 @@ msgstr "分支"
 msgid "Branch behavior for new workspaces on this device. Projects can override the prefix individually."
 msgstr "本裝置上新建工作區的分支行為。專案可以單獨覆蓋字首。"
 
-msgid "Branch copied"
-msgstr "分支已複製"
-
 msgid "Branch in a new worktree"
 msgstr "在新的 worktree 中分叉"
 
@@ -3188,6 +3187,9 @@ msgstr "可以隨時切換方案或取消嗎？"
 msgid "Can I use my own API keys?"
 msgstr "我可以用自己的API金鑰嗎？"
 
+msgid "Can merge without conflicts"
+msgstr "可以在無衝突的情況下合併"
+
 msgid "Can you standardize the tooltips across the app?"
 msgstr "能把整個應用的tooltip樣式統一一下嗎？"
 
@@ -3272,6 +3274,9 @@ msgstr "現金 — 總餘額（Mercury）"
 msgid "Category"
 msgstr "分類"
 
+msgid "Caution"
+msgstr "當心"
+
 msgid "Certificate Authority Invalid"
 msgstr "證書頒發機構無效"
 
@@ -3319,6 +3324,9 @@ msgstr "更改專案位置"
 
 msgid "Change role"
 msgstr "更改角色"
+
+msgid "Change state"
+msgstr "變更狀態"
 
 #. placeholder {0}: issue.state.name
 msgid "Change status from {0}"
@@ -3646,9 +3654,6 @@ msgstr "如果沒有自動跳轉，請點選這裡"
 msgid "Click the “↑ update” pill to see the pre-update confirm"
 msgstr "點擊「↑ update」按鈕查看更新前的確認提示"
 
-msgid "Click to copy"
-msgstr "點選複製"
-
 msgid "Click to copy the session ID (resume with `claude --resume <id>`)."
 msgstr "點選複製會話ID（使用`claude --resume <id>`恢復）。"
 
@@ -3843,9 +3848,6 @@ msgstr "關閉此分頁將結束正在執行的處理程序。"
 msgid "Closing this terminal will end the running process."
 msgstr "關閉此終端將結束正在執行的處理程序。"
 
-msgid "Closing…"
-msgstr "正在關閉…"
-
 msgid "Cloud"
 msgstr "雲端"
 
@@ -4001,6 +4003,9 @@ msgstr "評論這個頁面"
 msgid "Commented"
 msgstr "已評論"
 
+msgid "Commenting as your GitHub account"
+msgstr "以你的 GitHub 帳號發表留言"
+
 msgid "Comments"
 msgstr "評論"
 
@@ -4016,6 +4021,9 @@ msgstr "提交失敗：{0}"
 
 msgid "Commit message"
 msgstr "提交訊息"
+
+msgid "Commit message (optional)"
+msgstr "提交訊息（選填）"
 
 msgid "Commits"
 msgstr "提交"
@@ -4122,6 +4130,10 @@ msgstr "配置工作區執行命令"
 
 msgid "Confirm before quitting"
 msgstr "退出前確認"
+
+#. placeholder {0}: status.baseBranch
+msgid "Conflicts with {0}"
+msgstr "與 {0} 衝突"
 
 msgid "Connect"
 msgstr "連線"
@@ -4420,8 +4432,14 @@ msgstr "較上一步轉換率"
 msgid "Conversion so far"
 msgstr "累計轉換率"
 
+msgid "Convert to draft"
+msgstr "轉為草稿"
+
 msgid "Converted"
 msgstr "已轉換"
+
+msgid "Converting to draft…"
+msgstr "正在轉為草稿…"
 
 msgid "cookies and site data"
 msgstr "Cookie和站點資料"
@@ -4844,11 +4862,14 @@ msgstr "無法確認加星狀態，請檢查是否已安裝並登入GitHub CLI�
 msgid "Couldn't connect (error {status}). Please try again."
 msgstr "無法連線（錯誤 {status}）。請重試。"
 
-msgid "Couldn't copy branch name"
-msgstr "無法複製分支名"
+msgid "Couldn't convert to draft"
+msgstr "無法轉為草稿"
 
 msgid "Couldn't copy comment"
 msgstr "無法複製評論"
+
+msgid "Couldn't copy link"
+msgstr "無法複製連結"
 
 msgid "Couldn't copy path"
 msgstr "無法複製路徑"
@@ -4870,6 +4891,9 @@ msgstr "無法放棄未暫存的更改"
 
 msgid "Couldn’t finish deleting workspaces"
 msgstr "沒能完成工作區的刪除"
+
+msgid "Couldn't hand this to an agent"
+msgstr "無法交給代理程式處理"
 
 #. placeholder {0}: configsQuery.error instanceof Error ? configsQuery.error.message : hostServiceUnavailableMessage
 msgid "Couldn't load agent settings: {0}"
@@ -4909,6 +4933,9 @@ msgstr "無法載入此次執行的酬載。"
 msgid "Couldn't load your profile, so editing is disabled."
 msgstr "無法載入你的個人檔案，編輯已停用。"
 
+msgid "Couldn't mark ready for review"
+msgstr "無法標記為可供審查"
+
 msgid "Couldn't merge pull request"
 msgstr "無法合併拉取請求"
 
@@ -4920,6 +4947,9 @@ msgstr "無法解析這個差異：{patchParseError}"
 
 msgid "Couldn't permanently delete \"{projectName}\""
 msgstr "無法永久刪除「{projectName}」"
+
+msgid "Couldn't post comment"
+msgstr "無法發佈留言"
 
 msgid "Couldn't post reply"
 msgstr "無法釋出回覆"
@@ -6240,9 +6270,6 @@ msgstr "編輯"
 msgid "Edit comment"
 msgstr "編輯評論"
 
-msgid "Edit description"
-msgstr "編輯描述"
-
 msgid "Edit environment"
 msgstr "編輯環境"
 
@@ -6357,9 +6384,6 @@ msgstr "啟用{0}"
 
 msgid "Enable an agent in Settings > Agents first"
 msgstr "請先在設定 > 代理程式中啟用一個代理程式"
-
-msgid "Enable auto-merge"
-msgstr "啟用自動合併"
 
 msgid "Enable relay access…"
 msgstr "啟用中繼存取…"
@@ -7355,6 +7379,9 @@ msgstr "用代理程式修復檢查"
 msgid "Fix CI failures"
 msgstr "修復CI失敗"
 
+msgid "Fix findings"
+msgstr "修正審查問題"
+
 msgid "fix-auth-redirect"
 msgstr "fix-auth-redirect"
 
@@ -7847,6 +7874,9 @@ msgstr "指南、參考和整合。"
 msgid "Half of merged changes are zero-edit agent code"
 msgstr "一半的合併變更是零修改的代理程式程式碼"
 
+msgid "Handing to agent…"
+msgstr "正在交給代理程式…"
+
 msgid "Handle"
 msgstr "暱稱"
 
@@ -7858,6 +7888,9 @@ msgstr "進行中"
 
 msgid "Hard reload"
 msgstr "強制重新載入"
+
+msgid "Has conflicts"
+msgstr "有衝突"
 
 msgid "Has uncommitted changes"
 msgstr "有未提交的改動"
@@ -7970,6 +8003,9 @@ msgstr "隱藏未更改區域"
 
 msgid "High"
 msgstr "高"
+
+msgid "High severity"
+msgstr "高嚴重性"
 
 msgid "High usage"
 msgstr "用量高"
@@ -8286,6 +8322,9 @@ msgstr "從{browserName}匯入你的瀏覽歷史和登入資訊"
 
 msgid "Import…"
 msgstr "匯入…"
+
+msgid "Important"
+msgstr "重要"
 
 #. placeholder {0}: untracked.length
 #. placeholder {1}: errors[0]
@@ -8932,8 +8971,8 @@ msgstr "瞭解如何使用指令碼"
 msgid "Learn the workflow that fits this repo — parallel workspaces and agent setup."
 msgstr "瞭解適合這個儲存庫的工作流：並行工作區和代理程式配置。"
 
-msgid "Leave a comment (optional)"
-msgstr "留下評論（可選）"
+msgid "Leave a comment"
+msgstr "留下留言"
 
 msgid "Leave a comment…"
 msgstr "留下評論…"
@@ -9359,6 +9398,9 @@ msgstr "看起來不錯"
 msgid "Low"
 msgstr "低"
 
+msgid "Low severity"
+msgstr "低嚴重性"
+
 msgid "Lower memory with many terminals open, smoother git in big repos, and less background CPU."
 msgstr "開很多終端時佔用更低的記憶體，大儲存庫裡的git更順，背景CPU更少。"
 
@@ -9495,6 +9537,9 @@ msgstr "市場"
 msgid "Marking ready for review..."
 msgstr "正在標記為可審查…"
 
+msgid "Marking ready…"
+msgstr "正在標記為就緒…"
+
 msgid "Match existing patterns"
 msgstr "沿用現有模式"
 
@@ -9546,6 +9591,9 @@ msgstr "距上一步中位耗時"
 
 msgid "Medium"
 msgstr "中"
+
+msgid "Medium severity"
+msgstr "中嚴重性"
 
 msgid "Meet the team behind Superset, building parallel coding agents for developers."
 msgstr "認識 Superset 背後的團隊，為開發者打造平行編碼代理。"
@@ -9606,8 +9654,11 @@ msgstr "合併拉取請求"
 msgid "Merge pull requests without leaving Superset, plus a round of chat fixes and polish."
 msgstr "不離開Superset就能合併拉取請求，另有一輪聊天修復與打磨。"
 
-msgid "Merge when checks pass"
-msgstr "檢查通過後合併"
+msgid "Merge status"
+msgstr "合併狀態"
+
+msgid "Merge status unknown"
+msgstr "合併狀態不明"
 
 msgid "Merged"
 msgstr "已合併"
@@ -10221,6 +10272,9 @@ msgstr "沒有活動的終端會話"
 msgid "No agent"
 msgstr "無代理程式"
 
+msgid "No agent is configured on this host"
+msgstr "此主機上未設定任何代理程式"
+
 #. placeholder {0}: host.name
 msgid "No agents configured on {0}"
 msgstr "{0}上沒有配置代理程式"
@@ -10276,9 +10330,6 @@ msgstr "無檢查"
 msgid "No checks reported"
 msgstr "沒有檢查結果"
 
-msgid "No checks reported for the latest commit."
-msgstr "最新提交沒有檢查結果。"
-
 msgid "No checks reported."
 msgstr "沒有檢查報告。"
 
@@ -10305,6 +10356,9 @@ msgstr "未找到命令。"
 
 msgid "No comment body"
 msgstr "沒有評論正文"
+
+msgid "No comments"
+msgstr "沒有留言"
 
 msgid "No comments on this page yet"
 msgstr "此頁面還沒有留言"
@@ -10619,6 +10673,9 @@ msgstr "沒有「{query}」的結果"
 msgid "No results found."
 msgstr "未找到結果。"
 
+msgid "No review body."
+msgstr "沒有審查內容。"
+
 msgid "No Reviewers Assigned"
 msgstr "未指派審查者"
 
@@ -10871,6 +10928,9 @@ msgstr "未排序"
 msgctxt "agent status"
 msgid "Not updating"
 msgstr "未更新"
+
+msgid "Note"
+msgstr "注意"
 
 msgid "Notes"
 msgstr "筆記"
@@ -11427,9 +11487,6 @@ msgstr "開啟拉取請求#{0}"
 
 msgid "Open pull request #{number}"
 msgstr "開啟拉取請求#{number}"
-
-msgid "Open pull request in GitHub"
-msgstr "在GitHub中開啟拉取請求"
 
 msgid "Open pull request options"
 msgstr "開啟拉取請求選項"
@@ -12570,6 +12627,12 @@ msgstr "拉取請求#{0}，{1}"
 msgid "Pull request actions"
 msgstr "拉取請求操作"
 
+msgid "Pull request detail tabs"
+msgstr "拉取請求詳細資料分頁"
+
+msgid "Pull request not found"
+msgstr "找不到拉取請求"
+
 msgid "Pull request title"
 msgstr "拉取請求標題"
 
@@ -13235,11 +13298,17 @@ msgstr "儲存庫影響力與桌面版下載。安裝為 dmg 與 AppImage 下載
 msgid "Repository URL or path"
 msgstr "儲存庫URL或路徑"
 
+msgid "Request"
+msgstr "要求"
+
 msgid "Request a trial"
 msgstr "申請試用"
 
 msgid "Request Body"
 msgstr "請求體"
+
+msgid "requested changes"
+msgstr "要求變更"
 
 msgid "Requested Changes"
 msgstr "已要求修改"
@@ -13331,6 +13400,9 @@ msgstr "解決"
 msgid "Resolve all"
 msgstr "全部解決"
 
+msgid "Resolve conflicts"
+msgstr "解決衝突"
+
 msgid "Resolve Conflicts to Merge"
 msgstr "解決衝突後才能合併"
 
@@ -13339,6 +13411,10 @@ msgstr "標記為已解決"
 
 msgid "Resolve Conversations to Merge"
 msgstr "解決討論後才能合併"
+
+#. placeholder {0}: data.base.ref
+msgid "Resolve the conflicts with {0} first"
+msgstr "請先解決與 {0} 的衝突"
 
 msgid "resolve the workspace path"
 msgstr "解析工作區路徑"
@@ -13600,6 +13676,9 @@ msgstr "在「所有執行」中檢視這些執行"
 
 msgid "Review thread…"
 msgstr "審查討論…"
+
+msgid "reviewed"
+msgstr "已審查"
 
 msgid "Reviewed by you"
 msgstr "你已審查"
@@ -14397,6 +14476,9 @@ msgstr "傳送時間"
 msgid "Sent to agent"
 msgstr "已傳送給代理程式"
 
+msgid "Sent to the pull request's workspace"
+msgstr "已傳送至拉取請求的工作區"
+
 msgid "Sentry rejected the token"
 msgstr "Sentry拒絕了該權杖"
 
@@ -14652,6 +14734,9 @@ msgstr "顯示電子郵件"
 
 msgid "Show everyone who opened this workspace"
 msgstr "顯示開啟過此工作區的所有人"
+
+msgid "Show fewer"
+msgstr "顯示較少"
 
 msgid "Show file tree"
 msgstr "顯示檔案樹"
@@ -15302,9 +15387,6 @@ msgstr "從工作本身開始。"
 msgid "Start work from anywhere"
 msgstr "隨時隨地開始工作"
 
-msgid "Start Workspace"
-msgstr "啟動工作區"
-
 msgid "Started"
 msgstr "開始時間"
 
@@ -15319,6 +15401,9 @@ msgstr "啟動中"
 
 msgid "Starting {agentLabel}"
 msgstr "正在啟動{agentLabel}"
+
+msgid "Starting a workspace on this pull request"
+msgstr "正在為此拉取請求啟動工作區"
 
 msgid "Starting an agent in {what}"
 msgstr "正在 {what} 中啟動代理程式"
@@ -16687,8 +16772,14 @@ msgstr "此個人檔案目前繁忙"
 msgid "This project is no longer available on your devices."
 msgstr "這個專案在你的裝置上已不可用。"
 
+msgid "This project isn't linked to a GitHub repository."
+msgstr "此專案未連結 GitHub 儲存庫。"
+
 msgid "This project's host is offline"
 msgstr "此專案的主機已離線"
+
+msgid "This pull request has no host to act through"
+msgstr "此提取請求沒有可用於操作的主機"
 
 msgid "This pull request is no longer available."
 msgstr "此拉取請求已不可用。"
@@ -16843,6 +16934,9 @@ msgstr "時間"
 
 msgid "Time range"
 msgstr "時間範圍"
+
+msgid "Tip"
+msgstr "提示"
 
 msgid "Title"
 msgstr "標題"
@@ -17724,6 +17818,9 @@ msgstr "在GitHub中檢視"
 
 msgid "View log"
 msgstr "檢視日誌"
+
+msgid "View more"
+msgstr "檢視更多"
 
 msgid "View on GitHub"
 msgstr "在GitHub上檢視"

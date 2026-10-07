@@ -51,13 +51,13 @@ msgstr "\"{0}\" sẽ được đánh dấu là đã đóng trên GitHub. Bạn c
 
 #. placeholder {0}: data.title
 #. placeholder {1}: data.base.ref
-#. placeholder {2}: mergeMethodLabels[pendingAction.method].toLowerCase()
+#. placeholder {2}: mergeMethodLabels[pendingAction.method]
 msgid "\"{0}\" will be merged into {1} via {2}. Checks haven't passed yet — this overrides them. This can't be undone from here."
 msgstr "\"{0}\" sẽ được merge vào {1} bằng {2}. Các check chưa qua — thao tác này bỏ qua chúng. Không thể hoàn tác từ đây."
 
 #. placeholder {0}: data.title
 #. placeholder {1}: data.base.ref
-#. placeholder {2}: mergeMethodLabels[pendingAction.method].toLowerCase()
+#. placeholder {2}: mergeMethodLabels[pendingAction.method]
 msgid "\"{0}\" will be merged into {1} via {2}. This can't be undone from here."
 msgstr "\"{0}\" sẽ được merge vào {1} bằng {2}. Không thể hoàn tác từ đây."
 
@@ -147,6 +147,10 @@ msgstr "{0, plural, one {Tìm thấy # worktree có sẵn} other {Tìm thấy # 
 msgid "{0, plural, one {# failed} other {# failed}}"
 msgstr "{0, plural, one {# thất bại} other {# thất bại}}"
 
+#. placeholder {0}: summary.failing
+msgid "{0, plural, one {# failing} other {# failing}}"
+msgstr "{0, plural, one {# thất bại} other {# thất bại}}"
+
 #. placeholder {0}: detail.pullRequest.changedFiles
 msgid "{0, plural, one {# file changed} other {# files changed}}"
 msgstr "{0, plural, one {# tệp thay đổi} other {# tệp thay đổi}}"
@@ -179,6 +183,10 @@ msgstr "{0, plural, one {# đăng nhập} other {# đăng nhập}}"
 #. placeholder {0}: summary.passed
 msgid "{0, plural, one {# passed} other {# passed}}"
 msgstr "{0, plural, one {# đã qua} other {# đã qua}}"
+
+#. placeholder {0}: summary.pending
+msgid "{0, plural, one {# pending} other {# pending}}"
+msgstr "{0, plural, one {# đang chờ} other {# đang chờ}}"
 
 #. placeholder {0}: chosenLeads.length
 #. placeholder {0}: chosenPeople.length
@@ -232,6 +240,10 @@ msgstr "{0, plural, one {# bỏ qua} other {# bỏ qua}}"
 #. placeholder {0}: subagents.length
 msgid "{0, plural, one {# subagent} other {# subagents}}"
 msgstr "{0, plural, other {# agent con}}"
+
+#. placeholder {0}: summary.passing
+msgid "{0, plural, one {# successful} other {# successful}}"
+msgstr "{0, plural, one {# thành công} other {# thành công}}"
 
 #. placeholder {0}: TASKS.length
 msgid "{0, plural, one {# task} other {# tasks}}"
@@ -397,10 +409,6 @@ msgstr "Đã bật {0}"
 msgid "{0} ending in {1}"
 msgstr "{0} kết thúc bằng {1}"
 
-#. placeholder {0}: summary.failing
-msgid "{0} failing"
-msgstr "{0} đang lỗi"
-
 #. placeholder {0}: collisions.length
 msgid "{0} files already exist in {where}. Do you want to replace them?"
 msgstr "{0} tệp đã tồn tại trong {where}. Bạn có muốn thay thế chúng không?"
@@ -408,6 +416,11 @@ msgstr "{0} tệp đã tồn tại trong {where}. Bạn có muốn thay thế ch
 #. placeholder {0}: displayName(variables.name)
 msgid "{0} installed"
 msgstr "Đã cài {0}"
+
+#. placeholder {0}: data.head.ref
+#. placeholder {1}: data.base.ref
+msgid "{0} into {1}"
+msgstr "{0} vào {1}"
 
 #. placeholder {0}: conflictDisplay.text
 #. placeholder {1}: i18n._( HOTKEYS[pendingConflict.conflictId].label, )
@@ -493,10 +506,6 @@ msgstr "Gói {0}"
 #. placeholder {0}: normalizedProjectIds.length
 msgid "{0} projects"
 msgstr "{0} dự án"
-
-#. placeholder {0}: summary.pending
-msgid "{0} running"
-msgstr "{0} đang chạy"
 
 #. placeholder {0}: tally.running
 msgid "{0} Running"
@@ -809,9 +818,6 @@ msgstr "{count} máy chủ đang chạy dịch vụ máy chủ cũ hơn ứng d�
 
 msgid "{count}/day"
 msgstr "{count}/ngày"
-
-msgid "{createdAtRelative} ago"
-msgstr "{createdAtRelative} trước"
 
 msgid "{currentPage} of {totalBranches}"
 msgstr "{currentPage}/{totalBranches}"
@@ -1951,10 +1957,6 @@ msgstr "Tất cả {0} check đã qua"
 msgid "All {0} objectives are carrying their weight for {nextLabel}."
 msgstr "Cả {0} mục tiêu đều đang góp sức cho {nextLabel}."
 
-#. placeholder {0}: summary.relevantChecks.length
-msgid "All {0} passed"
-msgstr "Tất cả {0} đã qua"
-
 msgid "All {versionCount} versions and their content are removed. Anyone with the link loses access."
 msgstr "Toàn bộ {versionCount} phiên bản và nội dung của chúng sẽ bị gỡ. Bất kỳ ai có liên kết đều mất quyền truy cập."
 
@@ -2365,6 +2367,9 @@ msgstr "Duyệt chỉnh sửa"
 msgid "Approve for me"
 msgstr "Duyệt giúp tôi"
 
+msgid "approved"
+msgstr "đã phê duyệt"
+
 msgid "Approved"
 msgstr "Đã duyệt"
 
@@ -2622,9 +2627,6 @@ msgstr "Tự động lưu"
 
 msgid "auto-generated"
 msgstr "tự động tạo"
-
-msgid "Auto-merge is coming soon"
-msgstr "Tự động merge sắp có"
 
 msgid "Auto-run command"
 msgstr "Tự động chạy lệnh"
@@ -2946,9 +2948,6 @@ msgstr "Nhánh"
 msgid "Branch behavior for new workspaces on this device. Projects can override the prefix individually."
 msgstr "Hành vi nhánh cho workspace mới trên thiết bị này. Từng dự án có thể ghi đè tiền tố riêng."
 
-msgid "Branch copied"
-msgstr "Đã sao chép tên nhánh"
-
 msgid "Branch in a new worktree"
 msgstr "Tạo nhánh trong worktree mới"
 
@@ -3188,6 +3187,9 @@ msgstr "Tôi có thể đổi gói hoặc hủy bất cứ lúc nào không?"
 msgid "Can I use my own API keys?"
 msgstr "Tôi có thể dùng khóa API của mình không?"
 
+msgid "Can merge without conflicts"
+msgstr "Có thể merge mà không xung đột"
+
 msgid "Can you standardize the tooltips across the app?"
 msgstr "Bạn chuẩn hóa tooltip trên toàn ứng dụng được không?"
 
@@ -3272,6 +3274,9 @@ msgstr "Tiền mặt — tổng số dư (Mercury)"
 msgid "Category"
 msgstr "Danh mục"
 
+msgid "Caution"
+msgstr "Thận trọng"
+
 msgid "Certificate Authority Invalid"
 msgstr "Tổ chức cấp chứng chỉ không hợp lệ"
 
@@ -3319,6 +3324,9 @@ msgstr "Đổi vị trí dự án"
 
 msgid "Change role"
 msgstr "Đổi vai trò"
+
+msgid "Change state"
+msgstr "Đổi trạng thái"
 
 #. placeholder {0}: issue.state.name
 msgid "Change status from {0}"
@@ -3646,9 +3654,6 @@ msgstr "Nhấp vào đây nếu không được chuyển hướng"
 msgid "Click the “↑ update” pill to see the pre-update confirm"
 msgstr "Nhấp vào nút “↑ update” để xem xác nhận trước khi cập nhật"
 
-msgid "Click to copy"
-msgstr "Nhấp để sao chép"
-
 msgid "Click to copy the session ID (resume with `claude --resume <id>`)."
 msgstr "Nhấp để sao chép ID phiên (resume bằng `claude --resume <id>`)."
 
@@ -3843,9 +3848,6 @@ msgstr "Đóng tab này sẽ kết thúc tiến trình đang chạy."
 msgid "Closing this terminal will end the running process."
 msgstr "Đóng terminal này sẽ kết thúc tiến trình đang chạy."
 
-msgid "Closing…"
-msgstr "Đang đóng…"
-
 msgid "Cloud"
 msgstr "Cloud"
 
@@ -4001,6 +4003,9 @@ msgstr "Bình luận về trang này"
 msgid "Commented"
 msgstr "Đã bình luận"
 
+msgid "Commenting as your GitHub account"
+msgstr "Bình luận bằng tài khoản GitHub của bạn"
+
 msgid "Comments"
 msgstr "Bình luận"
 
@@ -4016,6 +4021,9 @@ msgstr "Commit thất bại: {0}"
 
 msgid "Commit message"
 msgstr "Thông điệp commit"
+
+msgid "Commit message (optional)"
+msgstr "Thông điệp commit (tùy chọn)"
 
 msgid "Commits"
 msgstr "Commit"
@@ -4122,6 +4130,10 @@ msgstr "Cấu hình lệnh chạy của workspace"
 
 msgid "Confirm before quitting"
 msgstr "Xác nhận trước khi thoát"
+
+#. placeholder {0}: status.baseBranch
+msgid "Conflicts with {0}"
+msgstr "Xung đột với {0}"
 
 msgid "Connect"
 msgstr "Kết nối"
@@ -4420,8 +4432,14 @@ msgstr "Chuyển đổi từ bước trước"
 msgid "Conversion so far"
 msgstr "Chuyển đổi đến hiện tại"
 
+msgid "Convert to draft"
+msgstr "Chuyển thành bản nháp"
+
 msgid "Converted"
 msgstr "Đã chuyển đổi"
+
+msgid "Converting to draft…"
+msgstr "Đang chuyển thành bản nháp…"
 
 msgid "cookies and site data"
 msgstr "cookie và dữ liệu trang"
@@ -4844,11 +4862,14 @@ msgstr "Không xác nhận được trạng thái sao — hãy kiểm tra GitHub
 msgid "Couldn't connect (error {status}). Please try again."
 msgstr "Không thể kết nối (lỗi {status}). Vui lòng thử lại."
 
-msgid "Couldn't copy branch name"
-msgstr "Không thể sao chép tên nhánh"
+msgid "Couldn't convert to draft"
+msgstr "Không thể chuyển thành bản nháp"
 
 msgid "Couldn't copy comment"
 msgstr "Không thể sao chép bình luận"
+
+msgid "Couldn't copy link"
+msgstr "Không thể sao chép liên kết"
 
 msgid "Couldn't copy path"
 msgstr "Không thể sao chép đường dẫn"
@@ -4870,6 +4891,9 @@ msgstr "Không thể bỏ các thay đổi chưa stage"
 
 msgid "Couldn’t finish deleting workspaces"
 msgstr "Không xóa xong các workspace"
+
+msgid "Couldn't hand this to an agent"
+msgstr "Không thể giao việc này cho agent"
 
 #. placeholder {0}: configsQuery.error instanceof Error ? configsQuery.error.message : hostServiceUnavailableMessage
 msgid "Couldn't load agent settings: {0}"
@@ -4909,6 +4933,9 @@ msgstr "Không thể tải payload của lần chạy này."
 msgid "Couldn't load your profile, so editing is disabled."
 msgstr "Không tải được hồ sơ của bạn nên chức năng chỉnh sửa đã bị tắt."
 
+msgid "Couldn't mark ready for review"
+msgstr "Không thể đánh dấu sẵn sàng để review"
+
 msgid "Couldn't merge pull request"
 msgstr "Không thể merge pull request"
 
@@ -4920,6 +4947,9 @@ msgstr "Không thể phân tích diff này: {patchParseError}"
 
 msgid "Couldn't permanently delete \"{projectName}\""
 msgstr "Không thể xóa vĩnh viễn \"{projectName}\""
+
+msgid "Couldn't post comment"
+msgstr "Không thể đăng bình luận"
 
 msgid "Couldn't post reply"
 msgstr "Không thể đăng trả lời"
@@ -6240,9 +6270,6 @@ msgstr "Sửa"
 msgid "Edit comment"
 msgstr "Sửa bình luận"
 
-msgid "Edit description"
-msgstr "Sửa mô tả"
-
 msgid "Edit environment"
 msgstr "Chỉnh sửa environment"
 
@@ -6357,9 +6384,6 @@ msgstr "Bật {0}"
 
 msgid "Enable an agent in Settings > Agents first"
 msgstr "Hãy bật một agent trong Cài đặt > Agent trước"
-
-msgid "Enable auto-merge"
-msgstr "Bật tự động merge"
 
 msgid "Enable relay access…"
 msgstr "Bật truy cập relay…"
@@ -7355,6 +7379,9 @@ msgstr "Sửa check bằng agent"
 msgid "Fix CI failures"
 msgstr "Sửa lỗi CI"
 
+msgid "Fix findings"
+msgstr "Sửa các phát hiện"
+
 msgid "fix-auth-redirect"
 msgstr "fix-auth-redirect"
 
@@ -7847,6 +7874,9 @@ msgstr "Hướng dẫn, tài liệu tham khảo và tích hợp."
 msgid "Half of merged changes are zero-edit agent code"
 msgstr "Một nửa thay đổi được merge là code agent không cần chỉnh sửa"
 
+msgid "Handing to agent…"
+msgstr "Đang giao cho agent…"
+
 msgid "Handle"
 msgstr "Tên hiển thị"
 
@@ -7858,6 +7888,9 @@ msgstr "đang diễn ra"
 
 msgid "Hard reload"
 msgstr "Tải lại cứng"
+
+msgid "Has conflicts"
+msgstr "Có xung đột"
 
 msgid "Has uncommitted changes"
 msgstr "Có thay đổi chưa commit"
@@ -7970,6 +8003,9 @@ msgstr "Ẩn các vùng không đổi"
 
 msgid "High"
 msgstr "Cao"
+
+msgid "High severity"
+msgstr "Mức độ nghiêm trọng cao"
 
 msgid "High usage"
 msgstr "Mức sử dụng rất cao"
@@ -8286,6 +8322,9 @@ msgstr "Nhập lịch sử duyệt web và thông tin đăng nhập từ {browse
 
 msgid "Import…"
 msgstr "Nhập…"
+
+msgid "Important"
+msgstr "Quan trọng"
 
 #. placeholder {0}: untracked.length
 #. placeholder {1}: errors[0]
@@ -8932,8 +8971,8 @@ msgstr "Tìm hiểu cách dùng script"
 msgid "Learn the workflow that fits this repo — parallel workspaces and agent setup."
 msgstr "Tìm hiểu quy trình phù hợp với repo này — workspace song song và thiết lập agent."
 
-msgid "Leave a comment (optional)"
-msgstr "Để lại bình luận (tùy chọn)"
+msgid "Leave a comment"
+msgstr "Để lại bình luận"
 
 msgid "Leave a comment…"
 msgstr "Để lại bình luận…"
@@ -9359,6 +9398,9 @@ msgstr "Trông ổn"
 msgid "Low"
 msgstr "Thấp"
 
+msgid "Low severity"
+msgstr "Mức độ nghiêm trọng thấp"
+
 msgid "Lower memory with many terminals open, smoother git in big repos, and less background CPU."
 msgstr "Ít bộ nhớ hơn khi mở nhiều terminal, git mượt hơn trong repo lớn và CPU nền thấp hơn."
 
@@ -9495,6 +9537,9 @@ msgstr "Marketplace"
 msgid "Marking ready for review..."
 msgstr "Đang đánh dấu sẵn sàng để review…"
 
+msgid "Marking ready…"
+msgstr "Đang đánh dấu sẵn sàng…"
+
 msgid "Match existing patterns"
 msgstr "Bám theo mẫu hiện có"
 
@@ -9546,6 +9591,9 @@ msgstr "Thời gian trung vị từ bước trước"
 
 msgid "Medium"
 msgstr "Trung bình"
+
+msgid "Medium severity"
+msgstr "Mức độ nghiêm trọng trung bình"
 
 msgid "Meet the team behind Superset, building parallel coding agents for developers."
 msgstr "Gặp gỡ đội ngũ đứng sau Superset, xây dựng các agent lập trình song song cho lập trình viên."
@@ -9606,8 +9654,11 @@ msgstr "Merge pull request"
 msgid "Merge pull requests without leaving Superset, plus a round of chat fixes and polish."
 msgstr "Merge pull request mà không cần rời Superset, kèm một đợt sửa lỗi và trau chuốt chat."
 
-msgid "Merge when checks pass"
-msgstr "Merge khi các check qua"
+msgid "Merge status"
+msgstr "Trạng thái merge"
+
+msgid "Merge status unknown"
+msgstr "Trạng thái merge không xác định"
 
 msgid "Merged"
 msgstr "Đã merge"
@@ -10221,6 +10272,9 @@ msgstr "Không có phiên terminal nào đang chạy"
 msgid "No agent"
 msgstr "Không có agent"
 
+msgid "No agent is configured on this host"
+msgstr "Không có tác nhân nào được cấu hình trên máy chủ này"
+
 #. placeholder {0}: host.name
 msgid "No agents configured on {0}"
 msgstr "Chưa cấu hình agent nào trên {0}"
@@ -10276,9 +10330,6 @@ msgstr "Không có check"
 msgid "No checks reported"
 msgstr "Không có check nào"
 
-msgid "No checks reported for the latest commit."
-msgstr "Không có check nào cho commit mới nhất."
-
 msgid "No checks reported."
 msgstr "Không có check nào."
 
@@ -10305,6 +10356,9 @@ msgstr "Không tìm thấy lệnh nào."
 
 msgid "No comment body"
 msgstr "Không có nội dung bình luận"
+
+msgid "No comments"
+msgstr "Không có bình luận"
 
 msgid "No comments on this page yet"
 msgstr "Chưa có bình luận nào trên trang này"
@@ -10619,6 +10673,9 @@ msgstr "Không có kết quả cho “{query}”"
 msgid "No results found."
 msgstr "Không tìm thấy kết quả nào."
 
+msgid "No review body."
+msgstr "Không có nội dung review."
+
 msgid "No Reviewers Assigned"
 msgstr "Chưa gán người review"
 
@@ -10871,6 +10928,9 @@ msgstr "chưa sắp xếp"
 msgctxt "agent status"
 msgid "Not updating"
 msgstr "Không cập nhật"
+
+msgid "Note"
+msgstr "Lưu ý"
 
 msgid "Notes"
 msgstr "Ghi chú"
@@ -11427,9 +11487,6 @@ msgstr "Mở pull request #{0}"
 
 msgid "Open pull request #{number}"
 msgstr "Mở pull request #{number}"
-
-msgid "Open pull request in GitHub"
-msgstr "Mở pull request trong GitHub"
 
 msgid "Open pull request options"
 msgstr "Mở tùy chọn pull request"
@@ -12570,6 +12627,12 @@ msgstr "Pull request #{0}, {1}"
 msgid "Pull request actions"
 msgstr "Hành động pull request"
 
+msgid "Pull request detail tabs"
+msgstr "Các tab chi tiết pull request"
+
+msgid "Pull request not found"
+msgstr "Không tìm thấy pull request"
+
 msgid "Pull request title"
 msgstr "Tiêu đề pull request"
 
@@ -13235,11 +13298,17 @@ msgstr "Độ phủ của kho mã và lượt tải bản phát hành desktop. C
 msgid "Repository URL or path"
 msgstr "URL hoặc đường dẫn repository"
 
+msgid "Request"
+msgstr "Yêu cầu"
+
 msgid "Request a trial"
 msgstr "Yêu cầu dùng thử"
 
 msgid "Request Body"
 msgstr "Thân yêu cầu"
+
+msgid "requested changes"
+msgstr "đã yêu cầu thay đổi"
 
 msgid "Requested Changes"
 msgstr "Đã yêu cầu thay đổi"
@@ -13331,6 +13400,9 @@ msgstr "Giải quyết"
 msgid "Resolve all"
 msgstr "Giải quyết tất cả"
 
+msgid "Resolve conflicts"
+msgstr "Giải quyết xung đột"
+
 msgid "Resolve Conflicts to Merge"
 msgstr "Giải quyết xung đột để merge"
 
@@ -13339,6 +13411,10 @@ msgstr "Giải quyết cuộc thảo luận"
 
 msgid "Resolve Conversations to Merge"
 msgstr "Giải quyết thảo luận để merge"
+
+#. placeholder {0}: data.base.ref
+msgid "Resolve the conflicts with {0} first"
+msgstr "Hãy giải quyết xung đột với {0} trước"
 
 msgid "resolve the workspace path"
 msgstr "xác định đường dẫn workspace"
@@ -13600,6 +13676,9 @@ msgstr "Xem lại các lần chạy này trong Tất cả lần chạy"
 
 msgid "Review thread…"
 msgstr "Luồng review…"
+
+msgid "reviewed"
+msgstr "đã review"
 
 msgid "Reviewed by you"
 msgstr "Bạn đã review"
@@ -14397,6 +14476,9 @@ msgstr "Đã gửi"
 msgid "Sent to agent"
 msgstr "Đã gửi cho agent"
 
+msgid "Sent to the pull request's workspace"
+msgstr "Đã gửi tới workspace của pull request"
+
 msgid "Sentry rejected the token"
 msgstr "Sentry đã từ chối token"
 
@@ -14652,6 +14734,9 @@ msgstr "Hiện email"
 
 msgid "Show everyone who opened this workspace"
 msgstr "Hiển thị tất cả những người đã mở không gian làm việc này"
+
+msgid "Show fewer"
+msgstr "Hiện ít hơn"
 
 msgid "Show file tree"
 msgstr "Hiện cây tệp"
@@ -15302,9 +15387,6 @@ msgstr "Bắt đầu từ công việc."
 msgid "Start work from anywhere"
 msgstr "Bắt đầu công việc từ bất cứ đâu"
 
-msgid "Start Workspace"
-msgstr "Bắt đầu workspace"
-
 msgid "Started"
 msgstr "Bắt đầu"
 
@@ -15319,6 +15401,9 @@ msgstr "Đang khởi động"
 
 msgid "Starting {agentLabel}"
 msgstr "Đang khởi động {agentLabel}"
+
+msgid "Starting a workspace on this pull request"
+msgstr "Đang khởi động workspace cho pull request này"
 
 msgid "Starting an agent in {what}"
 msgstr "Đang khởi động tác nhân trong {what}"
@@ -16687,8 +16772,14 @@ msgstr "Hồ sơ này hiện đang quá tải"
 msgid "This project is no longer available on your devices."
 msgstr "Dự án này không còn khả dụng trên các thiết bị của bạn."
 
+msgid "This project isn't linked to a GitHub repository."
+msgstr "Dự án này chưa được liên kết với kho lưu trữ GitHub."
+
 msgid "This project's host is offline"
 msgstr "Host của dự án này đang ngoại tuyến"
+
+msgid "This pull request has no host to act through"
+msgstr "Pull request này không có máy chủ để thực hiện thao tác"
 
 msgid "This pull request is no longer available."
 msgstr "Pull request này không còn khả dụng."
@@ -16843,6 +16934,9 @@ msgstr "Thời gian"
 
 msgid "Time range"
 msgstr "Khoảng thời gian"
+
+msgid "Tip"
+msgstr "Mẹo"
 
 msgid "Title"
 msgstr "Tiêu đề"
@@ -17724,6 +17818,9 @@ msgstr "Xem trong GitHub"
 
 msgid "View log"
 msgstr "Xem log"
+
+msgid "View more"
+msgstr "Xem thêm"
 
 msgid "View on GitHub"
 msgstr "Xem trên GitHub"

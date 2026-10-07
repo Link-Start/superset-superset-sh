@@ -51,13 +51,13 @@ msgstr "\"{0}\" wird auf GitHub als geschlossen markiert. Du kannst ihn hier jed
 
 #. placeholder {0}: data.title
 #. placeholder {1}: data.base.ref
-#. placeholder {2}: mergeMethodLabels[pendingAction.method].toLowerCase()
+#. placeholder {2}: mergeMethodLabels[pendingAction.method]
 msgid "\"{0}\" will be merged into {1} via {2}. Checks haven't passed yet — this overrides them. This can't be undone from here."
 msgstr "\"{0}\" wird per {2} in {1} zusammengeführt. Die Prüfungen sind noch nicht bestanden — das übergeht sie. Das lässt sich von hier aus nicht rückgängig machen."
 
 #. placeholder {0}: data.title
 #. placeholder {1}: data.base.ref
-#. placeholder {2}: mergeMethodLabels[pendingAction.method].toLowerCase()
+#. placeholder {2}: mergeMethodLabels[pendingAction.method]
 msgid "\"{0}\" will be merged into {1} via {2}. This can't be undone from here."
 msgstr "\"{0}\" wird per {2} in {1} zusammengeführt. Das lässt sich von hier aus nicht rückgängig machen."
 
@@ -147,6 +147,10 @@ msgstr "{0, plural, one {# vorhandener Worktree gefunden} other {# vorhandene Wo
 msgid "{0, plural, one {# failed} other {# failed}}"
 msgstr "{0, plural, one {# fehlgeschlagen} other {# fehlgeschlagen}}"
 
+#. placeholder {0}: summary.failing
+msgid "{0, plural, one {# failing} other {# failing}}"
+msgstr "{0, plural, one {# fehlgeschlagen} other {# fehlgeschlagen}}"
+
 #. placeholder {0}: detail.pullRequest.changedFiles
 msgid "{0, plural, one {# file changed} other {# files changed}}"
 msgstr "{0, plural, one {# Datei geändert} other {# Dateien geändert}}"
@@ -179,6 +183,10 @@ msgstr "{0, plural, one {# Login} other {# Logins}}"
 #. placeholder {0}: summary.passed
 msgid "{0, plural, one {# passed} other {# passed}}"
 msgstr "{0, plural, one {# bestanden} other {# bestanden}}"
+
+#. placeholder {0}: summary.pending
+msgid "{0, plural, one {# pending} other {# pending}}"
+msgstr "{0, plural, one {# ausstehend} other {# ausstehend}}"
 
 #. placeholder {0}: chosenLeads.length
 #. placeholder {0}: chosenPeople.length
@@ -232,6 +240,10 @@ msgstr "{0, plural, one {# übersprungen} other {# übersprungen}}"
 #. placeholder {0}: subagents.length
 msgid "{0, plural, one {# subagent} other {# subagents}}"
 msgstr "{0, plural, one {# Subagent} other {# Subagenten}}"
+
+#. placeholder {0}: summary.passing
+msgid "{0, plural, one {# successful} other {# successful}}"
+msgstr "{0, plural, one {# erfolgreich} other {# erfolgreich}}"
 
 #. placeholder {0}: TASKS.length
 msgid "{0, plural, one {# task} other {# tasks}}"
@@ -397,10 +409,6 @@ msgstr "{0} aktiviert"
 msgid "{0} ending in {1}"
 msgstr "{0} endend auf {1}"
 
-#. placeholder {0}: summary.failing
-msgid "{0} failing"
-msgstr "{0} fehlgeschlagen"
-
 #. placeholder {0}: collisions.length
 msgid "{0} files already exist in {where}. Do you want to replace them?"
 msgstr "{0} Dateien existieren bereits in {where}. Willst du sie ersetzen?"
@@ -408,6 +416,11 @@ msgstr "{0} Dateien existieren bereits in {where}. Willst du sie ersetzen?"
 #. placeholder {0}: displayName(variables.name)
 msgid "{0} installed"
 msgstr "{0} installiert"
+
+#. placeholder {0}: data.head.ref
+#. placeholder {1}: data.base.ref
+msgid "{0} into {1}"
+msgstr "{0} in {1}"
 
 #. placeholder {0}: conflictDisplay.text
 #. placeholder {1}: i18n._( HOTKEYS[pendingConflict.conflictId].label, )
@@ -493,10 +506,6 @@ msgstr "Tarif {0}"
 #. placeholder {0}: normalizedProjectIds.length
 msgid "{0} projects"
 msgstr "{0} Projekte"
-
-#. placeholder {0}: summary.pending
-msgid "{0} running"
-msgstr "{0} laufen"
 
 #. placeholder {0}: tally.running
 msgid "{0} Running"
@@ -809,9 +818,6 @@ msgstr "{count} Hosts führen einen älteren Host-Dienst aus als diese App"
 
 msgid "{count}/day"
 msgstr "{count}/Tag"
-
-msgid "{createdAtRelative} ago"
-msgstr "vor {createdAtRelative}"
 
 msgid "{currentPage} of {totalBranches}"
 msgstr "{currentPage} von {totalBranches}"
@@ -1951,10 +1957,6 @@ msgstr "Alle {0} Prüfungen bestanden"
 msgid "All {0} objectives are carrying their weight for {nextLabel}."
 msgstr "Alle {0} Ziele tragen ihren Teil zu {nextLabel} bei."
 
-#. placeholder {0}: summary.relevantChecks.length
-msgid "All {0} passed"
-msgstr "Alle {0} bestanden"
-
 msgid "All {versionCount} versions and their content are removed. Anyone with the link loses access."
 msgstr "Alle {versionCount} Versionen und ihre Inhalte werden entfernt. Wer den Link hat, verliert den Zugriff."
 
@@ -2365,6 +2367,9 @@ msgstr "Änderungen freigeben"
 msgid "Approve for me"
 msgstr "Für mich freigeben"
 
+msgid "approved"
+msgstr "hat genehmigt"
+
 msgid "Approved"
 msgstr "Genehmigt"
 
@@ -2622,9 +2627,6 @@ msgstr "Automatisches Speichern"
 
 msgid "auto-generated"
 msgstr "automatisch erzeugt"
-
-msgid "Auto-merge is coming soon"
-msgstr "Auto-Merge kommt bald"
 
 msgid "Auto-run command"
 msgstr "Befehl automatisch ausführen"
@@ -2946,9 +2948,6 @@ msgstr "Branch"
 msgid "Branch behavior for new workspaces on this device. Projects can override the prefix individually."
 msgstr "Branch-Verhalten für neue Arbeitsbereiche auf diesem Gerät. Projekte können das Präfix einzeln überschreiben."
 
-msgid "Branch copied"
-msgstr "Branch kopiert"
-
 msgid "Branch in a new worktree"
 msgstr "In einem neuen Worktree verzweigen"
 
@@ -3188,6 +3187,9 @@ msgstr "Kann ich jederzeit den Tarif wechseln oder kündigen?"
 msgid "Can I use my own API keys?"
 msgstr "Kann ich meine eigenen API-Schlüssel nutzen?"
 
+msgid "Can merge without conflicts"
+msgstr "Kann ohne Konflikte zusammengeführt werden"
+
 msgid "Can you standardize the tooltips across the app?"
 msgstr "Kannst du die Tooltips in der ganzen App vereinheitlichen?"
 
@@ -3272,6 +3274,9 @@ msgstr "Cash — Gesamtbestand (Mercury)"
 msgid "Category"
 msgstr "Kategorie"
 
+msgid "Caution"
+msgstr "Achtung"
+
 msgid "Certificate Authority Invalid"
 msgstr "Zertifizierungsstelle ungültig"
 
@@ -3319,6 +3324,9 @@ msgstr "Projekt-Speicherort ändern"
 
 msgid "Change role"
 msgstr "Rolle ändern"
+
+msgid "Change state"
+msgstr "Status ändern"
 
 #. placeholder {0}: issue.state.name
 msgid "Change status from {0}"
@@ -3646,9 +3654,6 @@ msgstr "Hier klicken, falls du nicht weitergeleitet wirst"
 msgid "Click the “↑ update” pill to see the pre-update confirm"
 msgstr "Klicke auf „↑ update“, um die Bestätigung vor dem Update anzuzeigen"
 
-msgid "Click to copy"
-msgstr "Zum Kopieren klicken"
-
 msgid "Click to copy the session ID (resume with `claude --resume <id>`)."
 msgstr "Klicken, um die Session-ID zu kopieren (fortsetzen mit `claude --resume <id>`)."
 
@@ -3843,9 +3848,6 @@ msgstr "Diesen Tab zu schließen, beendet den laufenden Prozess."
 msgid "Closing this terminal will end the running process."
 msgstr "Dieses Terminal zu schließen, beendet den laufenden Prozess."
 
-msgid "Closing…"
-msgstr "Wird geschlossen…"
-
 msgid "Cloud"
 msgstr "Cloud"
 
@@ -4001,6 +4003,9 @@ msgstr "Diese Seite kommentieren"
 msgid "Commented"
 msgstr "Kommentiert"
 
+msgid "Commenting as your GitHub account"
+msgstr "Kommentieren als dein GitHub-Konto"
+
 msgid "Comments"
 msgstr "Kommentare"
 
@@ -4016,6 +4021,9 @@ msgstr "Commit fehlgeschlagen: {0}"
 
 msgid "Commit message"
 msgstr "Commit-Nachricht"
+
+msgid "Commit message (optional)"
+msgstr "Commit-Nachricht (optional)"
 
 msgid "Commits"
 msgstr "Commits"
@@ -4122,6 +4130,10 @@ msgstr "Run-Befehl des Arbeitsbereichs konfigurieren"
 
 msgid "Confirm before quitting"
 msgstr "Vor dem Beenden bestätigen"
+
+#. placeholder {0}: status.baseBranch
+msgid "Conflicts with {0}"
+msgstr "Konflikte mit {0}"
 
 msgid "Connect"
 msgstr "Verbinden"
@@ -4420,8 +4432,14 @@ msgstr "Conversion ab vorherigem Schritt"
 msgid "Conversion so far"
 msgstr "Conversion bisher"
 
+msgid "Convert to draft"
+msgstr "In Entwurf umwandeln"
+
 msgid "Converted"
 msgstr "Konvertiert"
+
+msgid "Converting to draft…"
+msgstr "Wird in Entwurf umgewandelt…"
 
 msgid "cookies and site data"
 msgstr "Cookies und Websitedaten"
@@ -4844,11 +4862,14 @@ msgstr "Der Star-Status ließ sich nicht bestätigen — prüfe, ob die GitHub-C
 msgid "Couldn't connect (error {status}). Please try again."
 msgstr "Verbindung fehlgeschlagen (Fehler {status}). Bitte versuche es erneut."
 
-msgid "Couldn't copy branch name"
-msgstr "Branch-Name konnte nicht kopiert werden"
+msgid "Couldn't convert to draft"
+msgstr "Konnte nicht in Entwurf umgewandelt werden"
 
 msgid "Couldn't copy comment"
 msgstr "Kommentar konnte nicht kopiert werden"
+
+msgid "Couldn't copy link"
+msgstr "Link konnte nicht kopiert werden"
 
 msgid "Couldn't copy path"
 msgstr "Pfad konnte nicht kopiert werden"
@@ -4870,6 +4891,9 @@ msgstr "Nicht gestagede Änderungen konnten nicht verworfen werden"
 
 msgid "Couldn’t finish deleting workspaces"
 msgstr "Das Löschen der Arbeitsbereiche konnte nicht abgeschlossen werden"
+
+msgid "Couldn't hand this to an agent"
+msgstr "Konnte nicht an einen Agenten übergeben werden"
 
 #. placeholder {0}: configsQuery.error instanceof Error ? configsQuery.error.message : hostServiceUnavailableMessage
 msgid "Couldn't load agent settings: {0}"
@@ -4909,6 +4933,9 @@ msgstr "Die Nutzlast dieser Ausführung konnte nicht geladen werden."
 msgid "Couldn't load your profile, so editing is disabled."
 msgstr "Dein Profil konnte nicht geladen werden, deshalb ist das Bearbeiten deaktiviert."
 
+msgid "Couldn't mark ready for review"
+msgstr "Konnte nicht als bereit zum Review markiert werden"
+
 msgid "Couldn't merge pull request"
 msgstr "Pull Request konnte nicht zusammengeführt werden"
 
@@ -4920,6 +4947,9 @@ msgstr "Dieser Diff konnte nicht geparst werden: {patchParseError}"
 
 msgid "Couldn't permanently delete \"{projectName}\""
 msgstr "„{projectName}“ konnte nicht endgültig gelöscht werden"
+
+msgid "Couldn't post comment"
+msgstr "Kommentar konnte nicht gepostet werden"
 
 msgid "Couldn't post reply"
 msgstr "Antwort konnte nicht gesendet werden"
@@ -6240,9 +6270,6 @@ msgstr "Bearbeiten"
 msgid "Edit comment"
 msgstr "Kommentar bearbeiten"
 
-msgid "Edit description"
-msgstr "Beschreibung bearbeiten"
-
 msgid "Edit environment"
 msgstr "Umgebung bearbeiten"
 
@@ -6357,9 +6384,6 @@ msgstr "{0} aktivieren"
 
 msgid "Enable an agent in Settings > Agents first"
 msgstr "Aktiviere zuerst einen Agenten unter Einstellungen > Agenten"
-
-msgid "Enable auto-merge"
-msgstr "Auto-Merge aktivieren"
 
 msgid "Enable relay access…"
 msgstr "Relay-Zugriff aktivieren…"
@@ -7355,6 +7379,9 @@ msgstr "Prüfungen mit Agent beheben"
 msgid "Fix CI failures"
 msgstr "CI-Fehler beheben"
 
+msgid "Fix findings"
+msgstr "Befunde beheben"
+
 msgid "fix-auth-redirect"
 msgstr "fix-auth-redirect"
 
@@ -7847,6 +7874,9 @@ msgstr "Leitfäden, Referenzen und Integrationen."
 msgid "Half of merged changes are zero-edit agent code"
 msgstr "Die Hälfte der gemergten Änderungen ist Agenten-Code ohne Nachbearbeitung"
 
+msgid "Handing to agent…"
+msgstr "Wird an Agenten übergeben…"
+
 msgid "Handle"
 msgstr "Handle"
 
@@ -7858,6 +7888,9 @@ msgstr "läuft gerade"
 
 msgid "Hard reload"
 msgstr "Hart neu laden"
+
+msgid "Has conflicts"
+msgstr "Hat Konflikte"
 
 msgid "Has uncommitted changes"
 msgstr "Hat nicht committete Änderungen"
@@ -7970,6 +8003,9 @@ msgstr "Unveränderte Bereiche ausblenden"
 
 msgid "High"
 msgstr "Hoch"
+
+msgid "High severity"
+msgstr "Hoher Schweregrad"
 
 msgid "High usage"
 msgstr "Hohe Nutzung"
@@ -8286,6 +8322,9 @@ msgstr "Importiere deinen Browserverlauf und deine Logins aus {browserName}"
 
 msgid "Import…"
 msgstr "Importieren…"
+
+msgid "Important"
+msgstr "Wichtig"
 
 #. placeholder {0}: untracked.length
 #. placeholder {1}: errors[0]
@@ -8932,8 +8971,8 @@ msgstr "So verwendest du Skripte"
 msgid "Learn the workflow that fits this repo — parallel workspaces and agent setup."
 msgstr "Lerne den Workflow, der zu diesem Repo passt — parallele Arbeitsbereiche und Agenten-Setup."
 
-msgid "Leave a comment (optional)"
-msgstr "Kommentar hinterlassen (optional)"
+msgid "Leave a comment"
+msgstr "Kommentar hinterlassen"
 
 msgid "Leave a comment…"
 msgstr "Kommentar hinterlassen…"
@@ -9359,6 +9398,9 @@ msgstr "Sieht gut aus"
 msgid "Low"
 msgstr "Niedrig"
 
+msgid "Low severity"
+msgstr "Niedriger Schweregrad"
+
 msgid "Lower memory with many terminals open, smoother git in big repos, and less background CPU."
 msgstr "Weniger Speicher bei vielen offenen Terminals, geschmeidigeres Git in großen Repos und weniger CPU im Hintergrund."
 
@@ -9495,6 +9537,9 @@ msgstr "Marketplace"
 msgid "Marking ready for review..."
 msgstr "Wird als bereit zur Review markiert…"
 
+msgid "Marking ready…"
+msgstr "Wird als bereit markiert…"
+
 msgid "Match existing patterns"
 msgstr "An bestehende Muster anpassen"
 
@@ -9546,6 +9591,9 @@ msgstr "Medianzeit ab vorherigem Schritt"
 
 msgid "Medium"
 msgstr "Mittel"
+
+msgid "Medium severity"
+msgstr "Mittlerer Schweregrad"
 
 msgid "Meet the team behind Superset, building parallel coding agents for developers."
 msgstr "Lerne das Team hinter Superset kennen, das parallele Coding-Agents für Entwickler baut."
@@ -9606,8 +9654,11 @@ msgstr "Pull Request zusammenführen"
 msgid "Merge pull requests without leaving Superset, plus a round of chat fixes and polish."
 msgstr "Pull Requests zusammenführen, ohne Superset zu verlassen, plus eine Runde Chat-Fixes und Feinschliff."
 
-msgid "Merge when checks pass"
-msgstr "Zusammenführen, sobald die Prüfungen bestanden sind"
+msgid "Merge status"
+msgstr "Merge-Status"
+
+msgid "Merge status unknown"
+msgstr "Merge-Status unbekannt"
 
 msgid "Merged"
 msgstr "Zusammengeführt"
@@ -10221,6 +10272,9 @@ msgstr "Keine aktiven Terminal-Sitzungen"
 msgid "No agent"
 msgstr "Kein Agent"
 
+msgid "No agent is configured on this host"
+msgstr "Auf diesem Host ist kein Agent konfiguriert"
+
 #. placeholder {0}: host.name
 msgid "No agents configured on {0}"
 msgstr "Auf {0} sind keine Agenten konfiguriert"
@@ -10276,9 +10330,6 @@ msgstr "Keine Prüfungen"
 msgid "No checks reported"
 msgstr "Keine Prüfungen gemeldet"
 
-msgid "No checks reported for the latest commit."
-msgstr "Für den letzten Commit wurden keine Prüfungen gemeldet."
-
 msgid "No checks reported."
 msgstr "Keine Prüfungen gemeldet."
 
@@ -10305,6 +10356,9 @@ msgstr "Keine Befehle gefunden."
 
 msgid "No comment body"
 msgstr "Kein Kommentartext"
+
+msgid "No comments"
+msgstr "Keine Kommentare"
 
 msgid "No comments on this page yet"
 msgstr "Noch keine Kommentare auf dieser Seite"
@@ -10619,6 +10673,9 @@ msgstr "Keine Ergebnisse für „{query}“"
 msgid "No results found."
 msgstr "Keine Ergebnisse gefunden."
 
+msgid "No review body."
+msgstr "Kein Review-Text."
+
 msgid "No Reviewers Assigned"
 msgstr "Keine Reviewer zugewiesen"
 
@@ -10871,6 +10928,9 @@ msgstr "nicht sortiert"
 msgctxt "agent status"
 msgid "Not updating"
 msgstr "Keine Updates"
+
+msgid "Note"
+msgstr "Hinweis"
 
 msgid "Notes"
 msgstr "Notizen"
@@ -11427,9 +11487,6 @@ msgstr "Pull Request #{0} öffnen"
 
 msgid "Open pull request #{number}"
 msgstr "Pull Request #{number} öffnen"
-
-msgid "Open pull request in GitHub"
-msgstr "Pull Request auf GitHub öffnen"
 
 msgid "Open pull request options"
 msgstr "Pull-Request-Optionen öffnen"
@@ -12570,6 +12627,12 @@ msgstr "Pull Request #{0}, {1}"
 msgid "Pull request actions"
 msgstr "Pull-Request-Aktionen"
 
+msgid "Pull request detail tabs"
+msgstr "Tabs der Pull-Request-Details"
+
+msgid "Pull request not found"
+msgstr "Pull Request nicht gefunden"
+
 msgid "Pull request title"
 msgstr "Titel des Pull Requests"
 
@@ -13235,11 +13298,17 @@ msgstr "Reichweite des Repositorys und Downloads der Desktop-Releases. Installat
 msgid "Repository URL or path"
 msgstr "Repository-URL oder -Pfad"
 
+msgid "Request"
+msgstr "Anfragen"
+
 msgid "Request a trial"
 msgstr "Testphase anfragen"
 
 msgid "Request Body"
 msgstr "Request-Body"
+
+msgid "requested changes"
+msgstr "hat Änderungen angefordert"
 
 msgid "Requested Changes"
 msgstr "Änderungen angefordert"
@@ -13331,6 +13400,9 @@ msgstr "Erledigen"
 msgid "Resolve all"
 msgstr "Alle auflösen"
 
+msgid "Resolve conflicts"
+msgstr "Konflikte lösen"
+
 msgid "Resolve Conflicts to Merge"
 msgstr "Konflikte lösen, um zusammenzuführen"
 
@@ -13339,6 +13411,10 @@ msgstr "Unterhaltung auflösen"
 
 msgid "Resolve Conversations to Merge"
 msgstr "Unterhaltungen auflösen, um zusammenzuführen"
+
+#. placeholder {0}: data.base.ref
+msgid "Resolve the conflicts with {0} first"
+msgstr "Löse zuerst die Konflikte mit {0}"
 
 msgid "resolve the workspace path"
 msgstr "den Pfad des Arbeitsbereichs auflösen"
@@ -13600,6 +13676,9 @@ msgstr "Diese Ausführungen unter „Alle Ausführungen“ prüfen"
 
 msgid "Review thread…"
 msgstr "Review-Thread…"
+
+msgid "reviewed"
+msgstr "hat reviewt"
 
 msgid "Reviewed by you"
 msgstr "Von dir gereviewt"
@@ -14397,6 +14476,9 @@ msgstr "Gesendet"
 msgid "Sent to agent"
 msgstr "An Agenten gesendet"
 
+msgid "Sent to the pull request's workspace"
+msgstr "An den Arbeitsbereich des Pull Requests gesendet"
+
 msgid "Sentry rejected the token"
 msgstr "Sentry hat den Token abgelehnt"
 
@@ -14652,6 +14734,9 @@ msgstr "E-Mails anzeigen"
 
 msgid "Show everyone who opened this workspace"
 msgstr "Alle anzeigen, die diesen Workspace geöffnet haben"
+
+msgid "Show fewer"
+msgstr "Weniger anzeigen"
 
 msgid "Show file tree"
 msgstr "Dateibaum anzeigen"
@@ -15302,9 +15387,6 @@ msgstr "Fang mit der Arbeit an."
 msgid "Start work from anywhere"
 msgstr "Von überall mit der Arbeit beginnen"
 
-msgid "Start Workspace"
-msgstr "Arbeitsbereich starten"
-
 msgid "Started"
 msgstr "Gestartet"
 
@@ -15319,6 +15401,9 @@ msgstr "Startet"
 
 msgid "Starting {agentLabel}"
 msgstr "{agentLabel} wird gestartet"
+
+msgid "Starting a workspace on this pull request"
+msgstr "Arbeitsbereich für diesen Pull Request wird gestartet"
 
 msgid "Starting an agent in {what}"
 msgstr "Agent wird in {what} gestartet"
@@ -16687,8 +16772,14 @@ msgstr "Dieses Profil ist gerade stark ausgelastet"
 msgid "This project is no longer available on your devices."
 msgstr "Dieses Projekt ist auf deinen Geräten nicht mehr verfügbar."
 
+msgid "This project isn't linked to a GitHub repository."
+msgstr "Dieses Projekt ist mit keinem GitHub-Repository verknüpft."
+
 msgid "This project's host is offline"
 msgstr "Der Host dieses Projekts ist offline"
+
+msgid "This pull request has no host to act through"
+msgstr "Für diesen Pull Request gibt es keinen Host, über den gehandelt werden kann"
 
 msgid "This pull request is no longer available."
 msgstr "Dieser Pull Request ist nicht mehr verfügbar."
@@ -16843,6 +16934,9 @@ msgstr "Zeit"
 
 msgid "Time range"
 msgstr "Zeitraum"
+
+msgid "Tip"
+msgstr "Tipp"
 
 msgid "Title"
 msgstr "Titel"
@@ -17724,6 +17818,9 @@ msgstr "Auf GitHub ansehen"
 
 msgid "View log"
 msgstr "Log ansehen"
+
+msgid "View more"
+msgstr "Mehr anzeigen"
 
 msgid "View on GitHub"
 msgstr "Auf GitHub ansehen"
