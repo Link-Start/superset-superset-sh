@@ -2951,6 +2951,11 @@ msgstr "Box berjalan di tempat environment dibuat; snapshot hanya ada di regionn
 msgid "Branch"
 msgstr "Branch"
 
+#. placeholder {0}: params?.branch
+#. placeholder {1}: params?.remote
+msgid "Branch \"{0}\" is not on this device or on {1}. Only pushed commits can be restored."
+msgstr "Branch \"{0}\" tidak ada di perangkat ini maupun di {1}. Hanya commit yang sudah di-push yang bisa dipulihkan."
+
 msgid "Branch behavior for new workspaces on this device. Projects can override the prefix individually."
 msgstr "Perilaku branch untuk workspace baru di perangkat ini. Tiap proyek bisa menimpa prefix-nya sendiri."
 
@@ -4758,6 +4763,12 @@ msgstr "Tidak bisa membuka tautan"
 
 msgid "Could not open Photos"
 msgstr "Tidak bisa membuka Photos"
+
+#. placeholder {0}: params?.remote
+#. placeholder {1}: params?.branch
+#. placeholder {2}: params?.remote
+msgid "Could not reach {0} to look for branch \"{1}\". Check your connection and access to {2}, then try again."
+msgstr "Tidak dapat menjangkau {0} untuk mencari branch \"{1}\". Periksa koneksi dan akses Anda ke {2}, lalu coba lagi."
 
 msgid "Could not reach a mobile simulator."
 msgstr "Tidak dapat menjangkau simulator seluler."

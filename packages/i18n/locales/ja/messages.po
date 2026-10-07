@@ -2951,6 +2951,11 @@ msgstr "ボックスは環境が作成されたリージョンで動作します
 msgid "Branch"
 msgstr "ブランチ"
 
+#. placeholder {0}: params?.branch
+#. placeholder {1}: params?.remote
+msgid "Branch \"{0}\" is not on this device or on {1}. Only pushed commits can be restored."
+msgstr "ブランチ「{0}」はこのデバイスにも {1} にもありません。復元できるのはプッシュ済みのコミットだけです。"
+
 msgid "Branch behavior for new workspaces on this device. Projects can override the prefix individually."
 msgstr "このデバイスの新規ワークスペースのブランチ動作。プレフィックスはプロジェクトごとに上書きできます。"
 
@@ -4758,6 +4763,12 @@ msgstr "リンクを開けませんでした"
 
 msgid "Could not open Photos"
 msgstr "「写真」を開けませんでした"
+
+#. placeholder {0}: params?.remote
+#. placeholder {1}: params?.branch
+#. placeholder {2}: params?.remote
+msgid "Could not reach {0} to look for branch \"{1}\". Check your connection and access to {2}, then try again."
+msgstr "ブランチ「{1}」を探すために {0} に接続できませんでした。接続と {2} へのアクセス権を確認してから、もう一度お試しください。"
 
 msgid "Could not reach a mobile simulator."
 msgstr "モバイルシミュレーターに接続できませんでした。"

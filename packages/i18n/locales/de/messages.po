@@ -2951,6 +2951,11 @@ msgstr "Boxen laufen dort, wo die Umgebung erstellt wurde; ein Snapshot existier
 msgid "Branch"
 msgstr "Branch"
 
+#. placeholder {0}: params?.branch
+#. placeholder {1}: params?.remote
+msgid "Branch \"{0}\" is not on this device or on {1}. Only pushed commits can be restored."
+msgstr "Branch „{0}“ ist weder auf diesem Gerät noch auf {1}. Nur gepushte Commits lassen sich wiederherstellen."
+
 msgid "Branch behavior for new workspaces on this device. Projects can override the prefix individually."
 msgstr "Branch-Verhalten für neue Arbeitsbereiche auf diesem Gerät. Projekte können das Präfix einzeln überschreiben."
 
@@ -4758,6 +4763,12 @@ msgstr "Link konnte nicht geöffnet werden"
 
 msgid "Could not open Photos"
 msgstr "Fotos konnte nicht geöffnet werden"
+
+#. placeholder {0}: params?.remote
+#. placeholder {1}: params?.branch
+#. placeholder {2}: params?.remote
+msgid "Could not reach {0} to look for branch \"{1}\". Check your connection and access to {2}, then try again."
+msgstr "{0} war nicht erreichbar, um nach Branch „{1}“ zu suchen. Prüfe deine Verbindung und deinen Zugriff auf {2} und versuche es erneut."
 
 msgid "Could not reach a mobile simulator."
 msgstr "Der mobile Simulator konnte nicht erreicht werden."
