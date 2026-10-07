@@ -3382,9 +3382,6 @@ msgstr "Sesi chat tidak ditemukan"
 msgid "Chat surfaces: messages, reasoning, suggestions"
 msgstr "Permukaan chat: pesan, penalaran, saran"
 
-msgid "Chat v3"
-msgstr "Chat v3"
-
 msgid "Check again"
 msgstr "Periksa lagi"
 
@@ -4263,6 +4260,9 @@ msgstr "Menghubungkan memungkinkan agen Anda membaca dan bertindak di {name} ata
 
 msgid "Connecting to the desktop…"
 msgstr "Menghubungkan ke desktop…"
+
+msgid "Connecting to the host service…"
+msgstr "Menghubungkan ke layanan host…"
 
 msgid "Connecting to the workspace"
 msgstr "Menghubungkan ke workspace"
@@ -10030,9 +10030,6 @@ msgstr "Browser Baru"
 msgid "new challengers"
 msgstr "penantang baru"
 
-msgid "New chat"
-msgstr "Chat baru"
-
 msgid "New cloud workspace"
 msgstr "Workspace cloud baru"
 
@@ -11197,9 +11194,6 @@ msgstr "Buka perubahan"
 msgid "Open Changes"
 msgstr "Buka Perubahan"
 
-msgid "Open Chat v3"
-msgstr "Buka Chat v3"
-
 msgid "Open Command Palette"
 msgstr "Buka Command Palette"
 
@@ -11556,12 +11550,6 @@ msgstr "Membuka folder"
 
 msgid "Opening pages"
 msgstr "Membuka halaman"
-
-msgid "Opening the chat…"
-msgstr "Membuka obrolan…"
-
-msgid "Opening the conversation…"
-msgstr "Membuka percakapan…"
 
 msgid "Opening worktree..."
 msgstr "Membuka worktree..."
@@ -14352,9 +14340,6 @@ msgstr "Memilih teks di terminal langsung menyalinnya ke clipboard, tanpa spasi 
 msgid "Send"
 msgstr "Kirim"
 
-msgid "Send a message to start a {harness} session"
-msgstr "Kirim pesan untuk memulai sesi {harness}"
-
 msgid "Send an invitation to join {organizationName}. Expires in 48 hours."
 msgstr "Kirim undangan untuk bergabung ke {organizationName}. Kedaluwarsa dalam 48 jam."
 
@@ -15252,9 +15237,6 @@ msgstr "Star yang didapat per minggu"
 msgctxt "project date"
 msgid "Start"
 msgstr "Mulai"
-
-msgid "Start a {harness} session"
-msgstr "Mulai sesi {harness}"
 
 msgid "Start a conversation to see messages here"
 msgstr "Mulai percakapan untuk melihat pesan di sini"
@@ -16164,6 +16146,9 @@ msgstr "Agen menyalin percakapan; cabang terbuka di sini"
 msgid "The agent owns a task from ticket to diff. The human reviews the result, not the keystrokes. Attention shifts from writing code to specifying work and judging it. One engineer runs several agents at once in isolated workspaces."
 msgstr "Agen memegang tugas dari tiket sampai diff. Manusia mereview hasilnya, bukan tiap ketukan tombolnya. Perhatian bergeser dari menulis kode ke menentukan pekerjaan dan menilainya. Satu engineer menjalankan beberapa agen sekaligus di workspace terisolasi."
 
+msgid "The agent stopped while resuming the conversation."
+msgstr "Agen berhenti saat melanjutkan percakapan."
+
 msgid "The agent this automation was set to run no longer exists on its host — the host's agents may have been reset or removed. Re-select an agent in the automation's settings."
 msgstr "Agen yang disetel untuk menjalankan otomatisasi ini sudah tidak ada di host-nya — agen host itu mungkin telah direset atau dihapus. Pilih ulang agen di pengaturan otomatisasi."
 
@@ -16534,8 +16519,11 @@ msgstr "Otomatisasi ini berada di organisasi lain"
 msgid "This cannot be undone."
 msgstr "Ini tidak bisa dibatalkan."
 
-msgid "This chat's agent has stopped and can't be resumed."
-msgstr "Agen chat ini sudah berhenti dan tidak dapat dilanjutkan."
+msgid "This chat stopped because the conversation continued in a terminal."
+msgstr "Chat ini berhenti karena percakapan dilanjutkan di terminal."
+
+msgid "This chat was stopped."
+msgstr "Chat ini telah dihentikan."
 
 msgid "This closes every terminal session — in this workspace and any others — and can't be undone. If they're only briefly stuck, waiting usually brings them back."
 msgstr "Ini menutup setiap sesi terminal — di workspace ini maupun yang lain — dan tidak bisa dibatalkan. Kalau hanya macet sebentar, menunggu biasanya cukup."

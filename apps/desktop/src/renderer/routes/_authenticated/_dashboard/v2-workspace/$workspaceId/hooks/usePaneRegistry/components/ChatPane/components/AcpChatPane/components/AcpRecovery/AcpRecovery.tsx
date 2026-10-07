@@ -12,11 +12,13 @@ import { Button } from "@superset/ui/button";
  */
 export function AcpRecovery({
 	detail,
+	onResume,
 	onStartNew,
 	reason,
 }: {
-	reason: "no-transcript" | "stopped";
+	reason: "no-transcript" | "stopped" | "in-terminal";
 	detail?: string | undefined;
+	onResume?: () => void;
 	onStartNew: () => void;
 }) {
 	return (
@@ -24,13 +26,17 @@ export function AcpRecovery({
 		// sizes to its content and hugs the left edge.
 		<div className="flex h-full w-full flex-col items-center justify-center gap-3 p-8 text-center">
 			<p className="max-w-sm text-muted-foreground text-sm">
-				{reason === "no-transcript" ? (
+				{reason === "in-terminal" ? (
+					<Trans>
+						This chat stopped because the conversation continued in a terminal.
+					</Trans>
+				) : reason === "no-transcript" ? (
 					<Trans>
 						That agent session has no conversation to open yet — it was started
 						but never prompted.
 					</Trans>
 				) : (
-					<Trans>This chat's agent has stopped and can't be resumed.</Trans>
+					<Trans>This chat was stopped.</Trans>
 				)}
 			</p>
 			{detail && (
@@ -38,9 +44,16 @@ export function AcpRecovery({
 					{detail}
 				</p>
 			)}
-			<Button onClick={onStartNew} size="sm" variant="secondary">
-				<Trans>Start a new chat</Trans>
-			</Button>
+			<div className="flex gap-2">
+				{onResume && (
+					<Button onClick={onResume} size="sm">
+						<Trans>Resume</Trans>
+					</Button>
+				)}
+				<Button onClick={onStartNew} size="sm" variant="secondary">
+					<Trans>Start a new chat</Trans>
+				</Button>
+			</div>
 		</div>
 	);
 }

@@ -3382,9 +3382,6 @@ msgstr "Sesión de chat no encontrada"
 msgid "Chat surfaces: messages, reasoning, suggestions"
 msgstr "Superficies de chat: mensajes, razonamiento, sugerencias"
 
-msgid "Chat v3"
-msgstr "Chat v3"
-
 msgid "Check again"
 msgstr "Volver a comprobar"
 
@@ -4263,6 +4260,9 @@ msgstr "Conectar permite que tus agentes lean y actúen en {name} en tu nombre. 
 
 msgid "Connecting to the desktop…"
 msgstr "Conectando con el escritorio…"
+
+msgid "Connecting to the host service…"
+msgstr "Conectando con el servicio del host…"
 
 msgid "Connecting to the workspace"
 msgstr "Conectando con el espacio de trabajo"
@@ -10030,9 +10030,6 @@ msgstr "Nuevo navegador"
 msgid "new challengers"
 msgstr "nuevos rivales"
 
-msgid "New chat"
-msgstr "Chat nuevo"
-
 msgid "New cloud workspace"
 msgstr "Nuevo espacio de trabajo en la nube"
 
@@ -11197,9 +11194,6 @@ msgstr "Abrir cambios"
 msgid "Open Changes"
 msgstr "Abrir cambios"
 
-msgid "Open Chat v3"
-msgstr "Abrir Chat v3"
-
 msgid "Open Command Palette"
 msgstr "Abrir la paleta de comandos"
 
@@ -11556,12 +11550,6 @@ msgstr "Abrir carpetas"
 
 msgid "Opening pages"
 msgstr "Abrir páginas"
-
-msgid "Opening the chat…"
-msgstr "Abriendo el chat…"
-
-msgid "Opening the conversation…"
-msgstr "Abriendo la conversación…"
 
 msgid "Opening worktree..."
 msgstr "Abriendo el worktree..."
@@ -14352,9 +14340,6 @@ msgstr "Seleccionar texto en un terminal lo copia de inmediato al portapapeles, 
 msgid "Send"
 msgstr "Enviar"
 
-msgid "Send a message to start a {harness} session"
-msgstr "Envía un mensaje para iniciar una sesión de {harness}"
-
 msgid "Send an invitation to join {organizationName}. Expires in 48 hours."
 msgstr "Envía una invitación para unirse a {organizationName}. Caduca en 48 horas."
 
@@ -15252,9 +15237,6 @@ msgstr "Estrellas ganadas por semana"
 msgctxt "project date"
 msgid "Start"
 msgstr "Inicio"
-
-msgid "Start a {harness} session"
-msgstr "Inicia una sesión de {harness}"
 
 msgid "Start a conversation to see messages here"
 msgstr "Inicia una conversación para ver los mensajes aquí"
@@ -16164,6 +16146,9 @@ msgstr "El agente copia la conversación; la rama se abre aquí"
 msgid "The agent owns a task from ticket to diff. The human reviews the result, not the keystrokes. Attention shifts from writing code to specifying work and judging it. One engineer runs several agents at once in isolated workspaces."
 msgstr "El agente se encarga de una tarea desde el ticket hasta el diff. La persona revisa el resultado, no las pulsaciones. La atención pasa de escribir código a especificar el trabajo y juzgarlo. Un ingeniero ejecuta varios agentes a la vez en espacios de trabajo aislados."
 
+msgid "The agent stopped while resuming the conversation."
+msgstr "El agente se detuvo al reanudar la conversación."
+
 msgid "The agent this automation was set to run no longer exists on its host — the host's agents may have been reset or removed. Re-select an agent in the automation's settings."
 msgstr "El agente con el que se configuró esta automatización ya no existe en su host: puede que los agentes del host se hayan restablecido o eliminado. Vuelve a seleccionar un agente en la configuración de la automatización."
 
@@ -16534,8 +16519,11 @@ msgstr "Esta automatización está en otra organización"
 msgid "This cannot be undone."
 msgstr "Esto no se puede deshacer."
 
-msgid "This chat's agent has stopped and can't be resumed."
-msgstr "El agente de este chat se ha detenido y no se puede reanudar."
+msgid "This chat stopped because the conversation continued in a terminal."
+msgstr "Este chat se detuvo porque la conversación continuó en una terminal."
+
+msgid "This chat was stopped."
+msgstr "Este chat se detuvo."
 
 msgid "This closes every terminal session — in this workspace and any others — and can't be undone. If they're only briefly stuck, waiting usually brings them back."
 msgstr "Esto cierra todas las sesiones de terminal, de este espacio de trabajo y de cualquier otro, y no se puede deshacer. Si solo están atascadas un momento, esperar suele bastar."

@@ -3382,9 +3382,6 @@ msgstr "チャットセッションが見つかりません"
 msgid "Chat surfaces: messages, reasoning, suggestions"
 msgstr "チャットの構成要素: メッセージ、推論、提案"
 
-msgid "Chat v3"
-msgstr "チャットv3"
-
 msgid "Check again"
 msgstr "再確認"
 
@@ -4263,6 +4260,9 @@ msgstr "接続すると、エージェントがあなたに代わって {name} �
 
 msgid "Connecting to the desktop…"
 msgstr "デスクトップに接続しています…"
+
+msgid "Connecting to the host service…"
+msgstr "ホストサービスに接続しています…"
 
 msgid "Connecting to the workspace"
 msgstr "ワークスペースに接続中"
@@ -10030,9 +10030,6 @@ msgstr "新規ブラウザ"
 msgid "new challengers"
 msgstr "別の対戦相手"
 
-msgid "New chat"
-msgstr "新しいチャット"
-
 msgid "New cloud workspace"
 msgstr "新規クラウドワークスペース"
 
@@ -11197,9 +11194,6 @@ msgstr "変更を開く"
 msgid "Open Changes"
 msgstr "変更を開く"
 
-msgid "Open Chat v3"
-msgstr "チャットv3を開く"
-
 msgid "Open Command Palette"
 msgstr "コマンドパレットを開く"
 
@@ -11556,12 +11550,6 @@ msgstr "フォルダーを開く"
 
 msgid "Opening pages"
 msgstr "ページを開く"
-
-msgid "Opening the chat…"
-msgstr "チャットを開いています…"
-
-msgid "Opening the conversation…"
-msgstr "会話を開いています…"
 
 msgid "Opening worktree..."
 msgstr "ワークツリーを開いています..."
@@ -14352,9 +14340,6 @@ msgstr "ターミナルでテキストを選択すると、行末の空白を取
 msgid "Send"
 msgstr "送信"
 
-msgid "Send a message to start a {harness} session"
-msgstr "メッセージを送って{harness}セッションを開始"
-
 msgid "Send an invitation to join {organizationName}. Expires in 48 hours."
 msgstr "{organizationName}への招待を送ります。48時間で失効します。"
 
@@ -15252,9 +15237,6 @@ msgstr "1週間あたりの獲得スター"
 msgctxt "project date"
 msgid "Start"
 msgstr "開始日"
-
-msgid "Start a {harness} session"
-msgstr "{harness}セッションを開始"
 
 msgid "Start a conversation to see messages here"
 msgstr "会話を始めるとここにメッセージが表示されます"
@@ -16164,6 +16146,9 @@ msgstr "エージェントが会話を複製し、分岐はここで開きます
 msgid "The agent owns a task from ticket to diff. The human reviews the result, not the keystrokes. Attention shifts from writing code to specifying work and judging it. One engineer runs several agents at once in isolated workspaces."
 msgstr "エージェントがチケットから差分までタスクを引き受けます。人間はキー入力ではなく結果をレビューします。関心はコードを書くことから、作業を仕様化し判断することへ移ります。エンジニア1人が独立したワークスペースで複数のエージェントを同時に動かします。"
 
+msgid "The agent stopped while resuming the conversation."
+msgstr "会話の再開中にエージェントが停止しました。"
+
 msgid "The agent this automation was set to run no longer exists on its host — the host's agents may have been reset or removed. Re-select an agent in the automation's settings."
 msgstr "このオートメーションに設定されていたエージェントは、ホスト上に存在しなくなりました — ホストのエージェントがリセットまたは削除された可能性があります。オートメーションの設定でエージェントを選び直してください。"
 
@@ -16534,8 +16519,11 @@ msgstr "このオートメーションは別の組織にあります"
 msgid "This cannot be undone."
 msgstr "この操作は元に戻せません。"
 
-msgid "This chat's agent has stopped and can't be resumed."
-msgstr "このチャットのエージェントは停止しており、再開できません。"
+msgid "This chat stopped because the conversation continued in a terminal."
+msgstr "会話がターミナルで続行されたため、このチャットは停止しました。"
+
+msgid "This chat was stopped."
+msgstr "このチャットは停止されました。"
 
 msgid "This closes every terminal session — in this workspace and any others — and can't be undone. If they're only briefly stuck, waiting usually brings them back."
 msgstr "このワークスペースと他のワークスペースのすべてのターミナルセッションを閉じます。元に戻せません。一時的に固まっているだけなら、待つことで復帰することが多いです。"

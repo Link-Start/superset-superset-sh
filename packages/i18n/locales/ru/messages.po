@@ -3382,9 +3382,6 @@ msgstr "Сессия чата не найдена"
 msgid "Chat surfaces: messages, reasoning, suggestions"
 msgstr "Поверхности чата: сообщения, рассуждения, подсказки"
 
-msgid "Chat v3"
-msgstr "Chat v3"
-
 msgid "Check again"
 msgstr "Проверить снова"
 
@@ -4263,6 +4260,9 @@ msgstr "Подключение позволит вашим агентам чит
 
 msgid "Connecting to the desktop…"
 msgstr "Подключение к рабочему столу…"
+
+msgid "Connecting to the host service…"
+msgstr "Подключение к службе хоста…"
 
 msgid "Connecting to the workspace"
 msgstr "Подключение к рабочей области"
@@ -10030,9 +10030,6 @@ msgstr "Новый браузер"
 msgid "new challengers"
 msgstr "другие соперники"
 
-msgid "New chat"
-msgstr "Новый чат"
-
 msgid "New cloud workspace"
 msgstr "Новая облачная рабочая область"
 
@@ -11197,9 +11194,6 @@ msgstr "Открыть изменения"
 msgid "Open Changes"
 msgstr "Открыть изменения"
 
-msgid "Open Chat v3"
-msgstr "Открыть Chat v3"
-
 msgid "Open Command Palette"
 msgstr "Открыть палитру команд"
 
@@ -11556,12 +11550,6 @@ msgstr "Открытие папок"
 
 msgid "Opening pages"
 msgstr "Открытие страниц"
-
-msgid "Opening the chat…"
-msgstr "Открытие чата…"
-
-msgid "Opening the conversation…"
-msgstr "Открываем разговор…"
 
 msgid "Opening worktree..."
 msgstr "Открытие worktree..."
@@ -14352,9 +14340,6 @@ msgstr "Выделенный в терминале текст сразу коп�
 msgid "Send"
 msgstr "Отправить"
 
-msgid "Send a message to start a {harness} session"
-msgstr "Отправьте сообщение, чтобы начать сессию {harness}"
-
 msgid "Send an invitation to join {organizationName}. Expires in 48 hours."
 msgstr "Отправьте приглашение в {organizationName}. Действует 48 часов."
 
@@ -15252,9 +15237,6 @@ msgstr "Звёзд в неделю"
 msgctxt "project date"
 msgid "Start"
 msgstr "Начало"
-
-msgid "Start a {harness} session"
-msgstr "Начать сессию {harness}"
 
 msgid "Start a conversation to see messages here"
 msgstr "Начните диалог, чтобы сообщения появились здесь"
@@ -16164,6 +16146,9 @@ msgstr "Агент копирует разговор; ветвь откроет�
 msgid "The agent owns a task from ticket to diff. The human reviews the result, not the keystrokes. Attention shifts from writing code to specifying work and judging it. One engineer runs several agents at once in isolated workspaces."
 msgstr "Агент ведёт задачу от тикета до diff. Человек проверяет результат, а не нажатия клавиш. Внимание смещается с написания кода на постановку задач и оценку результата. Один инженер ведёт несколько агентов одновременно в изолированных рабочих областях."
 
+msgid "The agent stopped while resuming the conversation."
+msgstr "Агент остановился при возобновлении разговора."
+
 msgid "The agent this automation was set to run no longer exists on its host — the host's agents may have been reset or removed. Re-select an agent in the automation's settings."
 msgstr "Агента, на котором должна была запускаться эта автоматизация, больше нет на его хосте — возможно, агенты хоста были сброшены или удалены. Выберите агента заново в настройках автоматизации."
 
@@ -16534,8 +16519,11 @@ msgstr "Эта автоматизация находится в другой о�
 msgid "This cannot be undone."
 msgstr "Это нельзя отменить."
 
-msgid "This chat's agent has stopped and can't be resumed."
-msgstr "Агент этого чата остановлен, и его нельзя возобновить."
+msgid "This chat stopped because the conversation continued in a terminal."
+msgstr "Этот чат остановлен, потому что разговор продолжился в терминале."
+
+msgid "This chat was stopped."
+msgstr "Этот чат остановлен."
 
 msgid "This closes every terminal session — in this workspace and any others — and can't be undone. If they're only briefly stuck, waiting usually brings them back."
 msgstr "Это закроет все сессии терминала — в этой рабочей области и в остальных — и отменить это нельзя. Если они зависли ненадолго, обычно достаточно подождать."

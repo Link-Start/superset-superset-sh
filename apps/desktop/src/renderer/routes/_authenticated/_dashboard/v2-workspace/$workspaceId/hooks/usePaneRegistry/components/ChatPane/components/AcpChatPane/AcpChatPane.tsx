@@ -4,8 +4,12 @@ import { getAgentModelSupport } from "@superset/shared/agent-models";
 import { buildChatSessionHandoffPrompt } from "@superset/shared/terminal-session-handoff";
 import { toast } from "@superset/ui/sonner";
 import { useWorkspaceClient } from "@superset/workspace-client";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { TRPCClientError } from "@trpc/client";
+import type { ReactNode } from "react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useTerminalAgentBindings } from "renderer/hooks/host-service/useTerminalAgentBindings";
+import { useWorkspaceEvent } from "renderer/hooks/host-service/useWorkspaceEvent";
 import { useV2AgentConfigs } from "renderer/hooks/useV2AgentConfigs";
 import { acpHarnessForPreset } from "renderer/lib/acpHarness";
 import type { OpenFile } from "../../../../../../types";
@@ -15,24 +19,33 @@ import type { ChatForkTarget } from "../../../ChatSession/types";
 import { isUnrestrictedMode } from "../../../ChatSession/utils/isUnrestrictedMode";
 import { useForkChat } from "../../hooks/useForkChat";
 import { readSavedChatMode } from "../../utils/savedChatMode";
-import { AcpChatPending } from "./components/AcpChatPending";
 import { AcpRecovery } from "./components/AcpRecovery";
+import { DraftChat } from "./components/DraftChat";
+import { createWhenReachable } from "./utils/createWhenReachable";
+import {
+	isChatCreateWatched,
+	sharedChatCreate,
+	watchChatCreate,
+} from "./utils/sharedChatCreate";
 
 /**
- * The ACP surface of an agent terminal: a chat bridged to the agent session the
- * terminal was running, resumed by its session id. The pty is stopped while
- * this shows, so `agent` comes from the pane rather than the live binding.
+ * A chat bridged to an agent session, resumed by its session id. `agent` comes
+ * from the pane: the terminal it may have come from is stopped.
  */
+const MAX_RECOVERIES = 3;
+const REPLACEMENT_TIMEOUT_MS = 30_000;
+
 export function AcpChatPane({
 	agent,
 	isActive,
 	onSessionInfo,
-	onFirstPromptSent,
+	onPendingPromptsSent,
+	onQueuePrompt,
 	onOpenFile,
 	onModeChange,
 	onSessionCreated,
 	onSwitchAgent,
-	pendingFirstPrompt,
+	pendingPrompts,
 	sessionId,
 	terminalId,
 	workspaceId,
@@ -46,8 +59,9 @@ export function AcpChatPane({
 	agent: { id: string; sessionId?: string } | undefined;
 	isActive: boolean;
 	sessionId: string | null;
-	pendingFirstPrompt?: UserContent[] | null;
-	onFirstPromptSent?: (() => void) | undefined;
+	pendingPrompts: UserContent[][];
+	onPendingPromptsSent: () => void;
+	onQueuePrompt: (content: UserContent[]) => void;
 	onSessionCreated: (sessionId: string) => void;
 	onModeChange?: (modeId: string) => void;
 	onSessionInfo: (info: { harnessSessionId?: string; title?: string }) => void;
@@ -73,6 +87,8 @@ export function AcpChatPane({
 	)?.label;
 	const harness = acpHarnessForPreset(agent?.id);
 	const [failure, setFailure] = useState<string | null>(null);
+	const [unreachable, setUnreachable] = useState(false);
+	const [replacement, setReplacement] = useState<string | null>(null);
 
 	// The stored session outlives its process — after a host restart the row
 	// still reads "idle" and only the send fails. Ask who is actually running.
@@ -85,8 +101,25 @@ export function AcpChatPane({
 				: Promise.resolve(null),
 		staleTime: 5_000,
 	});
+	const queryClient = useQueryClient();
+	useWorkspaceEvent(
+		"chat:sessions-changed",
+		workspaceId,
+		() => {
+			void queryClient.invalidateQueries({
+				queryKey: ["acp-chat-session", sessionId],
+			});
+			void queryClient.invalidateQueries({
+				queryKey: ["acp-chat-replacement"],
+			});
+		},
+		sessionId !== null,
+	);
 
+	const createKey = `${terminalId}:${agent?.id ?? ""}`;
+	useEffect(() => watchChatCreate(createKey), [createKey]);
 	const attaching = useRef(false);
+	const recoveryInFlight = useRef(false);
 	// A switch to another agent remounts this pane; its pending calls must not
 	// write the old agent back over the new one.
 	const mounted = useRef(true);
@@ -97,29 +130,54 @@ export function AcpChatPane({
 		};
 	}, []);
 	const start = useCallback(
-		async (resumeHarness: string, resume?: string) => {
+		async (resumeHarness: string, resume?: string, replacing = false) => {
 			attaching.current = true;
 			setFailure(null);
 			try {
 				const startModeId =
 					modeId ??
 					(resume || !agent ? undefined : readSavedChatMode(agent.id));
-				const created = await wiring.transport.createSession({
-					commandId: crypto.randomUUID(),
-					workspaceId,
-					harness: resumeHarness,
-					terminalId,
-					...(modelId ? { modelId } : {}),
-					...(startModeId ? { modeId: startModeId } : {}),
-					...(resume ? { resume: { harnessSessionId: resume } } : {}),
-				});
-				if (mounted.current) onSessionCreated(created.sessionId);
+				const commandId = crypto.randomUUID();
+				const createdId = await sharedChatCreate(
+					createKey,
+					() =>
+						createWhenReachable({
+							attempt: () =>
+								wiring.transport
+									.createSession({
+										commandId,
+										workspaceId,
+										harness: resumeHarness,
+										terminalId,
+										...(modelId ? { modelId } : {}),
+										...(startModeId ? { modeId: startModeId } : {}),
+										...(resume ? { resume: { harnessSessionId: resume } } : {}),
+									})
+									.then((created) => created.sessionId),
+							isReachableFailure: (error) =>
+								error instanceof TRPCClientError && error.data != null,
+							shouldContinue: () => isChatCreateWatched(createKey),
+							onUnreachable: (next) => {
+								if (mounted.current) setUnreachable(next);
+							},
+						}),
+					(orphan) => {
+						void wiring.transport
+							.closeSession({ sessionId: orphan })
+							.catch(() => undefined);
+					},
+				);
+				if (!mounted.current) return;
+				if (replacing) setReplacement(createdId);
+				else onSessionCreated(createdId);
 			} catch (error) {
 				attaching.current = false;
+				if (replacing) recoveryInFlight.current = false;
 				setFailure(error instanceof Error ? error.message : String(error));
 			}
 		},
 		[
+			createKey,
 			wiring.transport,
 			workspaceId,
 			terminalId,
@@ -152,7 +210,12 @@ export function AcpChatPane({
 			})
 			.then((forked) => {
 				if (forked) {
-					if (!mounted.current) return;
+					if (!mounted.current) {
+						void wiring.transport
+							.closeSession({ sessionId: forked.sessionId })
+							.catch(() => undefined);
+						return;
+					}
 					onSessionCreated(forked.sessionId);
 					void wiring.transport
 						.closeSession({ sessionId })
@@ -267,43 +330,102 @@ export function AcpChatPane({
 	// bound to can be loaded again. Dead means the agent exited or failed to
 	// start, and a later attempt may get past either. Reopening a pane should
 	// just work, so do it.
-	const canResume = Boolean(
-		(sessionStopped || sessionDead) && harness && agentSessionId,
+	const bindings = useTerminalAgentBindings(workspaceId);
+	const continuedInTerminal =
+		agentSessionId !== undefined &&
+		[...bindings.values()].some(
+			(binding) =>
+				binding.agentSessionId === agentSessionId &&
+				!binding.chatSessionId &&
+				binding.endedAt === undefined,
+		);
+	const recoverable = Boolean(
+		(sessionStopped || sessionDead) && harness && !continuedInTerminal,
 	);
-
-	// Once per mount: if the session we resume into is itself unusable, fall
-	// through to the panel instead of spawning adapters in a loop.
-	const autoResumed = useRef(false);
-	const resumingFrom = useRef<string | null>(null);
-	useEffect(() => {
-		if (!canResume || autoResumed.current) return;
-		if (!harness || !agentSessionId || !sessionId) return;
-		autoResumed.current = true;
-		resumingFrom.current = sessionId;
-		attaching.current = false;
+	const recoveries = useRef(0);
+	if (stored?.live && !sessionDead) recoveries.current = 0;
+	const recover = useCallback(() => {
+		if (!harness || !sessionId || recoveryInFlight.current) return;
+		recoveryInFlight.current = true;
 		void wiring.transport
 			.closeSession({ sessionId })
 			.catch(() => undefined)
-			.then(() => start(harness, agentSessionId));
-	}, [canResume, harness, agentSessionId, sessionId, start, wiring.transport]);
+			.then(() => start(harness, agentSessionId, true));
+	}, [harness, agentSessionId, sessionId, start, wiring.transport]);
+	const { data: replacementState } = useQuery({
+		enabled: replacement !== null,
+		queryKey: ["acp-chat-replacement", replacement],
+		queryFn: () =>
+			replacement
+				? wiring.transport.getSession({ sessionId: replacement })
+				: Promise.resolve(null),
+		refetchInterval: 500,
+		refetchIntervalInBackground: true,
+	});
+	useEffect(() => {
+		if (!replacement) return;
+		const commit = () => {
+			recoveryInFlight.current = false;
+			onSessionCreated(replacement);
+			setReplacement(null);
+		};
+		const status = replacementState?.session?.status;
+		if (status === "dead") {
+			recoveryInFlight.current = false;
+			setReplacement(null);
+			setFailure(
+				t({ message: "The agent stopped while resuming the conversation." }),
+			);
+			return;
+		}
+		if (replacementState?.live && status !== "starting") {
+			commit();
+			return;
+		}
+		const timer = setTimeout(commit, REPLACEMENT_TIMEOUT_MS);
+		return () => clearTimeout(timer);
+	}, [replacement, replacementState, onSessionCreated, t]);
+	const recovering =
+		replacement !== null ||
+		(recoverable && recoveries.current < MAX_RECOVERIES);
+	useEffect(() => {
+		if (!recovering || recoveryInFlight.current) return;
+		const delayMs =
+			recoveries.current === 0 && failure === null
+				? 0
+				: 1_000 * 2 ** Math.max(recoveries.current - 1, 0);
+		const timer = setTimeout(() => {
+			recoveries.current += 1;
+			recover();
+		}, delayMs);
+		return () => clearTimeout(timer);
+	}, [recovering, recover, failure]);
+	const retryRecovery = useCallback(() => {
+		recoveries.current = 0;
+		setFailure(null);
+		recover();
+	}, [recover]);
 
-	const resuming =
-		canResume &&
-		(!autoResumed.current || (resumingFrom.current === sessionId && !failure));
-	if (resuming) {
-		return (
-			<AcpChatPending>
-				<Trans>Resuming the conversation…</Trans>
-			</AcpChatPending>
-		);
-	}
+	const draft = (notice: ReactNode) => (
+		<DraftChat
+			draftKey={`chat-v3-draft:${terminalId}`}
+			isActive={isActive}
+			notice={
+				unreachable ? <Trans>Connecting to the host service…</Trans> : notice
+			}
+			onQueue={onQueuePrompt}
+			queued={pendingPrompts}
+			workspaceId={workspaceId}
+		/>
+	);
 
-	if (harness && sessionId && (sessionDead || sessionStopped)) {
+	if (harness && sessionId && (sessionDead || sessionStopped) && !recovering) {
 		return (
 			<AcpRecovery
 				detail={failure ?? undefined}
 				onStartNew={startFresh}
-				reason={sessionDead ? "no-transcript" : "stopped"}
+				{...(continuedInTerminal ? {} : { onResume: retryRecovery })}
+				reason={continuedInTerminal ? "in-terminal" : "stopped"}
 			/>
 		);
 	}
@@ -325,22 +447,33 @@ export function AcpChatPane({
 				</div>
 			);
 		}
-		return (
-			<AcpChatPending>
-				{agentSessionId ? (
-					<Trans>Attaching to the running session…</Trans>
-				) : (
-					<Trans>Starting the agent…</Trans>
-				)}
-			</AcpChatPending>
+		return draft(
+			agentSessionId ? (
+				<Trans>Attaching to the running session…</Trans>
+			) : (
+				<Trans>Starting the agent…</Trans>
+			),
 		);
 	}
 
 	return (
 		<SessionView
 			client={client}
+			{...(recovering
+				? {
+						held: {
+							notice: unreachable ? (
+								<Trans>Connecting to the host service…</Trans>
+							) : (
+								<Trans>Resuming the conversation…</Trans>
+							),
+							queued: pendingPrompts,
+							onQueue: onQueuePrompt,
+						},
+					}
+				: {})}
 			key={sessionId}
-			onFirstPromptSent={onFirstPromptSent ?? NOOP}
+			onPendingPromptsSent={onPendingPromptsSent}
 			agentLabel={agentLabel}
 			agentSwitch={agentSwitch}
 			onModeChange={onModeChange}
@@ -361,12 +494,10 @@ export function AcpChatPane({
 					...(state?.title ? { title: state.title } : {}),
 				});
 			}}
-			pendingFirstPrompt={pendingFirstPrompt ?? null}
+			pendingPrompts={pendingPrompts}
 			preferredModelLabel={modelLabel}
 			sessionId={sessionId}
 			workspaceId={workspaceId}
 		/>
 	);
 }
-
-function NOOP() {}

@@ -3382,9 +3382,6 @@ msgstr "Chatsessie niet gevonden"
 msgid "Chat surfaces: messages, reasoning, suggestions"
 msgstr "Chatoppervlakken: berichten, redeneren, suggesties"
 
-msgid "Chat v3"
-msgstr "Chat v3"
-
 msgid "Check again"
 msgstr "Opnieuw controleren"
 
@@ -4263,6 +4260,9 @@ msgstr "Verbinden laat je agents in {name} lezen en handelen namens jou. Control
 
 msgid "Connecting to the desktop…"
 msgstr "Verbinden met het bureaublad…"
+
+msgid "Connecting to the host service…"
+msgstr "Verbinden met de hostservice…"
 
 msgid "Connecting to the workspace"
 msgstr "Verbinden met de werkruimte"
@@ -10030,9 +10030,6 @@ msgstr "Nieuwe browser"
 msgid "new challengers"
 msgstr "nieuwe uitdagers"
 
-msgid "New chat"
-msgstr "Nieuwe chat"
-
 msgid "New cloud workspace"
 msgstr "Nieuwe cloudwerkruimte"
 
@@ -11197,9 +11194,6 @@ msgstr "Wijzigingen openen"
 msgid "Open Changes"
 msgstr "Wijzigingen openen"
 
-msgid "Open Chat v3"
-msgstr "Chat v3 openen"
-
 msgid "Open Command Palette"
 msgstr "Opdrachtenpalet openen"
 
@@ -11556,12 +11550,6 @@ msgstr "Mappen openen"
 
 msgid "Opening pages"
 msgstr "Pagina's openen"
-
-msgid "Opening the chat…"
-msgstr "Chat openen…"
-
-msgid "Opening the conversation…"
-msgstr "Gesprek wordt geopend…"
 
 msgid "Opening worktree..."
 msgstr "Worktree openen..."
@@ -14352,9 +14340,6 @@ msgstr "Tekst selecteren in een terminal kopieert die meteen naar het klembord, 
 msgid "Send"
 msgstr "Versturen"
 
-msgid "Send a message to start a {harness} session"
-msgstr "Stuur een bericht om een {harness}-sessie te starten"
-
 msgid "Send an invitation to join {organizationName}. Expires in 48 hours."
 msgstr "Stuur een uitnodiging om lid te worden van {organizationName}. Verloopt na 48 uur."
 
@@ -15252,9 +15237,6 @@ msgstr "Nieuwe sterren per week"
 msgctxt "project date"
 msgid "Start"
 msgstr "Start"
-
-msgid "Start a {harness} session"
-msgstr "Start een {harness}-sessie"
 
 msgid "Start a conversation to see messages here"
 msgstr "Begin een gesprek om hier berichten te zien"
@@ -16164,6 +16146,9 @@ msgstr "De agent kopieert het gesprek; de aftakking opent hier"
 msgid "The agent owns a task from ticket to diff. The human reviews the result, not the keystrokes. Attention shifts from writing code to specifying work and judging it. One engineer runs several agents at once in isolated workspaces."
 msgstr "De agent bezit een taak van ticket tot diff. De mens reviewt het resultaat, niet de toetsaanslagen. De aandacht verschuift van code schrijven naar werk specificeren en beoordelen. Eén engineer laat meerdere agents tegelijk draaien in geïsoleerde werkruimtes."
 
+msgid "The agent stopped while resuming the conversation."
+msgstr "De agent stopte tijdens het hervatten van het gesprek."
+
 msgid "The agent this automation was set to run no longer exists on its host — the host's agents may have been reset or removed. Re-select an agent in the automation's settings."
 msgstr "De agent waarmee deze automatisering zou draaien bestaat niet meer op de host — de agents van die host zijn mogelijk gereset of verwijderd. Kies opnieuw een agent in de instellingen van de automatisering."
 
@@ -16534,8 +16519,11 @@ msgstr "Deze automatisering staat in een andere organisatie"
 msgid "This cannot be undone."
 msgstr "Dit kan niet ongedaan worden gemaakt."
 
-msgid "This chat's agent has stopped and can't be resumed."
-msgstr "De agent van deze chat is gestopt en kan niet worden hervat."
+msgid "This chat stopped because the conversation continued in a terminal."
+msgstr "Deze chat is gestopt omdat het gesprek in een terminal verderging."
+
+msgid "This chat was stopped."
+msgstr "Deze chat is gestopt."
 
 msgid "This closes every terminal session — in this workspace and any others — and can't be undone. If they're only briefly stuck, waiting usually brings them back."
 msgstr "Hiermee worden alle terminalsessies gesloten — in deze werkruimte en in alle andere — en dat kan niet ongedaan worden gemaakt. Zitten ze maar even vast, dan helpt wachten meestal."

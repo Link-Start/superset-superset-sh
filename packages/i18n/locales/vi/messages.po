@@ -3382,9 +3382,6 @@ msgstr "Không tìm thấy phiên chat"
 msgid "Chat surfaces: messages, reasoning, suggestions"
 msgstr "Các bề mặt chat: tin nhắn, suy luận, gợi ý"
 
-msgid "Chat v3"
-msgstr "Chat v3"
-
 msgid "Check again"
 msgstr "Kiểm tra lại"
 
@@ -4263,6 +4260,9 @@ msgstr "Kết nối cho phép các tác nhân của bạn đọc và thao tác t
 
 msgid "Connecting to the desktop…"
 msgstr "Đang kết nối tới màn hình nền…"
+
+msgid "Connecting to the host service…"
+msgstr "Đang kết nối tới dịch vụ máy chủ…"
 
 msgid "Connecting to the workspace"
 msgstr "Đang kết nối tới workspace"
@@ -10030,9 +10030,6 @@ msgstr "Trình duyệt mới"
 msgid "new challengers"
 msgstr "đối thủ mới"
 
-msgid "New chat"
-msgstr "Chat mới"
-
 msgid "New cloud workspace"
 msgstr "Workspace cloud mới"
 
@@ -11197,9 +11194,6 @@ msgstr "Mở thay đổi"
 msgid "Open Changes"
 msgstr "Mở thay đổi"
 
-msgid "Open Chat v3"
-msgstr "Mở Chat v3"
-
 msgid "Open Command Palette"
 msgstr "Mở bảng lệnh"
 
@@ -11556,12 +11550,6 @@ msgstr "Mở thư mục"
 
 msgid "Opening pages"
 msgstr "Mở trang"
-
-msgid "Opening the chat…"
-msgstr "Đang mở trò chuyện…"
-
-msgid "Opening the conversation…"
-msgstr "Đang mở cuộc trò chuyện…"
 
 msgid "Opening worktree..."
 msgstr "Đang mở worktree..."
@@ -14352,9 +14340,6 @@ msgstr "Chọn văn bản trong terminal sẽ sao chép ngay vào clipboard, đ�
 msgid "Send"
 msgstr "Gửi"
 
-msgid "Send a message to start a {harness} session"
-msgstr "Gửi một tin nhắn để bắt đầu phiên {harness}"
-
 msgid "Send an invitation to join {organizationName}. Expires in 48 hours."
 msgstr "Gửi lời mời tham gia {organizationName}. Hết hạn sau 48 giờ."
 
@@ -15252,9 +15237,6 @@ msgstr "Số star tăng mỗi tuần"
 msgctxt "project date"
 msgid "Start"
 msgstr "Bắt đầu"
-
-msgid "Start a {harness} session"
-msgstr "Bắt đầu một phiên {harness}"
 
 msgid "Start a conversation to see messages here"
 msgstr "Bắt đầu một cuộc trò chuyện để thấy tin nhắn ở đây"
@@ -16164,6 +16146,9 @@ msgstr "Tác nhân sao chép hội thoại; nhánh mở tại đây"
 msgid "The agent owns a task from ticket to diff. The human reviews the result, not the keystrokes. Attention shifts from writing code to specifying work and judging it. One engineer runs several agents at once in isolated workspaces."
 msgstr "Agent làm chủ một tác vụ từ ticket đến diff. Con người review kết quả, không phải từng thao tác gõ. Sự chú ý dịch từ viết code sang đặc tả công việc và đánh giá nó. Một kỹ sư chạy nhiều agent cùng lúc trong các workspace tách biệt."
 
+msgid "The agent stopped while resuming the conversation."
+msgstr "Tác tử đã dừng khi đang tiếp tục cuộc trò chuyện."
+
 msgid "The agent this automation was set to run no longer exists on its host — the host's agents may have been reset or removed. Re-select an agent in the automation's settings."
 msgstr "Agent mà tự động hóa này được đặt để chạy không còn tồn tại trên host của nó — agent của host có thể đã bị đặt lại hoặc gỡ bỏ. Hãy chọn lại agent trong cài đặt của tự động hóa."
 
@@ -16534,8 +16519,11 @@ msgstr "Tự động hóa này nằm trong một tổ chức khác"
 msgid "This cannot be undone."
 msgstr "Không thể hoàn tác."
 
-msgid "This chat's agent has stopped and can't be resumed."
-msgstr "Tác nhân của cuộc trò chuyện này đã dừng và không thể tiếp tục."
+msgid "This chat stopped because the conversation continued in a terminal."
+msgstr "Cuộc trò chuyện này đã dừng vì nó được tiếp tục trong một terminal."
+
+msgid "This chat was stopped."
+msgstr "Cuộc trò chuyện này đã bị dừng."
 
 msgid "This closes every terminal session — in this workspace and any others — and can't be undone. If they're only briefly stuck, waiting usually brings them back."
 msgstr "Thao tác này đóng mọi phiên terminal — trong workspace này và mọi workspace khác — và không thể hoàn tác. Nếu chúng chỉ kẹt trong chốc lát, chờ thêm thường là đủ."
