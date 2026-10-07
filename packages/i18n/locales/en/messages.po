@@ -5094,6 +5094,9 @@ msgstr "Couldn't send reply"
 msgid "Couldn't send to agent"
 msgstr "Couldn't send to agent"
 
+msgid "Couldn't send your message. It's back in the composer."
+msgstr "Couldn't send your message. It's back in the composer."
+
 msgid "Couldn't stage changes"
 msgstr "Couldn't stage changes"
 
@@ -10367,6 +10370,9 @@ msgstr "No active services"
 msgid "No active terminal sessions"
 msgstr "No active terminal sessions"
 
+msgid "No active workspaces"
+msgstr "No active workspaces"
+
 msgid "No agent"
 msgstr "No agent"
 
@@ -12192,6 +12198,9 @@ msgstr "Pick a theme or follow your system appearance. Browse the <0>marketplace
 
 msgid "Pick a workspace"
 msgstr "Pick a workspace"
+
+msgid "Pick a workspace whose agent is waiting for your input, has finished since you last looked, or is still running"
+msgstr "Pick a workspace whose agent is waiting for your input, has finished since you last looked, or is still running"
 
 msgid "Pick an icon and a color, or upload a custom image. Defaults to the linked GitHub owner's avatar."
 msgstr "Pick an icon and a color, or upload a custom image. Defaults to the linked GitHub owner's avatar."
@@ -15955,6 +15964,9 @@ msgstr "Switch sign-in"
 
 msgid "Switch sign-in…"
 msgstr "Switch sign-in…"
+
+msgid "Switch to Active Workspace"
+msgstr "Switch to Active Workspace"
 
 msgid "Switch to manual order to rearrange the sidebar"
 msgstr "Switch to manual order to rearrange the sidebar"

@@ -5094,6 +5094,9 @@ msgstr "返信を送信できませんでした"
 msgid "Couldn't send to agent"
 msgstr "エージェントに送信できませんでした"
 
+msgid "Couldn't send your message. It's back in the composer."
+msgstr "メッセージを送信できませんでした。入力欄に戻しました。"
+
 msgid "Couldn't stage changes"
 msgstr "変更をステージできませんでした"
 
@@ -10367,6 +10370,9 @@ msgstr "アクティブなサービスはありません"
 msgid "No active terminal sessions"
 msgstr "アクティブなターミナルセッションはありません"
 
+msgid "No active workspaces"
+msgstr "アクティブなワークスペースはありません"
+
 msgid "No agent"
 msgstr "エージェントなし"
 
@@ -12192,6 +12198,9 @@ msgstr "テーマを選ぶか、システムの外観に従います。<0>マー
 
 msgid "Pick a workspace"
 msgstr "ワークスペースを選択"
+
+msgid "Pick a workspace whose agent is waiting for your input, has finished since you last looked, or is still running"
+msgstr "エージェントがあなたの入力を待っている、前回確認してから完了した、またはまだ実行中のワークスペースを選択します"
 
 msgid "Pick an icon and a color, or upload a custom image. Defaults to the linked GitHub owner's avatar."
 msgstr "アイコンと色を選ぶか、独自の画像をアップロードします。既定ではリンクされたGitHubオーナーのアバターになります。"
@@ -15955,6 +15964,9 @@ msgstr "サインインを切り替え"
 
 msgid "Switch sign-in…"
 msgstr "サインインを切り替え…"
+
+msgid "Switch to Active Workspace"
+msgstr "アクティブなワークスペースに切り替え"
 
 msgid "Switch to manual order to rearrange the sidebar"
 msgstr "サイドバーを並べ替えるには手動順に切り替えてください"

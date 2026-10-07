@@ -5094,6 +5094,9 @@ msgstr "Tidak bisa mengirim balasan"
 msgid "Couldn't send to agent"
 msgstr "Tidak bisa mengirim ke agen"
 
+msgid "Couldn't send your message. It's back in the composer."
+msgstr "Pesan Anda tidak dapat dikirim. Pesan sudah kembali di kolom penulisan."
+
 msgid "Couldn't stage changes"
 msgstr "Tidak bisa men-stage perubahan"
 
@@ -10367,6 +10370,9 @@ msgstr "Tidak ada layanan aktif"
 msgid "No active terminal sessions"
 msgstr "Tidak ada sesi terminal aktif"
 
+msgid "No active workspaces"
+msgstr "Tidak ada workspace aktif"
+
 msgid "No agent"
 msgstr "Tanpa agen"
 
@@ -12192,6 +12198,9 @@ msgstr "Pilih tema atau ikuti tampilan sistem Anda. Jelajahi <0>marketplace<1/><
 
 msgid "Pick a workspace"
 msgstr "Pilih workspace"
+
+msgid "Pick a workspace whose agent is waiting for your input, has finished since you last looked, or is still running"
+msgstr "Pilih workspace yang agennya menunggu input Anda, sudah selesai sejak terakhir Anda melihatnya, atau masih berjalan"
 
 msgid "Pick an icon and a color, or upload a custom image. Defaults to the linked GitHub owner's avatar."
 msgstr "Pilih ikon dan warna, atau unggah gambar kustom. Bawaannya memakai avatar pemilik GitHub yang ditautkan."
@@ -15955,6 +15964,9 @@ msgstr "Ganti sesi masuk"
 
 msgid "Switch sign-in…"
 msgstr "Ganti sesi masuk…"
+
+msgid "Switch to Active Workspace"
+msgstr "Beralih ke workspace aktif"
 
 msgid "Switch to manual order to rearrange the sidebar"
 msgstr "Beralih ke urutan manual untuk menyusun ulang sidebar"

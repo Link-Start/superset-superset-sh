@@ -5094,6 +5094,9 @@ msgstr "No se pudo enviar la respuesta"
 msgid "Couldn't send to agent"
 msgstr "No se pudo enviar al agente"
 
+msgid "Couldn't send your message. It's back in the composer."
+msgstr "No se pudo enviar tu mensaje. Está de vuelta en el editor."
+
 msgid "Couldn't stage changes"
 msgstr "No se pudieron preparar los cambios"
 
@@ -10367,6 +10370,9 @@ msgstr "No hay servicios activos"
 msgid "No active terminal sessions"
 msgstr "No hay sesiones de terminal activas"
 
+msgid "No active workspaces"
+msgstr "No hay espacios de trabajo activos"
+
 msgid "No agent"
 msgstr "Sin agente"
 
@@ -12192,6 +12198,9 @@ msgstr "Elige un tema o sigue la apariencia del sistema. Explora el <0>marketpla
 
 msgid "Pick a workspace"
 msgstr "Elige un espacio de trabajo"
+
+msgid "Pick a workspace whose agent is waiting for your input, has finished since you last looked, or is still running"
+msgstr "Elige un espacio de trabajo cuyo agente espera tu respuesta, terminó desde la última vez que lo miraste o sigue en ejecución"
 
 msgid "Pick an icon and a color, or upload a custom image. Defaults to the linked GitHub owner's avatar."
 msgstr "Elige un icono y un color, o sube una imagen propia. Por defecto usa el avatar del propietario de GitHub enlazado."
@@ -15955,6 +15964,9 @@ msgstr "Cambiar de sesión"
 
 msgid "Switch sign-in…"
 msgstr "Cambiar de sesión…"
+
+msgid "Switch to Active Workspace"
+msgstr "Cambiar a espacio de trabajo activo"
 
 msgid "Switch to manual order to rearrange the sidebar"
 msgstr "Cambia al orden manual para reorganizar la barra lateral"
