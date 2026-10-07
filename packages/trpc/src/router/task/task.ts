@@ -668,9 +668,7 @@ export const taskRouter = {
 	 * or an agent starts working. No-op unless the task is currently in a
 	 * "backlog"/"unstarted" status, so it never regresses tasks that are
 	 * already in progress or done. An unassigned task is assigned to the
-	 * acting user; an existing assignee (internal or external snapshot) is
-	 * never overwritten. Changes are pushed to the external provider
-	 * (Linear) via the regular sync path.
+	 * acting user; an existing assignee is never overwritten.
 	 */
 	start: protectedProcedure
 		.input(z.object({ id: z.string().uuid() }))
@@ -688,7 +686,6 @@ export const taskRouter = {
 						statusType: taskStatuses.type,
 						statusProvider: taskStatuses.externalProvider,
 						assigneeId: tasks.assigneeId,
-						assigneeExternalId: tasks.assigneeExternalId,
 					})
 					.from(tasks)
 					.innerJoin(taskStatuses, eq(tasks.statusId, taskStatuses.id))
@@ -725,8 +722,7 @@ export const taskRouter = {
 					return { task: null, txid: null };
 				}
 
-				const unassigned =
-					current.assigneeId === null && current.assigneeExternalId === null;
+				const unassigned = current.assigneeId === null;
 
 				// Compare-and-set on the observed status so a concurrent move to
 				// completed/canceled between the read and this write is never
@@ -790,7 +786,6 @@ export const taskRouter = {
 					.from(tasks)
 					.where(eq(tasks.id, id));
 
-				// Enforce assignee invariant: setting internal assignee clears external snapshot
 				const updateData: Record<string, unknown> = { ...data };
 				if (data.description) {
 					updateData.description = toStoredDocument(data.description, {
@@ -815,6 +810,7 @@ export const taskRouter = {
 						data.assigneeId ?? null,
 						"Assignee must belong to the task organization",
 					);
+					// Released desktop builds still show this snapshot. Drop with the columns.
 					updateData.assigneeExternalId = null;
 					updateData.assigneeDisplayName = null;
 					updateData.assigneeAvatarUrl = null;
