@@ -1554,6 +1554,9 @@ msgstr "Instalacja na koncie obsługuje tylko manifesty własne, więc {plugin} 
 msgid "Account is pending deletion."
 msgstr "Konto oczekuje na usunięcie."
 
+msgid "Account name"
+msgstr "Nazwa konta"
+
 msgid "Account pending deletion"
 msgstr "Konto oczekuje na usunięcie"
 
@@ -10395,9 +10398,6 @@ msgstr "Dobre podejście"
 
 msgid "Nice, open a PR when ready."
 msgstr "Świetnie, otwórz PR, gdy będzie gotowy."
-
-msgid "Nickname"
-msgstr "Nazwa"
 
 #. placeholder {0}: AGENT_LABELS[agent]
 msgid "No {0} logins on this host — sign in and usage appears here."
