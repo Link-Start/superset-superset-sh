@@ -2372,11 +2372,11 @@ msgstr "Menu aplikacji"
 msgid "Applies to"
 msgstr "Dotyczy"
 
-msgid "Applies to file paths in terminals, chat tool calls, and task markdown."
-msgstr "Dotyczy ścieżek plików w terminalach, wywołaniach narzędzi na czacie i markdownie zadań."
+msgid "Applies to file paths in terminals, chat messages and tool calls, and task markdown."
+msgstr "Dotyczy ścieżek plików w terminalach, wiadomościach i wywołaniach narzędzi na czacie oraz markdownie zadań."
 
-msgid "Applies to folder paths in terminal output. Folders can't open in the file viewer, so clicks reveal in the sidebar, open the external editor, or open Finder."
-msgstr "Dotyczy ścieżek folderów w wyjściu terminala. Folderów nie da się otworzyć w podglądzie pliku, więc kliknięcie pokazuje je na pasku bocznym, otwiera zewnętrzny edytor albo Finder."
+msgid "Applies to folder paths in terminal output and chat messages. Folders can't open in the file viewer, so clicks reveal in the sidebar, open the external editor, or open Finder."
+msgstr "Dotyczy ścieżek folderów w wyjściu terminala i wiadomościach na czacie. Folderów nie da się otworzyć w podglądzie pliku, więc kliknięcie pokazuje je na pasku bocznym, otwiera zewnętrzny edytor albo Finder."
 
 msgid "Applies to the file tree, changes list, and diff header."
 msgstr "Dotyczy drzewa plików, listy zmian i nagłówka różnic."
@@ -4841,6 +4841,9 @@ msgstr "Nie udało się połączyć z dostawcą. Spróbuj ponownie."
 
 msgid "Could not reach the server."
 msgstr "Nie można połączyć się z serwerem."
+
+msgid "Could not reach the workspace host"
+msgstr "Nie można połączyć się z hostem obszaru roboczego"
 
 msgid "Could not reach this workspace's machine"
 msgstr "Nie udało się połączyć z maszyną tego obszaru roboczego"
@@ -12136,6 +12139,9 @@ msgstr "Skopiowano ścieżkę"
 
 msgid "Path copied to clipboard"
 msgstr "Ścieżka skopiowana do schowka"
+
+msgid "Path not found: {path}"
+msgstr "Nie znaleziono ścieżki: {path}"
 
 msgid "Pause"
 msgstr "Wstrzymaj"

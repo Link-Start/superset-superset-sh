@@ -2372,11 +2372,11 @@ msgstr "アプリケーションメニュー"
 msgid "Applies to"
 msgstr "適用範囲"
 
-msgid "Applies to file paths in terminals, chat tool calls, and task markdown."
-msgstr "ターミナル、チャットのツール呼び出し、タスクのMarkdown内のファイルパスに適用されます。"
+msgid "Applies to file paths in terminals, chat messages and tool calls, and task markdown."
+msgstr "ターミナル、チャットのメッセージとツール呼び出し、タスクのMarkdown内のファイルパスに適用されます。"
 
-msgid "Applies to folder paths in terminal output. Folders can't open in the file viewer, so clicks reveal in the sidebar, open the external editor, or open Finder."
-msgstr "ターミナル出力内のフォルダパスに適用されます。フォルダはファイルビューアで開けないため、クリックするとサイドバーで表示するか、外部エディタまたはFinderで開きます。"
+msgid "Applies to folder paths in terminal output and chat messages. Folders can't open in the file viewer, so clicks reveal in the sidebar, open the external editor, or open Finder."
+msgstr "ターミナル出力とチャットメッセージ内のフォルダパスに適用されます。フォルダはファイルビューアで開けないため、クリックするとサイドバーで表示するか、外部エディタまたはFinderで開きます。"
 
 msgid "Applies to the file tree, changes list, and diff header."
 msgstr "ファイルツリー、変更一覧、差分ヘッダーに適用されます。"
@@ -4841,6 +4841,9 @@ msgstr "プロバイダーに接続できませんでした。再試行してく
 
 msgid "Could not reach the server."
 msgstr "サーバーに接続できませんでした。"
+
+msgid "Could not reach the workspace host"
+msgstr "ワークスペースのホストに接続できません"
 
 msgid "Could not reach this workspace's machine"
 msgstr "このワークスペースのマシンに接続できませんでした"
@@ -12136,6 +12139,9 @@ msgstr "パスをコピーしました"
 
 msgid "Path copied to clipboard"
 msgstr "パスをクリップボードにコピーしました"
+
+msgid "Path not found: {path}"
+msgstr "パスが見つかりません: {path}"
 
 msgid "Pause"
 msgstr "一時停止"

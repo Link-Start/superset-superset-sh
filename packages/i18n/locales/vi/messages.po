@@ -2372,11 +2372,11 @@ msgstr "Menu ứng dụng"
 msgid "Applies to"
 msgstr "Áp dụng cho"
 
-msgid "Applies to file paths in terminals, chat tool calls, and task markdown."
-msgstr "Áp dụng cho đường dẫn tệp trong terminal, lệnh gọi công cụ trong chat và markdown của tác vụ."
+msgid "Applies to file paths in terminals, chat messages and tool calls, and task markdown."
+msgstr "Áp dụng cho đường dẫn tệp trong terminal, tin nhắn và lệnh gọi công cụ trong chat, và markdown của tác vụ."
 
-msgid "Applies to folder paths in terminal output. Folders can't open in the file viewer, so clicks reveal in the sidebar, open the external editor, or open Finder."
-msgstr "Áp dụng cho đường dẫn thư mục trong kết quả terminal. Thư mục không mở được trong trình xem tệp, nên khi nhấp sẽ hiện trong thanh bên, mở trình soạn thảo ngoài hoặc mở Finder."
+msgid "Applies to folder paths in terminal output and chat messages. Folders can't open in the file viewer, so clicks reveal in the sidebar, open the external editor, or open Finder."
+msgstr "Áp dụng cho đường dẫn thư mục trong kết quả terminal và tin nhắn chat. Thư mục không mở được trong trình xem tệp, nên khi nhấp sẽ hiện trong thanh bên, mở trình soạn thảo ngoài hoặc mở Finder."
 
 msgid "Applies to the file tree, changes list, and diff header."
 msgstr "Áp dụng cho cây tệp, danh sách thay đổi và tiêu đề diff."
@@ -4841,6 +4841,9 @@ msgstr "Không kết nối được tới nhà cung cấp. Hãy thử lại."
 
 msgid "Could not reach the server."
 msgstr "Không thể kết nối tới máy chủ."
+
+msgid "Could not reach the workspace host"
+msgstr "Không thể kết nối tới máy chủ workspace"
 
 msgid "Could not reach this workspace's machine"
 msgstr "Không kết nối được tới máy của workspace này"
@@ -12136,6 +12139,9 @@ msgstr "Đã sao chép đường dẫn"
 
 msgid "Path copied to clipboard"
 msgstr "Đã sao chép đường dẫn vào clipboard"
+
+msgid "Path not found: {path}"
+msgstr "Không tìm thấy đường dẫn: {path}"
 
 msgid "Pause"
 msgstr "Tạm dừng"
