@@ -16431,8 +16431,8 @@ msgstr "Demon nie zdołał przekazać aktywnych sesji nowej wersji. Powód:"
 msgid "The desktop app runs on macOS and Linux today. Drop your email and we'll let you know the moment the Windows build ships."
 msgstr "Pracujemy nad Superset na Windows i Linux. Zostaw e-mail, a damy znać, gdy tylko będzie gotowy."
 
-msgid "The desktop app runs on macOS, with an experimental Linux AppImage; Windows is not yet available. Beyond the desktop app there's a CLI, a TypeScript SDK, and an MCP server, so you can drive Superset from scripts, terminals, and other agents."
-msgstr "Aplikacja desktopowa działa na macOS, z eksperymentalnym AppImage dla Linuksa; Windows nie jest jeszcze dostępny. Poza aplikacją są też CLI, SDK w TypeScripcie i serwer MCP, więc Superset można sterować ze skryptów, terminali i innych agentów."
+msgid "The desktop app runs on macOS, with an experimental Linux AppImage; Windows is not yet available. Beyond the desktop app there's a CLI, a TypeScript SDK, and an MCP server, so you can drive Superset from scripts, terminals, and other agents. An iPhone app on the App Store lets you check on agents and review their diffs from your phone."
+msgstr "Aplikacja desktopowa działa na macOS, z eksperymentalnym AppImage dla Linuksa; Windows nie jest jeszcze dostępny. Poza aplikacją są też CLI, SDK w TypeScripcie i serwer MCP, więc Superset można sterować ze skryptów, terminali i innych agentów. Aplikacja na iPhone'a z App Store pozwala sprawdzać agentów i przeglądać ich diffy z telefonu."
 
 msgid "The device that hosts this project is unavailable."
 msgstr "Urządzenie hostujące ten projekt jest niedostępne."

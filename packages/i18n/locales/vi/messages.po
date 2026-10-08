@@ -16431,8 +16431,8 @@ msgstr "Daemon không chuyển được các phiên đang chạy sang bản bina
 msgid "The desktop app runs on macOS and Linux today. Drop your email and we'll let you know the moment the Windows build ships."
 msgstr "Chúng tôi đang đưa Superset lên Windows & Linux. Để lại email và chúng tôi sẽ báo ngay khi sẵn sàng."
 
-msgid "The desktop app runs on macOS, with an experimental Linux AppImage; Windows is not yet available. Beyond the desktop app there's a CLI, a TypeScript SDK, and an MCP server, so you can drive Superset from scripts, terminals, and other agents."
-msgstr "Ứng dụng máy tính chạy trên macOS, kèm bản AppImage Linux thử nghiệm; Windows chưa có. Ngoài ứng dụng máy tính còn có CLI, SDK TypeScript và server MCP, nên bạn có thể điều khiển Superset từ script, terminal và các agent khác."
+msgid "The desktop app runs on macOS, with an experimental Linux AppImage; Windows is not yet available. Beyond the desktop app there's a CLI, a TypeScript SDK, and an MCP server, so you can drive Superset from scripts, terminals, and other agents. An iPhone app on the App Store lets you check on agents and review their diffs from your phone."
+msgstr "Ứng dụng máy tính chạy trên macOS, kèm bản AppImage Linux thử nghiệm; Windows chưa có. Ngoài ứng dụng máy tính còn có CLI, SDK TypeScript và server MCP, nên bạn có thể điều khiển Superset từ script, terminal và các agent khác. Ứng dụng iPhone trên App Store cho phép bạn theo dõi các agent và xem lại diff của chúng ngay trên điện thoại."
 
 msgid "The device that hosts this project is unavailable."
 msgstr "Thiết bị chứa dự án này không khả dụng."
